@@ -32,6 +32,20 @@ const typographyStyle = {
     lineHeight: "1.42857143",
     color: "#777",
   },
+  headline1: {
+    fontSize: "42px",
+    fontWeight: "800",
+    align: "left",
+    textAlign: "left",
+    color: "black"
+  },
+  headline2: {
+    fontSize: "42px",
+    fontWeight: "800",
+    align: "left",
+    textAlign: "left",
+    color: primaryColor
+  },
   mutedText: {
     color: "#777",
   },
