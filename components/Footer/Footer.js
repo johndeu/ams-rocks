@@ -35,7 +35,7 @@ export default function Footer(props) {
               <img src="/img/microsoft.svg"></img>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              |
+            &nbsp;|&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <h6>©&nbsp;2021&nbsp;Microsoft</h6>
@@ -45,16 +45,13 @@ export default function Footer(props) {
         <div className={classes.right}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?LinkId=521839" target="_blank">Privacy and Cookies</a> &nbsp;&nbsp;
+              <a  rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">Privacy and Cookies</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?LinkId=2001405" target="_blank">Terms of use</a> &nbsp;&nbsp;
+              <a  rel="noreferrer" href="https://docs.microsoft.com/legal/termsofuse" target="_blank">Terms of use</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a  rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">Trademarks</a> &nbsp;&nbsp;
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?Linkid=698895" target="_blank">Code of Conduct</a>
             </ListItem>
           </List>
         </div>
