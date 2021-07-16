@@ -54,16 +54,16 @@ export default function Footer(props) {
             <ListItem className={classes.inlineBlock}>
               <a rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">Trademarks</a> &nbsp;&nbsp;
             </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <img src="/img/microsoft.svg"></img>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              &nbsp;|&nbsp;
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <h6>©&nbsp;Microsoft 2021</h6>
+            </ListItem>
           </List>
-          <ListItem className={classes.inlineBlock}>
-            <img src="/img/microsoft.svg"></img>
-          </ListItem>
-          <ListItem className={classes.inlineBlock}>
-            &nbsp;|&nbsp;
-          </ListItem>
-          <ListItem className={classes.inlineBlock}>
-            <h6>©&nbsp;Microsoft 2021</h6>
-          </ListItem>
         </div>
       </div>
     </footer >
