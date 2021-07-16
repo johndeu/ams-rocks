@@ -6,6 +6,7 @@ import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Divider from "@material-ui/core/Divider";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
@@ -30,52 +31,83 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText="Components"
+          buttonText="Examples"
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Link href="/components">
-              <a className={classes.dropdownLink}>All components</a>
+            <Link href="/examples">
+              <a className={classes.dropdownLink}>All examples</a>
             </Link>,
             <a
-              href="https://creativetimofficial.github.io/nextjs-material-kit/#/documentation?ref=njsmk-navbar"
+              href="https://docs.microsoft.com/en-us/azure/media-services/latest/samples-overview?tabs=net"
               target="_blank"
               className={classes.dropdownLink}
             >
-              Documentation
+              Samples
             </a>,
           ]}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
+          href="/live"
           color="transparent"
           target="_blank"
           className={classes.navLink}
         >
-          <Icon className={classes.icons}>unarchive</Icon> Upgrade to PRO
+          <Icon className={classes.icons}>camera</Icon> Live
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit?ref=njsmk-navbar"
+          href="https://azure.microsoft.com/en-us/pricing/details/media-services/"
           color="transparent"
           target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+          <Icon className={classes.icons}>paid</Icon> Pricing
         </Button>
       </ListItem>
+
       <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          buttonText="Quick links"
+          buttonProps={{
+            className: classes.navLink,
+            color: "transparent",
+          }}
+          buttonIcon={Apps}
+          dropdownList={[
+            <Link href="https://docs.microsoft.com/en-us/azure/media-services/">
+              <a className={classes.dropdownLink}>Documentation</a>
+            </Link>,
+            <Link href="https://docs.microsoft.com/en-us/rest/api/media/">
+              <a className={classes.dropdownLink}>API Reference</a>
+            </Link>,
+            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/limits-quotas-constraints-reference">
+              <a className={classes.dropdownLink}>Quotas and limits</a>
+            </Link>,
+            <Divider />,
+            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/live-event-obs-quickstart">
+              <a className={classes.dropdownLink}>Quick Starts</a>
+            </Link>,
+            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/samples-overview?tabs=net">
+              <a className={classes.dropdownLink}>Samples</a>
+            </Link>,
+            <Divider />,
+            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/player-media-players-concept">
+              <a className={classes.dropdownLink}>Players</a>
+            </Link>,
+          ]}
+        />
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"
@@ -83,46 +115,12 @@ export default function HeaderLinks(props) {
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
-            href="https://twitter.com/CreativeTim?ref=creativetim"
+            href="https://twitter.com/MSFTAzureMedia"
             target="_blank"
             color="transparent"
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-facebook"
-          title="Follow us on facebook"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.facebook.com/CreativeTim?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-facebook"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
         </Tooltip>
       </ListItem>

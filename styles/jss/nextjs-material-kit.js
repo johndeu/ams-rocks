@@ -85,8 +85,8 @@ const card = {
 };
 
 const defaultFont = {
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontWeight: "300",
+  fontFamily: '"Segoe", "SegoeUI", "Segoe WP","Tahoma","Arial","sans-serif"',
+  fontWeight: "400",
   lineHeight: "1.5em",
 };
 
@@ -208,7 +208,7 @@ const title = {
   margin: "1.75rem 0 0.875rem",
   textDecoration: "none",
   fontWeight: "700",
-  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+  fontFamily: '"Segoe", "SegoeUI", "Segoe WP","Tahoma","Arial","sans-serif"',
 };
 
 const cardTitle = {

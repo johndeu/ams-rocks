@@ -40,7 +40,7 @@ export default function TeamSection() {
                 />
               </GridItem>
               <h4 className={classes.cardTitle}>
-                Gigi Hadid
+                Ning Lin
                 <br />
                 <small className={classes.smallTitle}>Model</small>
               </h4>
@@ -87,7 +87,7 @@ export default function TeamSection() {
                 />
               </GridItem>
               <h4 className={classes.cardTitle}>
-                Christian Louboutin
+                Anton Kucer
                 <br />
                 <small className={classes.smallTitle}>Designer</small>
               </h4>
@@ -127,7 +127,7 @@ export default function TeamSection() {
                 />
               </GridItem>
               <h4 className={classes.cardTitle}>
-                Kendall Jenner
+                John Deutscher
                 <br />
                 <small className={classes.smallTitle}>Model</small>
               </h4>

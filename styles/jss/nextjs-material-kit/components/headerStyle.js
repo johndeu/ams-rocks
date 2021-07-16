@@ -59,12 +59,17 @@ const headerStyle = {
     borderRadius: "3px",
     textTransform: "none",
     color: "inherit",
-    padding: "8px 16px",
+    padding: "8px 8px",
     letterSpacing: "unset",
     "&:hover,&:focus": {
       color: "inherit",
       background: "transparent",
     },
+  },
+  logo: {
+    top:"10px",
+    width:"30px",
+    height:"30px",
   },
   appResponsive: {
     margin: "20px 10px",

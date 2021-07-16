@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -71,6 +73,7 @@ export default function Header(props) {
       <Toolbar className={classes.container}>
         {leftLinks !== undefined ? brandComponent : null}
         <div className={classes.flex}>
+          <img className={classes.logo} src="/img/ams.svg"/>
           {leftLinks !== undefined ? (
             <Hidden smDown implementation="css">
               {leftLinks}
