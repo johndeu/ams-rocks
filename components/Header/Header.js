@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
