@@ -108,22 +108,17 @@ export default function HeaderLinks(props) {
       </ListItem>
 
       <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-twitter"
-          title="Follow us on twitter"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
+
+        <Button
+          color="success"
+          aria-label="Get started"
+          href="https://docs.microsoft.com/en-us/azure/media-services/latest/media-services-overview"
+          target="_blank"
         >
-          <Button
-            href="https://twitter.com/MSFTAzureMedia"
-            target="_blank"
-            color="transparent"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
+          Get started<Icon className={classes.icons}>north_east</Icon>
+        </Button>
+
       </ListItem>
-    </List>
+    </List >
   );
 }
