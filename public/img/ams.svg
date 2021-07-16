@@ -1,4 +1,5 @@
-<svg id="a5e980e2-fe6c-4b4b-bd88-a9c235de5a4d" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+<svg id="a5e980e2-fe6c-4b4b-bd88-a9c235de5a4d"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <defs>
     <linearGradient id="af3748e9-b70c-45be-94d6-553fb78dc833" x1="-481.386" y1="-747.701" x2="-463.782" y2="-778.247" gradientTransform="matrix(0.5, 0.866, -0.866, 0.5, -419.682, 794.08)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#005ba1"/>

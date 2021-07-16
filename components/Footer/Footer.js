@@ -32,57 +32,34 @@ export default function Footer(props) {
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/?ref=njsmk-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Creative Tim
-              </a>
+              <img src="/img/microsoft.svg"></img>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/presentation?ref=njsmk-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                About us
-              </a>
+              |
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="http://blog.creative-tim.com/?ref=njsmk-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Blog
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/license?ref=njsmk-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Licenses
-              </a>
+              <h6>©&nbsp;2021&nbsp;Microsoft</h6>
             </ListItem>
           </List>
         </div>
         <div className={classes.right}>
-          &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={classes.icon} /> by{" "}
-          <a
-            href="https://www.creative-tim.com?ref=njsmk-footer"
-            className={aClasses}
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
+          <List className={classes.list}>
+            <ListItem className={classes.inlineBlock}>
+              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?LinkId=521839" target="_blank">Privacy and Cookies</a> &nbsp;&nbsp;
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?LinkId=2001405" target="_blank">Terms of use</a> &nbsp;&nbsp;
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <a  rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">Trademarks</a> &nbsp;&nbsp;
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <a  rel="noreferrer" href="https://go.microsoft.com/fwlink/?Linkid=698895" target="_blank">Code of Conduct</a>
+            </ListItem>
+          </List>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }
 
