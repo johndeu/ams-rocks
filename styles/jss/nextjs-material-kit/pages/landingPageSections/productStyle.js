@@ -1,8 +1,8 @@
-import { title } from "styles/jss/nextjs-material-kit.js";
+import { title, primaryColor, infoColor } from "styles/jss/nextjs-material-kit.js";
 
 const productStyle = {
   section: {
-    padding: "10px 0",
+    padding: "120px 0px 0px 0px",
     textAlign: "left",
   },
   title: {
@@ -11,9 +11,13 @@ const productStyle = {
     marginTop: "30px",
     minHeight: "32px",
     textDecoration: "none",
+    color: primaryColor
   },
   description: {
+    marginBottom: "1rem",
+    marginTop: "40px",
     color: "#999",
+    fontSize:"1.4rem"
   },
 };
 

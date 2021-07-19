@@ -12,6 +12,8 @@ import GridItem from "components/Grid/GridItem.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPageSections/productStyle.js";
+import Headline1 from "components/Typography/Headline1.js";
+import Headline2 from "components/Typography/Headline2.js";
 
 const useStyles = makeStyles(styles);
 
@@ -19,9 +21,10 @@ export default function ProductSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <GridContainer justify="center">
+      <GridContainer justify="left">
         <GridItem xs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Let{"'"}s talk product</h2>
+        <Headline1>Built for</Headline1>
+        <Headline2>interactivity and scale.</Headline2>
           <h5 className={classes.description}>
             This is the paragraph where you can write more details about your
             product. Keep you user engaged by providing meaningful information.

@@ -74,7 +74,7 @@ export default function LandingPage(props) {
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
-          <WorkSection />
+          {/* <WorkSection /> */}
         </div>
       </div>
       <Footer />

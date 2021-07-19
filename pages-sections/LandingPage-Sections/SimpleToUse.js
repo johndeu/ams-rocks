@@ -35,7 +35,7 @@ export default function SimpleToUse() {
       <GridContainer justify="left">
         <GridItem xs={12} sm={12} md={8}>
           <Headline1>Azure Media Services is</Headline1>
-          <Headline2>simple to use</Headline2>
+          <Headline2>simple to use.</Headline2>
           <h5 className={classes.description}>
             this is why is it so simple to use. because of all these things..
             Azure Media Services is a fully managed live streaming solution: simply stream to 
@@ -51,7 +51,7 @@ export default function SimpleToUse() {
           <h3 className={classes.title}>Create your first live stream</h3>
         </GridItem>
       </GridContainer>
-      <div>
+      <div >
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={4}>
             <Card plain>
