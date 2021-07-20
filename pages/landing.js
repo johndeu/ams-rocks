@@ -22,6 +22,7 @@ import SimpleToUse from "../pages-sections/LandingPage-Sections/SimpleToUse";
 import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
+// import BlogSection from "pages-sections/LandingPage-Sections/BlogSection.js";
 
 const dashboardRoutes = [];
 
@@ -74,6 +75,7 @@ export default function LandingPage(props) {
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
+          {/* <BlogSection/> */}
           {/* <WorkSection /> */}
         </div>
       </div>
@@ -81,3 +83,5 @@ export default function LandingPage(props) {
     </div>
   );
 }
+
+

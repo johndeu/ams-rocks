@@ -1,8 +1,8 @@
 ---
-title: 'Latest news from Azure Media Services'
+title: 'Preview Mode for Static Generation'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 coverImage: '/img/bg.jpg'
-date: '2021-06-20T05:35:07.322Z'
+date: '2021-06-04T05:35:07.322Z'
 author:
   name: John Deutscher
   picture: '/img/faces/john_deu.jpg'
