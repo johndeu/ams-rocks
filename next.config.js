@@ -8,4 +8,9 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
+  images: {
+    loader: 'imgix',
+    path: 'http://amsrocks.imgix.net',
+  },
 });
+

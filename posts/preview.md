@@ -1,13 +1,13 @@
 ---
 title: 'Preview Mode for Static Generation'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/img/bg.jpg'
+coverImage: '/bg.jpg'
 date: '2021-06-04T05:35:07.322Z'
 author:
   name: John Deutscher
-  picture: '/img/faces/john_deu.jpg'
+  picture: '/faces/john_deu.jpg'
 ogImage:
-  url: '/img/bg.jpg'
+  url: '/bg.jpg'
 ---
 
 # This is freaking awesome
