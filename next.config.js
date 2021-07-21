@@ -12,5 +12,9 @@ module.exports = withPlugins([[withImages]], {
     loader: 'imgix',
     path: 'http://amsrocks.imgix.net',
   },
+  i18n: {
+    locales: ['en-us', 'ja'],
+    defaultLocale: 'en-us',
+}
 });
 

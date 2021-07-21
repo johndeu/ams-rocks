@@ -1,0 +1,10 @@
+{
+    "landing": {
+        "title": "Azure Interactive Media Services",
+        "sectionText": "This product just totally rocks. If you have not tried it, what the heck man? You need this.  And you need it today. Give us your live streams. Really. Whats wrong with you? Come on, its great.",
+        "buttonText": "Watch Friday Fails"
+    },
+    "dashboard": {
+        "description": "This example demonstrate how to lazy-load the language on the client side."
+    }
+}

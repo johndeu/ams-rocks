@@ -3,7 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
-import Router from "next/router";
+import { Router, useRouter } from "next/router";
+//import { I18nProvider } from 'next-localization';
+import { NextIntlProvider } from 'next-intl';
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -27,16 +29,9 @@ Router.events.on("routeChangeError", () => {
 });
 
 export default class MyApp extends App {
-  componentDidMount() {
-    let comment = document.createComment(`
 
-=========================================================
-* NextJS Material Kit v1.2.0 based on Material Kit Free - v2.0.2 (Bootstrap 4.0.0 Final Edition) and Material Kit React v1.8.0
-=========================================================
 
-`);
-    document.insertBefore(comment, document.documentElement);
-  }
+
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -48,18 +43,44 @@ export default class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
+    const { lngDict, ...rest } = pageProps;
 
     return (
-      <React.Fragment>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <title>Azure AMS - Low latency live streaming at scale</title>
-        </Head>
-        <Component {...pageProps} />
-      </React.Fragment>
+      <NextIntlProvider
+
+        // To achieve consistent date, time and number formatting
+        // across the app, you can define a set of global formats.
+        formats={{
+          dateTime: {
+            short: {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            }
+          }
+        }}
+        // Messages can be received from individual pages or configured
+        // globally in this module (`App.getInitialProps`). Note that in
+        // the latter case the messages are available as a top-level prop
+        // and not nested within `pageProps`.
+        messages={pageProps.messages}
+        // Providing an explicit value for `now` ensures consistent formatting of
+        // relative values regardless of the server or client environment.
+        now={new Date(pageProps.now)}
+      >
+        <React.Fragment>
+
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+            <title>Azure AMS - Low latency live streaming at scale</title>
+          </Head>
+          <Component {...pageProps} />
+
+        </React.Fragment>
+      </NextIntlProvider >
     );
   }
 }

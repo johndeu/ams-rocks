@@ -11,6 +11,10 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 
+// nodejs library that concatenates classes
+import classNames from "classnames";
+import styles from "styles/jss/nextjs-material-kit/pages/blogPage.js";
+
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {

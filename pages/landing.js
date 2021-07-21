@@ -1,4 +1,6 @@
 import React from "react";
+import { GetStaticPropsContext } from 'next';
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -24,12 +26,21 @@ import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 // import BlogSection from "pages-sections/LandingPage-Sections/BlogSection.js";
 
+
+// Translations
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/router';
+
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
+  const t = useTranslations('landing');
+  const { locale } = useRouter();
+
+
   const { ...rest } = props;
   return (
     <div>
@@ -49,11 +60,9 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Azure Interactive Video Services</h1>
+              <h1 className={classes.title}>{t('title')}</h1>
               <h4>
-                This product just totally rocks. If you have not tried it, what the heck man?
-                You need this.  And you need it today. Give us your live streams. Really. 
-                Whats wrong with you? Come on, its great. 
+                {t('sectionText')}
               </h4>
               <br />
               <Button
@@ -64,7 +73,7 @@ export default function LandingPage(props) {
                 rel="noopener noreferrer"
               >
                 <i className="fas fa-play" />
-                Watch Friday Fails
+                {t('buttonText')}
               </Button>
             </GridItem>
           </GridContainer>
@@ -84,4 +93,13 @@ export default function LandingPage(props) {
   );
 }
 
+export function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: {
+        ...require(`../locales/${locale}.json`),
+      }
+    }
+  };
+}
 

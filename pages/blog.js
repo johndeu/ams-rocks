@@ -1,11 +1,11 @@
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
-import styles from "styles/jss/nextjs-material-kit/pages/landingPageSections/teamStyle.js";
+import styles from "styles/jss/nextjs-material-kit/pages/blogPage.js";
 
 // Blog components
-import { getAllPosts } from 'lib/api.js'
-import { CMS_NAME } from 'lib/constants.js'
+import { getAllPosts } from '../lib/api'
+import { CMS_NAME } from '../lib/constants'
 import HeroPost from 'components/Blog/HeroPost'
 import BlogIndex from 'components/Blog/blogIndex'
 
