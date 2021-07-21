@@ -1,10 +1,10 @@
 {
     "landing": {
         "title": "Azure Interactive Media Services",
-        "sectionText": "Dit product is gewoon helemaal rock. Als je het niet geprobeerd hebt, wat maakt het uit? Je hebt dit nodig.  En je hebt het vandaag nodig. Geef ons je livestreams. werkelijk. Wat is er mis met je? Kom op, het is geweldig",
-        "buttonText": "Watch Friday mislukt"
+        "sectionText": "Dieses Produkt rockt einfach total. Wenn Sie es nicht ausprobiert haben, was zum Teufel Mann? Sie brauchen das.  Und Sie brauchen es heute. Geben Sie uns Ihre Live-Streams. wirklich. Was ist los mit dir? Komm schon, es ist großartig.",
+        "buttonText": "Watch Friday Fails"
     },
     "dashboard": {
-        "description": "Dit voorbeeld laat zien hoe u de taal aan de clientzijde lui kunt laden.."
+        "description": "In diesem Beispiel wird veranschaulicht, wie die Sprache auf der Clientseite verzögert geladen wird."
     }
 }
