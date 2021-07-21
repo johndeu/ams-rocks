@@ -13,7 +13,7 @@ module.exports = withPlugins([[withImages]], {
     path: 'http://amsrocks.imgix.net',
   },
   i18n: {
-    locales: ['en-us', 'ja'],
+    locales: ['en-us', 'ja', 'de', 'fr'],
     defaultLocale: 'en-us',
 }
 });
