@@ -20,7 +20,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
 // Sections for this page
-import SimpleToUse from "../pages-sections/LandingPage-Sections/SimpleToUse";
+import SimpleToUse from "pages-sections/LandingPage-Sections/SimpleToUse";
 import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
@@ -30,6 +30,8 @@ import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 // Translations
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
+import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
+
 
 const dashboardRoutes = [];
 
@@ -40,6 +42,7 @@ export default function LandingPage(props) {
   const router = useRouter();
 
   const { ...rest } = props;
+
   return (
     <div>
       <Header
@@ -71,7 +74,7 @@ export default function LandingPage(props) {
                 rel="noopener noreferrer"
               >
                 <i className="fas fa-play" />
-                {i18next.t('buttonText')}
+                {i18next.t('landing.buttonText')}
               </Button>
             </GridItem>
           </GridContainer>
@@ -91,4 +94,19 @@ export default function LandingPage(props) {
   );
 }
 
+export async function getStaticPaths() {
+	const paths = getAllLanguageSlugs();
+	return {
+		paths,
+		fallback: false,
+	};
+}
 
+export async function getStaticProps({ params }) {
+	const language = getLanguage(params.lang);
+	return {
+		props: {
+			language,
+		},
+	};
+}

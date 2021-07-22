@@ -1,12 +1,20 @@
-import React, { Component } from "react";
-import Router from "next/router";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default class Index extends Component {
-  componentDidMount = () => {
-    Router.push("/components");
-  };
+import i18next from 'i18next';
 
-  render() {
-    return <div />;
-  }
+import { getSortedLangsData } from '../lib/lang';
+
+export default function Home({ allLangsData }) {
+	const router = useRouter();
+
+	useEffect(() => {
+		const { pathname } = router;
+		if (pathname == '/') {
+			router.push('/' + i18next.language.substring(0, 2));
+		}
+	});
+
+	return null;
 }
+
