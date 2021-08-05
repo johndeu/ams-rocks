@@ -21,7 +21,7 @@ export default function ProductSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <GridContainer justify="left">
+      <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
         <Headline1>Built for</Headline1>
         <Headline2>interactivity and scale.</Headline2>

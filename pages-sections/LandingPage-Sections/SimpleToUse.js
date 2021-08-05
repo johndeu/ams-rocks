@@ -35,7 +35,7 @@ export default function SimpleToUse() {
   return (
 
       <div className={classes.section}>
-        <GridContainer justify="left">
+        <GridContainer>
           <GridItem xs={12} sm={12} md={8}>
             <Headline1>Azure Media Services is</Headline1>
             <Headline2>simple to use.</Headline2>

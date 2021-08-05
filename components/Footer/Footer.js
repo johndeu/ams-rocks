@@ -31,10 +31,9 @@ export default function Footer(props) {
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
+            <ListItem className={classes.helloFromSeattle}>
               Hello from Seattle.
             </ListItem>
-
           </List>
         </div>
         <div className={classes.right}>

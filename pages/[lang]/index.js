@@ -48,7 +48,7 @@ export default function LandingPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="Azure IVS"
+        brand={i18next.t('landing.title')}
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{

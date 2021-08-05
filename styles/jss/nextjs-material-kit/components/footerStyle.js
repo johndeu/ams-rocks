@@ -4,13 +4,17 @@ const footerStyle = {
   block: {
     color: "inherit",
     padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
+    fontWeight: "400",
+    fontSize: "0.3rem",
     textTransform: "uppercase",
     borderRadius: "3px",
     textDecoration: "none",
     position: "relative",
     display: "block",
+  },
+  helloFromSeattle: {
+    padding: "20px 0"
+
   },
   left: {
     float: "left!important",
