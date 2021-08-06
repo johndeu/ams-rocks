@@ -37,6 +37,7 @@
     "@material-ui/icons": "4.11.2",
     "classnames": "^2.3.1",
     "date-fns": "^2.22.1",
+    "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.3",
     "i18next": "^20.3.4",
     "i18next-browser-languagedetector": "^6.1.2",

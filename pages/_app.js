@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import { Router, useRouter } from "next/router";
+import { AnimateSharedLayout } from 'framer-motion';
 // Failed, does not work with static.  import { I18nProvider } from 'next-localization';
 //  Failed, does not work with static.  import { NextIntlProvider } from 'next-intl';
 import i18next from 'i18next';
@@ -60,7 +61,9 @@ export default class MyApp extends App {
           />
           <title>Azure AMS - Low latency live streaming at scale</title>
         </Head>
-        <Component {...pageProps} />
+        <AnimateSharedLayout>
+          <Component {...pageProps} />
+        </AnimateSharedLayout>
 
       </React.Fragment>
 

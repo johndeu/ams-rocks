@@ -7,6 +7,9 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
+// Use framer-motion
+import { motion } from "framer-motion";
+
 // @material-ui/icons
 
 // core components
@@ -83,7 +86,18 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>{i18next.t('landing.title')}</h1>
+              <motion.h1 
+                className={classes.title} 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 10
+                }}>
+                  {i18next.t('landing.title')}
+              </motion.h1>
+
               <h4>
                 {i18next.t('landing.sectionText')}
               </h4>
@@ -104,7 +118,16 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <ShakaPlayer manifestUrl={src}/>
+          <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 10
+          }}>
+          <ShakaPlayer manifestUrl={src} />
+          </motion.div>
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
