@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from 'next/dynamic';
 import { GetStaticPropsContext } from 'next';
 
 // nodejs library that concatenates classes
@@ -16,6 +17,10 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
+
+// Need to dynamic load the Shaka Player since it imports a standard Javascript library
+// See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
+const ShakaPlayer=dynamic(import ("components/ShakaPlayer/ShakaPlayer.js"),{ssr:false});
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
@@ -35,13 +40,31 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 
 const dashboardRoutes = [];
 
+const STREAMS = [
+  {
+    name: 'Azure Media Services Promo',
+    src:
+      'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)'
+  }
+];
+
+
 const useStyles = makeStyles(styles);
+
+
 
 export default function LandingPage(props) {
   const classes = useStyles();
   const router = useRouter();
 
   const { ...rest } = props;
+
+  const ref = React.useRef();
+  const [src, setSrc] = React.useState(STREAMS[0].src);
+
+  React.useEffect(() => {
+    window.getShakaInst = () => ref.current;
+  }, []);
 
   return (
     <div>
@@ -82,6 +105,7 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
+          <ShakaPlayer manifestUrl={src}/>
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
