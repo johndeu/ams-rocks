@@ -132,18 +132,9 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 10
-          }}>
-            <Card>
-               <ShakaPlayer  manifestUrl={src} />
-            </Card>
-          </motion.div>
+          <Card>
+              <ShakaPlayer  manifestUrl={src} />
+          </Card>
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
