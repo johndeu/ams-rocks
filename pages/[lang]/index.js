@@ -9,6 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // Use framer-motion
 import { motion } from "framer-motion";
+// Use the react-intersection-observer to trigger animations when stuff is in view
+import {useInView} from "react-intersection-observer";
 
 // @material-ui/icons
 
@@ -20,6 +22,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
+import Card from "components/Card/Card.js";
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
@@ -64,9 +67,12 @@ export default function LandingPage(props) {
   const ref = React.useRef();
   const [src, setSrc] = React.useState(STREAMS[0].src);
 
+  const {playerRef, inView, entry} = useInView({threshold:0});
+
   React.useEffect(() => {
-    window.getShakaInst = () => ref.current;
-  }, []);
+    //window.getShakaInst = () => playerRef.current;
+    console.log("use effect hook, InView = ", inView);
+  }, [inView]);
 
   return (
     <div>
@@ -88,12 +94,20 @@ export default function LandingPage(props) {
             <GridItem xs={12} sm={12} md={6}>
               <motion.h1 
                 className={classes.title} 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
+                initial={{ 
+                  scale: 0.75,
+                  opacity:0,
+                  y:-50
+                }}
+                animate={{ 
+                  scale: 1,
+                  opacity:1,
+                  y:0
+                }}
                 transition={{
                   type: "spring",
-                  stiffness: 200,
-                  damping: 10
+                  stiffness: 100,
+                  damping: 15
                 }}>
                   {i18next.t('landing.title')}
               </motion.h1>
@@ -126,11 +140,16 @@ export default function LandingPage(props) {
             stiffness: 200,
             damping: 10
           }}>
-          <ShakaPlayer manifestUrl={src} />
+            <Card>
+               <ShakaPlayer  manifestUrl={src} />
+            </Card>
           </motion.div>
           <SimpleToUse />
           <ProductSection />
           <TeamSection />
+          <div ref={playerRef}>
+            random thoughts
+          </div>
           {/* <BlogSection/> */}
           {/* <WorkSection /> */}
         </div>

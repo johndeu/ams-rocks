@@ -24,12 +24,12 @@ class ShakaPlayer extends React.Component {
 
         this.video = React.createRef();
         this.videoContainer = React.createRef();
-        
         // Import the playerStyle.js 
         this.classes = makeStyles(styles);
 
         // Import the control styles from the Shaka player dist for controls.css
         makeStyles(controlStyles);
+        
     }
 
     componentDidMount() {
@@ -87,7 +87,6 @@ class ShakaPlayer extends React.Component {
         player.load(manifestUri).then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
-
             // Trigger play.
             video.play();
 

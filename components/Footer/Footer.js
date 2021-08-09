@@ -8,6 +8,10 @@ import classNames from "classnames";
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+// Use the react-intersection-observer to trigger animations when stuff is in view
+import {useInView} from "react-intersection-observer";
+
+
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
@@ -26,8 +30,15 @@ export default function Footer(props) {
     [classes.a]: true,
     [classes.footerWhiteFont]: whiteFont,
   });
+
+  const {ref, inView, entry} = useInView({threshold:0});
+
+  React.useEffect(() => {
+    console.log("Footer Component: use effect hook Footer is InView = ", inView);
+  }, [inView]);
+
   return (
-    <footer className={footerClasses}>
+    <footer ref={ref} className={footerClasses}>
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
