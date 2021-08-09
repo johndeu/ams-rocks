@@ -14,7 +14,7 @@ import controlStyles from "shaka-player/dist/controls.css";
 // this imports the npm shaka-player dist package. The page loading this has to dynamic load this component
 // const ShakaPlayer=dynamic(import ("components/ShakaPlayer/ShakaPlayer.js"),{ssr:false});
 const shaka = require('shaka-player/dist/shaka-player.ui.js');
- 
+
 
 class ShakaPlayer extends React.Component {
 
@@ -29,7 +29,7 @@ class ShakaPlayer extends React.Component {
 
         // Import the control styles from the Shaka player dist for controls.css
         makeStyles(controlStyles);
-        
+
     }
 
     componentDidMount() {
@@ -43,15 +43,15 @@ class ShakaPlayer extends React.Component {
 
         const ui = new shaka.ui.Overlay(player, videoContainer, video);
         const uiConfig = {
-            'controlPanelElements' : ['play_pause','time_and_duration', 'spacer','volume','mute','fullscreen','quality'],
+            'controlPanelElements': [/*'play_pause', 'time_and_duration',*/ 'spacer', 'volume', 'mute', 'fullscreen'],
             'addSeekBar': true,
             'seekBarColors': {
                 base: 'rgba(255, 255, 255, 0.3)',
                 buffered: 'rgba(255, 255, 255, 0.54)',
                 played: 'rgb(255, 255, 255)',
-              }
+            }
         }
-        ui.configure (uiConfig);
+        ui.configure(uiConfig);
         const controls = ui.getControls();
 
         console.log(Object.keys(shaka.ui));
@@ -87,15 +87,23 @@ class ShakaPlayer extends React.Component {
         player.load(manifestUri).then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
-            // Trigger play.
-            video.play();
-
         }).catch(onError);  // onError is executed if the asynchronous load fails.
+
+        player.addEventListener('error', function (event) {
+            // Extract the shaka.util.Error object from the event.
+            let error = event.detail;
+            console.error('Shaka error code', error.code, 'object', error);
+        });
+
+        player.addEventListener('loaded', function(event) {
+            player.play();
+        });
+
     }
 
     render() {
         return <div ref={this.videoContainer} >
-          <video
+            <video
                 id="video"
                 ref={this.video}
                 autoPlay
