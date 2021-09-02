@@ -21,6 +21,12 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "styles/jss/nextjs-material-kit/components/headerLinksStyle.js";
 
+// Translations
+import { useRouter } from 'next/router';
+import i18next from 'i18next';
+import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
+
+
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
@@ -31,7 +37,7 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText="Examples"
+          buttonText={i18next.t('menu.examples')}
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -58,7 +64,7 @@ export default function HeaderLinks(props) {
           target="_blank"
           className={classes.navLink}
         >
-          <Icon className={classes.icons}>camera</Icon> Live
+          <Icon className={classes.icons}>camera</Icon> {i18next.t('menu.live')}
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -68,7 +74,7 @@ export default function HeaderLinks(props) {
           target="_blank"
           className={classes.navLink}
         >
-          <Icon className={classes.icons}>paid</Icon> Pricing
+          <Icon className={classes.icons}>paid</Icon> {i18next.t('menu.pricing')}
         </Button>
       </ListItem>
 
@@ -76,7 +82,7 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText="Quick links"
+          buttonText={i18next.t('menu.quickLinks')}
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -115,7 +121,7 @@ export default function HeaderLinks(props) {
           href="https://docs.microsoft.com/en-us/azure/media-services/latest/media-services-overview"
           target="_blank"
         >
-          Get started<Icon className={classes.icons}>north_east</Icon>
+          {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
         </Button>
 
       </ListItem>

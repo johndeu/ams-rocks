@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // Use framer-motion
 import { motion } from "framer-motion";
 // Use the react-intersection-observer to trigger animations when stuff is in view
-import {useInView} from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 
 // @material-ui/icons
 
@@ -26,7 +26,7 @@ import Card from "components/Card/Card.js";
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
-const ShakaPlayer=dynamic(import ("components/ShakaPlayer/ShakaPlayer.js"),{ssr:false});
+const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
@@ -67,7 +67,7 @@ export default function LandingPage(props) {
   const ref = React.useRef();
   const [src, setSrc] = React.useState(STREAMS[0].src);
 
-  const {playerRef, inView, entry} = useInView({threshold:0});
+  const { playerRef, inView, entry } = useInView({ threshold: 0 });
 
   React.useEffect(() => {
     //window.getShakaInst = () => playerRef.current;
@@ -88,32 +88,32 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax filter responsive image="/img/landing-bg.jpg">
+      <Parallax filter responsive image="/img/landing-bg-clo20.jpg">
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <motion.h1 
-                className={classes.title} 
-                initial={{ 
+              <motion.h1
+                className={classes.title}
+                initial={{
                   scale: 0.75,
-                  opacity:0,
-                  y:-50
+                  opacity: 0,
+                  y: -50
                 }}
-                animate={{ 
+                animate={{
                   scale: 1,
-                  opacity:1,
-                  y:0
+                  opacity: 1,
+                  y: 0
                 }}
                 transition={{
                   type: "spring",
                   stiffness: 100,
                   damping: 15
                 }}>
-                  {i18next.t('landing.title')}
+                {i18next.t('landing.tagline')}
               </motion.h1>
 
               <h4>
-                {i18next.t('landing.sectionText')}
+                {i18next.t('landing.valueProp')}
               </h4>
               <br />
               <Button
@@ -124,7 +124,7 @@ export default function LandingPage(props) {
                 rel="noopener noreferrer"
               >
                 <i className="fas fa-play" />
-                {i18next.t('landing.buttonText')}
+                {i18next.t('landing.ctaButton')}
               </Button>
             </GridItem>
           </GridContainer>
@@ -133,7 +133,7 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card>
-              <ShakaPlayer  manifestUrl={src} />
+            <ShakaPlayer manifestUrl={src} />
           </Card>
           <SimpleToUse />
           <ProductSection />
@@ -151,18 +151,18 @@ export default function LandingPage(props) {
 }
 
 export async function getStaticPaths() {
-	const paths = getAllLanguageSlugs();
-	return {
-		paths,
-		fallback: false,
-	};
+  const paths = getAllLanguageSlugs();
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
-	const language = getLanguage(params.lang);
-	return {
-		props: {
-			language,
-		},
-	};
+  const language = getLanguage(params.lang);
+  return {
+    props: {
+      language,
+    },
+  };
 }

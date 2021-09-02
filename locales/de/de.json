@@ -1,8 +1,17 @@
 {
+    "menu":{
+        "examples": "Examples",
+        "live":"Live",
+        "pricing": "Pricing",
+        "quickLinks": "Quick Links",
+        "loginButton": "Get started free"
+    },
     "landing": {
         "title": "Azure Media Services",
-        "sectionText": "Dieses Produkt rockt einfach total. Wenn Sie es nicht ausprobiert haben, was zum Teufel Mann? Sie brauchen das.  Und Sie brauchen es heute. Geben Sie uns Ihre Live-Streams. wirklich. Was ist los mit dir? Komm schon, es ist großartig.",
-        "buttonText": "Watch Friday Fails"
+        "tagline": "Live streaming without limits",
+        "valueProp": "Dieses Produkt rockt einfach total. Wenn Sie es nicht ausprobiert haben, was zum Teufel Mann? Sie brauchen das.  Und Sie brauchen es heute. Geben Sie uns Ihre Live-Streams. wirklich. Was ist los mit dir? Komm schon, es ist großartig.",
+        "ctaButton": "Stream a video now"
+       
     },
     "dashboard": {
         "description": "In diesem Beispiel wird veranschaulicht, wie die Sprache auf der Clientseite verzögert geladen wird."
