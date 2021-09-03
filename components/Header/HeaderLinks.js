@@ -49,7 +49,7 @@ export default function HeaderLinks(props) {
             </Link>,
             <a
               href="https://docs.microsoft.com/en-us/azure/media-services/latest/samples-overview?tabs=net"
-              target="_blank"
+              target=""
               className={classes.dropdownLink}
             >
               Samples
@@ -61,7 +61,7 @@ export default function HeaderLinks(props) {
         <Button
           href="/live"
           color="transparent"
-          target="_blank"
+          target=""
           className={classes.navLink}
         >
           <Icon className={classes.icons}>camera</Icon> {i18next.t('menu.live')}
@@ -71,7 +71,7 @@ export default function HeaderLinks(props) {
         <Button
           href="https://azure.microsoft.com/en-us/pricing/details/media-services/"
           color="transparent"
-          target="_blank"
+          target=""
           className={classes.navLink}
         >
           <Icon className={classes.icons}>paid</Icon> {i18next.t('menu.pricing')}
@@ -119,7 +119,7 @@ export default function HeaderLinks(props) {
           color="success"
           aria-label="Get started"
           href="https://docs.microsoft.com/en-us/azure/media-services/latest/media-services-overview"
-          target="_blank"
+          target=""
         >
           {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
         </Button>
