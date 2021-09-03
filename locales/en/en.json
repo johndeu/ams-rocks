@@ -13,7 +13,52 @@
         "ctaButton": "Stream a video now",
         "loginButton": "Get started free"
     },
+    "simpleToUse": {
+        "headline1": "Azure Media Services is",
+        "headline2": "simple to use.",
+        "description": "this is why is it so simple to use. because of all these things...Azure Media Services is a fully managed live streaming solution: simply stream to AMS, and the service does everything you need to make low-latency",
+        "callToAction": "Create your first live stream.",
+        "card.1" :
+        {
+            "title": "Live Streaming",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        },
+        "card.2" :
+        {
+            "title": "Azure Media Player",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        },
+        "card.3":
+        {
+            "title": "On Demand Streaming",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        }
+    },
+    "product": {
+        "headline1": "Product section",
+        "headline2": "features",
+        "description": "So many cool features you have no idea what to do...",
+        "callToAction": "Create your first live stream.",
+        "card.1" :
+        {
+            "title": "Live Streaming",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        },
+        "card.2" :
+        {
+            "title": "Azure Media Player",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        },
+        "card.3":
+        {
+            "title": "Content Protection",
+            "description":"Details about the Azure Media Player and how to use it in the solution."
+        }
+    },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
+    },
+    "404" : {
+        "message" : "Emptiness, eternal sadness..."
     }
 }

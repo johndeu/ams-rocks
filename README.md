@@ -1,4 +1,4 @@
-# Azure Media Services web site
+# Azure Media Services demo and samples site
 
 This project is using the following technologies:
 * Next.js
@@ -39,7 +39,17 @@ For detailed instructions and a complete How-to on building an Azure Static Web 
 ## Using Azure Functions as the API
 
 This web site uses Azure Functions hosted in the Azure Static web apps environment to provide an API. 
-For details on using Azure Functions as an API see the article [Adding and API to Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/add-api?tabs=vanilla-javascript)
+For details on using Azure Functions as an API see the article:
+
+[Adding and API to Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/add-api?tabs=vanilla-javascript)
+
+### Getting data from the API in a React component
+
+In order to get data from an Azure Functions API in a React Component in this project, follow the details here:
+
+[Connecting the client to API](https://docs.microsoft.com/en-us/azure/developer/javascript/how-to/with-web-app/static-web-app-with-swa-cli/connect-client-to-api)
+
+
 ## Usage of the  [NextJS Material Kit](https://demos.creative-tim.com/nextjs-material-kit?ref=njsmk-readme) in this site
 
 This web site is using a fork of ![version](https://img.shields.io/badge/version-1.2.0-blue.svg)  of the NextJS Material UI Kit.

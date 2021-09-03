@@ -15,6 +15,10 @@ import styles from "styles/jss/nextjs-material-kit/pages/landingPageSections/pro
 import Headline1 from "components/Typography/Headline1.js";
 import Headline2 from "components/Typography/Headline2.js";
 
+// Translations
+import i18next from 'i18next';
+
+
 const useStyles = makeStyles(styles);
 
 export default function ProductSection() {
@@ -23,14 +27,10 @@ export default function ProductSection() {
     <div className={classes.section}>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
-        <Headline1>Built for</Headline1>
-        <Headline2>interactivity and scale.</Headline2>
+        <Headline1>{i18next.t('product.headline1')}</Headline1>
+        <Headline2>{i18next.t('product.headline2')}</Headline2>
           <h5 className={classes.description}>
-            This is the paragraph where you can write more details about your
-            product. Keep you user engaged by providing meaningful information.
-            Remember that by this time, the user is curious, otherwise he wouldn
-            {"'"}t scroll to get here. Add a button if you want the user to see
-            more.
+             {i18next.t('simpleToUse.description')}
           </h5>
         </GridItem>
       </GridContainer>
@@ -38,8 +38,8 @@ export default function ProductSection() {
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Free Chat"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+              title= {i18next.t('product.card.1.title')}
+              description= {i18next.t('product.card.1.description')}
               icon={Chat}
               iconColor="info"
               vertical
@@ -47,8 +47,8 @@ export default function ProductSection() {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Verified Users"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+              title= {i18next.t('product.card.2.title')}
+              description= {i18next.t('product.card.2.description')}
               icon={VerifiedUser}
               iconColor="success"
               vertical
@@ -56,8 +56,8 @@ export default function ProductSection() {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Fingerprint"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+              title= {i18next.t('product.card.3.title')}
+              description= {i18next.t('product.card.3.description')}
               icon={Fingerprint}
               iconColor="danger"
               vertical

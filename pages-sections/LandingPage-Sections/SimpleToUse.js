@@ -26,33 +26,29 @@ import Quote from "components/Typography/Quote.js";
 import Headline1 from "components/Typography/Headline1.js";
 import Headline2 from "components/Typography/Headline2.js";
 
+
+// Translations
+import i18next from 'i18next';
+
+
 const useStyles = makeStyles(styles);
 
 export default function SimpleToUse() {
   const classes = useStyles();
-
 
   return (
 
       <div className={classes.section}>
         <GridContainer>
           <GridItem xs={12} sm={12} md={8}>
-            <Headline1>Azure Media Services is</Headline1>
-            <Headline2>simple to use.</Headline2>
+            <Headline1>{i18next.t('simpleToUse.headline1')}</Headline1>
+            <Headline2>{i18next.t('simpleToUse.headline2')}</Headline2>
             <h5 className={classes.description}>
-
-              this is why is it so simple to use. because of all these things..
-              Azure Media Services is a fully managed live streaming solution: simply stream to
-              AMS, and the service does everything you need to make low-latency
-              live video available to any viewer around the globe. Azure handles
-              the ingestion, transcoding, packaging, and delivery of your live content,
-              using the same battle-tested technology that powers LinkedIn, Stream, and the Olympics.
-              With the included Azure Media Player SDK, your viewers will always get the best latency
-              and quality of service wherever they may be, with no extra work required on your part.
+              {i18next.t('simpleToUse.description')}
             </h5>
           </GridItem>
           <GridItem xs={12} sm={12} md={8}>
-            <h3 className={classes.title}>Create your first live stream</h3>
+            <h3 className={classes.title}>{i18next.t('simpleToUse.callToAction')}</h3>
           </GridItem>
         </GridContainer>
         <div >
@@ -60,12 +56,11 @@ export default function SimpleToUse() {
             <GridItem xs={12} sm={12} md={4}>
               <Card plain>
                 <h4 className={classes.cardTitle}>
-                  Azure Media Player
+                  {i18next.t('simpleToUse.card.1.title')}
                 </h4>
                 <CardBody>
                   <p className={classes.description}>
-                    Details about the Azure Media Player and how
-                    to use it in the solution.
+                    {i18next.t('simpleToUse.card.1.description')}
                   </p>
                 </CardBody>
                 <CardFooter className={classes.justifyCenter}>
@@ -76,12 +71,11 @@ export default function SimpleToUse() {
             <GridItem xs={12} sm={12} md={4}>
               <Card plain>
                 <h4 className={classes.cardTitle}>
-                  Azure Media Player
+                  {i18next.t('simpleToUse.card.2.title')}
                 </h4>
                 <CardBody>
                   <p className={classes.description}>
-                    Details about the Azure Media Player and how
-                    to use it in the solution.
+                    {i18next.t('simpleToUse.card.2.description')}
                   </p>
                 </CardBody>
                 <CardFooter className={classes.justifyCenter}>
@@ -92,12 +86,11 @@ export default function SimpleToUse() {
             <GridItem xs={12} sm={12} md={4}>
               <Card plain>
                 <h4 className={classes.cardTitle}>
-                  Azure Media Player
+                 {i18next.t('simpleToUse.card.3.title')}
                 </h4>
                 <CardBody>
                   <p className={classes.description}>
-                    Details about the Azure Media Player and how
-                    to use it in the solution.
+                    {i18next.t('simpleToUse.card.3.description')}
                   </p>
                 </CardBody>
                 <CardFooter className={classes.justifyCenter}>

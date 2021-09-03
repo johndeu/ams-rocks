@@ -12,7 +12,31 @@
         "valueProp": "メディア コンテンツを今すぐ拡張してストリーミングします。",
         "ctaButton": "今すぐビデオをストリーミングする"
     },
+    "simpleToUse" : {
+        "headline1": "Azure Media Services is",
+        "headline2" : "使いやすい",
+        "description": "これが、使い方がとても簡単な理由です。これらすべての理由から... Azure Media Servicesはフルマネージドのライブストリーミングソリューションです。AMSにストリーミングするだけで、サービスは必要なすべてのことを実行します。 待ち時間」",
+        "callToAction":  "最初のライブストリームを作成します。",
+        "card.1":
+        {
+            "title" : "ライブストリーミング",
+            "description": "Azure MediaPlayerの詳細とソリューションでの使用方法。"
+        },
+        "card.2": 
+        {
+            "title": "Azure Media Player",
+            "description": "Azure MediaPlayerの詳細とソリューションでの使用方法。"
+        },
+        "card.3":
+        {
+            "title": "オンデマンドストリーミング",
+            "description": "Azure MediaPlayerの詳細とソリューションでの使用方法。"
+        }
+    },
     "dashboard": {
         "description": "Dit voorbeeld laat zien hoe u de taal aan de clientzijde lui kunt laden.."
+    },
+    "404" : {
+        "message" : "空虚、永遠の悲しみ."
     }
 }
