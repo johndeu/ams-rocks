@@ -36,6 +36,10 @@ You should now use port 4280 when you want to use the simulated Azure Static Web
 
 For detailed instructions and a complete How-to on building an Azure Static Web App with an API, see the article [Build a new Static Web App on Azure with Node.js](https://docs.microsoft.com/en-us/azure/developer/javascript/how-to/create-static-web-app)
 
+## Using Azure Functions as the API
+
+This web site uses Azure Functions hosted in the Azure Static web apps environment to provide an API. 
+For details on using Azure Functions as an API see the article [Adding and API to Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/add-api?tabs=vanilla-javascript)
 ## Usage of the  [NextJS Material Kit](https://demos.creative-tim.com/nextjs-material-kit?ref=njsmk-readme) in this site
 
 This web site is using a fork of ![version](https://img.shields.io/badge/version-1.2.0-blue.svg)  of the NextJS Material UI Kit.
