@@ -43,17 +43,7 @@ import { useRouter } from 'next/router';
 import i18next from 'i18next';
 import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 
-
 const dashboardRoutes = [];
-
-const STREAMS = [
-  {
-    name: 'Azure Media Services Promo',
-    src:
-      'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)'
-  }
-];
-
 
 const useStyles = makeStyles(styles);
 
@@ -63,16 +53,7 @@ export default function LandingPage(props) {
   const router = useRouter();
 
   const { ...rest } = props;
-
   const ref = React.useRef();
-  const [src, setSrc] = React.useState(STREAMS[0].src);
-
-  const { playerRef, inView, entry } = useInView({ threshold: 0 });
-
-  React.useEffect(() => {
-    //window.getShakaInst = () => playerRef.current;
-    console.log("use effect hook, InView = ", inView);
-  }, [inView]);
 
   return (
     <div>
@@ -93,66 +74,32 @@ export default function LandingPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <motion.h1
-                className={classes.title}
-                initial={{
-                  scale: 0.75,
-                  opacity: 0,
-                  y: -50
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  y: 0
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
-                }}>
-                {i18next.t('landing.tagline')}
-              </motion.h1>
-
-              <h4>
-                {i18next.t('landing.valueProp')}
-              </h4>
-              <br />
-              <Button
-                color="danger"
-                size="rg"
-                href="https://azure.microsoft.com/en-us/free/"
-                target="sm"
-                rel="noopener noreferrer"
-              >
-                <i className="fas fa-play" />
-                {i18next.t('landing.ctaButton')}
-              </Button>
-              <Button
-                color="info"
-                size="sm"
-                href="https://docs.microsoft.com/en-us/azure/media-services/"
-                target=""
-                rel="noopener noreferrer"
-              >
-                <i className="fas fa-book" />
-                {i18next.t('landing.readDocs')}
-              </Button>
+                  className={classes.title}
+                  initial={{
+                    scale: 0.75,
+                    opacity: 0,
+                    y: -50
+                  }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                    y: 0
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }}>
+                  Live Streaming Demo
+                </motion.h1>
+                <br />
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          {/* <Card>
-            <ShakaPlayer manifestUrl={src} />
-          </Card> */}
-          <SimpleToUse />
-          <ProductSection />
-          <TeamSection />
-          <div ref={playerRef}>
-            random thoughts
-          </div>
-          {/* <BlogSection/> */}
-          {/* <WorkSection /> */}
+
         </div>
       </div>
       <Footer />

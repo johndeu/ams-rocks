@@ -44,11 +44,11 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Link href="/examples">
+            <Link href={"/examples"}>
               <a className={classes.dropdownLink}>All examples</a>
             </Link>,
             <a
-              href="https://docs.microsoft.com/en-us/azure/media-services/latest/samples-overview?tabs=net"
+              href="https://docs.microsoft.com/azure/media-services/latest/samples-overview?tabs=net"
               target=""
               className={classes.dropdownLink}
             >
@@ -59,7 +59,7 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="/live"
+          href={"/live"}
           color="transparent"
           target=""
           className={classes.navLink}
@@ -69,7 +69,7 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://azure.microsoft.com/en-us/pricing/details/media-services/"
+          href="https://azure.microsoft.com/pricing/details/media-services/"
           color="transparent"
           target=""
           className={classes.navLink}
@@ -89,24 +89,24 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Link href="https://docs.microsoft.com/en-us/azure/media-services/">
+            <Link href="https://docs.microsoft.com/azure/media-services/">
               <a className={classes.dropdownLink}>Documentation</a>
             </Link>,
-            <Link href="https://docs.microsoft.com/en-us/rest/api/media/">
+            <Link href="https://docs.microsoft.com/rest/api/media/">
               <a className={classes.dropdownLink}>API Reference</a>
             </Link>,
-            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/limits-quotas-constraints-reference">
+            <Link href="https://docs.microsoft.com/azure/media-services/latest/limits-quotas-constraints-reference">
               <a className={classes.dropdownLink}>Quotas and limits</a>
             </Link>,
             <Divider />,
-            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/live-event-obs-quickstart">
+            <Link href="https://docs.microsoft.com/azure/media-services/latest/live-event-obs-quickstart">
               <a className={classes.dropdownLink}>Quick Starts</a>
             </Link>,
-            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/samples-overview?tabs=net">
+            <Link href="https://docs.microsoft.com/azure/media-services/latest/samples-overview?tabs=net">
               <a className={classes.dropdownLink}>Samples</a>
             </Link>,
             <Divider />,
-            <Link href="https://docs.microsoft.com/en-us/azure/media-services/latest/player-media-players-concept">
+            <Link href="https://docs.microsoft.com/azure/media-services/latest/player-media-players-concept">
               <a className={classes.dropdownLink}>Players</a>
             </Link>,
           ]}
@@ -117,8 +117,8 @@ export default function HeaderLinks(props) {
 
         <Button
           color="success"
-          aria-label="Get started"
-          href="https://docs.microsoft.com/en-us/azure/media-services/latest/media-services-overview"
+          aria-label={i18next.t('menu.loginButton')}
+          href="https://azure.microsoft.com/free/"
           target=""
         >
           {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
