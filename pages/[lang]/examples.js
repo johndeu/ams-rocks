@@ -30,12 +30,11 @@ const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { s
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
-// Sections for this page
-import SimpleToUse from "pages-sections/LandingPage-Sections/SimpleToUse";
-import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
-import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
-import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
-// import BlogSection from "pages-sections/LandingPage-Sections/BlogSection.js";
+// Blog components
+import { getAllPosts } from '../../lib/api'
+import { CMS_NAME } from '../../lib/constants'
+import HeroPost from 'components/Blog/HeroPost'
+import BlogIndex from 'components/Blog/blogIndex'
 
 
 // Translations
@@ -47,14 +46,9 @@ const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
-export default function LandingPage(props) {
+export default function Examples(allPosts) {
   const classes = useStyles();
-  const router = useRouter();
-
-  const { ...rest } = props;
-
   const ref = React.useRef();
-
 
   return (
     <div>
@@ -68,7 +62,6 @@ export default function LandingPage(props) {
           height: 400,
           color: "white",
         }}
-        {...rest}
       />
       <Parallax responsive image="/img/landing-bg-clo20.jpg">
         <div className={classes.container}>
@@ -99,8 +92,7 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-
-
+            <BlogIndex allPosts={allPosts}></BlogIndex>
         </div>
       </div>
       <Footer />
@@ -116,11 +108,17 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const language = getLanguage(params.lang);
+export async function getStaticProps() {
+  const allPosts = getAllPosts([
+      'title',
+      'date',
+      'slug',
+      'type',
+      'author',
+      'coverImage',
+      'excerpt',
+  ])
   return {
-    props: {
-      language,
-    },
-  };
+      props: { allPosts },
+  }
 }

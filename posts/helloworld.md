@@ -1,8 +1,9 @@
 ---
-title: 'Latest news from Azure Media Services'
+title: 'Example #1'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 coverImage: '/bg.jpg'
 date: '2021-06-20T05:35:07.322Z'
+type: 'example'
 author:
   name: John Deutscher
   picture: '/faces/john_deu.jpg'
@@ -10,7 +11,7 @@ ogImage:
   url: '/bg.jpg'
 ---
 
-# This is freaking awesome
+# This is an Example
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
 

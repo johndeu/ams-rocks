@@ -88,7 +88,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax responsive image="/img/landing-bg-clo20.jpg">
+      <Parallax responsive image="/img/nicolas-lb-uVSyr0EUaLY-unsplash.jpg">
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
@@ -118,9 +118,9 @@ export default function LandingPage(props) {
               <br />
               <Button
                 color="danger"
-                size="rg"
+                size="sm"
                 href="https://azure.microsoft.com/en-us/free/"
-                target="sm"
+                target=""
                 rel="noopener noreferrer"
               >
                 <i className="fas fa-play" />
