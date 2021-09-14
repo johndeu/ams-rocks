@@ -63,7 +63,7 @@ export default function Examples(allPosts) {
           color: "white",
         }}
       />
-      <Parallax responsive image="/img/landing-bg-clo20.jpg">
+      <Parallax responsive image="/img/keagan-henman-pPxJTtxfV1A-unsplash.jpg">
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
