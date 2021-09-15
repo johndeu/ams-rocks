@@ -1,13 +1,20 @@
 import cn from 'classnames'
 import Link from 'next/link'
 
+import Image from "next/image"
 
+const myLoader = ({ src, width, quality }) => {
+  return `/api/loader?src=${src}&width=${width}&quality=${quality || 75}`
+}
 
 export default function CoverImage({ title, src, slug, height, width }) {
   const image = (
-    <img
+    <Image
       src={"/img" + src}
       alt={`Cover Image for ${title}`}
+      loader= {myLoader}
+      loading = "lazy"
+      placeholder = 'blur'
       className={cn('shadow-sm', {
         'hover:shadow-md transition-shadow duration-200': slug,
       })}

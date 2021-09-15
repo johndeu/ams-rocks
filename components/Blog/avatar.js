@@ -1,9 +1,16 @@
+import Image from "next/image"
 
+const myLoader = ({ src, width, quality }) => {
+  return `/api/loader?src=${src}&width=${width}&quality=${quality || 75}`
+}
 
 export default function Avatar({ name, picture, width, height }) {
     return (
       <div className="flex items-center">
-        <img src={"/img" + picture} 
+        <Image src={"/img" + picture} 
+        loader = {myLoader}
+        loading = "lazy"
+        placeholder = 'blur'
         className="w-12 h-12 rounded-full mr-4" 
         alt={name} 
         width= {width}
