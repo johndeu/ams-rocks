@@ -8,7 +8,7 @@ const myLoader = ({ src, width, quality }) => {
 
 export default function CoverImage({ title, src, slug, height, width }) {
   const image = (
-    <Image
+    <img
       src={"/img" + src}
       alt={`Cover Image for ${title}`}
       loader= {myLoader}
