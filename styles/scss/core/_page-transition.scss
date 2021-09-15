@@ -13,7 +13,7 @@
   #page-transition > div{
     &:after{
       content: "";
-      background-image: url("/img/natalie-parham-9Qccv5rZtRM-unsplash.jpg");
+      background-image: url("/img/glitch3.gif");
       background-size: cover;
       position: fixed;
       z-index: 9998;
@@ -31,7 +31,7 @@
       display: block;
       z-index: 9999;
       position: absolute;
-      background: rgba(0, 0, 0, 0);
+      background: rgba(0, 0, 0, 0.25);
     }
   }
 }
