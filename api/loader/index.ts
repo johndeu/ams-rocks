@@ -17,6 +17,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     var host = context.req.headers.host
     context.log("Host=" + host);
 
+    // Set the SITE_HOST_NAME to the correct final domain name to be used in deployment in the Application Settings.
     var envHost = process.env['SITE_HOST_NAME'];
     if (envHost != undefined){
         host = envHost
