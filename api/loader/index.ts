@@ -17,7 +17,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     var host = context.req.headers.host
     context.log("Host=" + host);
 
-    var envHost = process.env['siteHostName'];
+    var envHost = process.env['SITE_HOST_NAME'];
     if (envHost != undefined){
         host = envHost
     }
