@@ -1,4 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import { env } from "process";
+import { string } from "prop-types";
 
 // Next.js Image Loader resize function
 // For details on the usage of the Jimp image library see - https://www.npmjs.com/package/jimp
@@ -14,9 +16,22 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     var host = context.req.headers.host
     context.log("Host=" + host);
+
+    var envHost = process.env['siteHostName'];
+    if (envHost != undefined){
+        host = envHost
+    }
+    console.log ("Hostname = " + host);
     
     if (src.indexOf('/img') >= 0){
-        src = 'https://' + host + src;
+        if (host.indexOf('localhost')){
+            src = 'http://' + host + src;
+        }
+        else if (host.indexOf('.azurewebsites.net'))
+        {
+            src = 'https://ashy-meadow-0b28bcb0f.azurestaticapps.net/' +src;
+        }
+        
     }
 
     var Jimp = require ('jimp');
