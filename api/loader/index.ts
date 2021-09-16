@@ -24,10 +24,10 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     console.log ("Hostname = " + host);
     
     if (src.indexOf('/img') >= 0){
-        if (host.indexOf('localhost')){
+        if (host.indexOf('localhost')>=0){
             src = 'http://' + host + src;
         }
-        else if (host.indexOf('.azurestaticapps.net'))
+        else if (host.indexOf('.azurestaticapps.net')>=0)
         {
             src = host + src;
         }
