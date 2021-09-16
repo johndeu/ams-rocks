@@ -29,7 +29,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         }
         else if (host.indexOf('.azurewebsites.net'))
         {
-            src = 'https://ashy-meadow-0b28bcb0f.azurestaticapps.net/' +src;
+            src = host + src;
         }
         
     }
