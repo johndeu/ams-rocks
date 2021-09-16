@@ -16,7 +16,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log("Host=" + host);
     
     if (src.indexOf('/img') >= 0){
-        src = 'http://' + host + src;
+        src = 'https://' + host + src;
     }
 
     var Jimp = require ('jimp');
@@ -37,7 +37,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             context.log (err);
             context.res = {
                 status: 400,
-                body: "Please pass in valid src, width and quality query options"
+                body: "Please pass in valid src, width and quality query options.  src=" + src
             }
         });
 
