@@ -27,7 +27,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         if (host.indexOf('localhost')){
             src = 'http://' + host + src;
         }
-        else if (host.indexOf('.azurewebsites.net'))
+        else if (host.indexOf('.azurestaticapps.net'))
         {
             src = host + src;
         }
