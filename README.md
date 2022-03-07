@@ -11,26 +11,38 @@ This project is using the following technologies:
 
 ## Starting the local application and API
 
-1. In order to debug both client and API at the same time, open two separate instances of VS Code.
+1. In order to debug both client and API at the same time, open two separate instances of VS Code. This is because we need to run the web site on port 3000, and the functions app on port 7071.  We will have a proxy to the API going through port 4280.
 
-1. In one instance, open the root folder. In the second instance, open the ./api folder (which contains all of the Azure Functions). In each project, open an integrated terminal and start the project:
+1. In one instance of VS Code, open the root folder.
 
-    Run this command in BOTH VS code instance to start the Next.js and Azure Functions projects on separate ports
+    Run this command to launch the Next.js Website
+
+    ``` bash
+    npm start-next
+    ```
+
+1. You should see next start up with a "ready" started server on http://localhost:3000
+
+1. In a second VS Code instance, open from the /api folder
+
+    Run the following command to launch the API functions application. This is an Azure Functions project. 
 
     ``` bash
     npm start
     ```
 
-1. When both the Next.js application and the Azure Functions API have started correctly, continue to the next step.
-
-    In one of the VS Code instances (it doesn't matter which instance), open a second integrated terminal, change to the root directory and start the proxy:
+1. You should see Azure Functions app start up successfully and list the available functions in the console. Look for hello: [GET,POST] http://localhost:7071/api/hello for example.  You can click this and see a response JSON message to make sure it is working.
+1. You should now be able to navigate to http://localhost:3000, and the Functions app should be available on http://localhost:7071/api.  You can test it by hitting the "hello" function on http://localhost:7071/api/hello
+1. Finally, we will start up the Azure Static Web site emulator, which will create a proxy to the web site and API on port 4280.
+   In one of the VS Code instances (it doesn't matter which instance), open a second integrated terminal, change to the root directory and start the proxy:
 
     ``` bash
     npm run start-swa
     ```
 
-The Next.js application is now available on both port 3000 and on port 4280 (with a proxy to the API) . 
-You should now use port 4280 when you want to use the simulated Azure Static Web app hosted environment.  This allows you to see both the API and the Next.js application on the same port. 
+The Static Web Site emulator will launch and the Next.js application is now available on both port 3000 and on port 4280 (with a proxy to the API).
+Now use port 4280 when you want to use the simulated Azure Static Web app hosted environment.  This allows you to see both the API and the Next.js application on the same port similar to how it will be deployed to Azure Static Web Apps publicly.
+You can now debug and test your app and functions locally.
 
 ## How to use Azure Static Web Apps
 
