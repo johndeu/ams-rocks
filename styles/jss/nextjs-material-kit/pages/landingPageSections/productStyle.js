@@ -19,6 +19,10 @@ const productStyle = {
     color: "#999",
     fontSize:"1.4rem"
   },
+  cardTitle : {
+    ...title,
+    marginTop: ".625rem",
+  }
 };
 
 export default productStyle;

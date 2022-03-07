@@ -42,7 +42,7 @@ export default function ProductSection() {
               description= {i18next.t('product.card.1.description')}
               icon={Chat}
               iconColor="info"
-              vertical
+              horizontal
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -51,7 +51,7 @@ export default function ProductSection() {
               description= {i18next.t('product.card.2.description')}
               icon={VerifiedUser}
               iconColor="success"
-              vertical
+              horizontal
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -60,7 +60,88 @@ export default function ProductSection() {
               description= {i18next.t('product.card.3.description')}
               icon={Fingerprint}
               iconColor="danger"
-              vertical
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.1.title')}
+              description= {i18next.t('product.card.1.description')}
+              icon={Chat}
+              iconColor="info"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.2.title')}
+              description= {i18next.t('product.card.2.description')}
+              icon={VerifiedUser}
+              iconColor="success"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.3.title')}
+              description= {i18next.t('product.card.3.description')}
+              icon={Fingerprint}
+              iconColor="danger"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.1.title')}
+              description= {i18next.t('product.card.1.description')}
+              icon={Chat}
+              iconColor="info"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.2.title')}
+              description= {i18next.t('product.card.2.description')}
+              icon={VerifiedUser}
+              iconColor="success"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.3.title')}
+              description= {i18next.t('product.card.3.description')}
+              icon={Fingerprint}
+              iconColor="danger"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.1.title')}
+              description= {i18next.t('product.card.1.description')}
+              icon={Chat}
+              iconColor="info"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.2.title')}
+              description= {i18next.t('product.card.2.description')}
+              icon={VerifiedUser}
+              iconColor="success"
+              horizontal
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title= {i18next.t('product.card.3.title')}
+              description= {i18next.t('product.card.3.description')}
+              icon={Fingerprint}
+              iconColor="danger"
+              horizontal
             />
           </GridItem>
         </GridContainer>

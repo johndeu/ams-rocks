@@ -147,10 +147,7 @@ export default function LandingPage(props) {
           </Card> */}
           <SimpleToUse />
           <ProductSection />
-          <TeamSection />
-          <div ref={playerRef}>
-            random thoughts
-          </div>
+         { /*<TeamSection /> */}
           {/* <BlogSection/> */}
           {/* <WorkSection /> */}
         </div>

@@ -64,7 +64,6 @@ export default function SimpleToUse() {
                   </p>
                 </CardBody>
                 <CardFooter className={classes.justifyCenter}>
-
                 </CardFooter>
               </Card>
             </GridItem>
