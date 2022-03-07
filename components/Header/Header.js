@@ -72,7 +72,7 @@ export default function Header(props) {
       <Toolbar className={classes.container}>
         {leftLinks !== undefined ? brandComponent : null}
         <div className={classes.flex}>
-          <img className={classes.logo} src="/img/ams.svg"/>
+          <img className={classes.logo} src="/img/ams.svg" />
           {leftLinks !== undefined ? (
             <Hidden smDown implementation="css">
               {leftLinks}

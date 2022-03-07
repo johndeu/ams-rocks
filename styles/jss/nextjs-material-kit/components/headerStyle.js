@@ -66,6 +66,10 @@ const headerStyle = {
       background: "transparent",
     },
   },
+  logoMicrosoft: {
+    top:"10px",
+    height:"30px",
+  },
   logo: {
     top:"10px",
     width:"30px",

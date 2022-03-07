@@ -13,7 +13,7 @@
   #page-transition > div{
     &:after{
       content: "";
-      background-image: url("/img/glitch3.gif");
+      //background-image: url("/img/glitch3.gif");
       background-size: cover;
       position: fixed;
       z-index: 9998;

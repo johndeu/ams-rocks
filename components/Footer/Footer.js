@@ -42,20 +42,20 @@ export default function Footer(props) {
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItem className={classes.helloFromSeattle}>
-              Hello from Seattle.
+            <ListItem className={classes.inlineBlock}>
+              <img src="/img/microsoft.svg"></img>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              &nbsp;|&nbsp;
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <h6>©&nbsp;Microsoft 2021</h6>
             </ListItem>
           </List>
         </div>
         <div className={classes.right}>
           <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">Contact us</a> &nbsp;&nbsp;
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">Feedback</a> &nbsp;&nbsp;
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
+          <ListItem className={classes.inlineBlock}>
               <a rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">Privacy and Cookies</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -65,13 +65,10 @@ export default function Footer(props) {
               <a rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">Trademarks</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <img src="/img/microsoft.svg"></img>
+              <a rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">Feedback</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              &nbsp;|&nbsp;
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <h6>©&nbsp;Microsoft 2021</h6>
+              <a rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">Contact us</a> &nbsp;&nbsp;
             </ListItem>
           </List>
         </div>
