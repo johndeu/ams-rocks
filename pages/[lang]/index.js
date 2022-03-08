@@ -33,6 +33,7 @@ import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 // Sections for this page
 import SimpleToUse from "pages-sections/LandingPage-Sections/SimpleToUse";
 import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
+import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 // import BlogSection from "pages-sections/LandingPage-Sections/BlogSection.js";
@@ -147,11 +148,19 @@ export default function LandingPage(props) {
           </Card> */}
           <SimpleToUse />
           <ProductSection />
-         { /*<TeamSection /> */}
+
+          { /*<TeamSection /> */}
           {/* <BlogSection/> */}
           {/* <WorkSection /> */}
         </div>
       </div>
+
+      <div className={classNames(classes.mainBlack,classes.mainRaised)}>
+        <div className={classes.containerBlack}>
+          <FreeSection />
+        </div>
+      </div>
+
       <Footer />
     </div>
   );

@@ -6,6 +6,12 @@ const landingPageStyle = {
     color: "#FFFFFF",
     ...container,
   },
+  containerBlack: {
+    zIndex: "12",
+    color: "#FFFFFF",
+    backgroundColor: "#000000",
+    ...container,
+  },
   title: {
     ...title,
     display: "inline-block",
@@ -22,6 +28,11 @@ const landingPageStyle = {
   },
   main: {
     background: "#FFFFFF",
+    position: "relative",
+    zIndex: "3",
+  },
+  mainBlack: {
+    background: "#000000",
     position: "relative",
     zIndex: "3",
   },
