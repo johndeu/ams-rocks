@@ -20,7 +20,8 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
+import HeaderLinksRight from "components/Header/HeaderLinksRight.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
 
@@ -56,7 +57,7 @@ export default function Examples(allPosts) {
         color="transparent"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
           height: 400,

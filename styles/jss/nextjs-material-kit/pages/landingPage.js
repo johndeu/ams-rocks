@@ -22,8 +22,13 @@ const landingPageStyle = {
     position: "relative",
     marginTop: "30px",
     minHeight: "32px",
+    font: "SegoeUI !important",
+    fontStyle: "normal !important",
+    fontSize:"50px",
+    fontWeight: "600",
     color: "#FFFFFF",
-    textDecoration: "none",
+    textDecoration: "none !important",
+    textDecorationStyle:"none !important"
   },
   subtitle: {
     fontSize: "1.313rem",

@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
+import HeaderLinksRight from "components/Header/HeaderLinksRight.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -39,7 +40,7 @@ export default function Components(props) {
     <div>
       <Header
         brand="NextJS Material Kit"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksRight />}
         fixed
         color="transparent"
         changeColorOnScroll={{

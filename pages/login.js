@@ -8,7 +8,7 @@ import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -36,7 +36,7 @@ export default function LoginPage(props) {
         absolute
         color="transparent"
         brand="NextJS Material Kit"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksRight />}
         {...rest}
       />
       <div

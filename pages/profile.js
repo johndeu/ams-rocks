@@ -13,7 +13,7 @@ import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
@@ -35,7 +35,7 @@ export default function ProfilePage(props) {
       <Header
         color="transparent"
         brand="NextJS Material Kit"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
           height: 200,
