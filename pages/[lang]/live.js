@@ -20,8 +20,8 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
-import HeaderLinksRight from "components/Header/HeaderLinksRight.js";
+import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
+import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
 

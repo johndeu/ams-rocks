@@ -8,8 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinksLeft from "components/Header/HeaderLinksLeft.js";
-import HeaderLinksRight from "components/Header/HeaderLinksRight.js";
+import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
+import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
