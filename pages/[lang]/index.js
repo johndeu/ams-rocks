@@ -96,7 +96,6 @@ export default function LandingPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <motion.h1
-                className={classes.title}
                 initial={{
                   scale: 0.75,
                   opacity: 0,
@@ -112,7 +111,10 @@ export default function LandingPage(props) {
                   stiffness: 100,
                   damping: 15
                 }}>
-                {i18next.t('landing.tagline')}
+                <div className={classes.title}>
+                  {i18next.t('landing.tagline1')}<br/>
+                  <span className={classes.title2}>{i18next.t('landing.tagline2')} </span>
+                </div>
               </motion.h1>
 
               <h4>

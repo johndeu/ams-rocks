@@ -15,7 +15,8 @@
     },
     "landing": {
         "title": "Azure Media Services",
-        "tagline": "Live streaming built for scale and security",
+        "tagline1": "Live streaming",
+        "tagline2": "Built for scale and security",
         "valueProp": "Azure Media Services is an API that enables developers to build low latency live and on-demand video experiences",
         "ctaButton": "Get started",
         "readDocs": "Documentation",

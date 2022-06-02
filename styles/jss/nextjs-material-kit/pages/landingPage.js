@@ -18,17 +18,33 @@ const landingPageStyle = {
   },
   title: {
     ...title,
-    display: "inline-block",
-    position: "relative",
     marginTop: "30px",
-    minHeight: "32px",
-    font: "SegoeUI !important",
+    font: "Segoe UI !important",
+    fontStyle: "normal !important",
+    fontSize:"50px",
+    fontWeight: "600",
+    color: "#FFFFFF",
+    background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
+    textDecoration: "none !important",
+    textDecorationStyle:"none !important",
+    backgroundClip: "text",
+    textFillColor: "transparent",
+    "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent",
+    textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    textAlign: "center"
+  },
+  title2 : {
+    ...title,
+    font: "Segoe UI !important",
     fontStyle: "normal !important",
     fontSize:"50px",
     fontWeight: "600",
     color: "#FFFFFF",
     textDecoration: "none !important",
-    textDecorationStyle:"none !important"
+    textDecorationStyle:"none !important",
+    textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    textAlign: "center"
   },
   subtitle: {
     fontSize: "1.313rem",
