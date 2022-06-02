@@ -587,7 +587,6 @@ h5,
 h6,
 .h6 {
     font-size: 1em;
-    text-transform: uppercase;
     font-weight: 500;
 }
 
@@ -817,7 +816,6 @@ h2.title {
 
 .sidebar .logo .simple-text,
 .off-canvas-sidebar .logo .simple-text {
-    text-transform: uppercase;
     padding: 5px 0px;
     display: block;
     font-size: 18px;
@@ -960,9 +958,8 @@ h2.title {
     position: relative;
     padding: 12px 30px;
     margin: 10px 1px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
-    text-transform: uppercase;
     letter-spacing: 0;
     will-change: box-shadow, transform;
     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2431,7 +2428,7 @@ h6,
 .h2,
 .h3,
 .h4 {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Segoe", "SegoeUI", "Segoe WP","Tahoma","Arial", sans-serif;
     font-weight: 300;
     line-height: 1.5em;
 }
@@ -3968,7 +3965,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     color: #999999;
     font-weight: 400;
     font-size: 12px;
-    text-transform: uppercase;
     background: transparent;
 }
 
@@ -4055,7 +4051,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .nav-pills>li>a {
     line-height: 24px;
-    text-transform: uppercase;
     font-size: 12px;
     font-weight: 500;
     min-width: 100px;
@@ -4271,7 +4266,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     padding-bottom: 15px;
     font-weight: 400;
     font-size: 12px;
-    text-transform: uppercase;
     border-radius: 3px;
 }
 
@@ -4968,7 +4962,6 @@ footer ul li a {
     padding: 15px;
     font-weight: 500;
     font-size: 12px;
-    text-transform: uppercase;
     border-radius: 3px;
     text-decoration: none;
     position: relative;
@@ -5437,7 +5430,6 @@ footer .btn {
     margin: 0;
     border-radius: 3px;
     line-height: 24px;
-    text-transform: uppercase;
     font-size: 12px;
 }
 

@@ -20,7 +20,8 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
+import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
 
@@ -81,7 +82,8 @@ export default function LandingPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
-        rightLinks={<HeaderLinks />}
+        leftLinks={<HeaderLinksLeft />}
+        rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
           height: 400,
@@ -89,7 +91,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax responsive filter image="/img/nicolas-lb-uVSyr0EUaLY-unsplash.jpg">
+      <Parallax responsive image="/img/balloons.png">
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
@@ -148,14 +150,16 @@ export default function LandingPage(props) {
           </Card> */}
           <SimpleToUse />
           <ProductSection />
-
+          <div className={classes.sectionBreak}></div>
+          
           { /*<TeamSection /> */}
           {/* <BlogSection/> */}
           {/* <WorkSection /> */}
+         
         </div>
       </div>
 
-      <div className={classNames(classes.mainBlack,classes.mainRaised)}>
+      <div className={classNames(classes.mainBlack, classes.mainRaised)}>
         <div className={classes.containerBlack}>
           <FreeSection />
         </div>

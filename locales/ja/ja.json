@@ -3,7 +3,8 @@
         "examples": "例",
         "live":"住む",
         "pricing": "プライシング",
-        "quickLinks": "クイックリンク",
+        "docs": "ドキュメンテーション",
+        "tour":"Tour",
         "loginButton": "無料で始める"
     },
     "landing": {

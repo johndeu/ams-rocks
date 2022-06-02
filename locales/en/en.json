@@ -5,26 +5,27 @@
             
         },
         "live":"Live",
+        "tour":"Tour",
         "pricing": "Pricing",
-        "quickLinks": "Quick Links",
-        "quickLinks-links": {
+        "docs": "Docs",
+        "docs-links": {
 
         },
-        "loginButton": "Get started free"
+        "loginButton": "Start free"
     },
     "landing": {
         "title": "Azure Media Services",
-        "tagline": "Live streaming without limits",
-        "valueProp": "Scale and stream your media content now.",
-        "ctaButton": "Create a free account",
-        "readDocs": "Read our documentation",
-        "loginButton": "Get started free"
+        "tagline": "Live streaming built for scale and security",
+        "valueProp": "Azure Media Services is an API that enables developers to build low latency live and on-demand video experiences",
+        "ctaButton": "Get started",
+        "readDocs": "Documentation",
+        "loginButton": "Start free"
     },
     "simpleToUse": {
-        "headline1": "Azure Media Services is",
-        "headline2": "simple to use.",
-        "description": "this is why is it so simple to use. because of all these things...Azure Media Services is a fully managed live streaming solution: simply stream to AMS, and the service does everything you need to make low-latency",
-        "callToAction": "Create your first live stream.",
+        "headline1": "Stay fit together",
+        "headline2": "",
+        "description": "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
+        "callToAction": "Discover more",
         "card.1" :
         {
             "title": "Live Streaming",

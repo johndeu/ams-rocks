@@ -42,7 +42,6 @@ export default function HeaderLinks(props) {
             className: classes.navLink,
             color: "transparent",
           }}
-          buttonIcon={Apps}
           dropdownList={[
             <Link href={"/examples"}>
               <a className={classes.dropdownLink}>All examples</a>
@@ -58,36 +57,14 @@ export default function HeaderLinks(props) {
         />
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          href={"/live"}
-          color="transparent"
-          target=""
-          className={classes.navLink}
-        >
-          <Icon className={classes.icons}>camera</Icon> {i18next.t('menu.live')}
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="https://azure.microsoft.com/pricing/details/media-services/"
-          color="transparent"
-          target=""
-          className={classes.navLink}
-        >
-          <Icon className={classes.icons}>paid</Icon> {i18next.t('menu.pricing')}
-        </Button>
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText={i18next.t('menu.quickLinks')}
+          buttonText={i18next.t('menu.docs')}
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
           }}
-          buttonIcon={Apps}
           dropdownList={[
             <Link href="https://docs.microsoft.com/azure/media-services/">
               <a className={classes.dropdownLink}>Documentation</a>
@@ -112,19 +89,39 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-
+            
       <ListItem className={classes.listItem}>
-
         <Button
-          color="success"
-          aria-label={i18next.t('menu.loginButton')}
-          href="https://azure.microsoft.com/free/"
+          href={"/tour"}
+          color="transparent"
           target=""
+          className={classes.navLink}
         >
-          {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
+          {i18next.t('menu.tour')}
         </Button>
-
       </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href={"/live"}
+          color="transparent"
+          target=""
+          className={classes.navLink}
+        >
+          {i18next.t('menu.live')}
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href="https://azure.microsoft.com/pricing/details/media-services/"
+          color="transparent"
+          target=""
+          className={classes.navLink}
+        >
+          {i18next.t('menu.pricing')}
+        </Button>
+      </ListItem>
+
+     
     </List >
   );
 }

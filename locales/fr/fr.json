@@ -3,7 +3,8 @@
         "examples": "Examples",
         "live":"Live",
         "pricing": "Pricing",
-        "quickLinks": "Quick Links",
+        "docs": "Docs",
+        "tour":"Tour",
         "loginButton": "Get started free"
     },
     "landing": {

@@ -49,6 +49,9 @@ const headerStyle = {
     display: "flex",
     flexWrap: "nowrap",
   },
+  leftLinkGap: {
+    paddingLeft:"48px"
+  },
   flex: {
     flex: 1,
   },
