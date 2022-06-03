@@ -92,31 +92,12 @@ export default function LandingPage(props) {
         {...rest}
       />
       <Parallax responsive image="/img/balloons.png">
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={12}>
-              <motion.h1
-                initial={{
-                  scale: 0.75,
-                  opacity: 0,
-                  y: -50
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  y: 0
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
-                }}>
-                <div >
-                  <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br/>
-                  <span className={classes.title2}>{i18next.t('landing.tagline2')} </span>
-                </div>
-              </motion.h1>
-
+          <GridContainer className={classes.container}>
+            <GridItem xs={12} sm={12} md={12} lg={12}>
+              <div >
+                <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br/>
+                <span className={classes.title2}>{i18next.t('landing.tagline2')} </span>
+              </div>
               <h4>
                 {i18next.t('landing.valueProp')}
               </h4>
@@ -128,22 +109,21 @@ export default function LandingPage(props) {
                 target=""
                 rel="noopener noreferrer"
               >
-                <i className="fas fa-play" />
                 {i18next.t('landing.ctaButton')}
               </Button>
               <Button
-                color="info"
+                color="transparent"
+                border="1px solid"
                 size="sm"
                 href="https://docs.microsoft.com/en-us/azure/media-services/"
                 target=""
                 rel="noopener noreferrer"
               >
-                <i className="fas fa-book" />
                 {i18next.t('landing.readDocs')}
               </Button>
             </GridItem>
           </GridContainer>
-        </div>
+
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>

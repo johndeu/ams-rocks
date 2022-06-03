@@ -18,6 +18,7 @@ const makeComponentStyles = makeStyles(() => ({
 
 const RegularButton = React.forwardRef((props, ref) => {
   const {
+    border,
     color,
     round,
     children,
@@ -35,6 +36,7 @@ const RegularButton = React.forwardRef((props, ref) => {
   const classes = makeComponentStyles();
 
   const btnClasses = classNames({
+    [classes.border]: border,
     [classes.button]: true,
     [classes[size]]: size,
     [classes[color]]: color,
