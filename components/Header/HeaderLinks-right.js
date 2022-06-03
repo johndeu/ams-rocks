@@ -41,7 +41,7 @@ export default function HeaderLinks(props) {
           href="https://azure.microsoft.com/free/"
           target=""
         >
-          {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
+          {i18next.t('menu.loginButton')}
         </Button>
 
       </ListItem>
