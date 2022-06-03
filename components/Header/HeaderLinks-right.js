@@ -35,7 +35,8 @@ export default function HeaderLinks(props) {
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <Button
-          color="success"
+          color="transparent"
+          border="1px solid"
           aria-label={i18next.t('menu.loginButton')}
           href="https://azure.microsoft.com/free/"
           target=""
