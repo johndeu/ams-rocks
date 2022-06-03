@@ -53,9 +53,13 @@ const landingPageStyle = {
     textAlign: "center !important"
   },
   subtitle: {
-    fontSize: "1.313rem",
-    maxWidth: "500px",
-    margin: "10px auto 0",
+    fontSize: "16px",
+    fontWeight: "400",
+    fontStyle: "normal",
+    lineHeight: "24px",
+    textAlign:"center !important",
+    width:"50vw",
+    color:"#EDEBE9"
   },
   main: {
     background: "#FFFFFF",
