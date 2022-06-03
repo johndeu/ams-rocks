@@ -3,7 +3,9 @@ import { container, title } from "styles/jss/nextjs-material-kit.js";
 const landingPageStyle = {
   container: {
     zIndex: "4",
+    width:"100vw",
     color: "#FFFFFF",
+    textAlign:"center",
     ...container,
   },
   containerBlack: {
@@ -18,24 +20,26 @@ const landingPageStyle = {
   },
   title: {
     ...title,
+    width:"100vw",
     marginTop: "30px",
     font: "Segoe UI !important",
     fontStyle: "normal !important",
     fontSize:"50px",
     fontWeight: "600",
     color: "#FFFFFF",
-    background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
+    //background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
     textDecoration: "none !important",
     textDecorationStyle:"none !important",
-    backgroundClip: "text",
-    textFillColor: "transparent",
-    "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent",
+    //backgroundClip: "text",
+    //textFillColor: "transparent",
+    //"-webkit-background-clip": "text",
+    //"-webkit-text-fill-color": "transparent",
     textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    textAlign: "center"
+    textAlign: "center !important"
   },
   title2 : {
     ...title,
+    width:"100vw",
     font: "Segoe UI !important",
     fontStyle: "normal !important",
     fontSize:"50px",
@@ -44,7 +48,7 @@ const landingPageStyle = {
     textDecoration: "none !important",
     textDecorationStyle:"none !important",
     textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    textAlign: "center"
+    textAlign: "center !important"
   },
   subtitle: {
     fontSize: "1.313rem",

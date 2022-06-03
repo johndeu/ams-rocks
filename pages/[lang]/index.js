@@ -94,7 +94,7 @@ export default function LandingPage(props) {
       <Parallax responsive image="/img/balloons.png">
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={12}>
               <motion.h1
                 initial={{
                   scale: 0.75,
@@ -111,8 +111,8 @@ export default function LandingPage(props) {
                   stiffness: 100,
                   damping: 15
                 }}>
-                <div className={classes.title}>
-                  {i18next.t('landing.tagline1')}<br/>
+                <div >
+                  <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br/>
                   <span className={classes.title2}>{i18next.t('landing.tagline2')} </span>
                 </div>
               </motion.h1>
