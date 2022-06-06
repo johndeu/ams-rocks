@@ -20,7 +20,8 @@
         "valueProp": "Azure Media Services is an API that enables developers to build low latency live and on-demand video experiences",
         "ctaButton": "Get started",
         "readDocs": "Documentation",
-        "loginButton": "Start free"
+        "loginButton": "Start free",
+        "getStartedFree": "Get started free"
     },
     "simpleToUse": {
         "headline1": "Stay fit together",

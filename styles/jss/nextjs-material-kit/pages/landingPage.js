@@ -14,6 +14,12 @@ const landingPageStyle = {
     backgroundColor: "#000000",
     ...container,
   },
+  containerBlue: {
+    zIndex: "4",
+    color: "#FFFFFF",
+    backgroundColor: "#004578",
+    ...container,
+  },
   sectionBreak :{
     minHeight: "100px",
     color: "#FFFFFF"
@@ -73,6 +79,11 @@ const landingPageStyle = {
   },
   mainBlack: {
     background: "#000000",
+    position: "relative",
+    zIndex: "3",
+  },
+  mainBlue: {
+    background: "#004578",
     position: "relative",
     zIndex: "3",
   },

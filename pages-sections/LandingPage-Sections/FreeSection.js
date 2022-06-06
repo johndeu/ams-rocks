@@ -20,24 +20,24 @@ export default function SectionCompletedExamples() {
     const classes = useStyles();
     return (
         <div className={classes.section}>
-            <div className={classes.container}>
-                <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={8}>
-                        <h2>Try Azure Media Services for free</h2>
-                        <h4>
-                            Start with a free account for up to 20 minutes of free file encoding.
-                            For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.
-                        </h4>
-                        <Button
-                            color="success"
-                            aria-label={i18next.t('menu.loginButton')}
-                            href="https://azure.microsoft.com/free/"
-                            target="">
-                            {i18next.t('menu.loginButton')}<Icon className={classes.icons}>north_east</Icon>
-                        </Button>
-                    </GridItem>
-                </GridContainer>
-            </div>
+        <div className={classes.container}>
+            <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={8}>
+                    <h3>Try Azure Media Services for free</h3>
+                    <p>
+                        Start with a free account for up to 20 minutes of free file encoding.
+                        For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.
+                    </p>
+                    <Button
+                        color="info"
+                        aria-label={i18next.t('landing.getStartedFree')}
+                        href="https://azure.microsoft.com/free/"
+                        target="">
+                        {i18next.t('landing.getStartedFree')}
+                    </Button>
+                </GridItem>
+            </GridContainer>
         </div>
+    </div>
     );
 }

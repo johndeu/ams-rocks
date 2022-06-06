@@ -64,6 +64,11 @@ const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgFluid,
+    classes.imgIndustry
+  );
   const router = useRouter();
 
   const { ...rest } = props;
@@ -94,35 +99,35 @@ export default function LandingPage(props) {
         {...rest}
       />
       <Parallax responsive image="/img/balloons.png">
-          <GridContainer className={classes.container}>
-            <GridItem xs={12} sm={12} md={12} lg={12}>
-              <div >
-                <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br/>
-                <span className={classes.title2}>{i18next.t('landing.tagline2')} </span><br/>
-                <span className={classes.subtitle}>{i18next.t('landing.valueProp')}</span>
-              </div>
-              <br />
-              <Button
-                color="danger"
-                size="md"
-                href="https://azure.microsoft.com/en-us/free/"
-                target=""
-                rel="noopener noreferrer"
-              >
-                {i18next.t('landing.ctaButton')}
-              </Button>
-              <Button
-                color="transparent"
-                border="1px solid"
-                size="md"
-                href="https://docs.microsoft.com/en-us/azure/media-services/"
-                target=""
-                rel="noopener noreferrer"
-              >
-                {i18next.t('landing.readDocs')}
-              </Button>
-            </GridItem>
-          </GridContainer>
+        <GridContainer className={classes.container}>
+          <GridItem xs={12} sm={12} md={12} lg={12}>
+            <div >
+              <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br />
+              <span className={classes.title2}>{i18next.t('landing.tagline2')} </span><br />
+              <span className={classes.subtitle}>{i18next.t('landing.valueProp')}</span>
+            </div>
+            <br />
+            <Button
+              color="danger"
+              size="md"
+              href="https://azure.microsoft.com/en-us/free/"
+              target=""
+              rel="noopener noreferrer"
+            >
+              {i18next.t('landing.ctaButton')}
+            </Button>
+            <Button
+              color="transparent"
+              border="1px solid"
+              size="md"
+              href="https://docs.microsoft.com/en-us/azure/media-services/"
+              target=""
+              rel="noopener noreferrer"
+            >
+              {i18next.t('landing.readDocs')}
+            </Button>
+          </GridItem>
+        </GridContainer>
 
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
@@ -130,20 +135,18 @@ export default function LandingPage(props) {
           {/* <Card>
             <ShakaPlayer manifestUrl={src} />
           </Card> */}
-          <IndustrySection/>
-          <SimpleToUse />
-          <ProductSection />
+          <IndustrySection />
           <div className={classes.sectionBreak}></div>
-          
+
           { /*<TeamSection /> */}
           {/* <SectionBlog/> */}
           {/* <WorkSection /> */}
-         
+      
         </div>
       </div>
 
-      <div className={classNames(classes.mainBlack, classes.mainRaised)}>
-        <div className={classes.containerBlack}>
+      <div className={classNames(classes.mainBlue, classes.mainRaised)}>
+        <div className={classes.containerBlue}>
           <FreeSection />
         </div>
       </div>

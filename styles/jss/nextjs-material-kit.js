@@ -95,9 +95,9 @@ const primaryColor = "#9c27b0";
 const warningColor = "#ff9800";
 const dangerColor = blueColor;
 const successColor = "#4caf50";
-const infoColor = "#00acc1";
+const infoColor = "#f3f2f1";
 const roseColor = "#e91e63";
-const grayColor = "#555555";
+const grayColor = "#f3f2f1";
 
 
 const primaryBoxShadow = {

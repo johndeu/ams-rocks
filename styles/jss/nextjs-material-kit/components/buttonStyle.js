@@ -97,6 +97,7 @@ const buttonStyle = {
   },
   info: {
     backgroundColor: infoColor,
+    color:"#000",
     boxShadow: `0 2px 2px 0 ${hexToRGBAlpha(
       infoColor,
       0.14
@@ -199,6 +200,12 @@ const buttonStyle = {
     "&,&:focus,&:hover,&:visited": {
       backgroundColor: "#FFFFFF",
       color: grayColor,
+    },
+  },
+  gray: {
+    "&,&:focus,&:hover,&:visited": {
+      backgroundColor: grayColor,
+      color: "#000",
     },
   },
   twitter: {
