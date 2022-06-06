@@ -37,7 +37,8 @@ const customTabsStyle = {
   tabSelected: {
     //backgroundColor: "rgba(255, 255, 255, 0.2)",
     transition: "0.2s background-color 0.1s",
-    textDecoration:"underline"
+    paddingBottom: "10px",
+    borderBottom: "2px solid #0078d4",
   },
   tabWrapper: {
     display: "inline-block",

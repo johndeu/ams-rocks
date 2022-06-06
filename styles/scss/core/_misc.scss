@@ -97,8 +97,9 @@ legend {
 }
 
 a {
-  color: $link-color;
+  color: $blue;
   text-decoration: none;
+  font-weight:500;
   background-color: transparent;
   &:hover,
   &:focus {
