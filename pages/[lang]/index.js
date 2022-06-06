@@ -37,7 +37,9 @@ import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.j
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
-// import BlogSection from "pages-sections/LandingPage-Sections/BlogSection.js";
+import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
+
+// import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
 
 
 // Translations
@@ -102,7 +104,7 @@ export default function LandingPage(props) {
               <br />
               <Button
                 color="danger"
-                size="sm"
+                size="md"
                 href="https://azure.microsoft.com/en-us/free/"
                 target=""
                 rel="noopener noreferrer"
@@ -112,7 +114,7 @@ export default function LandingPage(props) {
               <Button
                 color="transparent"
                 border="1px solid"
-                size="sm"
+                size="md"
                 href="https://docs.microsoft.com/en-us/azure/media-services/"
                 target=""
                 rel="noopener noreferrer"
@@ -128,12 +130,13 @@ export default function LandingPage(props) {
           {/* <Card>
             <ShakaPlayer manifestUrl={src} />
           </Card> */}
+          <IndustrySection/>
           <SimpleToUse />
           <ProductSection />
           <div className={classes.sectionBreak}></div>
           
           { /*<TeamSection /> */}
-          {/* <BlogSection/> */}
+          {/* <SectionBlog/> */}
           {/* <WorkSection /> */}
          
         </div>

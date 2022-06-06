@@ -24,7 +24,7 @@ import HeroPost from 'components/Blog/HeroPost'
 const useStyles = makeStyles(styles);
 
 
-export default function BlogSection({ allPosts }) {
+export default function SectionBlog({ allPosts }) {
     const classes = useStyles();
     const heroPost = allPosts[0]
     const morePosts = allPosts.slice(1)

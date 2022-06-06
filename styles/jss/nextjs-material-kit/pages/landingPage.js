@@ -21,7 +21,7 @@ const landingPageStyle = {
   title: {
     ...title,
     width:"100vw",
-    marginTop: "30px",
+    marginTop: "40px",
     font: "Segoe UI !important",
     fontStyle: "normal !important",
     fontSize:"50px",
@@ -31,9 +31,9 @@ const landingPageStyle = {
     //background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
     textDecoration: "none !important",
     textDecorationStyle:"none !important",
-    //backgroundClip: "text",
+    backgroundClip: "text",
     //textFillColor: "transparent",
-    //"-webkit-background-clip": "text",
+    "-webkit-background-clip": "text",
     //"-webkit-text-fill-color": "transparent",
     textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     textAlign: "center !important"
@@ -57,8 +57,13 @@ const landingPageStyle = {
     fontWeight: "400",
     fontStyle: "normal",
     lineHeight: "24px",
+    font: "Segoe UI",
+    letterSpacing: "-0.015em",
+    paddingTop: "20px",
+    maxWidth: "35vw",
+    align: "center",
+    display:"inline-block",
     textAlign:"center !important",
-    width:"50vw",
     color:"#EDEBE9"
   },
   main: {

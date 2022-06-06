@@ -8,12 +8,17 @@ import {
 
 const cardHeaderStyle = {
   cardHeader: {
-    borderRadius: "3px",
-    padding: "1rem 15px",
+    //borderRadius: "3px",
+    //padding: "1rem 15px",
+    alignItems:"center",
+    display: "flex",
+    flexDirection: "column",
+    gap: "24px",
     marginLeft: "15px",
     marginRight: "15px",
-    marginTop: "-30px",
-    border: "0",
+    textAlign: "center",
+    //marginTop: "-30px",
+    //border: "1px solid",
     marginBottom: "0",
   },
   cardHeaderPlain: {
