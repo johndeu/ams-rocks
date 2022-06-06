@@ -23,125 +23,91 @@ export default function SectionIndustry() {
     classes.imgRaised,
     classes.imgFluid,
     classes.imgIndustry
-);
+  );
   return (
     <div className={classes.section}>
-        <div id="nav-tabs">
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={12}>
-              <CustomTabs
-                headerColor="primary" 
-                tabs={[
-                  {
-                    tabName: "Fitness",
-                    tabContent: (
-                      <GridContainer>
-                        <GridItem xs={12} sm={4} md={4}>
-                          <img
-                            src="/img/examples/studio-1.jpg"
-                            alt="..."
-                            className={imageClasses}
-                          />
-                        </GridItem>
-                        <GridItem xs={12} sm={8} md={8}>
-                          <h3>Stay fit together</h3> 
+      <div id="nav-tabs">
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <CustomTabs
+              headerColor="primary"
+              tabs={[
+                {
+                  tabName: "Fitness",
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/examples/studio-1.jpg"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8}>
+                        <div className={classes.textSection}>
+                          <h3>Stay fit together</h3>
                           <p className={classes.textLeft}>
                             Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
                             core movements.
                           </p>
-                        </GridItem>
-                      </GridContainer>
-                    ),
-                  },
-                  {
-                    tabName: "Enterprise",
-                    tabContent: (
-                      <div>
-                        <h2>Do Enterprise stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Live shopping",
-                    tabContent: (
-                      <div>
-                        <h2>Live Shopping stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Government",
-                    tabContent: (
-                      <div>
-                        <h2>Government stuff...</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Education",
-                    tabContent: (
-                      <div>
-                        <h2>Education stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Energy",
-                    tabContent: (
-                      <div>
-                        <h2>Energy stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Healthcare",
-                    tabContent: (
-                      <div>
-                        <h2>Healthcare stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                  {
-                    tabName: "Manufacturing",
-                    tabContent: (
-                      <div>
-                        <h2>Manufacturing stuff</h2> 
-                        <p className={classes.textLeft}>
-                          Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                          core movements.
-                        </p>
-                      </div>
-                    ),
-                  },
-                ]}
-              />
-            </GridItem>
-          </GridContainer>
-        </div>
+                          <a href="#">Discover more</a>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                },
+                {
+                  tabName: "Enterprise",
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/examples/studio-1.jpg"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8} >
+                        <div className={classes.textSection}>
+                          <h3>Enterprise stuff</h3>
+                          <p className={classes.textLeft}>
+                            This is enterprise stuff...
+                          </p>
+                          <a href="#">Discover more</a>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                },
+                {
+                  tabName: "Live shopping",
+                  tabContent: (
+                    <div>
+                      <h2>Live Shopping stuff</h2>
+                      <p className={classes.textLeft}>
+                        Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
+                        core movements.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  tabName: "Government",
+                  tabContent: (
+                    <div>
+                      <h2>Government stuff...</h2>
+                      <p className={classes.textLeft}>
+                        Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
+                        core movements.
+                      </p>
+                    </div>
+                  ),
+                }
+              ]}
+            />
+          </GridItem>
+        </GridContainer>
+      </div>
     </div>
   );
 }

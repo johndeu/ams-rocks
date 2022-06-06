@@ -40,17 +40,17 @@ export default function Card(props) {
           x: 0,
           opacity:1,
           transition: {
-            type: 'spring',
-            duration: 0.6,
-            bounce: 0.5
+            //type: 'spring',
+            //duration: 0.6,
+            // bounce: 0.5
           }
         }
       )
     } else {
       animation.start(
         {
-          x: "-15vw", // vw= viewport width
-          opacity:0
+          //x: "-15vw", // vw= viewport width
+          //opacity:0
         }
       )
     }
