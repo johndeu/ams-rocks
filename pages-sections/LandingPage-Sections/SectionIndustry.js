@@ -36,15 +36,15 @@ export default function SectionIndustry() {
                     tabName: "Fitness",
                     tabContent: (
                       <GridContainer>
-                        <GridItem xs={12} sm={6} md={6}>
+                        <GridItem xs={12} sm={4} md={4}>
                           <img
                             src="/img/examples/studio-1.jpg"
                             alt="..."
                             className={imageClasses}
                           />
                         </GridItem>
-                        <GridItem xs={12} sm={6} md={6}>
-                          <h2>Stay fit together</h2> 
+                        <GridItem xs={12} sm={8} md={8}>
+                          <h3>Stay fit together</h3> 
                           <p className={classes.textLeft}>
                             Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
                             core movements.
