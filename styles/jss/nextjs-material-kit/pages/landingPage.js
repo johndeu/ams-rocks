@@ -1,4 +1,4 @@
-import { container, title } from "styles/jss/nextjs-material-kit.js";
+import { container, title, mainBlue,darkBlue } from "styles/jss/nextjs-material-kit.js";
 
 const landingPageStyle = {
   container: {
@@ -17,7 +17,13 @@ const landingPageStyle = {
   containerBlue: {
     zIndex: "4",
     color: "#FFFFFF",
-    backgroundColor: "#004578",
+    backgroundColor: mainBlue,
+    ...container,
+  },
+  containerDarkBlue: {
+    zIndex: "4",
+    color: "#FFFFFF",
+    backgroundColor: darkBlue,
     ...container,
   },
   sectionBreak :{
@@ -83,7 +89,12 @@ const landingPageStyle = {
     zIndex: "3",
   },
   mainBlue: {
-    background: "#004578",
+    background: mainBlue,
+    position: "relative",
+    zIndex: "3",
+  },
+  mainDarkBlue: {
+    background: darkBlue,
     position: "relative",
     zIndex: "3",
   },

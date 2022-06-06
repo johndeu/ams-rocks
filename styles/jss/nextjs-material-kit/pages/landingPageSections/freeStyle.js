@@ -3,7 +3,7 @@ import { title } from "styles/jss/nextjs-material-kit.js";
 const freeStyle = {
   section: {
     textAlign: "center",
-    backgroundColor: "#004578",
+    backgroundColor: "#0078d4",
     padding: "5px"
   },
   title: {

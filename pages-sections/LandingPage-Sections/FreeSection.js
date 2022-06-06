@@ -23,7 +23,7 @@ export default function SectionCompletedExamples() {
         <div className={classes.container}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={8}>
-                    <h3>Try Azure Media Services for free</h3>
+                    <h4>Try Azure Media Services for free</h4>
                     <p>
                         Start with a free account for up to 20 minutes of free file encoding.
                         For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.
