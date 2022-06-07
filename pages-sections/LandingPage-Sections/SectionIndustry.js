@@ -38,7 +38,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
                         <img
-                          src="/img/examples/studio-1.jpg"
+                          src="/img/Landing/Fitness.png"
                           alt="..."
                           className={imageClasses}
                         />
@@ -62,16 +62,16 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
                         <img
-                          src="/img/examples/studio-1.jpg"
+                          src="/img/Landing/Enterprise.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
                       <GridItem xs={12} sm={8} md={8} >
                         <div className={classes.textSection}>
-                          <h3>Enterprise stuff</h3>
+                          <h3>Collaborate together</h3>
                           <p className={classes.textLeft}>
-                            This is enterprise stuff...
+                            Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.
                           </p>
                           <a href="#">Discover more</a>
                         </div>
@@ -82,32 +82,54 @@ export default function SectionIndustry() {
                 {
                   tabName: "Live shopping",
                   tabContent: (
-                    <div>
-                      <h2>Live Shopping stuff</h2>
-                      <p className={classes.textLeft}>
-                        Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                        core movements.
-                      </p>
-                    </div>
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/Landing/Shopping.png"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8} >
+                        <div className={classes.textSection}>
+                          <h3>Sell your products </h3>
+                          <p className={classes.textLeft}>
+                            Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.
+                          </p>
+                          <a href="#">Discover more</a>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
                   ),
                 },
                 {
                   tabName: "Government",
                   tabContent: (
-                    <div>
-                      <h2>Government stuff...</h2>
-                      <p className={classes.textLeft}>
-                        Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                        core movements.
-                      </p>
-                    </div>
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/Landing/Government.png"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8} >
+                        <div className={classes.textSection}>
+                          <h3>Engage your community </h3>
+                          <p className={classes.textLeft}>
+                            Ensure legislators with strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.
+                          </p>
+                          <a href="#">Discover more</a>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
                   ),
                 }
               ]}
             />
           </GridItem>
         </GridContainer>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
