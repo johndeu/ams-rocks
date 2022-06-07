@@ -21,6 +21,7 @@ export default function SectionIndustry() {
   const classes = useStyles();
   const imageClasses = classNames(
     classes.imgRaised,
+    classes.imgRounded,
     classes.imgFluid,
     classes.imgIndustry
   );
