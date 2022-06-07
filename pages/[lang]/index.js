@@ -98,7 +98,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax responsive image="/img/balloons.png">
+      <Parallax responsive image="/img/Mainheader_image.png">
         <GridContainer className={classes.container}>
           <GridItem xs={12} sm={12} md={12} lg={12}>
             <div >
