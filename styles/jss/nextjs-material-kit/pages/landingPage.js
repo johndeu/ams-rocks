@@ -39,6 +39,7 @@ const landingPageStyle = {
     fontSize:"50px",
     fontWeight: "600",
     lineHeight:"54px",
+    paddingTop: "50px",
     color: "#FFFFFF",
     //background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
     textDecoration: "none !important",

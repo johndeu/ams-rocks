@@ -93,14 +93,15 @@ export default function LandingPage(props) {
         rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
-          height: 400,
+          height: 100,
           color: "white",
         }}
         {...rest}
       />
       <Parallax responsive image="/img/Mainheader_image.png">
         <GridContainer className={classes.container}>
-          <GridItem xs={12} sm={12} md={12} lg={12}>
+          <GridItem>
+            <div className={classes.spacer}></div>
             <div >
               <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br />
               <span className={classes.title2}>{i18next.t('landing.tagline2')} </span><br />
