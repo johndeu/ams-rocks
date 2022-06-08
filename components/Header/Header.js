@@ -70,13 +70,16 @@ export default function Header(props) {
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
-        <img className={classes.logo} src="/img/ams.svg" />
+        <Hidden xsDown smDown implementation="css">
+          <img className={classes.logo} src="/img/ams.svg" />
+        </Hidden>
+
         {leftLinks !== undefined ? brandComponent : null}
         <div className={classes.flex}>
           {leftLinks !== undefined ? (
             <Hidden smDown implementation="css">
               <div className={classes.leftLinkGap}>
-              {leftLinks}
+                {leftLinks}
               </div>
             </Hidden>
           ) : (
