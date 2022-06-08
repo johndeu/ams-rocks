@@ -73,13 +73,19 @@ const headerStyle = {
     },
   },
   logoMicrosoft: {
-    top:"10px",
-    height:"30px",
+    height:"68px",
+    width: "81px",
+    verticalAlign: "middle",
+    float:"left",
+    marginTop: "2px",
+    display: "list-item",
   },
   logo: {
-    top:"10px",
     width:"30px",
     height:"30px",
+    verticalAlign: "middle",
+    float:"left",
+    marginTop: "2px",
   },
   appResponsive: {
     margin: "20px 10px",

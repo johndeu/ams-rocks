@@ -70,6 +70,13 @@ export default function Header(props) {
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
+        <Hidden xsDown implementation="css">
+          <svg className={classes.logoMicrosoft}>
+            <title>Microsoft</title>
+            <use href="/img/microsoft-color.svg?v=1.4.0.20220523.1#microsoft-logo">
+            </use>
+          </svg>
+        </Hidden>
         <Hidden xsDown smDown implementation="css">
           <img className={classes.logo} src="/img/ams.svg" />
         </Hidden>
