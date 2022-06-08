@@ -32,16 +32,19 @@ const parallaxStyle = (theme) => ({
   },
   parallaxResponsive: {
     [theme.breakpoints.down("lg")]: {
-      minHeight: "500px",
+      minHeight: "450px",
+      paddingTop:"20px"
     },
     [theme.breakpoints.down("md")]: {
-      minHeight: "540px",
+      minHeight: "500px",
     },
     [theme.breakpoints.down("sm")]: {
       minHeight: "600px",
+      paddingTop: "20px"
     },
     [theme.breakpoints.down("xs")]: {
-      minHeight: "620px",
+      minHeight: "650px",
+      paddingTop: "50px"
     },
   },
 });
