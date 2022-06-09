@@ -9,7 +9,7 @@ const popoverStyles = {
     borderRadius: "3px",
     display: "block",
     maxWidth: "276px",
-    fontFamily: '"Segoe UI", "SegoeUI", "Segoe WP","Tahoma","Arial",sans-serif',
+    fontFamily: "SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif",
     fontStyle: "normal",
     fontWeight: "400",
     textAlign: "start",

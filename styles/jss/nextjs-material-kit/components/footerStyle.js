@@ -6,7 +6,6 @@ const footerStyle = {
     padding: "0.9375rem",
     fontWeight: "400",
     fontSize: "0.3rem",
-    font:"'SegoeUI', 'Helvetica Neue', Helvetica, Arial, sans-serif",
     textTransform: "uppercase",
     borderRadius: "3px",
     textDecoration: "none",

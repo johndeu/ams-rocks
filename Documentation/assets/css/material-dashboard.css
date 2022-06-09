@@ -2428,13 +2428,13 @@ h6,
 .h2,
 .h3,
 .h4 {
-    font-family: "Segoe UI", "SegoeUI", "Segoe WP","Tahoma","Arial", sans-serif;
+    font-family: 'SegoeUI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
     line-height: 1.5em;
 }
 
 .serif-font {
-    font-family: "Roboto Slab", "Times New Roman", serif;
+    font-family: "Times New Roman", serif;
 }
 
 .page-header {

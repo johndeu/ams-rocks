@@ -77,7 +77,7 @@ export default function Header(props) {
             </use>
           </svg>
         </Hidden>
-        
+
         <Hidden xsDown smDown implementation="css">
           <img className={classes.logo} src="/img/ams.svg" />
         </Hidden>
