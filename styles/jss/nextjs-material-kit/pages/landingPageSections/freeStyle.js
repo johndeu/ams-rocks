@@ -10,10 +10,16 @@ const freeStyle = {
     ...title,
     textAlign:"center",
     color:"#fff",
-
+    fontWeight:600,
+    fontSize:"28px",
+    lineHeight: "40px",
+    padding: "0 0 2px"
   },
   description: {
-    fontSize:"1.4rem"
+    fontSize:"18px",
+    fontWeight:"400",
+    lineHeight:"28px",
+    padding: "8px 0 0",
   },
   cardTitle : {
     ...title
