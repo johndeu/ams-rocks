@@ -40,7 +40,7 @@ import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
 import LeftImageSection from "pages-sections/LandingPage-Sections/SectionLeftImage.js";
 import RightImageSection from "pages-sections/LandingPage-Sections/SectionRightImage.js";
-import GetStartedSection from "pages-sections/LandingPage-Sections/sectionGetStarted.js";
+import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
 
 // Translations
