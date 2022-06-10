@@ -38,9 +38,10 @@ import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
+import LeftImageSection from "pages-sections/LandingPage-Sections/SectionLeftImage.js";
+import RightImageSection from "pages-sections/LandingPage-Sections/SectionRightImage.js";
 
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
-
 
 // Translations
 import { useRouter } from 'next/router';
@@ -138,7 +139,10 @@ export default function LandingPage(props) {
           </Card> */}
           <IndustrySection />
           <div className={classes.sectionBreak}></div>
-
+          <LeftImageSection/>
+          <RightImageSection/>
+          <LeftImageSection/>
+          
           { /*<TeamSection /> */}
           {/* <SectionBlog/> */}
           {/* <WorkSection /> */}
