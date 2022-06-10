@@ -28,7 +28,7 @@ export default function SectionLeftImage() {
         <GridContainer>
           <GridItem xs={12} sm={4} md={4}>
             <img
-              src="/img/Landing/Fitness.png"
+              src="/img/Landing/Solution.png"
               alt="..."
               className={imageClasses}
             />
