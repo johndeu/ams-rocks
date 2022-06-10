@@ -3,7 +3,7 @@ import imagesStyle from "styles/jss/nextjs-material-kit/imagesStyles.js";
 
 const tabsStyle = {
   section: {
-    padding: "15px 25px 15px 0",
+    padding: "40px 20px 0",
     align:"center",
     textAlign:"left !important",
     color:"#000"
