@@ -12,6 +12,14 @@ const footerStyle = {
     position: "relative",
     display: "block",
   },
+  logoMicrosoft: {
+    height:"18px",
+    width: "81px",
+    color:"#ffffff",
+    marginTop:"2px",
+    top: "5px",
+    position: "relative"
+  },
   helloFromSeattle: {
     padding: "20px 0"
 

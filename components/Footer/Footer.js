@@ -43,7 +43,11 @@ export default function Footer(props) {
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <img src="/img/microsoft.svg"></img>
+              <svg className = {classes.logoMicrosoft}>
+                <title>Microsoft</title>
+                <use href="/img/microsoft-color.svg?v=1.4.0.20220523.1#microsoft-logo-black">
+                </use>
+              </svg>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               &nbsp;|&nbsp;
