@@ -71,7 +71,7 @@ export default function Header(props) {
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
         <Hidden xsDown smDown implementation="css">
-          <svg className={classes.logoMicrosoft}>
+          <svg className = {classes.logoMicrosoft}>
             <title>Microsoft</title>
             <use href="/img/microsoft-color.svg?v=1.4.0.20220523.1#microsoft-logo">
             </use>
@@ -150,7 +150,7 @@ Header.propTypes = {
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
   // props.color (see above) to changeColorOnScroll.color
-  // when the window.pageYOffset is heigher or equal to
+  // when the window.pageYOffset is higher or equal to
   // changeColorOnScroll.height and then when it is smaller than
   // changeColorOnScroll.height change it back to
   // props.color (see above)
