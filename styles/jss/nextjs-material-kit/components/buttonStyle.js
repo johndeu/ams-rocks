@@ -22,8 +22,6 @@ const buttonStyle = {
     padding: "12px 16px",
     margin: ".3125rem 1px",
     fontWeight: "600",
-    fontFamily: "Segoe UI",
-    fontStyle: "normal",
     letterSpacing: "0",
     willChange: "box-shadow, transform",
     transition:
