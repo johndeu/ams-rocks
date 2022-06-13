@@ -68,6 +68,13 @@
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
     },
+    "footer" : {
+        "privacy": "Privacy and Cookies",
+        "termsOfUse" : "Terms of Use",
+        "trademarks" : "Trademarks",
+        "feedback" : "Feedback",
+        "contact" : "Contact Us"
+    },
     "404" : {
         "message" : "Emptiness, eternal sadness..."
     }

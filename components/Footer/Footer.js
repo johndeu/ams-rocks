@@ -8,6 +8,8 @@ import classNames from "classnames";
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import i18next from "i18next";
+
 // Use the react-intersection-observer to trigger animations when stuff is in view
 import {useInView} from "react-intersection-observer";
 
@@ -60,19 +62,30 @@ export default function Footer(props) {
         <div className={classes.right}>
           <List className={classes.list}>
           <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">Privacy and Cookies</a> &nbsp;&nbsp;
+              <a rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">{i18next.t("footer.privacy")}</a> &nbsp;&nbsp;
+            </ListItem>
+            { i18next.language == 'de' &&  
+              <ListItem className={classes.inlineBlock}>
+                <a rel="noreferrer" href="https://aka.ms/impressum_de" target="_blank">Impressum</a> &nbsp;&nbsp;
+              </ListItem>
+            }
+            { i18next.language == 'fr' &&  
+              <ListItem className={classes.inlineBlock}>
+                <a rel="noreferrer" href="https://go.microsoft.com/fwlink/?linkid=2121428" target="_blank">Accessibilité : partiellement
+                    conforme</a> &nbsp;&nbsp;
+              </ListItem>
+            }
+            <ListItem className={classes.inlineBlock}>
+              <a rel="noreferrer" href="https://docs.microsoft.com/legal/termsofuse" target="_blank">{i18next.t("footer.termsOfUse")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://docs.microsoft.com/legal/termsofuse" target="_blank">Terms of use</a> &nbsp;&nbsp;
+              <a rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">{i18next.t("footer.trademarks")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">Trademarks</a> &nbsp;&nbsp;
+              <a rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">{i18next.t("footer.feedback")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">Feedback</a> &nbsp;&nbsp;
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">Contact us</a> &nbsp;&nbsp;
+              <a rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">{i18next.t("footer.contact")}</a> &nbsp;&nbsp;
             </ListItem>
           </List>
         </div>

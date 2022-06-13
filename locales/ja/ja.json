@@ -39,5 +39,12 @@
     },
     "404" : {
         "message" : "空虚、永遠の悲しみ."
+    },
+    "footer" : {
+        "privacy": "Privacy and Cookies",
+        "termsOfUse" : "Terms of Use",
+        "trademarks" : "Trademarks",
+        "feedback" : "Feedback",
+        "contact" : "Contact Us"
     }
 }

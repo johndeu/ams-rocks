@@ -15,5 +15,12 @@
     },
     "dashboard": {
         "description": "Cet exemple montre comment charger paresseusement la langue côté client."
+    },
+    "footer" : {
+        "privacy": "Privacy and Cookies",
+        "termsOfUse" : "Terms of Use",
+        "trademarks" : "Trademarks",
+        "feedback" : "Feedback",
+        "contact" : "Contact Us"
     }
 }

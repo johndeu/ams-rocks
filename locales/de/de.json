@@ -16,5 +16,12 @@
     },
     "dashboard": {
         "description": "In diesem Beispiel wird veranschaulicht, wie die Sprache auf der Clientseite verzögert geladen wird."
+    },
+    "footer" : {
+        "privacy": "Privacy and Cookies",
+        "termsOfUse" : "Terms of Use",
+        "trademarks" : "Trademarks",
+        "feedback" : "Feedback",
+        "contact" : "Contact Us"
     }
 }
