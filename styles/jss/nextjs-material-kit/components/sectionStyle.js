@@ -9,12 +9,28 @@ import {
   title,
 } from "styles/jss/nextjs-material-kit.js";
 
+import { container } from "styles/jss/nextjs-material-kit.js";
+import imagesStyle from "styles/jss/nextjs-material-kit/imagesStyles.js";
+
+
 const sectionStyle = {
   sectionArea: {
     maxWidth: "360px",
     margin: "0 auto",
     padding: "0px",
   },
+  section: {
+    padding: "40px 20px 0",
+    align:"center",
+    textAlign:"left !important", 
+    color:"#000",
+  },
+  container,
+  textSection: {
+    padding: "15px",
+    textAlign: "left !important",
+  },
+  ...imagesStyle,
   primary: {
     color: primaryColor,
   },
@@ -49,19 +65,10 @@ const sectionStyle = {
     fontSize: "20px"
   },
   description: {
-    color: grayColor,
-    overflow: "hidden",
-    marginTop: "0px",
-    marginBottom: "40px",
-    fontSize: "16px",
-  },
-  iconWrapperVertical: {
-    float: "none",
-  },
-  iconVertical: {
-    width: "61px",
-    height: "61px",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "20px",
   },
 };
 
-export default infoStyle;
+export default sectionStyle;

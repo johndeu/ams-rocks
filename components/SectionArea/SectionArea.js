@@ -7,31 +7,54 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 
 import styles from "styles/jss/nextjs-material-kit/components/sectionStyle.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem.js";
 
 const useStyles = makeStyles(styles);
 
 export default function SectionArea(props) {
   const classes = useStyles();
-  const { title, description, iconColor, vertical } = props;
-  const iconWrapper = classNames({
-    [classes.iconWrapper]: true,
-    [classes[iconColor]]: true,
-    [classes.iconWrapperVertical]: vertical,
-  });
-  const iconClasses = classNames({
-    [classes.icon]: true,
-    [classes.iconVertical]: vertical,
-  });
+  const { title, description, actionText, actionLink, imageSrc, imgAlt, align } = props;
+
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgRounded,
+    classes.imgFluid,
+    classes.imgIndustry
+  );
+
   return (
-    <div className={classes.infoArea}>
-      <div className={iconWrapper}>
-        <props.icon className={iconClasses} />
-      </div>
-      <div className={classes.descriptionWrapper}>
-        <h4 className={classes.title}>{title}</h4>
-        <p className={classes.description}>{description}</p>
-      </div>
-    </div>
+    <div className={classes.section}>
+      <GridContainer>
+        {align == "left" &&
+          <GridItem xs={12} sm={4} md={4}>
+            <img
+              src={imageSrc}
+              alt={imgAlt}
+              className={imageClasses}
+            />
+          </GridItem>
+        }
+        <GridItem xs={12} sm={8} md={8}>
+          <div className={classes.textSection}>
+            <h3>{title}</h3>
+            <p className={classes.description}>
+              {description}
+            </p>
+            <a href={actionLink}>{actionText}</a>
+          </div>
+        </GridItem>
+        {align == "right" &&
+          <GridItem xs={12} sm={4} md={4}>
+            <img
+              src={imageSrc}
+              alt={imgAlt}
+              className={imageClasses}
+            />
+          </GridItem>
+        }
+      </GridContainer>
+    </div >
   );
 }
 

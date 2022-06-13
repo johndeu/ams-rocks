@@ -38,9 +38,8 @@ import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
-import LeftImageSection from "pages-sections/LandingPage-Sections/SectionLeftImage.js";
-import RightImageSection from "pages-sections/LandingPage-Sections/SectionRightImage.js";
 import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
+import SectionArea from "../../components/SectionArea/SectionArea";
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
 
 // Translations
@@ -139,15 +138,32 @@ export default function LandingPage(props) {
           </Card> */}
           <IndustrySection />
           <div className={classes.sectionBreak}></div>
-          <GetStartedSection/>
-          <LeftImageSection/>
-          <RightImageSection/>
-          <LeftImageSection/>
+          <GetStartedSection />
+          <SectionArea
+            align="left"
+            title="Stay fit together"
+            description="Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
+            core movements."
+            imgSrc="/img/Landing/Solution.png"
+            imgAlt="Solution"
+            actionText=""
+            actionLink=""
+          />
+          <SectionArea
+            align="right"
+            title="Stay fit together"
+            description="Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
+            core movements."
+            imgSrc="/img/Landing/Solution.png"
+            imgAlt="Solution"
+            actionText=""
+            actionLink=""
+          />
           <div className={classes.sectionBreak}></div>
           { /*<TeamSection /> */}
           {/* <SectionBlog/> */}
           {/* <WorkSection /> */}
-      
+
         </div>
       </div>
 
