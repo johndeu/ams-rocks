@@ -69,7 +69,7 @@ const customInputStyle = {
     height: "unset",
     "&,&::placeholder": {
       fontSize: "14px",
-      fontFamily: "SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif",
+      fontFamily: "Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif",
       fontWeight: "400",
       lineHeight: "1.42857",
       opacity: "1",

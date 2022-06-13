@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'MWF-MDL2';
+    font-display: swap;
+    src: url('../../../fonts/MWFMDL2.woff') format('woff'), url('../../../fonts/MWFMDL2.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SegoeUI';
+    font-display: swap;
+    src: local('Segoe UI'), url('../../../fonts/normal_latest.woff2') format('woff2'),
+        url('../../../fonts/normal_latest.woff') format('woff'),
+        url('../../../fonts/normal_latest.ttf') format('truetype'),
+        url('../../../fonts/normal_latest.svg#web') format('svg');
+    font-weight: 400;
+}
+@font-face {
+    font-display: swap;
+    font-family: 'SegoeUI';
+    src: local('Segoe UI Light'), url('../../../fonts/light_latest.woff2') format('woff2'),
+        url('../../../fonts/light_latest.woff') format('woff'),
+        url('../../../fonts/light_latest.ttf') format('truetype'),
+        url('../../../fonts/light_latest.svg#web') format('svg');
+    font-weight: 100;
+}
+@font-face {
+    font-display: swap;
+    font-family: 'SegoeUI';
+    src: local('Segoe UI Semilight'), url('../../../fonts/semilight_latest.woff2') format('woff2'),
+        local('Segoe UI'), url('../../../fonts/semilight_latest.woff') format('woff'),
+        url('../../../fonts/semilight_latest.ttf') format('truetype'),
+        url('../../../fonts/semilight_latest.svg#web') format('svg');
+    font-weight: 200;
+}
+@font-face {
+    font-display: swap;
+    font-family: 'SegoeUI';
+    src: local('Segoe UI Semibold'), url('../../../fonts/semibold_latest.woff2') format('woff2'),
+        url('../../../fonts/semibold_latest.woff') format('woff'),
+        url('../../../fonts/semibold_latest.ttf') format('truetype'),
+        url('../../../fonts/semibold_latest.svg#web') format('svg');
+    font-weight: 600;
+}
+@font-face {
+    font-display: swap;
+    font-family: 'SegoeUI';
+    src: local('Segoe UI Bold'), url('../../../fonts/bold_latest.woff2') format('woff2'), local('Segoe UI'),
+        url('../../../fonts/bold_latest.woff') format('woff'),
+        url('../../../fonts/bold_latest.ttf') format('truetype'),
+        url('../../../fonts/bold_latest.svg#web') format('svg');
+    font-weight: 700;
+}

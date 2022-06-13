@@ -85,7 +85,7 @@ const card = {
 };
 
 const defaultFont = {
-  fontFamily: 'Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif !important',
+  fontFamily: 'Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif !important',
   fontWeight: "400",
   lineHeight: "1.5em",
 };
