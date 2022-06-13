@@ -140,24 +140,40 @@ export default function LandingPage(props) {
           <div className={classes.sectionBreak}></div>
           <GetStartedSection />
           <SectionArea
-            align="left"
-            title="Stay fit together"
-            description="Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-            core movements."
+            align="right"
+            title="A full, end-to-end solution"
+            description="Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn."
             imgSrc="/img/Landing/Solution.png"
             imgAlt="Solution"
-            actionText=""
-            actionLink=""
+            actionText="Create a live event"
+            actionLink="#"
+          />
+          <SectionArea
+            align="left"
+            title="Make your live content accessible, with real-time transcription"
+            description="Automatic real-time transcription in 100+ languages without sacrificing latency."
+            imgSrc="/img/Landing/Solution.png"
+            imgAlt="Solution"
+            actionText="Try it now"
+            actionLink="#"
           />
           <SectionArea
             align="right"
-            title="Stay fit together"
-            description="Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-            core movements."
+            title="Uncompromising commitment to privacy and security"
+            description="Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing."
             imgSrc="/img/Landing/Solution.png"
             imgAlt="Solution"
-            actionText=""
-            actionLink=""
+            actionText="Find out more"
+            actionLink="#"
+          />
+          <SectionArea
+            align="left"
+            title="Low latency live streaming at global scale"
+            description="Less than 5 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to milions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime."
+            imgSrc="/img/Landing/Solution.png"
+            imgAlt="Solution"
+            actionText="Try it out"
+            actionLink="#"
           />
           <div className={classes.sectionBreak}></div>
           { /*<TeamSection /> */}

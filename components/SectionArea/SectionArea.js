@@ -14,14 +14,24 @@ const useStyles = makeStyles(styles);
 
 export default function SectionArea(props) {
   const classes = useStyles();
-  const { title, description, actionText, actionLink, imageSrc, imgAlt, align } = props;
+  const { 
+    title, 
+    description, 
+    actionText, 
+    actionLink, 
+    imgSrc, 
+    imgAlt, 
+    align,
+    imgRaised,
+    imgRounded 
+  } = props;
 
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRounded,
-    classes.imgFluid,
-    classes.imgIndustry
-  );
+  const imageClasses = classNames({
+    [classes.imgRaised] : imgRaised,
+    [classes.imgRounded] :imgRounded,
+    [classes.imgFluid] : true
+  }  );
+
 
   return (
     <div className={classes.section}>
@@ -29,7 +39,7 @@ export default function SectionArea(props) {
         {align == "left" &&
           <GridItem xs={12} sm={4} md={4}>
             <img
-              src={imageSrc}
+              src={imgSrc}
               alt={imgAlt}
               className={imageClasses}
             />
@@ -47,7 +57,7 @@ export default function SectionArea(props) {
         {align == "right" &&
           <GridItem xs={12} sm={4} md={4}>
             <img
-              src={imageSrc}
+              src={imgSrc}
               alt={imgAlt}
               className={imageClasses}
             />
