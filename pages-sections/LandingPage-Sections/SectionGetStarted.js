@@ -31,7 +31,7 @@ export default function SectionLeftImage() {
           <h3 className={classes.ready}>Ready to start?</h3>
         </GridItem>
         <GridItem xs={12} sm={6} md={6} className={classes.getStartedContainer}>
-          <Button color="danger" size = "md" className={classes.getStartedButton}>
+          <Button color="danger" size = "lg" className={classes.getStartedButton}>
               Get started free
           </Button>
         </GridItem>
