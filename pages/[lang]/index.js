@@ -152,8 +152,8 @@ export default function LandingPage(props) {
             align="left"
             title="Make your live content accessible, with real-time transcription"
             description="Automatic real-time transcription in 100+ languages without sacrificing latency."
-            imgSrc="/img/Landing/Solution.png"
-            imgAlt="Solution"
+            imgSrc="/img/Landing/Accessibility.png"
+            imgAlt="Accessibility"
             actionText="Try it now"
             actionLink="#"
           />
@@ -161,8 +161,8 @@ export default function LandingPage(props) {
             align="right"
             title="Uncompromising commitment to privacy and security"
             description="Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing."
-            imgSrc="/img/Landing/Solution.png"
-            imgAlt="Solution"
+            imgSrc="/img/Landing/Security.png"
+            imgAlt="Security"
             actionText="Find out more"
             actionLink="#"
           />
@@ -170,8 +170,8 @@ export default function LandingPage(props) {
             align="left"
             title="Low latency live streaming at global scale"
             description="Less than 5 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to milions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime."
-            imgSrc="/img/Landing/Solution.png"
-            imgAlt="Solution"
+            imgSrc="/img/Landing/Lowlatency.png"
+            imgAlt="Lowlatency"
             actionText="Try it out"
             actionLink="#"
           />
