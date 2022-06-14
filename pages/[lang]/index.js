@@ -110,7 +110,7 @@ export default function LandingPage(props) {
             <br />
             <Button
               color="danger"
-              size="md"
+              size="lg"
               href="https://azure.microsoft.com/en-us/free/"
               target=""
               rel="noopener noreferrer"
@@ -120,7 +120,7 @@ export default function LandingPage(props) {
             <Button
               color="transparent"
               border="1px solid"
-              size="md"
+              size="lg"
               href="https://docs.microsoft.com/en-us/azure/media-services/"
               target=""
               rel="noopener noreferrer"

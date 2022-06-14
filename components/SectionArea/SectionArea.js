@@ -18,7 +18,7 @@ export default function SectionArea(props) {
     title, 
     description, 
     actionText, 
-    actionLink, 
+    actionLink,
     imgSrc, 
     imgAlt, 
     align,
@@ -73,17 +73,8 @@ SectionArea.defaultProps = {
 };
 
 SectionArea.propTypes = {
-  icon: PropTypes.object.isRequired,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  iconColor: PropTypes.oneOf([
-    "primary",
-    "warning",
-    "danger",
-    "success",
-    "info",
-    "rose",
-    "gray",
-  ]),
-  vertical: PropTypes.bool,
+  actionText: PropTypes.string.isRequired,
+  actionLink: PropTypes.string.isRequired
 };
