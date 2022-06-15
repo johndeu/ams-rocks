@@ -21,7 +21,31 @@
         "ctaButton": "Get started",
         "readDocs": "Documentation",
         "loginButton": "Start free",
-        "getStartedFree": "Get started free"
+        "getStartedFree": "Get started free",
+        "section.1": {
+            "title" : "A full, end-to-end solution",
+            "description": "Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn.",
+            "actionText": "Create a live event",
+            "imageAlt" : "Solution"
+        },
+        "section.2": {
+            "title" : "Make your live content accessible, with real-time transcription",
+            "description": "Automatic real-time transcription in 100+ languages without sacrificing latency.",
+            "actionText": "Try it now",
+            "imageAlt" : "Accessibility"
+        },
+        "section.3": {
+            "title" : "Uncompromising commitment to privacy and security",
+            "description": "Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing.",
+            "actionText": "Find out more",
+            "imageAlt" : "Security"
+        },
+        "section.4": {
+            "title" : "Low latency live streaming at global scale",
+            "description": "4-7 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime.",
+            "actionText": "Try it out",
+            "imageAlt" : "Low latency"
+        }
     },
     "simpleToUse": {
         "headline1": "Stay fit together",

@@ -141,38 +141,38 @@ export default function LandingPage(props) {
           <GetStartedSection />
           <SectionArea
             align="right"
-            title="A full, end-to-end solution"
-            description="Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn."
+            title= {i18next.t('landing.section.1.title')}
+            description= {i18next.t('landing.section.1.description')}
             imgSrc="/img/Landing/Solution.png"
-            imgAlt="Solution"
-            actionText="Create a live event"
+            imgAlt={i18next.t('landing.section.1.imageAlt')}
+            actionText={i18next.t('landing.section.1.actionText')}
             actionLink="#"
           />
           <SectionArea
             align="left"
-            title="Make your live content accessible, with real-time transcription"
-            description="Automatic real-time transcription in 100+ languages without sacrificing latency."
+            title= {i18next.t('landing.section.2.title')}
+            description= {i18next.t('landing.section.2.description')}
             imgSrc="/img/Landing/Accessibility.png"
-            imgAlt="Accessibility"
-            actionText="Try it now"
+            imgAlt={i18next.t('landing.section.2.imageAlt')}
+            actionText={i18next.t('landing.section.2.actionText')}
             actionLink="#"
           />
           <SectionArea
             align="right"
-            title="Uncompromising commitment to privacy and security"
-            description="Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing."
+            title= {i18next.t('landing.section.3.title')}
+            description= {i18next.t('landing.section.3.description')}
             imgSrc="/img/Landing/Security.png"
-            imgAlt="Security"
-            actionText="Find out more"
+            imgAlt={i18next.t('landing.section.3.imageAlt')}
+            actionText={i18next.t('landing.section.3.actionText')}
             actionLink="#"
           />
           <SectionArea
             align="left"
-            title="Low latency live streaming at global scale"
-            description="Less than 5 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to milions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime."
+            title= {i18next.t('landing.section.4.title')}
+            description= {i18next.t('landing.section.4.description')}
             imgSrc="/img/Landing/Lowlatency.png"
-            imgAlt="Lowlatency"
-            actionText="Try it out"
+            imgAlt={i18next.t('landing.section.4.imageAlt')}
+            actionText={i18next.t('landing.section.4.actionText')}
             actionLink="#"
           />
           <div className={classes.sectionBreak}></div>
