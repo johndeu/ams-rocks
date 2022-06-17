@@ -29,7 +29,7 @@ export default function Features(props) {
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                         <NavPills
                             color="danger"
-                            className={classes.navBox}
+                           
                             horizontal={{
                                 tabsGrid: { xs: 12, sm: 2, md: 2 },
                                 contentGrid: { xs: 12, sm: 10, md: 10 },

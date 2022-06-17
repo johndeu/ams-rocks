@@ -7,6 +7,7 @@ import {
   warningColor,
   dangerColor,
 } from "styles/jss/nextjs-material-kit.js";
+import { gray } from "tailwindcss/colors";
 
 const navPillsStyle = (theme) => ({
   root: {
@@ -40,13 +41,14 @@ const navPillsStyle = (theme) => ({
     float: "left",
     position: "relative",
     display: "block",
-    borderRadius: "30px",
+    borderRadius: "0px",
     minWidth: "100px",
     textAlign: "center",
     transition: "all .3s",
     padding: "10px 15px",
-    color: "#555555",
+    fontWeight:"600px",
     height: "auto",
+    textTransform:"none",
     opacity: "1",
     maxWidth: "100%",
     margin: "0 5px",
@@ -76,59 +78,69 @@ const navPillsStyle = (theme) => ({
   primary: {
     "&,&:hover": {
       color: "#FFFFFF",
-      backgroundColor: primaryColor,
-      boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
+      borderLeft: "3px solid",
+      borderColor: primaryColor,
+      backgroundColor: "#E5E5E5",
+      /* backgroundColor: primaryColor, */
+      /* boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         primaryColor,
         0.4
-      )}`,
+      )}`, */
     },
   },
   info: {
     "&,&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: infoColor,
-      boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
+      color: infoColor,
+      borderColor: infoColor,
+      backgroundColor: "#E5E5E5",
+     /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         infoColor,
         0.4
-      )}`,
+      )}`, */
     },
   },
   success: {
     "&,&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: successColor,
-      boxShadow: `0 2px 2px 0 ${hexToRGBAlpha(
+      color: successColor,
+      borderLeft: "3px solid",
+      borderColor: successColor,
+      backgroundColor: "#E5E5E5",
+     /*  boxShadow: `0 2px 2px 0 ${hexToRGBAlpha(
         successColor,
         0.14
       )}, 0 3px 1px -2px ${hexToRGBAlpha(
         successColor,
         0.2
-      )}, 0 1px 5px 0 ${hexToRGBAlpha(successColor, 0.12)}`,
-    },
+      )}, 0 1px 5px 0 ${hexToRGBAlpha(successColor, 0.12)}`,*/
+    }, 
   },
   warning: {
     "&,&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: warningColor,
-      boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
+      color: warningColor,
+      borderLeft: "3px solid",
+      borderColor: warningColor,
+      backgroundColor: "#E5E5E5",
+     /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         warningColor,
         0.4
-      )}`,
+      )}`, */
     },
   },
   danger: {
     "&,&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: dangerColor,
-      boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
+      color: dangerColor,
+      borderLeft: "3px solid",
+      borderColor: dangerColor,
+      backgroundColor: "#E5E5E5",
+     /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         dangerColor,
         0.4
-      )}`,
+      )}`, */
     },
   },
   rose: {
     "&,&:hover": {
-      color: "#FFFFFF",
+      color: roseColor,
       backgroundColor: roseColor,
       boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         roseColor,

@@ -32,7 +32,7 @@ export default function freeSection() {
                     </p>
                     <DefaultButton
                         className={classes.callToAction}
-                        classes= {classes.callToAction}
+                
                         aria-label={i18next.t('landing.getStartedFree')}
                         href="https://azure.microsoft.com/free/"
                         target="_blank">

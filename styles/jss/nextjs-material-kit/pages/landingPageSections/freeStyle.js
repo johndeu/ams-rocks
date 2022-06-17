@@ -25,7 +25,7 @@ const freeStyle = {
     ...title
   },
   callToAction : {
-    marginBottom: "20px"
+    marginBottom: "30px"
   }
 };
 
