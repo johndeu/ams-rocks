@@ -47,11 +47,14 @@ const navPillsStyle = (theme) => ({
     transition: "all .3s",
     padding: "10px 15px",
     fontWeight:"600px",
+    fontSize: "16px",
+    lineHeight: "22px",
     height: "auto",
     textTransform:"none",
     opacity: "1",
     maxWidth: "100%",
     margin: "0 5px",
+    color: "#323130"
   },
   pillsWithIcons: {
     borderRadius: "4px",
