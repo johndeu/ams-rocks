@@ -1,16 +1,12 @@
 {
-    "menu":{
+    "menu": {
         "examples": "Examples",
-        "example-links": {
-            
-        },
-        "live":"Live",
-        "tour":"Tour",
+        "example-links": {},
+        "live": "Live",
+        "tour": "Tour",
         "pricing": "Pricing",
         "docs": "Docs",
-        "docs-links": {
-
-        },
+        "docs-links": {},
         "loginButton": "Start free"
     },
     "landing": {
@@ -23,117 +19,257 @@
         "loginButton": "Start free",
         "getStartedFree": "Get started free",
         "section.1": {
-            "title" : "A full, end-to-end solution",
+            "title": "A full, end-to-end solution",
             "description": "Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn.",
             "actionText": "Create a live event",
-            "imageAlt" : "Solution"
+            "imageAlt": "Solution"
         },
         "section.2": {
-            "title" : "Make your live content accessible, with real-time transcription",
+            "title": "Make your live content accessible, with real-time transcription",
             "description": "Automatic real-time transcription in 100+ languages without sacrificing latency.",
             "actionText": "Try it now",
-            "imageAlt" : "Accessibility"
+            "imageAlt": "Accessibility"
         },
         "section.3": {
-            "title" : "Uncompromising commitment to privacy and security",
+            "title": "Uncompromising commitment to privacy and security",
             "description": "Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing.",
             "actionText": "Find out more",
-            "imageAlt" : "Security"
+            "imageAlt": "Security"
         },
         "section.4": {
-            "title" : "Low latency live streaming at global scale",
+            "title": "Low latency live streaming at global scale",
             "description": "4-7 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime.",
             "actionText": "Try it out",
-            "imageAlt" : "Low latency"
+            "imageAlt": "Low latency"
         }
     },
-    "industry" : {
-        "0" : {
+    "industry": {
+        "0": {
             "title": "Enterprise",
-            "headline" : "Collaborate together",
-            "body" : "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
-            "callToAction" : "Discover more"
+            "headline": "Collaborate together",
+            "body": "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
+            "callToAction": "Discover more"
         },
-        "1" : {
+        "1": {
             "title": "Live shopping",
-            "headline" : "Sell your products",
-            "body" : "Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.",
-            "callToAction" : "Discover more"
+            "headline": "Sell your products",
+            "body": "Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.",
+            "callToAction": "Discover more"
         },
-        "2" : {
+        "2": {
             "title": "Fitness",
-            "headline" : "Stay fit together",
-            "body" : "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
-            "callToAction" : "Discover more"
+            "headline": "Stay fit together",
+            "body": "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
+            "callToAction": "Discover more"
         },
-        "3" : {
+        "3": {
             "title": "Government",
-            "headline" : "Engage your community",
-            "body" : "Ensure legislators with strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
-            "callToAction" : "Discover more"
+            "headline": "Engage your community",
+            "body": "Ensure legislators with strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
+            "callToAction": "Discover more"
         },
-        "4" : {
+        "4": {
             "title": "Education",
-            "headline" : "Create learning hubs",
-            "body" : "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
-            "callToAction" : "Discover more"
+            "headline": "Create learning hubs",
+            "body": "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
+            "callToAction": "Discover more"
         },
-        "5" : {
+        "5": {
             "title": "Energy",
-            "headline" : "Deliver a clean energy future",
-            "body" : "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
-            "callToAction" : "Discover more"
+            "headline": "Deliver a clean energy future",
+            "body": "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
+            "callToAction": "Discover more"
         },
-        "6" : {
+        "6": {
             "title": "Healthcare",
-            "headline" : "Empower patients",
-            "body" : "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
-            "callToAction" : "Discover more"
+            "headline": "Empower patients",
+            "body": "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
+            "callToAction": "Discover more"
         },
-        "7" : {
+        "7": {
             "title": "Manufacturing",
-            "headline" : "Improve production quality",
-            "body" : "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
-            "callToAction" : "Discover more"
+            "headline": "Improve production quality",
+            "body": "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
+            "callToAction": "Discover more"
+        }
+    },
+    "features": {
+        "title": "Live streaming and On-demand features",
+        "live": {
+            "title": "Adding video / Going live",
+            "0" : {
+                "title" : "Direct Uploads",
+                "description" : "Provide any authenticated upload URL"
+            },
+            "1" : {
+                "title" : "Pull-based inputs",
+                "description" : "Pull from any web-addressable location"
+            }, 
+            "2" : {
+                "title" : "Wide-range of input file formats",
+                "description" : "We accept many types of input video files"
+            },
+            "3" : {
+                "title" : "Test assets",
+                "description" : "Try any feature with our test assets for any non-production environment"
+            }, 
+            "4" : {
+                "title" : "Clipping",
+                "description" : "Clip any live or on-demand video to any length you want"
+            }, 
+            "5" : {
+                "title" : "Stream live",
+                "description" : "Go live easily. Get the RTMP input URL and go"
+            }, 
+            "6" : {
+                "title" : "RTMP/RTMPS Input",
+                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            }, 
+            "7" : {
+                "title" : "Live captions",
+                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            }
+        },
+        "processing": {
+            "title": "Processing",
+            "0" : {
+                "title" : "Direct Uploads",
+                "description" : "Provide any authenticated upload URL"
+            },
+            "1" : {
+                "title" : "Pull-based inputs",
+                "description" : "Pull from any web-addressable location"
+            }, 
+            "2" : {
+                "title" : "Wide-range of input file formats",
+                "description" : "We accept many types of input video files"
+            },
+            "3" : {
+                "title" : "Test assets",
+                "description" : "Try any feature with our test assets for any non-production environment"
+            }, 
+            "4" : {
+                "title" : "Clipping",
+                "description" : "Clip any live or on-demand video to any length you want"
+            }, 
+            "5" : {
+                "title" : "Stream live",
+                "description" : "Go live easily. Get the RTMP input URL and go"
+            }, 
+            "6" : {
+                "title" : "RTMP/RTMPS Input",
+                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            }, 
+            "7" : {
+                "title" : "Live captions",
+                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            }
+        },
+        "streaming": {
+            "title": "Streaming out",
+            "0" : {
+                "title" : "Direct Uploads",
+                "description" : "Provide any authenticated upload URL"
+            },
+            "1" : {
+                "title" : "Pull-based inputs",
+                "description" : "Pull from any web-addressable location"
+            }, 
+            "2" : {
+                "title" : "Wide-range of input file formats",
+                "description" : "We accept many types of input video files"
+            },
+            "3" : {
+                "title" : "Test assets",
+                "description" : "Try any feature with our test assets for any non-production environment"
+            }, 
+            "4" : {
+                "title" : "Clipping",
+                "description" : "Clip any live or on-demand video to any length you want"
+            }, 
+            "5" : {
+                "title" : "Stream live",
+                "description" : "Go live easily. Get the RTMP input URL and go"
+            }, 
+            "6" : {
+                "title" : "RTMP/RTMPS Input",
+                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            }, 
+            "7" : {
+                "title" : "Live captions",
+                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            }
+        },
+        "managing": {
+            "title": "Managing",
+            "0" : {
+                "title" : "Direct Uploads",
+                "description" : "Provide any authenticated upload URL"
+            },
+            "1" : {
+                "title" : "Pull-based inputs",
+                "description" : "Pull from any web-addressable location"
+            }, 
+            "2" : {
+                "title" : "Wide-range of input file formats",
+                "description" : "We accept many types of input video files"
+            },
+            "3" : {
+                "title" : "Test assets",
+                "description" : "Try any feature with our test assets for any non-production environment"
+            }, 
+            "4" : {
+                "title" : "Clipping",
+                "description" : "Clip any live or on-demand video to any length you want"
+            }, 
+            "5" : {
+                "title" : "Stream live",
+                "description" : "Go live easily. Get the RTMP input URL and go"
+            }, 
+            "6" : {
+                "title" : "RTMP/RTMPS Input",
+                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            }, 
+            "7" : {
+                "title" : "Live captions",
+                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            }
         }
     },
     "tryFree": {
         "title": "Try Azure Media Services for free",
-        "description" : "Start with a free account for up to 20 minutes of free file encoding. For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.",
-        "callToAction" : "Get started free"
+        "description": "Start with a free account for up to 20 minutes of free file encoding. For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.",
+        "callToAction": "Get started free"
     },
     "product": {
         "headline1": "Product section",
         "headline2": "features",
         "description": "So many cool features you have no idea what to do...",
         "callToAction": "Create your first live stream.",
-        "card.1" :
-        {
+        "card.1": {
             "title": "Live Streaming",
-            "description":"Details about the Azure Media Player and how to use it in the solution."
+            "description": "Details about the Azure Media Player and how to use it in the solution."
         },
-        "card.2" :
-        {
+        "card.2": {
             "title": "Azure Media Player",
-            "description":"Details about the Azure Media Player and how to use it in the solution."
+            "description": "Details about the Azure Media Player and how to use it in the solution."
         },
-        "card.3":
-        {
+        "card.3": {
             "title": "Content Protection",
-            "description":"Details about the Azure Media Player and how to use it in the solution."
+            "description": "Details about the Azure Media Player and how to use it in the solution."
         }
     },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
     },
-    "footer" : {
+    "footer": {
         "privacy": "Privacy and Cookies",
-        "termsOfUse" : "Terms of Use",
-        "trademarks" : "Trademarks",
-        "feedback" : "Feedback",
-        "contact" : "Contact Us"
+        "termsOfUse": "Terms of Use",
+        "trademarks": "Trademarks",
+        "feedback": "Feedback",
+        "contact": "Contact Us"
     },
-    "404" : {
-        "message" : "Emptiness, eternal sadness..."
+    "404": {
+        "message": "Emptiness, eternal sadness..."
     }
 }

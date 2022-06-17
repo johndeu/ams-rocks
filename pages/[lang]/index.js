@@ -25,6 +25,7 @@ import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
+import Features from "components/Features/Features.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
@@ -106,8 +107,8 @@ export default function LandingPage(props) {
             </div>
             <br />
 
-            
-{/*             <Button
+
+            {/*             <Button
               color="danger"
               size="lg"
               href="https://azure.microsoft.com/free/"
@@ -199,9 +200,11 @@ export default function LandingPage(props) {
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
         <div className={classes.containerBlue}>
           <FreeSection />
+
         </div>
       </div>
 
+      <Features />
       <Footer />
     </div>
   );
