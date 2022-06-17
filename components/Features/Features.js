@@ -12,28 +12,24 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import NavPills from "components/NavPills/NavPills.js";
 
-
 // Localization
 import i18next from 'i18next';
 
 const useStyles = makeStyles(styles);
 
+
 export default function Features(props) {
     const classes = useStyles();
-
-    const {
-        features,
-    } = props;
 
     return (
         <div className={classes.section}>
             <div className={classes.container}>
                 <h3>{i18next.t('features.title')}</h3>
-
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                         <NavPills
                             color="danger"
+                            className={classes.navBox}
                             horizontal={{
                                 tabsGrid: { xs: 12, sm: 2, md: 2 },
                                 contentGrid: { xs: 12, sm: 10, md: 10 },

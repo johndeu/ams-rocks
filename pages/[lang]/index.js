@@ -24,17 +24,12 @@ import Button from "components/CustomButtons/Button.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Card from "components/Card/Card.js";
 import Features from "components/Features/Features.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
 // Sections for this page
-import SimpleToUse from "pages-sections/LandingPage-Sections/SimpleToUse";
-import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
-import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
-import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
 import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
 import SectionArea from "../../components/SectionArea/SectionArea";
@@ -190,9 +185,6 @@ export default function LandingPage(props) {
             actionLink="#"
           />
           <div className={classes.sectionBreak}></div>
-          { /*<TeamSection /> */}
-          {/* <SectionBlog/> */}
-          {/* <WorkSection /> */}
 
         </div>
       </div>
@@ -200,7 +192,6 @@ export default function LandingPage(props) {
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
         <div className={classes.containerBlue}>
           <FreeSection />
-
         </div>
       </div>
 

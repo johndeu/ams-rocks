@@ -23,6 +23,9 @@ const freeStyle = {
   },
   cardTitle : {
     ...title
+  },
+  callToAction : {
+    marginBottom: "20px"
   }
 };
 
