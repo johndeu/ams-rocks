@@ -19,25 +19,18 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Card from "components/Card/Card.js";
+
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
 const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
 
-import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
+import styles from "styles/jss/nextjs-material-kit/pages/livePage.js";
 
 // Sections for this page
-import SimpleToUse from "pages-sections/LandingPage-Sections/SimpleToUse";
-import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
-import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
-import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
-// import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
-
 
 // Translations
 import { useRouter } from 'next/router';
@@ -62,10 +55,11 @@ export default function LandingPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
+        leftLinks={<HeaderLinksLeft />}
         rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
-          height: 400,
+          height: 100,
           color: "white",
         }}
         {...rest}
@@ -75,34 +69,34 @@ export default function LandingPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <motion.h1
-                  className={classes.title}
-                  initial={{
-                    scale: 0.75,
-                    opacity: 0,
-                    y: -50
-                  }}
-                  animate={{
-                    scale: 1,
-                    opacity: 1,
-                    y: 0
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 15
-                  }}>
-                  Live Streaming Demo
-                </motion.h1>
-                <br />
+                className={classes.title}
+                initial={{
+                  scale: 0.75,
+                  opacity: 0,
+                  y: -50
+                }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  y: 0
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}>
+                Live Streaming Demo
+              </motion.h1>
+              <br />
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-
-        </div>
-      </div>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={6}>
+              <ShakaPlayer />
+        </GridItem>
+      </GridContainer>
       <Footer />
     </div>
   );

@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 // Use the react-intersection-observer to trigger animations when stuff is in view
 import { useInView } from "react-intersection-observer";
 
-// @material-ui/icons
+// Fluent-UI components for React
+import { PrimaryButton, DefaultButton } from '@fluentui/react';
 
 // core components
 import Header from "components/Header/Header.js";
@@ -24,10 +25,6 @@ import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
-
-// Need to dynamic load the Shaka Player since it imports a standard Javascript library
-// See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
-const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
@@ -108,12 +105,14 @@ export default function LandingPage(props) {
               <span className={classes.subtitle}>{i18next.t('landing.valueProp')}</span>
             </div>
             <br />
-            <Button
+
+            
+{/*             <Button
               color="danger"
               size="lg"
-              href="https://azure.microsoft.com/en-us/free/"
-              target=""
-              rel="noopener noreferrer"
+              href="https://azure.microsoft.com/free/"
+              target="_blank"
+              rel="noreferrer"
             >
               {i18next.t('landing.ctaButton')}
             </Button>
@@ -121,12 +120,26 @@ export default function LandingPage(props) {
               color="transparent"
               border="1px solid"
               size="lg"
-              href="https://docs.microsoft.com/en-us/azure/media-services/"
-              target=""
-              rel="noopener noreferrer"
-            >
+              href="https://docs.microsoft.com/azure/media-services/"
+              target="_blank"
+              rel="noreferrer"
+            > 
               {i18next.t('landing.readDocs')}
             </Button>
+            */}
+            <PrimaryButton
+              target="_blank"
+              className={[classes.callToAction, classes.callToActionPrimary]}
+              href="https://azure.microsoft.com/free/">
+              {i18next.t('landing.ctaButton')}
+            </PrimaryButton>
+            <DefaultButton
+              target="_blank"
+              className={[classes.callToAction, classes.callToActionSecondary]}
+              href="https://docs.microsoft.com/azure/media-services/"
+              ariaDescription="This is the spoken description">
+              {i18next.t('landing.readDocs')}
+            </DefaultButton>
           </GridItem>
         </GridContainer>
 
@@ -141,8 +154,8 @@ export default function LandingPage(props) {
           <GetStartedSection />
           <SectionArea
             align="right"
-            title= {i18next.t('landing.section.1.title')}
-            description= {i18next.t('landing.section.1.description')}
+            title={i18next.t('landing.section.1.title')}
+            description={i18next.t('landing.section.1.description')}
             imgSrc="/img/Landing/Solution.png"
             imgAlt={i18next.t('landing.section.1.imageAlt')}
             actionText={i18next.t('landing.section.1.actionText')}
@@ -150,8 +163,8 @@ export default function LandingPage(props) {
           />
           <SectionArea
             align="left"
-            title= {i18next.t('landing.section.2.title')}
-            description= {i18next.t('landing.section.2.description')}
+            title={i18next.t('landing.section.2.title')}
+            description={i18next.t('landing.section.2.description')}
             imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
             actionText={i18next.t('landing.section.2.actionText')}
@@ -159,8 +172,8 @@ export default function LandingPage(props) {
           />
           <SectionArea
             align="right"
-            title= {i18next.t('landing.section.3.title')}
-            description= {i18next.t('landing.section.3.description')}
+            title={i18next.t('landing.section.3.title')}
+            description={i18next.t('landing.section.3.description')}
             imgSrc="/img/Landing/Security.png"
             imgAlt={i18next.t('landing.section.3.imageAlt')}
             actionText={i18next.t('landing.section.3.actionText')}
@@ -168,8 +181,8 @@ export default function LandingPage(props) {
           />
           <SectionArea
             align="left"
-            title= {i18next.t('landing.section.4.title')}
-            description= {i18next.t('landing.section.4.description')}
+            title={i18next.t('landing.section.4.title')}
+            description={i18next.t('landing.section.4.description')}
             imgSrc="/img/Landing/Lowlatency.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
             actionText={i18next.t('landing.section.4.actionText')}

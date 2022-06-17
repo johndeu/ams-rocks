@@ -2,6 +2,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
 
+
 class MyDocument extends Document {
   render() {
     return (
@@ -36,8 +37,8 @@ class MyDocument extends Document {
         </Head>
         <body>
           <div id="page-transition"></div>
-          <Main />
-          <NextScript />
+            <Main />
+            <NextScript />
         </body>
       </Html>
     );

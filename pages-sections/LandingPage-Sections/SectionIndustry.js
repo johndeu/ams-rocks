@@ -15,6 +15,9 @@ import CustomTabs from "components/CustomTabs/CustomTabs.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPageSections/sectionIndustryStyle.js";
 
+//Localization
+import i18next from 'i18next';
+
 const useStyles = makeStyles(styles);
 
 export default function SectionIndustry() {
@@ -34,7 +37,7 @@ export default function SectionIndustry() {
               headerColor="primary"
               tabs={[
                 {
-                  tabName: "Fitness",
+                  tabName: i18next.t('industry.0.title'),
                   tabContent: (
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
@@ -46,19 +49,18 @@ export default function SectionIndustry() {
                       </GridItem>
                       <GridItem xs={12} sm={8} md={8}>
                         <div className={classes.textSection}>
-                          <h3>Stay fit together</h3>
+                          <h3>{i18next.t('industry.0.headline')}</h3>
                           <p className={classes.textLeft}>
-                            Connect our athletes to one another. Build a leaderboard for everyone to keep track of their
-                            core movements.
+                            {i18next.t('industry.0.body')}
                           </p>
-                          <a href="#">Discover more</a>
+                          {/* <a href="#">{i18next.t('industry.0.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
                   ),
                 },
                 {
-                  tabName: "Enterprise",
+                  tabName: i18next.t('industry.1.title'),
                   tabContent: (
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
@@ -70,18 +72,18 @@ export default function SectionIndustry() {
                       </GridItem>
                       <GridItem xs={12} sm={8} md={8} >
                         <div className={classes.textSection}>
-                          <h3>Collaborate together</h3>
+                          <h3>{i18next.t('industry.1.headline')}</h3>
                           <p className={classes.textLeft}>
-                            Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.
+                            {i18next.t('industry.1.body')}
                           </p>
-                          <a href="#">Discover more</a>
+                         {/*  <a href="#">{i18next.t('industry.1.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
                   ),
                 },
                 {
-                  tabName: "Live shopping",
+                  tabName: i18next.t('industry.2.title'),
                   tabContent: (
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
@@ -93,18 +95,18 @@ export default function SectionIndustry() {
                       </GridItem>
                       <GridItem xs={12} sm={8} md={8} >
                         <div className={classes.textSection}>
-                          <h3>Sell your products </h3>
+                          <h3>{i18next.t('industry.2.headline')}</h3>
                           <p className={classes.textLeft}>
-                            Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.
+                            {i18next.t('industry.2.body')}
                           </p>
-                          <a href="#">Discover more</a>
+                          {/* <a href="#">{i18next.t('industry.2.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
                   ),
                 },
                 {
-                  tabName: "Government",
+                  tabName: i18next.t('industry.3.title'),
                   tabContent: (
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
@@ -115,12 +117,58 @@ export default function SectionIndustry() {
                         />
                       </GridItem>
                       <GridItem xs={12} sm={8} md={8} >
-                        <div className={classes.textSection}>
-                          <h3>Engage your community </h3>
+                      <div className={classes.textSection}>
+                          <h3>{i18next.t('industry.3.headline')}</h3>
                           <p className={classes.textLeft}>
-                            Ensure legislators with strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.
+                            {i18next.t('industry.3.body')}
                           </p>
-                          <a href="#">Discover more</a>
+                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                },
+                {
+                  tabName: i18next.t('industry.4.title'),
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/Landing/Education.png"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8} >
+                      <div className={classes.textSection}>
+                          <h3>{i18next.t('industry.4.headline')}</h3>
+                          <p className={classes.textLeft}>
+                            {i18next.t('industry.4.body')}
+                          </p>
+                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                },
+                {
+                  tabName: i18next.t('industry.6.title'),
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={4} md={4}>
+                        <img
+                          src="/img/Landing/Healthcare.png"
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={8} md={8} >
+                      <div className={classes.textSection}>
+                          <h3>{i18next.t('industry.6.headline')}</h3>
+                          <p className={classes.textLeft}>
+                            {i18next.t('industry.6.body')}
+                          </p>
+                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>

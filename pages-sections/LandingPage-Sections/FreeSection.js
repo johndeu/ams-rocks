@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Icon from "@material-ui/core/Icon";
 
+// Fluent-UI components for React
+import { PrimaryButton, DefaultButton } from '@fluentui/react';
+
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -16,25 +19,23 @@ import styles from "styles/jss/nextjs-material-kit/pages/landingPageSections/fre
 
 const useStyles = makeStyles(styles);
 
-export default function SectionCompletedExamples() {
+export default function freeSection() {
     const classes = useStyles();
     return (
         <div className={classes.section}>
         <div className={classes.container}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={8}>
-                    <h4 className= {classes.title}>Try Azure Media Services for free</h4>
+                    <h4 className= {classes.title}>{i18next.t('tryFree.title')}</h4>
                     <p className= {classes.description}>
-                        Start with a free account for up to 20 minutes of free file encoding.
-                        For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.
+                        {i18next.t('tryFree.description')}
                     </p>
-                    <Button
-                        color="info"
+                    <DefaultButton
                         aria-label={i18next.t('landing.getStartedFree')}
                         href="https://azure.microsoft.com/free/"
-                        target="">
-                        {i18next.t('landing.getStartedFree')}
-                    </Button>
+                        target="_blank">
+                        {i18next.t('tryFree.callToAction')}
+                    </DefaultButton>
                 </GridItem>
             </GridContainer>
         </div>
