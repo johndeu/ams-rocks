@@ -127,7 +127,7 @@ export default function SectionIndustry() {
                       </GridItem>
                     </GridContainer>
                   ),
-                },
+                }/* ,
                 {
                   tabName: i18next.t('industry.4.title'),
                   tabContent: (
@@ -145,7 +145,6 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.4.body')}
                           </p>
-                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
@@ -168,12 +167,11 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.6.body')}
                           </p>
-                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
                   ),
-                }
+                } */
               ]}
             />
           </GridItem>

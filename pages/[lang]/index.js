@@ -103,7 +103,7 @@ export default function LandingPage(props) {
             <br />
 
 
-            {/*             <Button
+             <Button
               color="danger"
               size="lg"
               href="https://azure.microsoft.com/free/"
@@ -122,8 +122,8 @@ export default function LandingPage(props) {
             > 
               {i18next.t('landing.readDocs')}
             </Button>
-            */}
-            <PrimaryButton
+          
+             {/* <PrimaryButton
               target="_blank"
               className={[classes.callToAction, classes.callToActionPrimary]}
               href="https://azure.microsoft.com/free/">
@@ -136,6 +136,7 @@ export default function LandingPage(props) {
               ariaDescription="This is the spoken description">
               {i18next.t('landing.readDocs')}
             </DefaultButton>
+            */}
           </GridItem>
         </GridContainer>
 
