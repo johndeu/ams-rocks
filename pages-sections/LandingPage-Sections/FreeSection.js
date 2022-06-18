@@ -30,14 +30,13 @@ export default function freeSection() {
                     <p className= {classes.description}>
                         {i18next.t('tryFree.description')}
                     </p>
-                    <DefaultButton
+                    <Button
                         className={classes.callToAction}
-                
                         aria-label={i18next.t('landing.getStartedFree')}
                         href="https://azure.microsoft.com/free/"
                         target="_blank">
                         {i18next.t('tryFree.callToAction')}
-                    </DefaultButton>
+                    </Button>
                 </GridItem>
             </GridContainer>
         </div>
