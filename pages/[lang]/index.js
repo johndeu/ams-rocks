@@ -119,11 +119,11 @@ export default function LandingPage(props) {
               href="https://docs.microsoft.com/azure/media-services/"
               target="_blank"
               rel="noreferrer"
-            > 
+            >
               {i18next.t('landing.readDocs')}
             </Button>
-            
-           {/*<PrimaryButton
+
+            {/*<PrimaryButton
               target="_blank"
               className={[classes.callToAction, classes.callToActionPrimary]}
               href="https://azure.microsoft.com/free/">
@@ -190,14 +190,15 @@ export default function LandingPage(props) {
         </div>
       </div>
 
+      <Features />
+
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
         <div className={classes.containerBlue}>
           <FreeSection />
         </div>
       </div>
-
-      <Features />
-      <Footer />
+      
+      <Footer whiteFont logoColor="gray"/>
     </div>
   );
 }

@@ -23,16 +23,19 @@ const useStyles = makeStyles(styles);
 
 export default function Footer(props) {
   const classes = useStyles();
-  const { whiteFont } = props;
+  const { whiteFont, logoColor } = props;
   const footerClasses = classNames({
     [classes.footer]: true,
     [classes.footerWhiteFont]: whiteFont,
   });
-  const aClasses = classNames({
-    [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont,
-  });
 
+  var logoRef = "black";
+
+  if (logoColor == "gray"){
+    logoRef ="microsoft-logo-gray"
+  }else if (logoColo == "black"){
+    logoReg = "microsoft-logo-black"
+  }
   const {ref, inView, entry} = useInView({threshold:0});
 
   React.useEffect(() => {
@@ -47,7 +50,7 @@ export default function Footer(props) {
             <ListItem className={classes.inlineBlock}>
               <svg className = {classes.logoMicrosoft}>
                 <title>Microsoft</title>
-                <use href="/img/microsoft-color.svg?v=1.4.0.20220523.1#microsoft-logo-black">
+                <use href={"/img/microsoft-color.svg?v=1.4.0.20220523.1#" + logoRef} >
                 </use>
               </svg>
             </ListItem>
@@ -62,30 +65,30 @@ export default function Footer(props) {
         <div className={classes.right}>
           <List className={classes.list}>
           <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">{i18next.t("footer.privacy")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor} rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">{i18next.t("footer.privacy")}</a> &nbsp;&nbsp;
             </ListItem>
             { i18next.language == 'de' &&  
               <ListItem className={classes.inlineBlock}>
-                <a rel="noreferrer" href="https://aka.ms/impressum_de" target="_blank">Impressum</a> &nbsp;&nbsp;
+                <a className={classes.footerAnchor}  rel="noreferrer" href="https://aka.ms/impressum_de" target="_blank">Impressum</a> &nbsp;&nbsp;
               </ListItem>
             }
             { i18next.language == 'fr' &&  
               <ListItem className={classes.inlineBlock}>
-                <a rel="noreferrer" href="https://go.microsoft.com/fwlink/?linkid=2121428" target="_blank">Accessibilité : partiellement
+                <a className={classes.footerAnchor}  rel="noreferrer" href="https://go.microsoft.com/fwlink/?linkid=2121428" target="_blank">Accessibilité : partiellement
                     conforme</a> &nbsp;&nbsp;
               </ListItem>
             }
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://docs.microsoft.com/legal/termsofuse" target="_blank">{i18next.t("footer.termsOfUse")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor}  rel="noreferrer" href="https://docs.microsoft.com/legal/termsofuse" target="_blank">{i18next.t("footer.termsOfUse")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">{i18next.t("footer.trademarks")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor}  rel="noreferrer" href="https://www.microsoft.com/trademarks" target="_blank">{i18next.t("footer.trademarks")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">{i18next.t("footer.feedback")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor}  rel="noreferrer" href="https://feedback.azure.com/forums/169396-azure-media-services" target="_blank">{i18next.t("footer.feedback")}</a> &nbsp;&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">{i18next.t("footer.contact")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor}  rel="noreferrer" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/" target="_blank">{i18next.t("footer.contact")}</a> &nbsp;&nbsp;
             </ListItem>
           </List>
         </div>
