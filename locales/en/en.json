@@ -1,12 +1,28 @@
 {
     "menu": {
-        "examples": "Examples",
-        "example-links": {},
-        "live": "Live",
-        "tour": "Tour",
-        "pricing": "Pricing",
-        "docs": "Docs",
-        "docs-links": {},
+        "examples": {
+            "title" : "Examples",
+            "samples": "Samples", 
+            "allSamples" : "All examples"
+        },
+        "pricing": {
+            "title": "Pricing"
+        },
+        "docs": {
+            "title": "Docs",
+            "documentation" : "Documentation",
+            "api" : "API Reference",
+            "quotas" : "Quotas and limits",
+            "quickStarts" : "Quick Starts",
+            "samples" : "Samples",
+            "players" : "Players"
+        },
+        "tour": {
+            "title": "Tour"
+        },
+        "live": {
+            "title": "Live"
+        },
         "loginButton": "Start free"
     },
     "landing": {

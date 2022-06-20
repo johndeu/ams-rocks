@@ -37,21 +37,21 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText={i18next.t('menu.examples')}
+          buttonText={i18next.t('menu.examples.title')}
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
           }}
           dropdownList={[
-            <Link href={"/examples"}>
-              <a className={classes.dropdownLink}>All examples</a>
-            </Link>,
+  /*           <Link href={"/examples"}>
+              <a className={classes.dropdownLink}>{i18next.t('menu.examples.allSamples')}</a>
+            </Link>, */
             <a
-              href="https://docs.microsoft.com/azure/media-services/latest/samples-overview?tabs=net"
-              target=""
+              href="https://docs.microsoft.com/azure/media-services/latest/samples-overview"
+              target="_blank"
               className={classes.dropdownLink}
             >
-              Samples
+              {i18next.t('menu.examples.samples')}
             </a>,
           ]}
         />
@@ -60,31 +60,31 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           navDropdown
-          buttonText={i18next.t('menu.docs')}
+          buttonText={i18next.t('menu.docs.title')}
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
           }}
           dropdownList={[
             <Link href="https://docs.microsoft.com/azure/media-services/">
-              <a className={classes.dropdownLink}>Documentation</a>
+              <a className={classes.dropdownLink} target="_blank" >{i18next.t('menu.docs.documentation')}</a>
             </Link>,
             <Link href="https://docs.microsoft.com/rest/api/media/">
-              <a className={classes.dropdownLink}>API Reference</a>
+              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.api')}</a>
             </Link>,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/limits-quotas-constraints-reference">
-              <a className={classes.dropdownLink}>Quotas and limits</a>
+              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.quotas')}</a>
             </Link>,
             <Divider />,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/live-event-obs-quickstart">
-              <a className={classes.dropdownLink}>Quick Starts</a>
+              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.quickStarts')}</a>
             </Link>,
-            <Link href="https://docs.microsoft.com/azure/media-services/latest/samples-overview?tabs=net">
-              <a className={classes.dropdownLink}>Samples</a>
+            <Link href="https://docs.microsoft.com/azure/media-services/latest/samples-overview">
+              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.samples')}</a>
             </Link>,
             <Divider />,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/player-media-players-concept">
-              <a className={classes.dropdownLink}>Players</a>
+              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.players')}</a>
             </Link>,
           ]}
         />
@@ -97,7 +97,7 @@ export default function HeaderLinks(props) {
           target=""
           className={classes.navLink}
         >
-          {i18next.t('menu.tour')}
+          {i18next.t('menu.tour.title')}
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -107,7 +107,7 @@ export default function HeaderLinks(props) {
           target=""
           className={classes.navLink}
         >
-          {i18next.t('menu.live')}
+          {i18next.t('menu.live.title')}
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -117,7 +117,7 @@ export default function HeaderLinks(props) {
           target=""
           className={classes.navLink}
         >
-          {i18next.t('menu.pricing')}
+          {i18next.t('menu.pricing.title')}
         </Button>
       </ListItem>
 
