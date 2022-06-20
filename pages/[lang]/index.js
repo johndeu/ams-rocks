@@ -33,6 +33,8 @@ import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
 import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
 import SectionArea from "../../components/SectionArea/SectionArea";
+import SectionCustomers from "pages-sections/LandingPage-Sections/SectionCustomers.js";
+
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
 
 // Translations
@@ -191,14 +193,14 @@ export default function LandingPage(props) {
       </div>
 
       <Features />
-
+      <SectionCustomers />
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
         <div className={classes.containerBlue}>
           <FreeSection />
         </div>
       </div>
-      
-      <Footer whiteFont logoColor="gray"/>
+
+      <Footer whiteFont logoColor="gray" />
     </div>
   );
 }

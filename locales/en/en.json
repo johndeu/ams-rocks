@@ -279,6 +279,19 @@
             "description": "Details about the Azure Media Player and how to use it in the solution."
         }
     },
+    "customers": {
+        "title" : "Customers",
+        "subHeader": "Trusted by the world's most ambitious streaming teams.",
+        "callToAction" : "Meet our customers",
+        "customer.1" : {
+            "name": "Lifetime Fitness",
+            "imgSrc" : "Lifetime.svg"
+        },
+        "customer.2" : {
+            "name": "LinkedIn",
+            "imgSrc" : "LinkedIn.svg"
+        }
+    },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
     },
