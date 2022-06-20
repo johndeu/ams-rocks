@@ -17,7 +17,7 @@ const footerStyle = {
     width: "81px",
     color:"#E5E5E5",
     marginTop:"2px",
-    top: "5px",
+    top: "4px",
     position: "relative"
   },
   helloFromSeattle: {

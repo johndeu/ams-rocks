@@ -1,7 +1,7 @@
 import { BorderColor } from "@material-ui/icons";
 import { container, title, mainBlue,darkBlue } from "styles/jss/nextjs-material-kit.js";
 
-const landingPageStyle = {
+const landingPageStyle = (theme) => ({
   container: {
     zIndex: "4",
     width:"100vw",
@@ -34,13 +34,19 @@ const landingPageStyle = {
   title: {
     ...title,
     width:"100vw",
-    marginTop: "40px",
     font: "Segoe UI !important",
     fontStyle: "normal !important",
     fontSize:"50px",
     fontWeight: "600",
     lineHeight:"54px",
-    paddingTop: "50px",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "50px",
+      marginTop: "40px",
+    },
+    [theme.breakpoints.down("xl")]: {
+      paddingTop: "200px",
+      marginTop: "200px",
+    },
     color: "#FFFFFF",
     //background: "linear-gradient(89.28deg, #FBCED8 31.84%, #EBD7E4 38.83%, #B7F0FE 51.56%, #3ADBE5 66.26%)",
     textDecoration: "none !important",
@@ -115,6 +121,6 @@ const landingPageStyle = {
   },
   callToActionSecondary: {
   }
-};
+});
 
 export default landingPageStyle;
