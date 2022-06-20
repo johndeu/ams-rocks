@@ -33,7 +33,7 @@ export default function Footer(props) {
 
   if (logoColor == "gray"){
     logoRef ="microsoft-logo-gray"
-  }else if (logoColo == "black"){
+  }else if (logoColor == "black"){
     logoReg = "microsoft-logo-black"
   }
   const {ref, inView, entry} = useInView({threshold:0});
