@@ -257,6 +257,10 @@
         "description": "Start with a free account for up to 20 minutes of free file encoding. For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.",
         "callToAction": "Get started free"
     },
+    "readyToStart": {
+        "title": "Ready to start?",
+        "callToAction" : "Get started free"
+    },
     "product": {
         "headline1": "Product section",
         "headline2": "features",

@@ -72,7 +72,7 @@ export default function SectionDownload() {
             <Button
               color="rose"
               size="lg"
-              href="https://www.creative-tim.com/product/material-kit-pro-react?ref=njsmk-download-section"
+                ="https://www.creative-tim.com/product/material-kit-pro-react?ref=njsmk-download-section"
               target="_blank"
             >
               Material Kit PRO React
