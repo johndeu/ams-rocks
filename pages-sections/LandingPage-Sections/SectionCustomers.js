@@ -116,7 +116,7 @@ export default function SectionCarousel() {
           </GridItem>
           <GridItem xs={12} sm={12} md={12} className={classes.trusted}>
             <div>
-              {i18next.t('customers.subHeader')}<a target= "_blank" href="#" className={classes.action}>{i18next.t('customers.callToAction')}</a>
+              {i18next.t('customers.subHeader')} <a target= "_blank" href="#" className={classes.action}> {i18next.t('customers.callToAction')}</a>
             </div>
           </GridItem>
         </GridContainer>

@@ -2,7 +2,7 @@ import { container } from "styles/jss/nextjs-material-kit.js";
 
 const carouselStyle = {
   section: {
-    padding: "40px 0",
+    paddingTop: "40px",
     backgroundColor: "#fff"
   },
   container,
