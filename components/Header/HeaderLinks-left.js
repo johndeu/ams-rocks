@@ -90,7 +90,7 @@ export default function HeaderLinks(props) {
         />
       </ListItem>
             
-      <ListItem className={classes.listItem}>
+{/*       <ListItem className={classes.listItem}>
         <Button
           href={"/tour"}
           color="transparent"
@@ -99,7 +99,7 @@ export default function HeaderLinks(props) {
         >
           {i18next.t('menu.tour.title')}
         </Button>
-      </ListItem>
+      </ListItem> */}
       <ListItem className={classes.listItem}>
         <Button
           href={"/live"}
@@ -114,7 +114,7 @@ export default function HeaderLinks(props) {
         <Button
           href="https://azure.microsoft.com/pricing/details/media-services/"
           color="transparent"
-          target=""
+          target="_blank"
           className={classes.navLink}
         >
           {i18next.t('menu.pricing.title')}
