@@ -64,7 +64,7 @@ export default function LandingPage(props) {
 
   const { ...rest } = props;
   const ref = React.useRef();
-  const [src, setSrc] = React.useState(STREAMS[0].src);
+  const [src, setSrc] = React.useState(STREAMS[1].src);
 
 
   const imageClasses = classNames(
@@ -115,11 +115,13 @@ export default function LandingPage(props) {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={8} className={playerClasses} >
                   <ShakaPlayer
+                    id="myplayer"
                     src={src}
                     posterUrl=""
                     config=""
                     rounded
-                    raised />
+                    raised
+                    />
 
                 </GridItem>
               </GridContainer>

@@ -26,7 +26,6 @@ function ShakaPlayer({
     raised, 
     config, 
     posterUrl, 
-    chromeless, 
     ...rest },
      ref) {
 
@@ -43,27 +42,23 @@ function ShakaPlayer({
         const player = new shaka.Player(videoRef.current);
         setPlayer(player);
 
-        let ui;
-        if (!chromeless) {
-            const ui = new shaka.ui.Overlay(
-                player,
-                uiContainerRef.current,
-                videoRef.current
-            )
-            setUi(ui);
+        const ui = new shaka.ui.Overlay(
+            player,
+            uiContainerRef.current,
+            videoRef.current
+        )
+        setUi(ui);
 
-            const uiConfig = {
-                'controlPanelElements': [/*'play_pause', 'time_and_duration',*/ 'spacer', 'volume', 'mute', /*'fullscreen'*/],
-                'addSeekBar': true,
-                'seekBarColors': {
-                    base: 'rgba(255, 255, 255, 0.3)',
-                    buffered: 'rgba(255, 255, 255, 0.54)',
-                    played: 'rgb(255, 255, 255)',
-                }
+        const uiConfig = {
+            'controlPanelElements': [/*'play_pause', 'time_and_duration',*/ 'spacer', 'volume', 'mute', /*'fullscreen'*/],
+            'addSeekBar': true,
+            'seekBarColors': {
+                base: 'rgba(255, 255, 255, 0.3)',
+                buffered: 'rgba(255, 255, 255, 0.54)',
+                played: 'rgb(255, 255, 255)',
             }
-            ui.configure(uiConfig);
-            //const controls = ui.getControls();
         }
+        ui.configure(uiConfig);
 
         const onError = (error) => {
             // Log the error.
