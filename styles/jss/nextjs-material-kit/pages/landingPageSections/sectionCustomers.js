@@ -10,9 +10,6 @@ const carouselStyle = {
     marginLeft: "auto !important",
     marginRight: "auto !important",
   },
-  customers: {
-    height:"50px",
-  },
   trusted: {
     align: "center",
     textAlign: "center",

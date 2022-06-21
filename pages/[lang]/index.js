@@ -146,7 +146,7 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
     
-          <ShakaPlayer manifestUrl={src} />
+         {/*  <ShakaPlayer src={src} /> */}
       
           <IndustrySection />
           <div className={classes.sectionBreak}></div>

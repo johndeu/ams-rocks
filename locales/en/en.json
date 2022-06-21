@@ -1,21 +1,21 @@
 {
     "menu": {
         "examples": {
-            "title" : "Examples",
-            "samples": "Samples", 
-            "allSamples" : "All examples"
+            "title": "Examples",
+            "samples": "Samples",
+            "allSamples": "All examples"
         },
         "pricing": {
             "title": "Pricing"
         },
         "docs": {
             "title": "Docs",
-            "documentation" : "Documentation",
-            "api" : "API Reference",
-            "quotas" : "Quotas and limits",
-            "quickStarts" : "Quick Starts",
-            "samples" : "Samples",
-            "players" : "Players"
+            "documentation": "Documentation",
+            "api": "API Reference",
+            "quotas": "Quotas and limits",
+            "quickStarts": "Quick Starts",
+            "samples": "Samples",
+            "players": "Players"
         },
         "tour": {
             "title": "Tour"
@@ -113,142 +113,142 @@
         "title": "Live streaming and On-demand features",
         "live": {
             "title": "Adding video / Going live",
-            "0" : {
-                "title" : "Direct Uploads",
-                "description" : "Provide any authenticated upload URL"
+            "0": {
+                "title": "Direct Uploads",
+                "description": "Provide any authenticated upload URL"
             },
-            "1" : {
-                "title" : "Pull-based inputs",
-                "description" : "Pull from any web-addressable location"
-            }, 
-            "2" : {
-                "title" : "Wide-range of input file formats",
-                "description" : "We accept many types of input video files"
+            "1": {
+                "title": "Pull-based inputs",
+                "description": "Pull from any web-addressable location"
             },
-            "3" : {
-                "title" : "Test assets",
-                "description" : "Try any feature with our test assets for any non-production environment"
-            }, 
-            "4" : {
-                "title" : "Clipping",
-                "description" : "Clip any live or on-demand video to any length you want"
-            }, 
-            "5" : {
-                "title" : "Stream live",
-                "description" : "Go live easily. Get the RTMP input URL and go"
-            }, 
-            "6" : {
-                "title" : "RTMP/RTMPS Input",
-                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
-            }, 
-            "7" : {
-                "title" : "Live captions",
-                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            "2": {
+                "title": "Wide-range of input file formats",
+                "description": "We accept many types of input video files"
+            },
+            "3": {
+                "title": "Test assets",
+                "description": "Try any feature with our test assets for any non-production environment"
+            },
+            "4": {
+                "title": "Clipping",
+                "description": "Clip any live or on-demand video to any length you want"
+            },
+            "5": {
+                "title": "Stream live",
+                "description": "Go live easily. Get the RTMP input URL and go"
+            },
+            "6": {
+                "title": "RTMP/RTMPS Input",
+                "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            },
+            "7": {
+                "title": "Live captions",
+                "description": "Real-time transcription in 50+ languages without sacrificing latency"
             }
         },
         "processing": {
             "title": "Processing",
-            "0" : {
-                "title" : "Direct Uploads",
-                "description" : "Provide any authenticated upload URL"
+            "0": {
+                "title": "Direct Uploads",
+                "description": "Provide any authenticated upload URL"
             },
-            "1" : {
-                "title" : "Pull-based inputs",
-                "description" : "Pull from any web-addressable location"
-            }, 
-            "2" : {
-                "title" : "Wide-range of input file formats",
-                "description" : "We accept many types of input video files"
+            "1": {
+                "title": "Pull-based inputs",
+                "description": "Pull from any web-addressable location"
             },
-            "3" : {
-                "title" : "Test assets",
-                "description" : "Try any feature with our test assets for any non-production environment"
-            }, 
-            "4" : {
-                "title" : "Clipping",
-                "description" : "Clip any live or on-demand video to any length you want"
-            }, 
-            "5" : {
-                "title" : "Stream live",
-                "description" : "Go live easily. Get the RTMP input URL and go"
-            }, 
-            "6" : {
-                "title" : "RTMP/RTMPS Input",
-                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
-            }, 
-            "7" : {
-                "title" : "Live captions",
-                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            "2": {
+                "title": "Wide-range of input file formats",
+                "description": "We accept many types of input video files"
+            },
+            "3": {
+                "title": "Test assets",
+                "description": "Try any feature with our test assets for any non-production environment"
+            },
+            "4": {
+                "title": "Clipping",
+                "description": "Clip any live or on-demand video to any length you want"
+            },
+            "5": {
+                "title": "Stream live",
+                "description": "Go live easily. Get the RTMP input URL and go"
+            },
+            "6": {
+                "title": "RTMP/RTMPS Input",
+                "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            },
+            "7": {
+                "title": "Live captions",
+                "description": "Real-time transcription in 50+ languages without sacrificing latency"
             }
         },
         "streaming": {
             "title": "Streaming out",
-            "0" : {
-                "title" : "Direct Uploads",
-                "description" : "Provide any authenticated upload URL"
+            "0": {
+                "title": "Direct Uploads",
+                "description": "Provide any authenticated upload URL"
             },
-            "1" : {
-                "title" : "Pull-based inputs",
-                "description" : "Pull from any web-addressable location"
-            }, 
-            "2" : {
-                "title" : "Wide-range of input file formats",
-                "description" : "We accept many types of input video files"
+            "1": {
+                "title": "Pull-based inputs",
+                "description": "Pull from any web-addressable location"
             },
-            "3" : {
-                "title" : "Test assets",
-                "description" : "Try any feature with our test assets for any non-production environment"
-            }, 
-            "4" : {
-                "title" : "Clipping",
-                "description" : "Clip any live or on-demand video to any length you want"
-            }, 
-            "5" : {
-                "title" : "Stream live",
-                "description" : "Go live easily. Get the RTMP input URL and go"
-            }, 
-            "6" : {
-                "title" : "RTMP/RTMPS Input",
-                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
-            }, 
-            "7" : {
-                "title" : "Live captions",
-                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            "2": {
+                "title": "Wide-range of input file formats",
+                "description": "We accept many types of input video files"
+            },
+            "3": {
+                "title": "Test assets",
+                "description": "Try any feature with our test assets for any non-production environment"
+            },
+            "4": {
+                "title": "Clipping",
+                "description": "Clip any live or on-demand video to any length you want"
+            },
+            "5": {
+                "title": "Stream live",
+                "description": "Go live easily. Get the RTMP input URL and go"
+            },
+            "6": {
+                "title": "RTMP/RTMPS Input",
+                "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            },
+            "7": {
+                "title": "Live captions",
+                "description": "Real-time transcription in 50+ languages without sacrificing latency"
             }
         },
         "managing": {
             "title": "Managing",
-            "0" : {
-                "title" : "Direct Uploads",
-                "description" : "Provide any authenticated upload URL"
+            "0": {
+                "title": "Direct Uploads",
+                "description": "Provide any authenticated upload URL"
             },
-            "1" : {
-                "title" : "Pull-based inputs",
-                "description" : "Pull from any web-addressable location"
-            }, 
-            "2" : {
-                "title" : "Wide-range of input file formats",
-                "description" : "We accept many types of input video files"
+            "1": {
+                "title": "Pull-based inputs",
+                "description": "Pull from any web-addressable location"
             },
-            "3" : {
-                "title" : "Test assets",
-                "description" : "Try any feature with our test assets for any non-production environment"
-            }, 
-            "4" : {
-                "title" : "Clipping",
-                "description" : "Clip any live or on-demand video to any length you want"
-            }, 
-            "5" : {
-                "title" : "Stream live",
-                "description" : "Go live easily. Get the RTMP input URL and go"
-            }, 
-            "6" : {
-                "title" : "RTMP/RTMPS Input",
-                "description" : "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
-            }, 
-            "7" : {
-                "title" : "Live captions",
-                "description" : "Real-time transcription in 50+ languages without sacrificing latency"
+            "2": {
+                "title": "Wide-range of input file formats",
+                "description": "We accept many types of input video files"
+            },
+            "3": {
+                "title": "Test assets",
+                "description": "Try any feature with our test assets for any non-production environment"
+            },
+            "4": {
+                "title": "Clipping",
+                "description": "Clip any live or on-demand video to any length you want"
+            },
+            "5": {
+                "title": "Stream live",
+                "description": "Go live easily. Get the RTMP input URL and go"
+            },
+            "6": {
+                "title": "RTMP/RTMPS Input",
+                "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+            },
+            "7": {
+                "title": "Live captions",
+                "description": "Real-time transcription in 50+ languages without sacrificing latency"
             }
         }
     },
@@ -259,7 +259,7 @@
     },
     "readyToStart": {
         "title": "Ready to start?",
-        "callToAction" : "Get started free"
+        "callToAction": "Get started free"
     },
     "product": {
         "headline1": "Product section",
@@ -280,28 +280,70 @@
         }
     },
     "customers": {
-        "title" : "Customers",
+        "title": "Customers",
         "subHeader": "Trusted by the world's most ambitious streaming teams.",
-        "callToAction" : "Meet our customers",
-        "customer.1" : {
-            "name": "Lifetime Fitness",
-            "imgSrc" : "Lifetime.svg"
-        },
-        "customer.2" : {
-            "name": "LinkedIn",
-            "imgSrc" : "LinkedIn.svg"
-        },
-        "customer.3" : {
-            "name": "Johnson & Johnson",
-            "imgSrc" : "johnson-johnson.png"
-        },
-        "customer.4" : {
-            "name": "Walmart",
-            "imgSrc" : "Walmart.png"
-        }
+        "callToAction": "Meet our customers",
+        "list": [
+            {
+                "name": "Lifetime Fitness",
+                "imgSrc": "Lifetime.svg"
+            },
+            {
+                "name": "LinkedIn",
+                "imgSrc": "LinkedIn.svg"
+            },
+            {
+                "name": "Johnson & Johnson",
+                "imgSrc": "johnson-johnson.png"
+            },
+            {
+                "name": "AT&T",
+                "imgSrc": "ATT_logo.svg"
+            },
+            {
+                "name": "Brainshark",
+                "imgSrc": "Brainshark.svg"
+            },
+            {
+                "name": "House.gov",
+                "imgSrc": "House.gov.svg"
+            },
+            {
+                "name": "Forte.fit",
+                "imgSrc": "forte-fit.png"
+            },
+            {
+                "name": "Microsoft Teams",
+                "imgSrc": "Microsoft_teams.svg"
+            },
+            {
+                "name": "Yammer",
+                "imgSrc": "Microsoft_yammer.svg"
+            },
+            {
+                "name": "Rakuten TV",
+                "imgSrc": "Rakuten_TV_logo.svg"
+            },
+            {
+                "name": "Rogers Canada",
+                "imgSrc": "Rogers_logo.svg"
+            },
+            {
+                "name": "Seismic",
+                "imgSrc": "Seismic.svg"
+            },
+            {
+                "name": "SRG SSR",
+                "imgSrc": "SRG-SSR-logo.svg"
+            },
+            {
+                "name": "Videofutur",
+                "imgSrc": "Video futur.svg"
+            }
+        ]
     },
     "liveDemo": {
-        "title" : "Low Latency Live Demo"
+        "title": "Low Latency Live Demo"
     },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."

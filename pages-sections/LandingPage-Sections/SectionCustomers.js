@@ -17,6 +17,9 @@ const useStyles = makeStyles(styles);
 
 export default function SectionCarousel() {
   const classes = useStyles();
+
+  const customers = i18next.t('customers.list');
+
   const settings = {
     dots: false,
     infinite: true,
@@ -29,88 +32,25 @@ export default function SectionCarousel() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+
         <GridContainer>
-          <GridItem xs={10} sm={10} md={10} className={classes.marginAuto}>
+          <GridItem sm={10} md={10} className={classes.marginAuto}>
             <Card carousel>
               <Carousel {...settings} className={classes.customers}>
-                <div>
+                {customers.map(item => 
+                <div className={classes.customerSpacer}>
                   <img
-                    src={"/img/customers/" + i18next.t('customers.customer.1.imgSrc')}
-                    alt={i18next.t('customers.customer.1.name')}
-                    height={50}
+                    src={"/img/customers/" + item.imgSrc}
+                    alt={item.name}
+                    height={60}
+                    style = {{ 
+                      paddingRight: '30px'
+                    }}
                     className="slick-image"
                   />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.1.name')}
-                    </h4>
-                  </div>
                 </div>
-                <div>
-                  <img
-                    src={"/img/customers/" + i18next.t('customers.customer.2.imgSrc')}
-                    alt={i18next.t('customers.customer.2.name')}
-                    height={50}
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.2.name')}
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src={"/img/customers/" + i18next.t('customers.customer.3.imgSrc')}
-                    alt={i18next.t('customers.customer.3.name')}
-                    height={50}
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.3.name')}
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src={"/img/customers/" + i18next.t('customers.customer.4.imgSrc')}
-                    alt={i18next.t('customers.customer.4.name')}
-                    height={50}
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.4.name')}
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src={"/img/customers/" + i18next.t('customers.customer.1.imgSrc')}
-                    alt={i18next.t('customers.customer.1.name')}
-                    height={50}
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.1.name')}
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src={"/img/customers/" + i18next.t('customers.customer.2.imgSrc')}
-                    alt={i18next.t('customers.customer.2.name')}
-                    height={50}
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      {i18next.t('customers.customer.2.name')}
-                    </h4>
-                  </div>
-                </div>
+        
+                )}
               </Carousel>
             </Card>
           </GridItem>
