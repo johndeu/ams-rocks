@@ -24,6 +24,10 @@ import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 
 
+// Sections for this page
+import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
+import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
+
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
 const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
@@ -40,6 +44,18 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
+const STREAMS = [
+  {
+    name: 'Azure Media Services Low Latency',
+    src:
+      'https://ll-hls-test.cdn-apple.com/llhls4/ll-hls-test-04/multi.m3u8'
+  },
+  {
+    name: 'Azure Media Services Promo',
+    src:
+      'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)'
+  }
+];
 
 
 export default function LandingPage(props) {
@@ -48,6 +64,20 @@ export default function LandingPage(props) {
 
   const { ...rest } = props;
   const ref = React.useRef();
+  const [src, setSrc] = React.useState(STREAMS[0].src);
+
+
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+    classes.imgFluid
+  );
+
+  const playerClasses = classNames(
+    classes.player,
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+    );
 
   return (
     <div>
@@ -64,40 +94,43 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax responsive image="/img/landing-bg-clo20.jpg">
+      <Parallax image="/img/Mainheader_image-2.png" className={classes.parallax2}>
+        <GridContainer className={classes.container}>
+          <GridItem xs={12} sm={12} md={12}>
+            <div >
+              <div className={classes.spacer}></div>
+              <span className={classes.title}>{i18next.t('liveDemo.title')}</span>
+            </div>
+          </GridItem>
+        </GridContainer>
+      </Parallax>
+      <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <motion.h1
-                className={classes.title}
-                initial={{
-                  scale: 0.75,
-                  opacity: 0,
-                  y: -50
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  y: 0
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
-                }}>
-                Live Streaming Demo
-              </motion.h1>
-              <br />
+            <GridItem xs={12} sm={12} md={12}>
+
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={4}>
+                  Some buttons here.
+                </GridItem>
+                <GridItem xs={12} sm={12} md={8} className={playerClasses} >
+                  <ShakaPlayer 
+                  src={src}
+                  posterUrl=""
+                  config = ""
+                  rounded 
+                  raised/>
+
+                </GridItem>
+              </GridContainer>
+              <div className={classes.sectionBreak}></div>
+              <FreeSection />
+              <div className={classes.sectionBreak}></div>
             </GridItem>
           </GridContainer>
         </div>
-      </Parallax>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
-              <ShakaPlayer />
-        </GridItem>
-      </GridContainer>
-      <Footer />
+      </div>
+      <Footer whiteFont logoColor="gray" />
     </div>
   );
 }

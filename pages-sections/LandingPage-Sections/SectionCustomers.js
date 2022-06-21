@@ -20,7 +20,7 @@ export default function SectionCarousel() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
@@ -61,27 +61,27 @@ export default function SectionCarousel() {
                 </div>
                 <div>
                   <img
-                    src={"/img/customers/" + i18next.t('customers.customer.1.imgSrc')}
-                    alt={i18next.t('customers.customer.1.name')}
+                    src={"/img/customers/" + i18next.t('customers.customer.3.imgSrc')}
+                    alt={i18next.t('customers.customer.3.name')}
                     height={50}
                     className="slick-image"
                   />
                   <div className="slick-caption">
                     <h4>
-                      {i18next.t('customers.customer.1.name')}
+                      {i18next.t('customers.customer.3.name')}
                     </h4>
                   </div>
                 </div>
                 <div>
                   <img
-                    src={"/img/customers/" + i18next.t('customers.customer.2.imgSrc')}
-                    alt={i18next.t('customers.customer.2.name')}
+                    src={"/img/customers/" + i18next.t('customers.customer.4.imgSrc')}
+                    alt={i18next.t('customers.customer.4.name')}
                     height={50}
                     className="slick-image"
                   />
                   <div className="slick-caption">
                     <h4>
-                      {i18next.t('customers.customer.2.name')}
+                      {i18next.t('customers.customer.4.name')}
                     </h4>
                   </div>
                 </div>

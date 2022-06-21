@@ -26,6 +26,10 @@ import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Features from "components/Features/Features.js";
 
+// Need to dynamic load the Shaka Player since it imports a standard Javascript library
+// See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
+const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
+
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
 // Sections for this page
@@ -34,14 +38,12 @@ import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry
 import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
 import SectionArea from "../../components/SectionArea/SectionArea";
 import SectionCustomers from "pages-sections/LandingPage-Sections/SectionCustomers.js";
-
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
 
 // Translations
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
 import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
-
 
 const dashboardRoutes = [];
 
@@ -53,9 +55,7 @@ const STREAMS = [
   }
 ];
 
-
 const useStyles = makeStyles(styles);
-
 
 export default function LandingPage(props) {
   const classes = useStyles();
@@ -145,12 +145,12 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          {/* <Card>
-            <ShakaPlayer manifestUrl={src} />
-          </Card> */}
+    
+          <ShakaPlayer manifestUrl={src} />
+      
           <IndustrySection />
           <div className={classes.sectionBreak}></div>
-          <GetStartedSection />
+  
           <SectionArea
             align="right"
             title={i18next.t('landing.section.1.title')}
@@ -191,7 +191,7 @@ export default function LandingPage(props) {
 
         </div>
       </div>
-
+      <GetStartedSection />
       <Features />
       <SectionCustomers />
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>

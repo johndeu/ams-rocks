@@ -290,7 +290,18 @@
         "customer.2" : {
             "name": "LinkedIn",
             "imgSrc" : "LinkedIn.svg"
+        },
+        "customer.3" : {
+            "name": "Johnson & Johnson",
+            "imgSrc" : "johnson-johnson.png"
+        },
+        "customer.4" : {
+            "name": "Walmart",
+            "imgSrc" : "Walmart.png"
         }
+    },
+    "liveDemo": {
+        "title" : "Low Latency Live Demo"
     },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
