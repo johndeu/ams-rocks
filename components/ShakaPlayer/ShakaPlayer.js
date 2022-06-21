@@ -70,20 +70,28 @@ function ShakaPlayer({
             console.error('Error code', error.code, 'object', error);
         }
 
+        // OPTIONAL - log the default configuration settings. 
+        console.log("Shaka Player Default configuration");
+        console.log(player.getConfiguration());
+
+        // See https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#StreamingConfiguration
         player.configure({
             manifest: {
                 dash: {
                     // autoCorrectDrift: true
+                },
+                hls : {
+                    // ignoreManifestProgramDateTime : false,
+
                 }
             },
             streaming: {
+                //If true, low latency streaming mode is enabled. If lowLatencyMode is set to true, inaccurateManifestTolerance is set to 0 unless specified, and rebufferingGoal to 0.01 unless specified at the same time.
                 lowLatencyMode: true,
-                stallEnabled: true,
-                //bufferingGoal: 10,
-                //rebufferingGoal: 2,
-                //bufferBehind: 12,
+                inaccurateManifestTolerance:0,
+                rebufferingGoal: 0.01,
                 jumpLargeGaps: true,
-                useNativeHlsOnSafari: true,
+                // useNativeHlsOnSafari: true,
                 gapDetectionThreshold: 0.5
             },
             drm: {
