@@ -91,7 +91,7 @@ function ShakaPlayer({
                 inaccurateManifestTolerance:0,
                 rebufferingGoal: 0.01,
                 jumpLargeGaps: true,
-                // useNativeHlsOnSafari: true,
+                useNativeHlsOnSafari: false,
                 gapDetectionThreshold: 0.5
             },
             drm: {
@@ -99,12 +99,15 @@ function ShakaPlayer({
             }
         });
 
+        // OPTIONAL - log the default configuration settings. 
+        console.log("Shaka Player Updated configuration");
+        console.log(player.getConfiguration());
 
         player.setTextTrackVisibility(true);
 
         player.load(src).then(function () {
             // This runs if the asynchronous load is successful.
-            console.log('The video has now been loaded!');
+            console.log('Shaka: The video has now been loaded!');
         }).catch(onError);  // onError is executed if the asynchronous load fails.
 
         player.addEventListener('error', function (event) {
@@ -115,6 +118,7 @@ function ShakaPlayer({
 
         player.addEventListener('loaded', function (event) {
             player.play();
+            console.log('Shaka: Playing');
         });
 
         return () => {
@@ -167,7 +171,8 @@ function ShakaPlayer({
                     style={{
                         maxWidth: '100%',
                         width: '100%',
-                        borderRadius: "6px !important",
+                        backgroundColor:"#5e5e5e",
+                        borderRadius: "15px !important",
                         boxShadow:  "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
                     }}
                     muted
