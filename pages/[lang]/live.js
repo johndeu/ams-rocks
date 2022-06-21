@@ -77,7 +77,7 @@ export default function LandingPage(props) {
     classes.player,
     classes.imgRaised,
     classes.imgRoundedCircle,
-    );
+  );
 
   return (
     <div>
@@ -114,20 +114,24 @@ export default function LandingPage(props) {
                   Some buttons here.
                 </GridItem>
                 <GridItem xs={12} sm={12} md={8} className={playerClasses} >
-                  <ShakaPlayer 
-                  src={src}
-                  posterUrl=""
-                  config = ""
-                  rounded 
-                  raised/>
+                  <ShakaPlayer
+                    src={src}
+                    posterUrl=""
+                    config=""
+                    rounded
+                    raised />
 
                 </GridItem>
               </GridContainer>
-              <div className={classes.sectionBreak}></div>
-              <FreeSection />
-              <div className={classes.sectionBreak}></div>
             </GridItem>
           </GridContainer>
+
+
+        </div>
+        <div className={classNames(classes.mainBlue, classes.mainRaised)}>
+          <div className={classes.containerBlue}>
+            <FreeSection />
+          </div>
         </div>
       </div>
       <Footer whiteFont logoColor="gray" />

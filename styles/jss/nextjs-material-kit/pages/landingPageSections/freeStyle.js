@@ -17,6 +17,7 @@ const freeStyle = {
   },
   description: {
     fontSize:"18px",
+    color:"#fff",
     fontWeight:"400",
     lineHeight:"28px",
     padding: "8px 0 0",
