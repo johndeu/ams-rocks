@@ -1,6 +1,5 @@
 import React from "react";
 import dynamic from 'next/dynamic';
-import { GetStaticPropsContext } from 'next';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -23,15 +22,12 @@ import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 
-
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
-import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
 const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayerClass.js"), { ssr: false });
-//import ShakaPlayer from "components/ShakaPlayer/ShakaPlayerClass.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/livePage.js";
 
