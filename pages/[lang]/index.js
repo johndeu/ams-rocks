@@ -28,7 +28,7 @@ import Features from "components/Features/Features.js";
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
-const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
+const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayerClass.js"), { ssr: false });
 
 import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 
