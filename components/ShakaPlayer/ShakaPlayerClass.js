@@ -77,13 +77,16 @@ class ShakaPlayer extends React.PureComponent {
         player.load(src).then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
-            player.play();
         }).catch(onError);  // onError is executed if the asynchronous load fails.
 
-        player.addEventListener('loaded', function (event) {
-            player.play();
-            console.log('Shaka: Playing');
-        });
+        // Event listeners
+        player.addEventListener('loaded', this.onLoaded(this.video.current));
+    }
+    
+    // Event Handlers
+    onLoaded (currentPlayer) {
+        currentPlayer.play();
+        console.log('Shaka: Playing');
     }
 
     render() {
