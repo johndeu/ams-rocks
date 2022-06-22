@@ -94,7 +94,7 @@ export default function LandingPage(props) {
         <GridContainer className={classes.container}>
           <GridItem>
             <div className={classes.spacer}></div>
-            <div >
+            <div className={classes.titleSection}>
               <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br />
               <span className={classes.title2}>{i18next.t('landing.tagline2')} </span><br />
               <span className={classes.subtitle}>{i18next.t('landing.valueProp')}</span>

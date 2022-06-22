@@ -31,20 +31,25 @@ const parallaxStyle = (theme) => ({
     height: "300px",
   },
   parallaxResponsive: {
+    [theme.breakpoints.down("xl")]: {
+      minHeight: "50vh",
+      paddingTop:"10vh"
+    },
     [theme.breakpoints.down("lg")]: {
-      minHeight: "450px",
-      paddingTop:"20px"
+      minHeight: "62h",
+      paddingTop:"10vh"
     },
     [theme.breakpoints.down("md")]: {
-      minHeight: "500px",
+      minHeight: "65vh",
+      paddingTop:"15vh"
     },
     [theme.breakpoints.down("sm")]: {
-      minHeight: "600px",
-      paddingTop: "20px"
+      minHeight: "80vh",
+      paddingTop: "10vh"
     },
     [theme.breakpoints.down("xs")]: {
-      minHeight: "650px",
-      paddingTop: "50px"
+      minHeight: "100vh",
+      paddingTop: "5vh"
     },
   },
 });

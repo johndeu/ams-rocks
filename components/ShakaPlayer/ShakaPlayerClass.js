@@ -33,8 +33,12 @@ class ShakaPlayer extends React.PureComponent {
         const controls = ui.getControls();
 
         const uiConfig = {
-            'controlPanelElements': [/*'play_pause', 'time_and_duration',*/ 'spacer', 'volume', 'mute', /*'fullscreen'*/],
+            'controlPanelElements': ['play_pause', 'time_and_duration', 'spacer', 'volume', 'mute', 'fullscreen'],
             'addSeekBar': true,
+            'enableTooltips' : true,
+            'contextMenuElements': ['statistics'],
+            'customContextMenu' : true,
+            'statisticsList' : ['width', 'height', 'playTime', 'liveLatency','bufferingTime','droppedFrames','stallsDetected','manifestTimeSeconds','loadLatency'],
             'seekBarColors': {
                 base: 'rgba(255, 255, 255, 0.3)',
                 buffered: 'rgba(255, 255, 255, 0.54)',
@@ -55,11 +59,8 @@ class ShakaPlayer extends React.PureComponent {
                 }
             },
             streaming: {
-                //If true, low latency streaming mode is enabled. If lowLatencyMode is set to true, inaccurateManifestTolerance is set to 0 unless specified, and rebufferingGoal to 0.01 unless specified at the same time.
                 lowLatencyMode: true,
                 inaccurateManifestTolerance: 0,
-                rebufferingGoal: 0.01,
-                jumpLargeGaps: true,
                 useNativeHlsOnSafari: true,
                 gapDetectionThreshold: 0.5
             },
