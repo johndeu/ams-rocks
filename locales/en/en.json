@@ -306,7 +306,7 @@
             },
             {
                 "name": "House.gov",
-                "imgSrc": "House.gov.svg"
+                "imgSrc": "house-gov.svg"
             },
             {
                 "name": "Forte.fit",
@@ -330,7 +330,7 @@
             },
             {
                 "name": "Seismic",
-                "imgSrc": "Seismic.svg"
+                "imgSrc": "seismic.svg"
             },
             {
                 "name": "SRG SSR",
@@ -338,7 +338,7 @@
             },
             {
                 "name": "Videofutur",
-                "imgSrc": "Video futur.svg"
+                "imgSrc": "videofutur.svg"
             }
         ]
     },
