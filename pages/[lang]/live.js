@@ -30,6 +30,7 @@ import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayerClass.js"), { ssr: false });
 
 import styles from "styles/jss/nextjs-material-kit/pages/livePage.js";
+import Hidden from "@material-ui/core/Hidden";
 
 // Sections for this page
 
@@ -91,13 +92,14 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax image="/img/Mainheader_image-2.png" className={classes.parallax2}>
+      <Parallax image="/img/Mainheader_image-2.png" >
         <GridContainer className={classes.container}>
           <GridItem xs={12} sm={12} md={12}>
+            <div className={classes.spacer}>&nbsp;</div>
             <div >
-              <div className={classes.spacer}></div>
               <span className={classes.title}>{i18next.t('liveDemo.title')}</span>
             </div>
+            
           </GridItem>
         </GridContainer>
       </Parallax>
@@ -114,7 +116,7 @@ export default function LandingPage(props) {
                   <ShakaPlayer
                     src={src}
                     posterUrl=""
-                    />
+                  />
 
                 </GridItem>
               </GridContainer>

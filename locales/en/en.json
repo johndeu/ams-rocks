@@ -343,7 +343,7 @@
         ]
     },
     "liveDemo": {
-        "title": "Low Latency Live Demo"
+        "title": "Live stream demo"
     },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."

@@ -98,6 +98,9 @@ class ShakaPlayer extends React.PureComponent {
                     ref={this.video}
                     autoPlay
                     muted
+                    autoplay 
+                    loop
+                    playsinline
                     style={{
                         maxWidth: '100%',
                         width: '100%',

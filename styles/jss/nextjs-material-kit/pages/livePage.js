@@ -16,14 +16,6 @@ const livePage = (theme) => ({
     fontSize:"30px",
     fontWeight: "600",
     lineHeight:"54px",
-    [theme.breakpoints.down("md")]: {
-      paddingTop: "50px",
-      marginTop: "40px",
-    },
-    [theme.breakpoints.down("xl")]: {
-      paddingTop: "200px",
-      marginTop: "200px",
-    },
     color: "#FFFFFF",
     textDecoration: "none !important",
     textDecorationStyle:"none !important",
@@ -49,8 +41,18 @@ const livePage = (theme) => ({
     height:"25vh"
   }, 
   spacer : {
-    padding:"20px",
-    minHeight: "20px"
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "10vh",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "10vh",
+    },
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "10vh",
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingTop: "10vh",
+    },
   },
   player : {
     padding:"30px 30px",
