@@ -72,12 +72,12 @@ const livePage = (theme) => ({
   card : {
     backgroundColor:"gray",
     color:"#fff",
-    textAlign: "left",
-    padding: "3px 15px"
-    
+    textAlign: "center",
+    padding: "5px 5px"
   },
   cardBody: {
-    padding:"0px 0px"
+    padding:"0px 0px",
+    textAlign: "center",
   }
 });
 
