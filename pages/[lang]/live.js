@@ -30,7 +30,7 @@ import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetSta
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
-const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayer.js"), { ssr: false });
+const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayerClass.js"), { ssr: false });
 
 import styles from "styles/jss/nextjs-material-kit/pages/livePage.js";
 
@@ -46,9 +46,9 @@ const dashboardRoutes = [];
 const useStyles = makeStyles(styles);
 const STREAMS = [
   {
-    name: 'Azure Media Services Low Latency',
+    name: 'Mux Live Low Latency',
     src:
-      'https://ll-hls-test.cdn-apple.com/llhls4/ll-hls-test-04/multi.m3u8'
+      'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8'
   },
   {
     name: 'Azure Media Services Promo',
@@ -64,7 +64,7 @@ export default function LandingPage(props) {
 
   const { ...rest } = props;
   const ref = React.useRef();
-  const [src, setSrc] = React.useState(STREAMS[1].src);
+  const [src, setSrc] = React.useState(STREAMS[0].src);
 
 
   const imageClasses = classNames(
@@ -115,12 +115,8 @@ export default function LandingPage(props) {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={8} className={playerClasses} >
                   <ShakaPlayer
-                    id="myplayer"
                     src={src}
                     posterUrl=""
-                    config=""
-                    rounded
-                    raised
                     />
 
                 </GridItem>
