@@ -1,4 +1,16 @@
-import { container, title } from "styles/jss/nextjs-material-kit.js";
+import { 
+  container, 
+  title, 
+  primary, 
+  secondary,
+  danger,
+  warning,
+  rose,
+  success,
+  mainBlue,
+  mainDarkBlue,
+  raised
+ } from "styles/jss/nextjs-material-kit.js";
 
 const livePage = (theme) => ({
   container: {
@@ -57,8 +69,15 @@ const livePage = (theme) => ({
   player : {
     padding:"30px 30px",
   },
-  shakaVideoContainer: {
-
+  card : {
+    backgroundColor:"gray",
+    color:"#fff",
+    textAlign: "left",
+    padding: "3px 15px"
+    
+  },
+  cardBody: {
+    padding:"0px 0px"
   }
 });
 

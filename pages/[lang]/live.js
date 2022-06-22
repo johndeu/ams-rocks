@@ -11,8 +11,6 @@ import { motion } from "framer-motion";
 // Use the react-intersection-observer to trigger animations when stuff is in view
 import { useInView } from "react-intersection-observer";
 
-// @material-ui/icons
-
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -21,6 +19,11 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
+import Card from "components/Card/Card.js";
+import CardHeader from "components/Card/CardHeader.js";
+import CardBody from "components/Card/CardBody.js";
+import CardFooter from "components/Card/CardFooter.js";
+import Badge from "components/Badge/Badge.js";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -99,7 +102,7 @@ export default function LandingPage(props) {
             <div >
               <span className={classes.title}>{i18next.t('liveDemo.title')}</span>
             </div>
-            
+
           </GridItem>
         </GridContainer>
       </Parallax>
@@ -109,10 +112,29 @@ export default function LandingPage(props) {
             <GridItem xs={12} sm={12} md={12}>
 
               <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  Some buttons here.
+                <Hidden xsDown>
+                <GridItem xs={12} sm={12} md={2}>
+                  <Card className={classes.card}>
+                    <Badge color="success">Latency</Badge>
+                    <CardBody className={classes.cardBody}>
+                      <h3>2.00s</h3>
+                    </CardBody>
+                  </Card>
+                  <Card className={classes.card}>
+                    <Badge color="success">Quality</Badge>
+                    <CardBody className={classes.cardBody}>
+                      <h3>1080p</h3>
+                    </CardBody>
+                  </Card>
+                  <Card className={classes.card}>
+                    <Badge color="success">Streamed From</Badge>
+                    <CardBody className={classes.cardBody}>
+                      <h3>West US</h3>
+                    </CardBody>
+                  </Card>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={8} className={playerClasses} >
+                </Hidden>
+                <GridItem xs={12} sm={12} md={10} className={playerClasses} >
                   <ShakaPlayer
                     src={src}
                     posterUrl=""
