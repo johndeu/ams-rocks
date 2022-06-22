@@ -14,7 +14,7 @@ import styles from "styles/jss/nextjs-material-kit/components/playerStyle.js";
 import controlStyles from "shaka-player/dist/controls.css";
 
 // this imports the npm shaka-player dist package. The page loading this has to dynamic load this component
-// const ShakaPlayer=dynamic(import ("components/ShakaPlayer/ShakaPlayer.js"),{ssr:false});
+// const ShakaPlayer=dynamic(import ("components/ShakaPlayer/ShakaPlayerFunction.js"),{ssr:false});
 const shaka = require('shaka-player/dist/shaka-player.ui.js');
 const classes = makeStyles(styles);
 
