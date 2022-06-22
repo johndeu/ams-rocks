@@ -5,9 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Icon from "@material-ui/core/Icon";
 
-// Fluent-UI components for React
-import { PrimaryButton, DefaultButton } from '@fluentui/react';
-
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";

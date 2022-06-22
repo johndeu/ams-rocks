@@ -60,7 +60,7 @@ class ShakaPlayer extends React.PureComponent {
                 inaccurateManifestTolerance: 0,
                 rebufferingGoal: 0.01,
                 jumpLargeGaps: true,
-                useNativeHlsOnSafari: false,
+                useNativeHlsOnSafari: true,
                 gapDetectionThreshold: 0.5
             },
             drm: {
@@ -79,15 +79,19 @@ class ShakaPlayer extends React.PureComponent {
             console.log('The video has now been loaded!');
             player.play();
         }).catch(onError);  // onError is executed if the asynchronous load fails.
+
+        player.addEventListener('loaded', function (event) {
+            player.play();
+            console.log('Shaka: Playing');
+        });
     }
 
     render() {
         return (
-            <div className="shadow-lg mx-auto max-w-full" ref={this.videoContainer} style={{ "width": "800px" }}>
+            <div ref={this.videoContainer}>
                 <video
                     id="video"
                     ref={this.video}
-                    className="w-full h-full"
                     autoPlay
                     muted
                     style={{
