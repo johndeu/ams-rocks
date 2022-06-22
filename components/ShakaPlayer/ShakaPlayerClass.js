@@ -33,7 +33,7 @@ class ShakaPlayer extends React.PureComponent {
         const controls = ui.getControls();
 
         const uiConfig = {
-            'controlPanelElements': ['play_pause', 'time_and_duration', 'spacer', 'volume', 'mute', 'fullscreen'],
+            'controlPanelElements': ['play_pause','spacer', 'volume', 'mute', 'fullscreen'],
             'addSeekBar': true,
             'enableTooltips' : true,
             'contextMenuElements': ['statistics'],
@@ -97,10 +97,9 @@ class ShakaPlayer extends React.PureComponent {
                     id="video"
                     ref={this.video}
                     autoPlay
-                    muted
-                    autoplay 
+                    muted 
                     loop
-                    playsinline
+                    playsInline
                     style={{
                         maxWidth: '100%',
                         width: '100%',
