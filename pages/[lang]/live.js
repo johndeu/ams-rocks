@@ -1,4 +1,4 @@
-import React, {useState,setState} from "react";
+import React, { useState, setState } from "react";
 import dynamic from 'next/dynamic';
 
 // nodejs library that concatenates classes
@@ -49,16 +49,18 @@ const STREAMS = [
   {
     name: 'Mux Live Low Latency',
     src:
-      'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8'
+      'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8',
+    location: "Unknown"
   },
   {
     name: 'AMS LL-HLS Demo Stream',
-    src: 'https://aka.ms/LowLatencyDemo.m3u8'
+    src: 'https://aka.ms/LowLatencyDemo.m3u8',
+    location: "US West"
   },
   {
     name: 'Azure Media Services Promo',
-    src:
-      'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)'
+    src: 'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)',
+    location: "US West"
   }
 ];
 
@@ -70,6 +72,7 @@ export default function LandingPage(props) {
   const { ...rest } = props;
   const ref = React.useRef();
   const [src, setSrc] = useState(STREAMS[1].src);
+  const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
 
   const imageClasses = classNames(
@@ -126,19 +129,19 @@ export default function LandingPage(props) {
                     <Card className={classes.card}>
                       <Badge color="success">Latency</Badge>
                       <CardBody className={classes.cardBody}>
-                        <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'loading'}</h3>
+                        <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
                       </CardBody>
                     </Card>
                     <Card className={classes.card}>
                       <Badge color="success">Quality</Badge>
                       <CardBody className={classes.cardBody}>
-                        <h3>{stats.height ? stats.height + 'p': 'loading'}</h3>
+                        <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
                       </CardBody>
                     </Card>
                     <Card className={classes.card}>
                       <Badge color="success">Streamed From</Badge>
                       <CardBody className={classes.cardBody}>
-                        <h3>West US</h3>
+                        <h3>{location}</h3>
                       </CardBody>
                     </Card>
                   </GridItem>
