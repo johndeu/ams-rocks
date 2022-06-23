@@ -37,25 +37,25 @@
         "section.1": {
             "title": "A full, end-to-end solution",
             "description": "Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn.",
-            "actionText": "Create a live event",
+            "callToAction": "Create a live event ",
             "imageAlt": "Solution"
         },
         "section.2": {
             "title": "Make your live content accessible, with real-time transcription",
             "description": "Automatic real-time transcription in 100+ languages without sacrificing latency.",
-            "actionText": "Try it now",
+            "callToAction": "Find out more",
             "imageAlt": "Accessibility"
         },
         "section.3": {
             "title": "Uncompromising commitment to privacy and security",
             "description": "Protect your content from upload to playback. Enable your viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing.",
-            "actionText": "Find out more",
+            "callToAction": "",
             "imageAlt": "Security"
         },
         "section.4": {
             "title": "Low latency live streaming at global scale",
             "description": "4-7 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime.",
-            "actionText": "Try it out",
+            "callToAction": "Try it out",
             "imageAlt": "Low latency"
         }
     },
@@ -64,49 +64,49 @@
             "title": "Enterprise",
             "headline": "Collaborate together",
             "body": "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "1": {
             "title": "Live shopping",
             "headline": "Sell your products",
             "body": "Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "2": {
             "title": "Fitness",
             "headline": "Stay fit together",
             "body": "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "3": {
             "title": "Government",
             "headline": "Engage your community",
             "body": "Ensure legislators with strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "4": {
             "title": "Education",
             "headline": "Create learning hubs",
             "body": "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "5": {
             "title": "Energy",
             "headline": "Deliver a clean energy future",
             "body": "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "6": {
             "title": "Healthcare",
             "headline": "Empower patients",
             "body": "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         },
         "7": {
             "title": "Manufacturing",
             "headline": "Improve production quality",
             "body": "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
-            "callToAction": "Discover more"
+            "callToAction": ""
         }
     },
     "features": {
