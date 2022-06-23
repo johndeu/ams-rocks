@@ -86,11 +86,7 @@ export default function LandingPage(props) {
 
   function onStatsUpdate(statsUpdate) {
     setStats(statsUpdate);
-    console.log("Got Stats from Player:");
-  
-    if (stats !== undefined) {
-      console.log(stats);
-    }
+    //console.log("Got Stats from Player:");
   }
 
   return (

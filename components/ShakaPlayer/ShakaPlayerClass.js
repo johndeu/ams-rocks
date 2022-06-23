@@ -90,7 +90,7 @@ class ShakaPlayer extends React.PureComponent {
 
         this.timerID = setInterval(
             () => this.statsTick(player),
-            5000
+            1000
         );
     }
 
@@ -114,7 +114,7 @@ class ShakaPlayer extends React.PureComponent {
     // Event Handlers
     onLoaded(currentPlayer) {
         currentPlayer.play();
-        console.log('Shaka: Playing');
+        //console.log('Shaka: Playing');
     }
 
     render() {
