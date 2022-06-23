@@ -146,6 +146,13 @@ const headerStyle = {
     paddingTop: "25px",
     color: "#FFFFFF",
   },
+  azureMedia: {
+    backgroundColor: "transparent !important",
+    boxShadow: "none",
+    paddingTop: "25px",
+    color: "#FFFFFF",
+    backgroundImage: "url('/img/Mainheader_image-2.png')"
+  },
   dark: {
     color: "#FFFFFF",
     backgroundColor: "#212121 !important",

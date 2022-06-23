@@ -93,9 +93,9 @@ export default function LandingPage(props) {
   }
 
   return (
-    <div style={{ backgroundImage: "url('/img/Mainheader_image-2.png')" }}>
+    <div >
       <Header
-        color="transparent"
+        color="azureMedia"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
         leftLinks={<HeaderLinksLeft />}

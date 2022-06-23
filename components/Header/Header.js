@@ -79,7 +79,7 @@ export default function Header(props) {
   );
 
   return (
-    <AppBar className={appBarClasses}>
+    <AppBar className={appBarClasses} >
       <Toolbar className={classes.container}>
         
         <Hidden xsDown smDown implementation="css">

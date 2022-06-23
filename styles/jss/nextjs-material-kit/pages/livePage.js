@@ -1,6 +1,7 @@
 import { 
   container, 
   title, 
+  section,
   primary, 
   secondary,
   danger,
@@ -13,11 +14,16 @@ import {
  } from "styles/jss/nextjs-material-kit.js";
 
 const livePage = (theme) => ({
+  section: {
+    
+  },
   container: {
     zIndex: "4",
     width:"100vw",
     color: "#FFFFFF",
+    backgroundColor:"#fff",
     textAlign:"center",
+    paddingTop: "15vh",
     ...container,
   },
   title: {
