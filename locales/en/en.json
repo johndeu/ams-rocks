@@ -147,38 +147,30 @@
             }
         },
         "processing": {
-            "title": "Processing",
+            "title": "Encoding",
             "0": {
-                "title": "Direct Uploads",
-                "description": "Provide any authenticated upload URL"
+                "title": "Any Input",
+                "description": "We support most input video formats, including professional-grade ones such as H.264, AV1, and Apple ProRes."
             },
             "1": {
-                "title": "Pull-based inputs",
-                "description": "Pull from any web-addressable location"
+                "title": "Made-for-you Presets",
+                "description": "AMS provides a dozens of built-in encoding presets that you can choose from - or you can create your own."
             },
             "2": {
-                "title": "Wide-range of input file formats",
-                "description": "We accept many types of input video files"
+                "title": "Dynamic Packaging",
+                "description": "Deliver adaptive-bitrate content in HLS and MPEG-DASH streaming protocol formats using our built in packaging capabilities."
             },
             "3": {
-                "title": "Test assets",
-                "description": "Try any feature with our test assets for any non-production environment"
+                "title": "Captioning and Subtitling",
+                "description": "Get speech-to-text transcribed captions and subtitles in 20 different languages."
             },
             "4": {
-                "title": "Clipping",
-                "description": "Clip any live or on-demand video to any length you want"
+                "title": "Content Protection",
+                "description": "Encrypt your encoded content with AES-128 or any of the major DRM systems: Microsoft PlayReady, Apple FairPlay, or Google Widevine."
             },
             "5": {
-                "title": "Stream live",
-                "description": "Go live easily. Get the RTMP input URL and go"
-            },
-            "6": {
-                "title": "RTMP/RTMPS Input",
-                "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
-            },
-            "7": {
-                "title": "Live captions",
-                "description": "Real-time transcription in 50+ languages without sacrificing latency"
+                "title": "Stream Everywhere",
+                "description": "Customize how your stream with our streaming endpoints, or go global with Azure CDN integration."
             }
         },
         "streaming": {
