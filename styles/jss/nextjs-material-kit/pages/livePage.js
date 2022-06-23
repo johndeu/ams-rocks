@@ -49,9 +49,6 @@ const livePage = (theme) => ({
     textAlign:"center !important",
     color:"#EDEBE9"
   },
-  parallax2 : {
-    height:"25vh"
-  }, 
   spacer : {
     [theme.breakpoints.down("xs")]: {
       paddingTop: "10vh",

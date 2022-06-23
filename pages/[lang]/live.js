@@ -93,7 +93,7 @@ export default function LandingPage(props) {
   }
 
   return (
-    <div>
+    <div style={{ backgroundImage: "url('/img/Mainheader_image-2.png')" }}>
       <Header
         color="transparent"
         routes={dashboardRoutes}
@@ -107,68 +107,55 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax image="/img/Mainheader_image-2.png" >
-        <GridContainer className={classes.container}>
-          <GridItem xs={12} sm={12} md={12}>
-            <div className={classes.spacer}>&nbsp;</div>
-            <div >
-              <span className={classes.title}>{i18next.t('liveDemo.title')}</span>
-            </div>
-
-          </GridItem>
-        </GridContainer>
-      </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
+      <div className={classes.section}>
         <div className={classes.container}>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={12}>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
 
-              <GridContainer>
-                <Hidden xsDown>
-                  <GridItem xs={12} sm={12} md={2}>
-                    <Card className={classes.card}>
-                      <Badge color="success">Latency</Badge>
-                      <CardBody className={classes.cardBody}>
-                        <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
-                      </CardBody>
-                    </Card>
-                    <Card className={classes.card}>
-                      <Badge color="success">Quality</Badge>
-                      <CardBody className={classes.cardBody}>
-                        <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
-                      </CardBody>
-                    </Card>
-                    <Card className={classes.card}>
-                      <Badge color="success">Streamed From</Badge>
-                      <CardBody className={classes.cardBody}>
-                        <h3>{location}</h3>
-                      </CardBody>
-                    </Card>
+                <GridContainer>
+                  <Hidden xsDown>
+                    <GridItem xs={12} sm={12} md={2}>
+                      <Card className={classes.card}>
+                        <Badge color="success">Latency</Badge>
+                        <CardBody className={classes.cardBody}>
+                          <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
+                        </CardBody>
+                      </Card>
+                      <Card className={classes.card}>
+                        <Badge color="success">Quality</Badge>
+                        <CardBody className={classes.cardBody}>
+                          <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
+                        </CardBody>
+                      </Card>
+                      <Card className={classes.card}>
+                        <Badge color="success">Streamed From</Badge>
+                        <CardBody className={classes.cardBody}>
+                          <h3>{location}</h3>
+                        </CardBody>
+                      </Card>
+                    </GridItem>
+                  </Hidden>
+                  <GridItem xs={12} sm={12} md={10} className={playerClasses} >
+
+                    <ShakaPlayer
+                      src={src}
+                      posterUrl=""
+                      stats={stats}
+                      onStatsUpdate={onStatsUpdate}
+                    />
+
                   </GridItem>
-                </Hidden>
-                <GridItem xs={12} sm={12} md={10} className={playerClasses} >
-
-                  <ShakaPlayer
-                    src={src}
-                    posterUrl=""
-                    stats={stats}
-                    onStatsUpdate={onStatsUpdate}
-                  />
-
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-
-
-        </div>
-        <div className={classNames(classes.mainBlue, classes.mainRaised)}>
-          <div className={classes.containerBlue}>
-            <FreeSection />
+                </GridContainer>
+              </GridItem>
+            </GridContainer>
+          <div className={classNames(classes.mainBlue, classes.mainRaised)}>
+            <div className={classes.containerBlue}>
+              <FreeSection />
+            </div>
           </div>
         </div>
+        <Footer whiteFont logoColor="gray" />
       </div>
-      <Footer whiteFont logoColor="gray" />
     </div>
   );
 }

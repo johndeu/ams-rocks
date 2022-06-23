@@ -42,7 +42,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
                         <img
-                          src="/img/Landing/Fitness.png"
+                          src="/img/Landing/Enterprise.png"
                           alt="..."
                           className={imageClasses}
                         />
@@ -65,7 +65,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
                         <img
-                          src="/img/Landing/Enterprise.png"
+                          src="/img/Landing/Shopping.png"
                           alt="..."
                           className={imageClasses}
                         />
@@ -88,7 +88,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={4} md={4}>
                         <img
-                          src="/img/Landing/Shopping.png"
+                          src="/img/Landing/Fitness.png"
                           alt="..."
                           className={imageClasses}
                         />
