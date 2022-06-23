@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,setState} from "react";
 import dynamic from 'next/dynamic';
 
 // nodejs library that concatenates classes
@@ -69,8 +69,8 @@ export default function LandingPage(props) {
 
   const { ...rest } = props;
   const ref = React.useRef();
-  const [src, setSrc] = React.useState(STREAMS[1].src);
-
+  const [src, setSrc] = useState(STREAMS[1].src);
+  const [stats, setStats] = useState({});
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -83,6 +83,15 @@ export default function LandingPage(props) {
     classes.imgRaised,
     classes.imgRoundedCircle,
   );
+
+  function onStatsUpdate(statsUpdate) {
+    setStats(statsUpdate);
+    console.log("Got Stats from Player:");
+  
+    if (stats !== undefined) {
+      console.log(stats);
+    }
+  }
 
   return (
     <div>
@@ -117,32 +126,34 @@ export default function LandingPage(props) {
 
               <GridContainer>
                 <Hidden xsDown>
-                <GridItem xs={12} sm={12} md={2}>
-                  <Card className={classes.card}>
-                    <Badge color="success">Latency</Badge>
-                    <CardBody className={classes.cardBody}>
-                      <h3>2.00s</h3>
-                    </CardBody>
-                  </Card>
-                  <Card className={classes.card}>
-                    <Badge color="success">Quality</Badge>
-                    <CardBody className={classes.cardBody}>
-                      <h3>1080p</h3>
-                    </CardBody>
-                  </Card>
-                  <Card className={classes.card}>
-                    <Badge color="success">Streamed From</Badge>
-                    <CardBody className={classes.cardBody}>
-                      <h3>West US</h3>
-                    </CardBody>
-                  </Card>
-                </GridItem>
+                  <GridItem xs={12} sm={12} md={2}>
+                    <Card className={classes.card}>
+                      <Badge color="success">Latency</Badge>
+                      <CardBody className={classes.cardBody}>
+                        <h3>{stats.liveLatency.toPrecision(4)}s</h3>
+                      </CardBody>
+                    </Card>
+                    <Card className={classes.card}>
+                      <Badge color="success">Quality</Badge>
+                      <CardBody className={classes.cardBody}>
+                        <h3>{stats.height}p</h3>
+                      </CardBody>
+                    </Card>
+                    <Card className={classes.card}>
+                      <Badge color="success">Streamed From</Badge>
+                      <CardBody className={classes.cardBody}>
+                        <h3>West US</h3>
+                      </CardBody>
+                    </Card>
+                  </GridItem>
                 </Hidden>
                 <GridItem xs={12} sm={12} md={10} className={playerClasses} >
-                  
+
                   <ShakaPlayer
                     src={src}
                     posterUrl=""
+                    stats={stats}
+                    onStatsUpdate={onStatsUpdate}
                   />
 
                 </GridItem>

@@ -21,11 +21,13 @@ class ShakaPlayer extends React.PureComponent {
             stats: []
         }
 
+
     }
 
     componentDidMount() {
 
         var src = this.props.src;
+
         var licenseServer = this.props.licenseServer;
 
         let video = this.video.current;
@@ -95,8 +97,9 @@ class ShakaPlayer extends React.PureComponent {
     statsTick(player) {
         if (player !== undefined) {
             var stats = player.getStats();
-            console.log(stats);
-            console.log("liveLatency:" + stats.liveLatency.toString());
+            //console.log(stats);
+            //console.log("liveLatency:" + stats.liveLatency.toString());
+            this.props.onStatsUpdate(stats);
         }
     }
 
@@ -142,7 +145,9 @@ class ShakaPlayer extends React.PureComponent {
 ShakaPlayer.propTypes = {
     licenseServer: PropTypes.string,
     src: PropTypes.string,
-    posterUrl: PropTypes.string
+    posterUrl: PropTypes.string,
+    onStatsUpdate : PropTypes.func,
+    stats : PropTypes.object
 }
 
 export default ShakaPlayer;
