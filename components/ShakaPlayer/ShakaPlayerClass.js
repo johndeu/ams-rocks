@@ -17,6 +17,10 @@ class ShakaPlayer extends React.PureComponent {
 
         this.video = React.createRef();
         this.videoContainer = React.createRef();
+        this.state = {
+            stats: []
+        }
+
     }
 
     componentDidMount() {
@@ -33,12 +37,12 @@ class ShakaPlayer extends React.PureComponent {
         const controls = ui.getControls();
 
         const uiConfig = {
-            'controlPanelElements': ['play_pause','spacer', 'volume', 'mute', 'fullscreen'],
+            'controlPanelElements': ['play_pause', 'spacer', 'volume', 'mute', 'fullscreen'],
             'addSeekBar': true,
-            'enableTooltips' : true,
+            'enableTooltips': true,
             'contextMenuElements': ['statistics'],
-            'customContextMenu' : true,
-            'statisticsList' : ['width', 'height', 'playTime', 'liveLatency','bufferingTime','droppedFrames','stallsDetected','manifestTimeSeconds','loadLatency'],
+            'customContextMenu': true,
+            'statisticsList': ['width', 'height', 'playTime', 'liveLatency', 'bufferingTime', 'droppedFrames', 'stallsDetected', 'manifestTimeSeconds', 'loadLatency'],
             'seekBarColors': {
                 base: 'rgba(255, 255, 255, 0.3)',
                 buffered: 'rgba(255, 255, 255, 0.54)',
@@ -69,23 +73,43 @@ class ShakaPlayer extends React.PureComponent {
             }
         });
 
-
         const onError = (error) => {
             // Log the error.
             console.error('Error code', error.code, 'object', error);
         }
 
-        player.load(src).then(function () {
+        player.load(src, null, "application/vnd.apple.mpegURL" ).then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
         }).catch(onError);  // onError is executed if the asynchronous load fails.
 
         // Event listeners
         player.addEventListener('loaded', this.onLoaded(this.video.current));
+
+        this.timerID = setInterval(
+            () => this.statsTick(player),
+            5000
+        );
     }
-    
+
+    statsTick(player) {
+        if (player !== undefined) {
+            var stats = player.getStats();
+            console.log(stats);
+            console.log("liveLatency:" + stats.liveLatency.toString());
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
     // Event Handlers
-    onLoaded (currentPlayer) {
+    onLoaded(currentPlayer) {
         currentPlayer.play();
         console.log('Shaka: Playing');
     }
@@ -97,7 +121,7 @@ class ShakaPlayer extends React.PureComponent {
                     id="video"
                     ref={this.video}
                     autoPlay
-                    muted 
+                    muted
                     loop
                     playsInline
                     style={{

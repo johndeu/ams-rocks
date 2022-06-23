@@ -52,6 +52,10 @@ const STREAMS = [
       'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8'
   },
   {
+    name: 'AMS LL-HLS Demo Stream',
+    src: 'https://aka.ms/LowLatencyDemo.m3u8'
+  },
+  {
     name: 'Azure Media Services Promo',
     src:
       'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)'
@@ -65,7 +69,7 @@ export default function LandingPage(props) {
 
   const { ...rest } = props;
   const ref = React.useRef();
-  const [src, setSrc] = React.useState(STREAMS[0].src);
+  const [src, setSrc] = React.useState(STREAMS[1].src);
 
 
   const imageClasses = classNames(
@@ -135,6 +139,7 @@ export default function LandingPage(props) {
                 </GridItem>
                 </Hidden>
                 <GridItem xs={12} sm={12} md={10} className={playerClasses} >
+                  
                   <ShakaPlayer
                     src={src}
                     posterUrl=""
