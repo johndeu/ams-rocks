@@ -18,7 +18,6 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
-import Parallax from "components/Parallax/Parallax.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
@@ -148,14 +147,13 @@ export default function LandingPage(props) {
                 </GridContainer>
               </GridItem>
             </GridContainer>
-          <div className={classNames(classes.mainBlue, classes.mainRaised)}>
-            <div className={classes.containerBlue}>
-              <FreeSection />
-            </div>
-          </div>
+           
         </div>
+
+        <FreeSection />
         <Footer whiteFont logoColor="gray" />
       </div>
+
     </div>
   );
 }
