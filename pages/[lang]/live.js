@@ -126,13 +126,13 @@ export default function LandingPage(props) {
                     <Card className={classes.card}>
                       <Badge color="success">Latency</Badge>
                       <CardBody className={classes.cardBody}>
-                        <h3>{stats.liveLatency.toPrecision(4)}s</h3>
+                        <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'loading'}</h3>
                       </CardBody>
                     </Card>
                     <Card className={classes.card}>
                       <Badge color="success">Quality</Badge>
                       <CardBody className={classes.cardBody}>
-                        <h3>{stats.height}p</h3>
+                        <h3>{stats.height ? stats.height + 'p': 'loading'}</h3>
                       </CardBody>
                     </Card>
                     <Card className={classes.card}>
