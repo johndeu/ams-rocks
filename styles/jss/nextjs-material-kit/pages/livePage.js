@@ -71,6 +71,7 @@ const livePage = (theme) => ({
   },
   player : {
     padding:"30px 30px",
+    paddingBottom:"12vh"
   },
   card : {
     backgroundColor:"gray",

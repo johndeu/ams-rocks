@@ -90,7 +90,7 @@ class ShakaPlayer extends React.PureComponent {
 
         this.timerID = setInterval(
             () => this.statsTick(player),
-            1000
+            2000
         );
     }
 

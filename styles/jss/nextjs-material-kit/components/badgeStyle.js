@@ -10,10 +10,10 @@ import {
 const badgeStyle = {
   badge: {
     marginRight: "3px",
-    borderRadius: "12px",
-    padding: "5px 12px",
-    textTransform: "uppercase",
-    fontSize: "10px",
+    borderRadius: "5px",
+    padding: "4px 12px",
+    textTransform: "normal",
+    fontSize: "12px",
     fontWeight: "500",
     lineHeight: "1",
     color: "#fff",
@@ -42,6 +42,9 @@ const badgeStyle = {
   },
   gray: {
     backgroundColor: "#6c757d",
+  },
+  azure : {
+    backgroundColor: "#2899F5",
   },
 };
 

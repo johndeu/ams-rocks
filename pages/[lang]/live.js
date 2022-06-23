@@ -108,46 +108,71 @@ export default function LandingPage(props) {
       />
       <div className={classes.section}>
         <div className={classes.container}>
-            <GridContainer>
-              <GridItem xs={12} sm={12} md={12}>
+          <GridContainer>
+            <GridItem xs={12} sm={12} md={12}>
 
-                <GridContainer>
-                  <Hidden xsDown>
-                    <GridItem xs={12} sm={12} md={2}>
-                      <Card className={classes.card}>
-                        <Badge color="success">Latency</Badge>
-                        <CardBody className={classes.cardBody}>
-                          <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
-                        </CardBody>
-                      </Card>
-                      <Card className={classes.card}>
-                        <Badge color="success">Quality</Badge>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={8} className={playerClasses} >
+
+                  <ShakaPlayer
+                    src={src}
+                    posterUrl=""
+                    stats={stats}
+                    onStatsUpdate={onStatsUpdate}
+                  />
+
+                </GridItem>
+                <Hidden xsDown>
+                  <GridItem xs={12} sm={12} md={4}>
+                    <GridContainer>
+                    <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure">Buffering Time</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</h3>
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure">Estimated Bandwidth</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth/1024/1024).toPrecision(3) + ' kbps' : 'measuring'}</h3>
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure">Latency</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card}>
+                        <Badge color="default">Quality</Badge>
                         <CardBody className={classes.cardBody}>
                           <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
                         </CardBody>
                       </Card>
-                      <Card className={classes.card}>
-                        <Badge color="success">Streamed From</Badge>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card}>
+                        <Badge color="default">Streamed From</Badge>
                         <CardBody className={classes.cardBody}>
                           <h3>{location}</h3>
                         </CardBody>
                       </Card>
-                    </GridItem>
-                  </Hidden>
-                  <GridItem xs={12} sm={12} md={10} className={playerClasses} >
-
-                    <ShakaPlayer
-                      src={src}
-                      posterUrl=""
-                      stats={stats}
-                      onStatsUpdate={onStatsUpdate}
-                    />
-
+                      </GridItem>
+                    </GridContainer>
                   </GridItem>
-                </GridContainer>
-              </GridItem>
-            </GridContainer>
-           
+                </Hidden>
+
+              </GridContainer>
+            </GridItem>
+          </GridContainer>
+
         </div>
 
         <FreeSection />
