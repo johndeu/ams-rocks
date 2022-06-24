@@ -83,7 +83,6 @@ function ShakaPlayer({
             },
             streaming: {
                 //If true, low latency streaming mode is enabled. If lowLatencyMode is set to true, inaccurateManifestTolerance is set to 0 unless specified, and rebufferingGoal to 0.01 unless specified at the same time.
-                lowLatencyMode: true,
                 autoLowLatencyMode:true,
                 bufferingGoal:1,
                 inaccurateManifestTolerance:0,

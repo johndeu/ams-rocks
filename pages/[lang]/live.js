@@ -185,7 +185,7 @@ export default function LandingPage(props) {
                         <Card className={classes.card} md={2}>
                           <Badge color="azure"><span className={classes.label}>Playhead latency</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{latency && (latency/1000).toPrecision(2) + "s"}</span>
+                            <span className={classes.metric}>{latency && (latency/1000).toPrecision(4) + "s"}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
