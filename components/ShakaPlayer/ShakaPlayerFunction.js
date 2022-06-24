@@ -72,7 +72,7 @@ function ShakaPlayer({
         // See https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#StreamingConfiguration
         player.configure({
             manifest: {
-                defaultPresentationDelay: 1,
+                defaultPresentationDelay: 0.1,
                 dash: {
                     // autoCorrectDrift: true
                 },
@@ -84,11 +84,11 @@ function ShakaPlayer({
             streaming: {
                 //If true, low latency streaming mode is enabled. If lowLatencyMode is set to true, inaccurateManifestTolerance is set to 0 unless specified, and rebufferingGoal to 0.01 unless specified at the same time.
                 lowLatencyMode: true,
+                autoLowLatencyMode:true,
+                bufferingGoal:1,
                 inaccurateManifestTolerance:0,
                 rebufferingGoal: 0.01,
-                jumpLargeGaps: true,
-                useNativeHlsOnSafari: false,
-                gapDetectionThreshold: 0.5
+                useNativeHlsOnSafari: true,
             },
             drm: {
                 servers: { 'com.widevine.alpha': licenseServer }
