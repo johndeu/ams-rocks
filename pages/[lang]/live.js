@@ -147,7 +147,6 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
-
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8} className={playerClasses} >
 
@@ -159,18 +158,21 @@ export default function LandingPage(props) {
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-
-                  <div className={classes.localTimeTitle}>UTC System Time: <span className={classes.localTime}>{currentTime}</span></div>
-
+                  <Card className={classes.card} md={2}>
+                    <Badge color="azure"><span className={classes.label}>UTC Time: </span></Badge>
+                    <CardBody className={classes.cardBody}>
+                      <span className={classes.localTime}>{currentTime}</span>
+                    </CardBody>
+                  </Card>
                 </GridItem>
                 <Hidden xsDown>
                   <GridItem xs={12} sm={12} md={4}>
                     <GridContainer>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure"> <span className={classes.label}>Buffering Time</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</span>
+                            <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
@@ -190,18 +192,10 @@ export default function LandingPage(props) {
                           </CardBody>
                         </Card>
                       </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
 
-                          </CardBody>
-                        </Card>
-                      </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card}>
-                          <Badge color="default"><span className={classes.label}>Quality</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Current Resolution</span></Badge>
                           <CardBody className={classes.cardBody}>
                             <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'measuring'}</span>
                           </CardBody>
@@ -215,6 +209,15 @@ export default function LandingPage(props) {
                           </CardBody>
                         </Card>
                       </GridItem>
+
+                      {/*                     <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure"> <span className={classes.label}>Buffering Time</span></Badge>
+                          <CardBody className={classes.cardBody}>
+                            <span className={classes.metric}>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</span>
+                          </CardBody>
+                        </Card>
+                      </GridItem> */}
                     </GridContainer>
                   </GridItem>
                 </Hidden>

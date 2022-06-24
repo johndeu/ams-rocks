@@ -71,14 +71,13 @@ const livePage = (theme) => ({
     },
   },
   player : {
-    padding:"30px 30px",
+    padding:"10px 10px",
     paddingBottom:"12vh"
   },
   card : {
     backgroundColor:"gray",
     color:"#fff",
     textAlign: "center",
-    padding: "5px 5px"
   },
   cardBody: {
     padding:"0px 0px",
@@ -90,16 +89,19 @@ const livePage = (theme) => ({
     marginRight: "4px",
   },
   localTime : {
-    color: "#000",
-    fontWeight: "500",
-    fontSize: "24px",
-    paddingLeft: "10px"
+    color: "rgba(255, 255, 255, 0.75)",
+    fontSize: "22px",
+    fontFamily:"Consolas, Terminus, sans-serif",
+    transition: "0.3s ease all",
+    fontWeight: "600",
+    lineHeight:"2em",
+    letterSpacing: "0.15em",
   },
   localTimeTitle : {
     paddingTop:"25px",
     color: "#000",
     fontWeight: "400",
-    fontSize: "18px"
+    fontSize: "24px"
   },
   label: {
     color: "rgba(255, 255, 255, 0.8)",
@@ -113,7 +115,7 @@ const livePage = (theme) => ({
     fontSize: "22px",
     transition: "0.3s ease all",
     fontWeight: "600",
-    paddingLeft: "0",
+    lineHeight:"2em",
     letterSpacing: "0.006em",
   },
   ...tooltipsStyle,
