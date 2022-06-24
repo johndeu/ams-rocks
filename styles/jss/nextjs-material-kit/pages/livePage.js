@@ -78,11 +78,13 @@ const livePage = (theme) => ({
     backgroundColor:"gray",
     color:"#fff",
     textAlign: "center",
+    padding:"4px"
   },
   cardBody: {
-    padding:"0px 0px",
+    padding:"0px 10px",
     textAlign: "center",
   },
+ 
   icon: {
     width: "17px",
     height: "17px",
@@ -109,6 +111,7 @@ const livePage = (theme) => ({
     transition: "0.3s ease all",
     fontWeight: "600",
     letterSpacing: "tight",
+    padding:"10px,10"
   },
   metric: {
     color: "rgba(255, 255, 255, 0.75)",
