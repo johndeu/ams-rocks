@@ -124,7 +124,7 @@ export default function LandingPage(props) {
   function getCurrentTimeUTC() {
     var currentTime;
     var now = moment();
-    currentTime = now.utc().format("HH:mm:ss.sss");
+    currentTime = now.utc().format("HH:mm:ss");
     return currentTime;
   }
 
