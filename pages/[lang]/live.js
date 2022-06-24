@@ -23,6 +23,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import Badge from "components/Badge/Badge.js";
+import Tooltip from "@material-ui/core/Tooltip";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -73,7 +74,7 @@ export default function LandingPage(props) {
   const [src, setSrc] = useState(STREAMS[1].src);
   const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
-  const [bufferedInfo, setBufferedInfo] = useState({});
+  const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -95,11 +96,12 @@ export default function LandingPage(props) {
   function onBufferedInfoUpdate(info) {
 
     if (info !== undefined) {
-      setBufferedInfo(info);
+      
       if (info.total[0]) {
         var rangeStart = info.total[0].start;
         var rangeEnd = info.total[0].end;
         console.log("buffered time: " + (rangeEnd - rangeStart))
+        setBufferTime((rangeEnd-rangeStart));
       }
     }
 
@@ -133,7 +135,6 @@ export default function LandingPage(props) {
                     src={src}
                     posterUrl=""
                     stats={stats}
-                    bufferedInfo={bufferedInfo}
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                   />
@@ -147,7 +148,14 @@ export default function LandingPage(props) {
                           <Badge color="azure">Buffering Time</Badge>
                           <CardBody className={classes.cardBody}>
                             <h3>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</h3>
-
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure">Buffer Size</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{bufferTime && bufferTime.toPrecision(4) + ' s'}</h3>
                           </CardBody>
                         </Card>
                       </GridItem>

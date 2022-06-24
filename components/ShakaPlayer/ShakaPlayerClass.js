@@ -81,7 +81,7 @@ class ShakaPlayer extends React.PureComponent {
             console.error('Error code', error.code, 'object', error);
         }
 
-        player.load(src, null, "application/vnd.apple.mpegURL" ).then(function () {
+        player.load(src, null, "application/vnd.apple.mpegURL").then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
         }).catch(onError);  // onError is executed if the asynchronous load fails.
@@ -91,7 +91,7 @@ class ShakaPlayer extends React.PureComponent {
 
         this.timerID = setInterval(
             () => this.statsTick(player),
-            2000
+            5000
         );
     }
 
@@ -99,9 +99,14 @@ class ShakaPlayer extends React.PureComponent {
         if (player !== undefined) {
             var stats = player.getStats();
             var bufferedInfo = player.getBufferedInfo();
-            //console.log("liveLatency:" + stats.liveLatency.toString());
-            this.props.onStatsUpdate(stats);
-            this.props.onBufferedInfoUpdate(bufferedInfo);
+            console.log("BufferInfo{0}:", bufferedInfo)
+            if (bufferedInfo) {
+                this.props.onBufferedInfoUpdate(bufferedInfo);
+            }
+            if (stats) {
+                this.props.onStatsUpdate(stats);
+            }
+
         }
     }
 
@@ -148,9 +153,9 @@ ShakaPlayer.propTypes = {
     licenseServer: PropTypes.string,
     src: PropTypes.string,
     posterUrl: PropTypes.string,
-    onStatsUpdate : PropTypes.func,
-    onBufferedInfoUpdate : PropTypes.func,
-    stats : PropTypes.object,
+    onStatsUpdate: PropTypes.func,
+    onBufferedInfoUpdate: PropTypes.func,
+    stats: PropTypes.object,
     bufferedInfo: PropTypes.object,
 }
 

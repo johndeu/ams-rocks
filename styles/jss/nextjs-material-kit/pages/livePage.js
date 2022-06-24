@@ -12,6 +12,7 @@ import {
   mainDarkBlue,
   raised
  } from "styles/jss/nextjs-material-kit.js";
+ import tooltipsStyle from "styles/jss/nextjs-material-kit/tooltipsStyle.js";
 
 const livePage = (theme) => ({
   section: {
@@ -82,7 +83,24 @@ const livePage = (theme) => ({
   cardBody: {
     padding:"0px 0px",
     textAlign: "center",
-  }
+  },
+  icon: {
+    width: "17px",
+    height: "17px",
+    marginRight: "4px",
+  },
+  label: {
+    color: "rgba(0, 0, 0, 0.26)",
+    cursor: "pointer",
+    display: "inline-flex",
+    fontSize: "14px",
+    transition: "0.3s ease all",
+    lineHeight: "1.428571429",
+    fontWeight: "400",
+    paddingLeft: "0",
+    letterSpacing: "normal",
+  },
+  ...tooltipsStyle,
 });
 
 export default livePage;
