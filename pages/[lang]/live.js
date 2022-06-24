@@ -117,12 +117,10 @@ export default function LandingPage(props) {
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
     if (time) {
-      setPlayHeadTime(time);
       var now = moment().utc();
       var latency = now.subtract(time);
       var msLatency = moment.duration(latency).asMilliseconds();
-      //console.log("playhead: " + time + " currentUTC: " + now );
-      //console.log("latency: " + msLatency + "ms");
+      setPlayHeadTime(time);
       setLatency(msLatency)
     }
 

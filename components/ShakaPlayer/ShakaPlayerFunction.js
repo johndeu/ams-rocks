@@ -72,6 +72,7 @@ function ShakaPlayer({
         // See https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#StreamingConfiguration
         player.configure({
             manifest: {
+                defaultPresentationDelay: 1,
                 dash: {
                     // autoCorrectDrift: true
                 },

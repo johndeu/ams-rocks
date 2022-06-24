@@ -93,7 +93,7 @@ const livePage = (theme) => ({
   localTime : {
     color: "rgba(255, 255, 255, 0.75)",
     fontSize: "26px",
-    fontFamily:"Consolas, Terminus, sans-serif",
+    fontFamily:"Consolas, Terminus, monospace",
     transition: "0.3s ease all",
     fontWeight: "600",
     lineHeight:"1.3em",
