@@ -118,7 +118,7 @@ export default function LandingPage(props) {
     if (time) {
       setPlayHeadTime(time);
     }
-  
+
   }
 
   function getCurrentTimeUTC() {
@@ -160,63 +160,58 @@ export default function LandingPage(props) {
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
 
+                  <div className={classes.localTimeTitle}>UTC System Time: <span className={classes.localTime}>{currentTime}</span></div>
+
                 </GridItem>
                 <Hidden xsDown>
                   <GridItem xs={12} sm={12} md={4}>
                     <GridContainer>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure">Buffering Time</Badge>
+                          <Badge color="azure"> <span className={classes.label}>Buffering Time</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</h3>
+                            <span className={classes.metric}>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure">Buffer Size</Badge>
+                          <Badge color="azure"><span className={classes.label}>Buffer Size</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{bufferTime && bufferTime.toPrecision(4) + ' s'}</h3>
+                            <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + ' s'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure">Estimated Bandwidth</Badge>
+                          <Badge color="azure"><span className={classes.label}>Estimated Bandwidth</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' Mbps' : 'measuring'}</h3>
+                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' Mbps' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure">Latency</Badge>
+                          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</h3>
+                            <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
+
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card}>
-                          <Badge color="default">Quality</Badge>
+                          <Badge color="default"><span className={classes.label}>Quality</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
+                            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card}>
-                          <Badge color="default">Streamed From</Badge>
+                          <Badge color="default"><span className={classes.label}>Streamed From</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{location}</h3>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card}>
-                          <Badge color="default">Current UTC time</Badge>
-                          <CardBody className={classes.cardBody}>
-                            <h3>{currentTime}</h3>
+                            <span className={classes.metric}>{location}</span>
                           </CardBody>
                         </Card>
                       </GridItem>

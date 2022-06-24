@@ -89,16 +89,32 @@ const livePage = (theme) => ({
     height: "17px",
     marginRight: "4px",
   },
-  label: {
-    color: "rgba(0, 0, 0, 0.26)",
-    cursor: "pointer",
-    display: "inline-flex",
-    fontSize: "14px",
-    transition: "0.3s ease all",
-    lineHeight: "1.428571429",
+  localTime : {
+    color: "#000",
+    fontWeight: "500",
+    fontSize: "24px",
+    paddingLeft: "10px"
+  },
+  localTimeTitle : {
+    paddingTop:"25px",
+    color: "#000",
     fontWeight: "400",
+    fontSize: "18px"
+  },
+  label: {
+    color: "rgba(255, 255, 255, 0.8)",
+    fontSize: "12px",
+    transition: "0.3s ease all",
+    fontWeight: "600",
+    letterSpacing: "tight",
+  },
+  metric: {
+    color: "rgba(255, 255, 255, 0.75)",
+    fontSize: "22px",
+    transition: "0.3s ease all",
+    fontWeight: "600",
     paddingLeft: "0",
-    letterSpacing: "normal",
+    letterSpacing: "0.006em",
   },
   ...tooltipsStyle,
 });
