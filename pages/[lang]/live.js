@@ -131,7 +131,7 @@ export default function LandingPage(props) {
   function getCurrentTimeUTC() {
     var currentTime;
     var now = moment();
-    currentTime = now.utc().format("HH:mm:ss");
+    currentTime = now.utc().format("YYYY-MM-DD HH:mm:ss");
     return currentTime;
   }
 
@@ -185,7 +185,7 @@ export default function LandingPage(props) {
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>PlayheadTime - UTC Time</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Playhead latency</span></Badge>
                           <CardBody className={classes.cardBody}>
                             <span className={classes.metric}>{latency && (latency/1000).toPrecision(2) + "s"}</span>
                           </CardBody>
@@ -195,15 +195,15 @@ export default function LandingPage(props) {
                         <Card className={classes.card} md={2}>
                           <Badge color="azure"><span className={classes.label}>Buffer Size</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + ' s'}</span>
+                            <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Est. Bandwidth (Mbps)</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(2) + '' : 'measuring'}</span>
+                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
