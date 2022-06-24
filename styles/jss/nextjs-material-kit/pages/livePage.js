@@ -92,12 +92,12 @@ const livePage = (theme) => ({
   },
   localTime : {
     color: "rgba(255, 255, 255, 0.75)",
-    fontSize: "22px",
+    fontSize: "26px",
     fontFamily:"Consolas, Terminus, sans-serif",
     transition: "0.3s ease all",
     fontWeight: "600",
-    lineHeight:"2em",
-    letterSpacing: "0.15em",
+    lineHeight:"1.3em",
+    letterSpacing: "0.05em",
   },
   localTimeTitle : {
     paddingTop:"25px",
