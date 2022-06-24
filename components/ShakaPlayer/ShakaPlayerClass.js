@@ -18,7 +18,8 @@ class ShakaPlayer extends React.PureComponent {
         this.video = React.createRef();
         this.videoContainer = React.createRef();
         this.state = {
-            stats: []
+            stats: [],
+            bufferdInfo: {}
         }
 
 
@@ -53,7 +54,7 @@ class ShakaPlayer extends React.PureComponent {
         }
         ui.configure(uiConfig);
 
-        console.log(Object.keys(shaka.ui));
+        //console.log(Object.keys(shaka.ui));
 
         player.configure({
             manifest: {
@@ -97,9 +98,10 @@ class ShakaPlayer extends React.PureComponent {
     statsTick(player) {
         if (player !== undefined) {
             var stats = player.getStats();
-            //console.log(stats);
+            var bufferedInfo = player.getBufferedInfo();
             //console.log("liveLatency:" + stats.liveLatency.toString());
             this.props.onStatsUpdate(stats);
+            this.props.onBufferedInfoUpdate(bufferedInfo);
         }
     }
 
@@ -147,7 +149,9 @@ ShakaPlayer.propTypes = {
     src: PropTypes.string,
     posterUrl: PropTypes.string,
     onStatsUpdate : PropTypes.func,
-    stats : PropTypes.object
+    onBufferedInfoUpdate : PropTypes.func,
+    stats : PropTypes.object,
+    bufferedInfo: PropTypes.object,
 }
 
 export default ShakaPlayer;

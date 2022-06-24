@@ -73,6 +73,7 @@ export default function LandingPage(props) {
   const [src, setSrc] = useState(STREAMS[1].src);
   const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
+  const [bufferedInfo, setBufferedInfo] = useState({});
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -89,6 +90,20 @@ export default function LandingPage(props) {
   function onStatsUpdate(statsUpdate) {
     setStats(statsUpdate);
     //console.log("Got Stats from Player:");
+  }
+
+  function onBufferedInfoUpdate(info) {
+
+    if (info !== undefined) {
+      setBufferedInfo(info);
+      if (info.total[0]) {
+        var rangeStart = info.total[0].start;
+        var rangeEnd = info.total[0].end;
+        console.log("buffered time: " + (rangeEnd - rangeStart))
+      }
+    }
+
+
   }
 
   return (
@@ -118,18 +133,21 @@ export default function LandingPage(props) {
                     src={src}
                     posterUrl=""
                     stats={stats}
+                    bufferedInfo={bufferedInfo}
                     onStatsUpdate={onStatsUpdate}
+                    onBufferedInfoUpdate={onBufferedInfoUpdate}
                   />
 
                 </GridItem>
                 <Hidden xsDown>
                   <GridItem xs={12} sm={12} md={4}>
                     <GridContainer>
-                    <GridItem md={6}>
+                      <GridItem md={6}>
                         <Card className={classes.card} md={2}>
                           <Badge color="azure">Buffering Time</Badge>
                           <CardBody className={classes.cardBody}>
                             <h3>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</h3>
+
                           </CardBody>
                         </Card>
                       </GridItem>
@@ -137,7 +155,7 @@ export default function LandingPage(props) {
                         <Card className={classes.card} md={2}>
                           <Badge color="azure">Estimated Bandwidth</Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth/1024/1024).toPrecision(3) + ' kbps' : 'measuring'}</h3>
+                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' kbps' : 'measuring'}</h3>
                           </CardBody>
                         </Card>
                       </GridItem>
@@ -151,19 +169,19 @@ export default function LandingPage(props) {
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card}>
-                        <Badge color="default">Quality</Badge>
-                        <CardBody className={classes.cardBody}>
-                          <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
-                        </CardBody>
-                      </Card>
+                          <Badge color="default">Quality</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{stats.height ? stats.height + 'p' : 'measuring'}</h3>
+                          </CardBody>
+                        </Card>
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card}>
-                        <Badge color="default">Streamed From</Badge>
-                        <CardBody className={classes.cardBody}>
-                          <h3>{location}</h3>
-                        </CardBody>
-                      </Card>
+                          <Badge color="default">Streamed From</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{location}</h3>
+                          </CardBody>
+                        </Card>
                       </GridItem>
                     </GridContainer>
                   </GridItem>
