@@ -91,7 +91,7 @@ class ShakaPlayer extends React.PureComponent {
 
         this.timerID = setInterval(
             () => this.statsTick(player),
-            5000
+            1000
         );
     }
 
@@ -99,12 +99,16 @@ class ShakaPlayer extends React.PureComponent {
         if (player !== undefined) {
             var stats = player.getStats();
             var bufferedInfo = player.getBufferedInfo();
-            console.log("BufferInfo{0}:", bufferedInfo)
+            var playHeadTime = player.getPlayheadTimeAsDate();
+
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
             }
             if (stats) {
                 this.props.onStatsUpdate(stats);
+            }
+            if (playHeadTime) {
+                this.props.onPlayHeadTimeUpdate(playHeadTime);
             }
 
         }
@@ -155,8 +159,8 @@ ShakaPlayer.propTypes = {
     posterUrl: PropTypes.string,
     onStatsUpdate: PropTypes.func,
     onBufferedInfoUpdate: PropTypes.func,
+    onPlayHeadTimeUpdate: PropTypes.func,
     stats: PropTypes.object,
-    bufferedInfo: PropTypes.object,
 }
 
 export default ShakaPlayer;

@@ -1,5 +1,6 @@
 import React, { useState, setState } from "react";
 import dynamic from 'next/dynamic';
+import moment from "moment";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -64,6 +65,8 @@ const STREAMS = [
   }
 ];
 
+const WORLD_CLOCK_API = "http://worldclockapi.com/api/json/utc/now";
+
 
 export default function LandingPage(props) {
   const classes = useStyles();
@@ -75,6 +78,8 @@ export default function LandingPage(props) {
   const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
+  const [playHeadTime, setPlayHeadTime] = useState(Date.now());
+  const [currentTime, setCurrentTime] = useState("");
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -96,16 +101,31 @@ export default function LandingPage(props) {
   function onBufferedInfoUpdate(info) {
 
     if (info !== undefined) {
-      
+
       if (info.total[0]) {
         var rangeStart = info.total[0].start;
         var rangeEnd = info.total[0].end;
-        console.log("buffered time: " + (rangeEnd - rangeStart))
-        setBufferTime((rangeEnd-rangeStart));
+        //console.log("buffered time: " + (rangeEnd - rangeStart))
+        setBufferTime((rangeEnd - rangeStart));
       }
     }
+  }
 
+  function onPlayHeadTimeUpdate(time) {
+    // console.log("PlayHeadTime: " + time)
+    var currentTime = getCurrentTimeUTC();
+    setCurrentTime(currentTime);
+    if (time) {
+      setPlayHeadTime(time);
+    }
+  
+  }
 
+  function getCurrentTimeUTC() {
+    var currentTime;
+    var now = moment();
+    currentTime = now.utc().format("HH:mm:ss.sss");
+    return currentTime;
   }
 
   return (
@@ -137,6 +157,7 @@ export default function LandingPage(props) {
                     stats={stats}
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
+                    onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
 
                 </GridItem>
@@ -163,7 +184,7 @@ export default function LandingPage(props) {
                         <Card className={classes.card} md={2}>
                           <Badge color="azure">Estimated Bandwidth</Badge>
                           <CardBody className={classes.cardBody}>
-                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' kbps' : 'measuring'}</h3>
+                            <h3>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' Mbps' : 'measuring'}</h3>
                           </CardBody>
                         </Card>
                       </GridItem>
@@ -188,6 +209,14 @@ export default function LandingPage(props) {
                           <Badge color="default">Streamed From</Badge>
                           <CardBody className={classes.cardBody}>
                             <h3>{location}</h3>
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card}>
+                          <Badge color="default">Current UTC time</Badge>
+                          <CardBody className={classes.cardBody}>
+                            <h3>{currentTime}</h3>
                           </CardBody>
                         </Card>
                       </GridItem>
