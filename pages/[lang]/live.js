@@ -80,6 +80,7 @@ export default function LandingPage(props) {
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState("");
+  const [latency, setLatency] = useState("");
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -117,6 +118,12 @@ export default function LandingPage(props) {
     setCurrentTime(currentTime);
     if (time) {
       setPlayHeadTime(time);
+      var now = moment().utc();
+      var latency = now.subtract(time);
+      var msLatency = moment.duration(latency).asMilliseconds();
+      //console.log("playhead: " + time + " currentUTC: " + now );
+      //console.log("latency: " + msLatency + "ms");
+      setLatency(msLatency)
     }
 
   }
@@ -170,9 +177,17 @@ export default function LandingPage(props) {
                     <GridContainer>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Latency (Stats)</span></Badge>
                           <CardBody className={classes.cardBody}>
                             <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
+                          </CardBody>
+                        </Card>
+                      </GridItem>
+                      <GridItem md={6}>
+                        <Card className={classes.card} md={2}>
+                          <Badge color="azure"><span className={classes.label}>PlayheadTime - UTC Time</span></Badge>
+                          <CardBody className={classes.cardBody}>
+                            <span className={classes.metric}>{latency && (latency/1000).toPrecision(2) + "s"}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
@@ -186,9 +201,9 @@ export default function LandingPage(props) {
                       </GridItem>
                       <GridItem md={6}>
                         <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Estimated Bandwidth</span></Badge>
+                          <Badge color="azure"><span className={classes.label}>Est. Bandwidth (Mbps)</span></Badge>
                           <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(3) + ' Mbps' : 'measuring'}</span>
+                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024 / 1024).toPrecision(2) + '' : 'measuring'}</span>
                           </CardBody>
                         </Card>
                       </GridItem>
