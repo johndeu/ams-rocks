@@ -133,9 +133,9 @@ export default function LandingPage(props) {
     return currentTime;
   }
 
-  const metricGrid = <GridItem xs={12} sm={12} md={4}>
+  const metricGrid =
     <GridContainer>
-{/*       <GridItem md={6}>
+      {/*       <GridItem md={6}>
         <Card className={classes.card} md={2}>
           <Badge color="azure"><span className={classes.label}>Latency (Stats)</span></Badge>
           <CardBody className={classes.cardBody}>
@@ -185,7 +185,7 @@ export default function LandingPage(props) {
         </Card>
       </GridItem>
     </GridContainer>
-  </GridItem>
+
 
   return (
     <div >
@@ -223,14 +223,15 @@ export default function LandingPage(props) {
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>
                   </Card>
-                  <Hidden xsUp>
+                  <Hidden smUp>
                     {metricGrid}
                   </Hidden>
                 </GridItem>
-                <Hidden xsDown >
-                  {metricGrid}
-                </Hidden>
-
+                <GridItem xs={12} sm={12} md={4}>
+                  <Hidden xsDown >
+                    {metricGrid}
+                  </Hidden>
+                </GridItem>
               </GridContainer>
             </GridItem>
           </GridContainer>
