@@ -80,7 +80,7 @@ export default function LandingPage(props) {
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
-  const [latency, setLatency] = useState(6);
+  const [latency, setLatency] = useState(6000);
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -163,7 +163,7 @@ export default function LandingPage(props) {
         <Card className={classes.card} md={2}>
           <Badge color="azure"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'measuring'}</span>
+            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'estimating'}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -172,7 +172,7 @@ export default function LandingPage(props) {
         <Card className={classes.card}>
           <Badge color="azure"><span className={classes.label}>Quality</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'measuring'}</span>
+            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'loading'}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -227,7 +227,7 @@ export default function LandingPage(props) {
                     {metricGrid}
                   </Hidden>
                 </GridItem>
-                <Hidden xsDown>
+                <Hidden xsDown >
                   {metricGrid}
                 </Hidden>
 
