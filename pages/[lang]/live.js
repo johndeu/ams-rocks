@@ -79,8 +79,8 @@ export default function LandingPage(props) {
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(Date.now());
-  const [currentTime, setCurrentTime] = useState("");
-  const [latency, setLatency] = useState("");
+  const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
+  const [latency, setLatency] = useState(6);
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -133,6 +133,60 @@ export default function LandingPage(props) {
     return currentTime;
   }
 
+  const metricGrid = <GridItem xs={12} sm={12} md={4}>
+    <GridContainer>
+{/*       <GridItem md={6}>
+        <Card className={classes.card} md={2}>
+          <Badge color="azure"><span className={classes.label}>Latency (Stats)</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
+          </CardBody>
+        </Card>
+      </GridItem> */}
+      <GridItem md={6}>
+        <Card className={classes.card} md={2}>
+          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{latency && (latency / 1000).toPrecision(4) + "s"}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem md={6}>
+        <Card className={classes.card} md={2}>
+          <Badge color="azure"><span className={classes.label}>Buffer Size</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem md={6}>
+        <Card className={classes.card} md={2}>
+          <Badge color="azure"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'measuring'}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+
+      <GridItem md={6}>
+        <Card className={classes.card}>
+          <Badge color="azure"><span className={classes.label}>Quality</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'measuring'}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem md={6}>
+        <Card className={classes.card}>
+          <Badge color="default"><span className={classes.label}>Streamed From</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{location}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+    </GridContainer>
+  </GridItem>
+
   return (
     <div >
       <Header
@@ -169,70 +223,12 @@ export default function LandingPage(props) {
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>
                   </Card>
+                  <Hidden xsUp>
+                    {metricGrid}
+                  </Hidden>
                 </GridItem>
                 <Hidden xsDown>
-                  <GridItem xs={12} sm={12} md={4}>
-                    <GridContainer>
-                      <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Latency (Stats)</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.liveLatency ? stats.liveLatency.toPrecision(4) + 's' : 'measuring'}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Playhead latency</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{latency && (latency/1000).toPrecision(4) + "s"}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Buffer Size</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'measuring'}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-
-                      <GridItem md={6}>
-                        <Card className={classes.card}>
-                          <Badge color="azure"><span className={classes.label}>Current Resolution</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'measuring'}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-                      <GridItem md={6}>
-                        <Card className={classes.card}>
-                          <Badge color="default"><span className={classes.label}>Streamed From</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{location}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem>
-
-                      {/*                     <GridItem md={6}>
-                        <Card className={classes.card} md={2}>
-                          <Badge color="azure"> <span className={classes.label}>Buffering Time</span></Badge>
-                          <CardBody className={classes.cardBody}>
-                            <span className={classes.metric}>{stats.bufferingTime ? stats.bufferingTime.toPrecision(2) + 's' : 'measuring'}</span>
-                          </CardBody>
-                        </Card>
-                      </GridItem> */}
-                    </GridContainer>
-                  </GridItem>
+                  {metricGrid}
                 </Hidden>
 
               </GridContainer>
