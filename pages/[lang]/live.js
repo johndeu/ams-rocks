@@ -42,6 +42,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
 import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
+import { env } from "process";
 
 const dashboardRoutes = [];
 
@@ -81,6 +82,7 @@ export default function LandingPage(props) {
   const [playHeadTime, setPlayHeadTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
   const [latency, setLatency] = useState(6000);
+  const [userAgent, setUserAgent] = useState("");
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -116,6 +118,9 @@ export default function LandingPage(props) {
     // console.log("PlayHeadTime: " + time)
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
+ 
+    setUserAgent(navigator.userAgent);
+
     if (time) {
       var now = moment().utc();
       var latency = now.subtract(time);
@@ -183,13 +188,39 @@ export default function LandingPage(props) {
             <span className={classes.metric}>{location}</span>
           </CardBody>
         </Card>
+      </GridItem>      
+      <GridItem md={6}>
+        <Card className={classes.card}>
+          <Badge color="default"><span className={classes.label}>Playhead Time</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{playHeadTime.toLocaleString()}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem md={6}>
+        <Card className={classes.card}>
+          <Badge color="default"><span className={classes.label}>User Agent</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{ /Edg/.test(userAgent) ? userAgent : userAgent}</span>
+          </CardBody>
+        </Card>
       </GridItem>
     </GridContainer>
 
 
   return (
     <div >
-      <Header
+{/*       <AzureHeader
+        color="white"
+        leftLinks={<HeaderLinksLeft />}
+        rightLinks={<HeaderLinksRight />}
+        changeColorOnScroll={{
+          height: 100,
+          color: "white",
+        }}
+        {...rest}
+      /> */}
+       <Header
         color="azureMedia"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}

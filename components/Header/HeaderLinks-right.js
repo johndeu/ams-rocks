@@ -14,6 +14,7 @@ import Icon from "@material-ui/core/Icon";
 import { Apps, CloudDownload } from "@material-ui/icons";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
+import Hidden from "@material-ui/core/Hidden";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
@@ -33,18 +34,41 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
+      <Hidden mdDown >
+        <ListItem className={classes.listItem}>
+          <Button
+            href="https://azure.microsoft.com/overview/contact-azure-sales/"
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            {i18next.t('menu.contactSales')}
+          </Button>
+        </ListItem>
+      </Hidden>
+      <Hidden smDown >
+        <ListItem className={classes.listItem}>
+          <Button
+            color="azure"
+            size="sm"
+            border="4xpx solid #6f9e02"
+            aria-label={i18next.t('menu.freeAccount')}
+            href="https://azure.microsoft.com/free/"
+            target=""
+          >
+            {i18next.t('menu.freeAccount')}
+          </Button>
+        </ListItem>
+      </Hidden>
       <ListItem className={classes.listItem}>
         <Button
+          href="https://portal.azure.com/"
           color="transparent"
-          size = "sm"
-          border="1px solid"
-          aria-label={i18next.t('menu.loginButton')}
-          href="https://azure.microsoft.com/free/"
-          target=""
+          target="_blank"
+          className={classes.navLink}
         >
-          {i18next.t('menu.loginButton')}
+          {i18next.t('menu.signIn')}
         </Button>
-
       </ListItem>
     </List >
   );

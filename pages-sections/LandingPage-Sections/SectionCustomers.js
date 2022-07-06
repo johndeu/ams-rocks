@@ -38,8 +38,8 @@ export default function SectionCarousel() {
             <Card carousel>
               <Carousel {...settings} className={classes.customers}>
                 {customers.map(item => 
-                <div className={classes.customerSpacer}>
-                  <img
+                <div key= {item.key} className={classes.customerSpacer}>
+                  <img 
                     src={"/img/customers/" + item.imgSrc}
                     alt={item.name}
                     height={60}

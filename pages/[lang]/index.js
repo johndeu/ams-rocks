@@ -77,23 +77,34 @@ export default function LandingPage(props) {
 
   return (
     <div>
+    {/*   <AzureHeader
+        color="white"
+        fixed
+        leftLinks={<HeaderLinksLeft />}
+        rightLinks={<HeaderLinksRight />}
+        changeColorOnScroll={{
+          height: 120,
+          color: "white",
+        }}
+        {...rest}
+      /> */}
       <Header
-        color="transparent"
+        color="white"
         routes={dashboardRoutes}
+        fixed
         brand={i18next.t('landing.title')}
         leftLinks={<HeaderLinksLeft />}
         rightLinks={<HeaderLinksRight />}
-        fixed
         changeColorOnScroll={{
-          height: 100,
+          height: 120,
           color: "white",
         }}
         {...rest}
       />
       <Parallax responsive image="/img/Mainheader_image-2.png">
+
         <GridContainer className={classes.container}>
           <GridItem>
-            <div className={classes.spacer}></div>
             <div className={classes.titleSection}>
               <span className={classes.title}>{i18next.t('landing.tagline1')}</span><br />
               <span className={classes.title2}>{i18next.t('landing.tagline2')} </span><br />
@@ -142,12 +153,12 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-    
-         {/*  <ShakaPlayer src={src} /> */}
-      
+
+          {/*  <ShakaPlayer src={src} /> */}
+
           <IndustrySection />
           <div className={classes.sectionBreak}></div>
-  
+
           <SectionArea
             align="right"
             title={i18next.t('landing.section.1.title')}

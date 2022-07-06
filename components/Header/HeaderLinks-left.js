@@ -38,6 +38,7 @@ export default function HeaderLinks(props) {
           noLiPadding
           navDropdown
           buttonText={i18next.t('menu.examples.title')}
+          hoverColor="azure"
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -61,6 +62,7 @@ export default function HeaderLinks(props) {
           noLiPadding
           navDropdown
           buttonText={i18next.t('menu.docs.title')}
+          hoverColor="azure"
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -89,17 +91,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-            
-{/*       <ListItem className={classes.listItem}>
-        <Button
-          href={"/tour"}
-          color="transparent"
-          target=""
-          className={classes.navLink}
-        >
-          {i18next.t('menu.tour.title')}
-        </Button>
-      </ListItem> */}
+          
       <ListItem className={classes.listItem}>
         <Button
           href={"/live"}

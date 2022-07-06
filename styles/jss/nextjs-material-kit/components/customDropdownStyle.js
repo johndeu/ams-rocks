@@ -79,9 +79,9 @@ const customDropdownStyle = (theme) => ({
     transition: "all 150ms linear",
     display: "block",
     clear: "both",
-    fontWeight: "400",
+    fontWeight: "400 !important",
     height: "fit-content",
-    color: "#333",
+    color: "#1a1a1f",
     whiteSpace: "nowrap",
     minHeight: "unset",
   },
@@ -135,6 +135,22 @@ const customDropdownStyle = (theme) => ({
       ...roseBoxShadow,
     },
   },
+  azureHover: {
+    "&:hover": {
+      backgroundColor: "#ffff",
+      color: "#1a1a1f",
+      textDecoration: "underline",
+      textUnderlineOffset: "1px"
+    },
+  },
+  azure2Hover: {
+    "&:hover": {
+      backgroundColor: "#ffff",
+      color: "#1a1a1f",
+      textDecoration: "underline",
+      textUnderlineOffset: "1px"
+    },
+  },
   dropdownItemRTL: {
     textAlign: "right",
   },
@@ -155,6 +171,8 @@ const customDropdownStyle = (theme) => ({
     height: "0",
     marginLeft: "4px",
     verticalAlign: "middle",
+    align:"bottom",
+    content: '\e70d',
     borderTop: "4px solid",
     borderRight: "4px solid transparent",
     borderLeft: "4px solid transparent",

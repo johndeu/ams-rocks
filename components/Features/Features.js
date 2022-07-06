@@ -273,10 +273,10 @@ export default function Features(props) {
 }
 
 Features.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     features: PropTypes.arrayOf(
         PropTypes.shape({
-            title: PropTypes.string.isRequired,
+            title: PropTypes.string,
             description: PropTypes.object,
         })
     ),

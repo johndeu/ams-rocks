@@ -93,7 +93,7 @@ export default function CustomDropdown(props) {
         >
           {icon}
           {buttonText !== undefined ? buttonText : null}
-          {caret ? <b className={caretClasses} /> : null}
+          {caret ? <b className={caretClasses} ></b> : null}
         </Button>
       </div>
       <Popper

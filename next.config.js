@@ -6,6 +6,12 @@ const path = require("path");
 module.exports = withPlugins([[withImages]], {
   webpack(config, options) {
     config.resolve.modules.push(path.resolve("./"));
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        'jQuery' : 'jquery',
+        '$' : 'jquery'
+      })
+    )
     return config;
   },
   images: {

@@ -16,21 +16,26 @@ import {
 const headerStyle = {
   appBar: {
     display: "flex",
-    border: "0",
-    borderRadius: "3px",
-    padding: "0.625rem 0",
-    marginBottom: "20px",
-    color: "#555",
     width: "100%",
-    backgroundColor: "#fff",
+    color: "#1a1a1f",
+    backgroundColor:"white !important",
     boxShadow:
-      "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
+      "rgba(0, 0, 0, 0.25) 0px 0px 8px -1px",
     transition: "all 150ms ease 0s",
     alignItems: "center",
     flexFlow: "row nowrap",
     justifyContent: "flex-start",
-    position: "relative",
-    zIndex: "unset",
+  },
+
+  iconButton: {
+    color:"#1a1a1f !important",
+    backgroundColor:"#444",
+    "& &.MuiButton-label" : {
+      color:"blue !important",
+    }
+  },
+  button: {
+    backgroundColor:"#fff !important"
   },
   absolute: {
     position: "absolute",
@@ -143,8 +148,7 @@ const headerStyle = {
   transparent: {
     backgroundColor: "transparent !important",
     boxShadow: "none",
-    paddingTop: "25px",
-    color: "#FFFFFF",
+    color: "#000",
   },
   azureMedia: {
     backgroundColor: "transparent !important",
@@ -163,9 +167,8 @@ const headerStyle = {
   },
   white: {
     border: "0",
-    padding: "0.625rem 0",
-    marginBottom: "20px",
-    color: "#555",
+    marginBottom: "0px",
+    color: "#000 !important",
     backgroundColor: "#fff !important",
     boxShadow:
       "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
@@ -192,6 +195,17 @@ const headerStyle = {
     paddingLeft: "0",
     ...transition,
   },
+  msftIcon : {
+    height:"24px",
+    width: "24px",
+    display:"inline-block",
+    lineHeight:"0px",
+    verticalAlign: "middle"
+  },
+  msftIconCenter : {
+    position:"fixed",
+    left:"50vw",
+  }
 };
 
 export default headerStyle;

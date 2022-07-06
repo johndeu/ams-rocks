@@ -23,7 +23,10 @@
         "live": {
             "title": "Live"
         },
-        "loginButton": "Start free"
+        "freeAccount": "Free account",
+        "contactSales" : "Contact Sales",
+        "support" : "Support",
+        "signIn": "Sign in"
     },
     "landing": {
         "title": "Azure Media Services",
@@ -277,6 +280,7 @@
         "callToAction": "Meet our customers",
         "list": [
             {
+                
                 "name": "Lifetime Fitness",
                 "imgSrc": "Lifetime.svg"
             },

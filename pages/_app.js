@@ -17,6 +17,18 @@ import PageChange from "components/PageChange/PageChange.js";
 
 import "styles/scss/nextjs-material-kit.scss?v=1.2.0";
 
+// This section will load the MUI Theme provider and disable the "ripple" effect on all buttons to better match Azure.com
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+const theme = createMuiTheme({
+  props: {
+    // Name of the component
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true // No more ripple, on the whole application!
+    }
+  }
+});
+
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
@@ -46,6 +58,12 @@ export default class MyApp extends App {
 
     return { pageProps };
   }
+
+  componentDidMount() {
+    // Import jQuery as a global window object for the Azure Header scripts to work.
+    window.jQuery = window.$ = require('jquery');
+  }
+
   render() {
     const { Component, pageProps } = this.props;
     const { lngDict, ...rest } = pageProps;
@@ -60,11 +78,14 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+
           <title>Azure Media Services</title>
         </Head>
 
         <AnimateSharedLayout>
-          <Component {...pageProps} />
+          <MuiThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </MuiThemeProvider>
         </AnimateSharedLayout>
 
       </React.Fragment>
