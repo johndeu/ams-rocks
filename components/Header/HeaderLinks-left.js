@@ -39,6 +39,7 @@ export default function HeaderLinks(props) {
           navDropdown
           buttonText={i18next.t('menu.examples.title')}
           hoverColor="azure"
+          // buttonIcon=""
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -63,6 +64,7 @@ export default function HeaderLinks(props) {
           navDropdown
           buttonText={i18next.t('menu.docs.title')}
           hoverColor="azure"
+          //buttonIcon=""
           buttonProps={{
             className: classes.navLink,
             color: "transparent",

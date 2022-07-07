@@ -62,7 +62,7 @@ export default function HeaderLinks(props) {
       </Hidden>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://portal.azure.com/"
+          href="https://ms.portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/microsoft.media%2Fmediaservices"
           color="transparent"
           target="_blank"
           className={classes.navLink}

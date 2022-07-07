@@ -9,12 +9,12 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
+
 // core components
 import styles from "styles/jss/nextjs-material-kit/components/headerStyle.js";
 
@@ -102,7 +102,11 @@ export default function Header(props) {
             aria-label="open drawer"
             onClick={handleDrawerToggle}
           >
-            <Menu />
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 65">
+              <rect width="100" height="10"></rect>
+              <rect y="30" width="100" height="10"></rect>
+              <rect y="60" width="100" height="10"></rect>
+            </svg>
           </CustomButton>
           <Hidden xsDown>
             <div className={classes.msftIconCenter}>{msftBox}</div>
