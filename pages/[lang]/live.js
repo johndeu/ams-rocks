@@ -42,8 +42,6 @@ import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
 import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
-import { env } from "process";
-
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -80,6 +78,7 @@ export default function LandingPage(props) {
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
+  const [presentationStartTime, setPresentationStartTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
   const [latency, setLatency] = useState(6000);
   const [userAgent, setUserAgent] = useState("");
@@ -104,9 +103,15 @@ export default function LandingPage(props) {
     classes.imgRoundedCircle,
   );
 
-  function onStatsUpdate(statsUpdate) {
-    setStats(statsUpdate);
-    //console.log("Got Stats from Player:");
+  function onStatsUpdate(statsUpdate, startTime) {
+    if (statsUpdate) {
+      setStats(statsUpdate);
+    }
+
+    if (startTime) {
+      setPresentationStartTime(startTime);
+    }
+
   }
 
   function onBufferedInfoUpdate(info) {
@@ -205,6 +210,14 @@ export default function LandingPage(props) {
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{playHeadTime.toISOString().slice(0, 10)}</span><br />
             <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem md={6}>
+        <Card className={classes.card}>
+          <Badge color="white"><span className={classes.label}>PresentationStartTime</span></Badge>
+          <CardBody className={classes.cardBody}>
+            <span className={classes.metric}>{presentationStartTime.toISOString ? presentationStartTime.toISOString().slice(11, 19) : ""}</span>
           </CardBody>
         </Card>
       </GridItem>

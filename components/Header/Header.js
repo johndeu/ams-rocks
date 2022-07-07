@@ -83,8 +83,8 @@ export default function Header(props) {
   );
 
   const msftBox = (
-    <a href="https://www.microsoft.com/" aria-label="Microsoft" data-bi-id="microsoft" data-bi-ct="l1-home" class="nav__link--microsoft" tabindex="-1">
-      <span className={classes.msftIcon}><svg aria-hidden="true" role="presentation" data-slug-id="microsoft-square" viewBox="0 0 26 25" xmlns="http://www.w3.org/2000/svg">
+    <a href="https://www.microsoft.com/" aria-label="Microsoft">
+      <span className={classes.msftIcon}><svg aria-hidden="true" role="presentation" viewBox="0 0 26 25" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.5708 0.981934H0.907471V12.3682H12.5708V0.981934Z" fill="#F25022" />
         <path d="M25.4625 0.981934H13.7992V12.3682H25.4625V0.981934Z" fill="#7FBA00" />
         <path d="M12.5708 13.5649H0.907471V24.9512H12.5708V13.5649Z" fill="#00A4EF" />

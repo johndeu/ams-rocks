@@ -30,6 +30,7 @@ Badge.propTypes = {
     "info",
     "rose",
     "gray",
+    "white"
   ]),
   children: PropTypes.node,
 };

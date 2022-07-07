@@ -181,6 +181,7 @@ CustomDropdown.propTypes = {
     "warning",
     "danger",
     "rose",
+    "azure"
   ]),
   buttonText: PropTypes.node,
   buttonIcon: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

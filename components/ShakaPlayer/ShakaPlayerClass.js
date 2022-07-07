@@ -19,6 +19,7 @@ class ShakaPlayer extends React.PureComponent {
         this.video = React.createRef();
         this.videoContainer = React.createRef();
         this.state = {
+            presentationStartTime: {},
             stats: [],
             bufferdInfo: {}
         }
@@ -61,17 +62,17 @@ class ShakaPlayer extends React.PureComponent {
         player.configure({
             manifest: {
                 dash: {
-                    // autoCorrectDrift: true
+                    autoCorrectDrift: true
                 },
                 hls: {
-                    // ignoreManifestProgramDateTime : false,
+                    ignoreManifestProgramDateTime : false,
                 }
             },
             streaming: {
                 lowLatencyMode: true,
                 inaccurateManifestTolerance: 0,
                 useNativeHlsOnSafari: true,
-                gapDetectionThreshold: 0.5
+                gapDetectionThreshold: 0.5,
             },
             drm: {
                 servers: { 'com.widevine.alpha': licenseServer }
@@ -91,8 +92,9 @@ class ShakaPlayer extends React.PureComponent {
         // Event listeners
         player.addEventListener('loaded', this.onLoaded(this.video.current));
 
+
         this.timerID = setInterval(
-            () => this.statsTick(player, video),
+            () => this.statsTick(player, this.video.current),
             1000
         );
     }
@@ -103,12 +105,13 @@ class ShakaPlayer extends React.PureComponent {
             var bufferedInfo = player.getBufferedInfo();
             var playHeadTime = player.getPlayheadTimeAsDate();
 
+            this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
             }
             if (stats) {
-                this.props.onStatsUpdate(stats);
+                this.props.onStatsUpdate(stats, this.state.presentationStartTime );
             }
             if (playHeadTime) {
                 this.props.onPlayHeadTimeUpdate(playHeadTime);
@@ -129,6 +132,7 @@ class ShakaPlayer extends React.PureComponent {
     onLoaded(currentPlayer) {
         currentPlayer.play();
         //console.log('Shaka: Playing');
+
     }
 
 
