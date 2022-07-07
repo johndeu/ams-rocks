@@ -103,7 +103,7 @@ class ShakaPlayer extends React.PureComponent {
             var bufferedInfo = player.getBufferedInfo();
             var playHeadTime = player.getPlayheadTimeAsDate();
 
-            if (video) {  
+            if (typeof video.getStartDate !== "function") {  
                 try {
                     var startDate = video.getStartDate(); // Feature only exists on iOS.
                     this.props.onVideoStartDateChanged(startDate);
