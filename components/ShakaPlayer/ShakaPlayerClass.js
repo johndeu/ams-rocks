@@ -107,6 +107,16 @@ class ShakaPlayer extends React.PureComponent {
 
             this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
+            if (video && video.getStartDate) {
+                const startDate = video.getStartDate();
+                if (isNaN(startDate.getTime())) {
+                    console.error("EXT-X-PROGRAM-DATETIME required to get playhead time as date!");
+                }
+                console.log ("StarDate:" + new Date( startDate.getTime + (player.playhead.getTime() * 1000))) 
+            }else {
+                //console.log ("No start time");
+            }
+
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
             }
