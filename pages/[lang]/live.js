@@ -1,4 +1,4 @@
-import React, { useState, setState } from "react";
+import React, { useState, setState, useEffect } from "react";
 import dynamic from 'next/dynamic';
 import moment from "moment";
 
@@ -84,6 +84,14 @@ export default function LandingPage(props) {
   const [latency, setLatency] = useState(6000);
   const [userAgent, setUserAgent] = useState("");
   const [startDate, setStartDate] = useState("n/a");
+  const [isIos, setIsIos] = useState(false);
+
+  // On page loaded
+  useEffect(() => {
+    setUserAgent(navigator.userAgent);
+    setIsIos(/iPhone/.test(userAgent));
+  })
+
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -120,7 +128,6 @@ export default function LandingPage(props) {
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
 
-    setUserAgent(navigator.userAgent);
 
     if (time) {
       var now = moment().utc();
@@ -169,23 +176,26 @@ export default function LandingPage(props) {
           </CardBody>
         </Card>
       </GridItem>
-      <GridItem md={6}>
-        <Card className={classes.card} md={2}>
-          <Badge color="white"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'estimating'}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
-
-      <GridItem md={6}>
-        <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>Quality</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'loading'}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
+      {!isIos &&
+        <GridItem md={6}>
+          <Card className={classes.card} md={2}>
+            <Badge color="white"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
+            <CardBody className={classes.cardBody}>
+              <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'estimating'}</span>
+            </CardBody>
+          </Card>
+        </GridItem>
+      }
+      {!isIos &&
+        <GridItem md={6}>
+          <Card className={classes.card}>
+            <Badge color="white"><span className={classes.label}>Quality</span></Badge>
+            <CardBody className={classes.cardBody}>
+              <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'loading'}</span>
+            </CardBody>
+          </Card>
+        </GridItem>
+      }
       <GridItem md={6}>
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Streamed From</span></Badge>
@@ -215,7 +225,7 @@ export default function LandingPage(props) {
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Device</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{/iPhone/.test(userAgent) ? "Is iOS" : "Not iOS"}</span>
+            <span className={classes.metric}>{isIos ? "Is iOS" : "Not iOS"}</span>
           </CardBody>
         </Card>
       </GridItem>
