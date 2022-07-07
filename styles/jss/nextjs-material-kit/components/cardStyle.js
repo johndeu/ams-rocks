@@ -7,8 +7,7 @@ const cardStyle = {
     color: "rgba(0, 0, 0, 0.87)",
     background: "#fff",
     width: "100%",
-    boxShadow:
-      "0px 2.81768px 13px rgba(0, 0, 0, 0.15);",
+   
     position: "relative",
     display: "flex",
     flexDirection: "column",

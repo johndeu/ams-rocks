@@ -78,10 +78,13 @@ const livePage = (theme) => ({
     backgroundColor:"white",
     color:"rgba(0, 0, 0, 0.80)",
     textAlign: "left",
-    padding:"4px"
+    padding:"4px",
+    boxShadow:
+    "0px 2.81768px 13px rgba(0, 0, 0, 0.15);",
   },
   cardBody: {
     padding:"0px 10px",
+
   },
   icon: {
     width: "17px",
@@ -116,7 +119,9 @@ const livePage = (theme) => ({
     backgroundColor:"white",
     color:"rgba(0, 0, 0, 0.80)",
     textAlign: "center !important",
-    padding:"4px"
+    padding:"4px",
+    boxShadow:
+    "0px 2.81768px 13px rgba(0, 0, 0, 0.15);",
   },
   utcTimeLabel: {
     textAlign: "center !important",
