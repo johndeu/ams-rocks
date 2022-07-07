@@ -40,7 +40,7 @@ const headerStyle = {
   absolute: {
     position: "absolute",
     zIndex: "1100",
-  },
+  }, 
   fixed: {
     position: "fixed",
     zIndex: "1100",
@@ -156,11 +156,11 @@ const headerStyle = {
     backgroundPosition: "top center",
     backgroundSize: "cover",
     paddingTop: "25px",
-    color: "#FFFFFF",
+    color: "#fff",
     backgroundImage: "url('/img/Mainheader_image-2.png')",
   },
   dark: {
-    color: "#FFFFFF",
+    color: "#fff !important",
     backgroundColor: "#212121 !important",
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",

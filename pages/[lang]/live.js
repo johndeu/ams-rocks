@@ -150,7 +150,7 @@ export default function LandingPage(props) {
       </GridItem> */}
       <GridItem md={6}>
         <Card className={classes.card} md={2}>
-          <Badge color="azure"><span className={classes.label}>Latency</span></Badge>
+          <Badge color="white"><span className={classes.label}>Latency</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{latency && (latency / 1000).toPrecision(4) + "s"}</span>
           </CardBody>
@@ -158,7 +158,7 @@ export default function LandingPage(props) {
       </GridItem>
       <GridItem md={6}>
         <Card className={classes.card} md={2}>
-          <Badge color="azure"><span className={classes.label}>Buffer Size</span></Badge>
+          <Badge color="white"><span className={classes.label}>Buffer Size</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
           </CardBody>
@@ -166,7 +166,7 @@ export default function LandingPage(props) {
       </GridItem>
       <GridItem md={6}>
         <Card className={classes.card} md={2}>
-          <Badge color="azure"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
+          <Badge color="white"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'estimating'}</span>
           </CardBody>
@@ -175,7 +175,7 @@ export default function LandingPage(props) {
 
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="azure"><span className={classes.label}>Quality</span></Badge>
+          <Badge color="white"><span className={classes.label}>Quality</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'loading'}</span>
           </CardBody>
@@ -183,7 +183,7 @@ export default function LandingPage(props) {
       </GridItem>
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="default"><span className={classes.label}>Streamed From</span></Badge>
+          <Badge color="white"><span className={classes.label}>Streamed From</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{location}</span>
           </CardBody>
@@ -191,7 +191,7 @@ export default function LandingPage(props) {
       </GridItem>      
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="default"><span className={classes.label}>Playhead Time</span></Badge>
+          <Badge color="white"><span className={classes.label}>Playhead Time</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{playHeadTime.toLocaleString()}</span>
           </CardBody>
@@ -199,9 +199,9 @@ export default function LandingPage(props) {
       </GridItem>
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="default"><span className={classes.label}>User Agent</span></Badge>
+          <Badge color="white"><span className={classes.label}>Device</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{ /Edg/.test(userAgent) ? userAgent : userAgent}</span>
+            <span className={classes.metric}>{ /iPhone/.test(userAgent) ? "Is iOS" : "Not iOS"}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -210,25 +210,15 @@ export default function LandingPage(props) {
 
   return (
     <div >
-{/*       <AzureHeader
-        color="white"
-        leftLinks={<HeaderLinksLeft />}
-        rightLinks={<HeaderLinksRight />}
-        changeColorOnScroll={{
-          height: 100,
-          color: "white",
-        }}
-        {...rest}
-      /> */}
        <Header
-        color="azureMedia"
+        color="white"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
         leftLinks={<HeaderLinksLeft />}
         rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
-          height: 100,
+          height: 120,
           color: "white",
         }}
         {...rest}
@@ -244,12 +234,13 @@ export default function LandingPage(props) {
                     src={src}
                     posterUrl=""
                     stats={stats}
+                    raised
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-                  <Card className={classes.card} md={2}>
-                    <Badge color="azure"><span className={classes.label}>UTC Time: </span></Badge>
+                  <Card className={classes.utcTimeBox} md={2}>
+                    <Badge color="white" className={classes.utcTimeLabel}>UTC Time:</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>

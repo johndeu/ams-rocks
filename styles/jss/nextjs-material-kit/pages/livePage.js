@@ -75,23 +75,21 @@ const livePage = (theme) => ({
     paddingBottom:"12vh"
   },
   card : {
-    backgroundColor:"gray",
-    color:"#fff",
-    textAlign: "center",
+    backgroundColor:"white",
+    color:"rgba(0, 0, 0, 0.80)",
+    textAlign: "left",
     padding:"4px"
   },
   cardBody: {
     padding:"0px 10px",
-    textAlign: "center",
   },
- 
   icon: {
     width: "17px",
     height: "17px",
     marginRight: "4px",
   },
   localTime : {
-    color: "rgba(255, 255, 255, 0.75)",
+    color: "rgba(0, 0, 0, 0.80)",
     fontSize: "26px",
     fontFamily:"Consolas, Terminus, monospace",
     transition: "0.3s ease all",
@@ -101,24 +99,34 @@ const livePage = (theme) => ({
   },
   localTimeTitle : {
     paddingTop:"25px",
-    color: "#000",
+    color: "rgba(0, 0, 0, 0.80)",
     fontWeight: "400",
     fontSize: "24px"
   },
   label: {
-    color: "rgba(255, 255, 255, 0.8)",
+    color: "rgba(0, 0, 0, 0.80)",
     fontSize: "12px",
+    textAlign:"left",
     transition: "0.3s ease all",
     fontWeight: "600",
     letterSpacing: "tight",
     padding:"10px,10"
+  },  
+  utcTimeBox: {
+    backgroundColor:"white",
+    color:"rgba(0, 0, 0, 0.80)",
+    textAlign: "center !important",
+    padding:"4px"
+  },
+  utcTimeLabel: {
+    textAlign: "center !important",
   },
   metric: {
-    color: "rgba(255, 255, 255, 0.75)",
-    fontSize: "22px",
+    color: "#1a1a1f",
+    fontSize: "24px",
     transition: "0.3s ease all",
     fontWeight: "600",
-    lineHeight:"2em",
+    lineHeight:"1.75em",
     letterSpacing: "0.006em",
   },
   ...tooltipsStyle,

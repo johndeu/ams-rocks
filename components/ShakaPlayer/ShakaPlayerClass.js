@@ -21,7 +21,7 @@ class ShakaPlayer extends React.PureComponent {
             stats: [],
             bufferdInfo: {}
         }
-
+        
 
     }
 
@@ -30,6 +30,7 @@ class ShakaPlayer extends React.PureComponent {
         var src = this.props.src;
 
         var licenseServer = this.props.licenseServer;
+        var raised = this.props.raised;
 
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
@@ -128,9 +129,11 @@ class ShakaPlayer extends React.PureComponent {
         //console.log('Shaka: Playing');
     }
 
+   
+
     render() {
         return (
-            <div ref={this.videoContainer}>
+            <div ref={this.videoContainer} >
                 <video
                     id="video"
                     ref={this.video}
@@ -142,8 +145,6 @@ class ShakaPlayer extends React.PureComponent {
                         maxWidth: '100%',
                         width: '100%',
                         backgroundColor: "rgba(0,0,0,0.7)",
-                        borderRadius: "15px !important",
-                        boxShadow: "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
                     }}
                     poster={this.props.posterUrl}>
                 </video>
@@ -161,6 +162,7 @@ ShakaPlayer.propTypes = {
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,
     stats: PropTypes.object,
+    raised: PropTypes.bool,
 }
 
 export default ShakaPlayer;
