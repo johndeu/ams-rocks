@@ -6,6 +6,7 @@ const shaka = require('shaka-player/dist/shaka-player.ui.js');
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "styles/jss/nextjs-material-kit/components/playerStyle.js";
 import controlStyles from "shaka-player/dist/controls.css";
+import { type } from 'os';
 
 const classes = makeStyles(styles);
 
@@ -21,7 +22,7 @@ class ShakaPlayer extends React.PureComponent {
             stats: [],
             bufferdInfo: {}
         }
-        
+
 
     }
 
@@ -91,16 +92,25 @@ class ShakaPlayer extends React.PureComponent {
         player.addEventListener('loaded', this.onLoaded(this.video.current));
 
         this.timerID = setInterval(
-            () => this.statsTick(player),
+            () => this.statsTick(player, video),
             1000
         );
     }
 
-    statsTick(player) {
+    statsTick(player, video) {
         if (player !== undefined) {
             var stats = player.getStats();
             var bufferedInfo = player.getBufferedInfo();
             var playHeadTime = player.getPlayheadTimeAsDate();
+
+            if (video) {  
+                try {
+                    var startDate = video.getStartDate(); // Feature only exists on iOS.
+                    this.props.onVideoStartDateChanged(startDate);
+                }catch (err){
+                    ;
+                }
+            }
 
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
@@ -129,7 +139,6 @@ class ShakaPlayer extends React.PureComponent {
         //console.log('Shaka: Playing');
     }
 
-   
 
     render() {
         return (
@@ -161,6 +170,7 @@ ShakaPlayer.propTypes = {
     onStatsUpdate: PropTypes.func,
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,
+    onVideoStartDateChanged: PropTypes.func,
     stats: PropTypes.object,
     raised: PropTypes.bool,
 }
