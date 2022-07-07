@@ -83,7 +83,6 @@ export default function LandingPage(props) {
   const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
   const [latency, setLatency] = useState(6000);
   const [userAgent, setUserAgent] = useState("");
-  const [startDate, setStartDate] = useState("n/a");
   const [isIos, setIsIos] = useState(false);
 
   // On page loaded
@@ -137,10 +136,6 @@ export default function LandingPage(props) {
       setLatency(msLatency)
     }
 
-  }
-
-  function onVideoStartDateChanged(startDate) {
-    setStartDate(startDate);
   }
 
   function getCurrentTimeUTC() {
@@ -215,14 +210,6 @@ export default function LandingPage(props) {
       </GridItem>
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>Get Start Date</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{startDate}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem md={6}>
-        <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Device</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{isIos ? "Is iOS" : "Not iOS"}</span>
@@ -262,7 +249,6 @@ export default function LandingPage(props) {
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
-                    onVideoStartDateChanged={onVideoStartDateChanged}
                   />
                   <Card className={classes.utcTimeBox} md={2}>
                     <Badge color="white" className={classes.utcTimeLabel}>UTC Time:</Badge>
