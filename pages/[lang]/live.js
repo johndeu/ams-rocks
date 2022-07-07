@@ -79,11 +79,11 @@ export default function LandingPage(props) {
   const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
-  const [playHeadTime, setPlayHeadTime] = useState(Date.now());
+  const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
   const [currentTime, setCurrentTime] = useState(moment.utc().format("YYYY-MM-DD HH:mm:ss"));
   const [latency, setLatency] = useState(6000);
   const [userAgent, setUserAgent] = useState("");
-  const [startDate, setStartDate] =  useState("n/a");
+  const [startDate, setStartDate] = useState("n/a");
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -119,7 +119,7 @@ export default function LandingPage(props) {
     // console.log("PlayHeadTime: " + time)
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
- 
+
     setUserAgent(navigator.userAgent);
 
     if (time) {
@@ -132,8 +132,8 @@ export default function LandingPage(props) {
 
   }
 
-  function onVideoStartDateChanged(startDate){
-     setStartDate(startDate);
+  function onVideoStartDateChanged(startDate) {
+    setStartDate(startDate);
   }
 
   function getCurrentTimeUTC() {
@@ -193,12 +193,13 @@ export default function LandingPage(props) {
             <span className={classes.metric}>{location}</span>
           </CardBody>
         </Card>
-      </GridItem>      
+      </GridItem>
       <GridItem md={6}>
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Playhead Time</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{playHeadTime.toLocaleString()}</span>
+            <span className={classes.metric}>{playHeadTime.toISOString().slice(0, 10)}</span><br />
+            <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -214,7 +215,7 @@ export default function LandingPage(props) {
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Device</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{ /iPhone/.test(userAgent) ? "Is iOS" : "Not iOS"}</span>
+            <span className={classes.metric}>{/iPhone/.test(userAgent) ? "Is iOS" : "Not iOS"}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -223,7 +224,7 @@ export default function LandingPage(props) {
 
   return (
     <div >
-       <Header
+      <Header
         color="white"
         routes={dashboardRoutes}
         brand={i18next.t('landing.title')}
@@ -251,7 +252,7 @@ export default function LandingPage(props) {
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
-                    onVideoStartDateChanged = {onVideoStartDateChanged}
+                    onVideoStartDateChanged={onVideoStartDateChanged}
                   />
                   <Card className={classes.utcTimeBox} md={2}>
                     <Badge color="white" className={classes.utcTimeLabel}>UTC Time:</Badge>
