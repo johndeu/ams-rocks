@@ -40,6 +40,7 @@
   "dependencies": {
     "@material-ui/core": "4.11.4",
     "@material-ui/icons": "4.11.2",
+    "chart.js": "^3.8.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.22.1",
     "framer-motion": "^4.1.17",
@@ -58,6 +59,7 @@
     "postcss": "^8.2.13",
     "prop-types": "15.7.2",
     "react": "17.0.2",
+    "react-chartjs-2": "^4.2.0",
     "react-datetime": "3.0.4",
     "react-dom": "17.0.2",
     "react-intersection-observer": "^8.32.0",

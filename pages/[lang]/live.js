@@ -1,4 +1,4 @@
-import React, { useState, setState, useEffect } from "react";
+import React, { useState, setState, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic';
 import moment from "moment";
 
@@ -12,6 +12,19 @@ import { motion } from "framer-motion";
 // Use the react-intersection-observer to trigger animations when stuff is in view
 import { useInView } from "react-intersection-observer";
 
+// React-ChartJS-2 imports
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -22,9 +35,7 @@ import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
 import Badge from "components/Badge/Badge.js";
-import Tooltip from "@material-ui/core/Tooltip";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -64,15 +75,53 @@ const STREAMS = [
   }
 ];
 
-const WORLD_CLOCK_API = "http://worldclockapi.com/api/json/utc/now";
+// Chart options
+const chartOptions = {
+  responsive: true,
+  redraw: true,
+  updateMode: "active",
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Latency',
+    },
+  },
+};
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const labels = [];
+
+export const chartData = {
+  labels,
+  datasets: [{
+    label: 'Latency (ms)',
+    data: [5000],
+    borderColor: '#004E8C',
+    backgroundColor: '#004E8C',
+  }
+  ],
+};
+// End Chart options
 
 export default function LandingPage(props) {
   const classes = useStyles();
   const router = useRouter();
 
   const { ...rest } = props;
-  const ref = React.useRef();
+  const ref = useRef();
+  const chartRef = useRef();
   const [src, setSrc] = useState(STREAMS[1].src);
   const [location, setLocation] = useState(STREAMS[1].location);
   const [stats, setStats] = useState({});
@@ -128,17 +177,26 @@ export default function LandingPage(props) {
   }
 
   function onPlayHeadTimeUpdate(time) {
-    console.log("PlayHeadTime: " + time)
+    //console.log("PlayHeadTime: " + time)
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
 
     if (time) {
       var now = moment().utc();
-      console.log("CurrentTime: " + now)
+      //console.log("CurrentTime: " + now)
       var latency = now.subtract(time);
-      console.log("Latency: " + latency)
+      //console.log("Latency: " + latency)
       setPlayHeadTime(time);
       setLatency(latency)
+
+      chartData.datasets[0].data.push(latency.valueOf());
+      chartData.labels.push(moment().utc().format("HH:mm:ss"));
+      if (chartData.labels.length > 30){  // keep a 10 second window
+        chartData.datasets[0].data.shift(); //shift off the oldest data
+        //console.log(chartData.datasets[0].data);
+        chartData.labels.shift(); //shift off the oldest label to keep the window sliding.
+      }
+      chartRef.current.update('active');
     }
 
   }
@@ -208,7 +266,7 @@ export default function LandingPage(props) {
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Playhead Time</span></Badge>
           <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
+            <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
           </CardBody>
         </Card>
       </GridItem>
@@ -266,18 +324,27 @@ export default function LandingPage(props) {
                     <Badge color="white" className={classes.utcTimeLabel}>UTC Time:</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
-                      <div className={classes.statsContainer}> 
-                        <span className={classes.statsItem}><b>Decoded frames:</b>{stats.decodedFrames}<br/></span>
-                        <span className={classes.statsItem}><b>Dropped frames:</b>{stats.droppedFrames}<br/></span>
-                        <span className={classes.statsItem}><b>Stalls detected:</b>{stats.stallsDetected}<br/></span>
-                        <span className={classes.statsItem}><b>PlayTime:</b>{stats.playTime}<br/></span>
-                        <span className={classes.statsItem}><b>Bufering time:</b>{stats.bufferingTime}<br/></span>
-                        <span className={classes.statsItem}><b>Max segment duration:</b>{stats.maxSegmentDuration}<br/></span>
-                        <span className={classes.statsItem}><b>Switches:</b>{JSON.stringify(stats.switchHistory)}<br/></span>
-                      </div>
-                      {/* {JSON.stringify(stats)} */}
                     </CardBody>
                   </Card>
+                  <Card className={classes.utcTimeBox} md={2}>
+                    <CardBody className={classes.cardBody}>
+                      <Line ref={chartRef} options={chartOptions} data={chartData} />
+                    </CardBody>
+                  </Card>
+                  <Card className={classes.utcTimeBox} md={2}>
+                    <CardBody className={classes.cardBody}>
+                      <div className={classes.statsContainer}>
+                        <span className={classes.statsItem}><b>Decoded frames:</b>{stats.decodedFrames}<br /></span>
+                        <span className={classes.statsItem}><b>Dropped frames:</b>{stats.droppedFrames}<br /></span>
+                        <span className={classes.statsItem}><b>Stalls detected:</b>{stats.stallsDetected}<br /></span>
+                        <span className={classes.statsItem}><b>PlayTime:</b>{stats.playTime}<br /></span>
+                        <span className={classes.statsItem}><b>Bufering time:</b>{stats.bufferingTime}<br /></span>
+                        <span className={classes.statsItem}><b>Max segment duration:</b>{stats.maxSegmentDuration}<br /></span>
+                        <span className={classes.statsItem}><b>Switches:</b>{JSON.stringify(stats.switchHistory)}<br /></span>
+                      </div>
+                    </CardBody>
+                  </Card>
+
                   <Hidden smUp>
                     {metricGrid}
                   </Hidden>
