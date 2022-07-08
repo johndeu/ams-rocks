@@ -270,22 +270,6 @@ export default function LandingPage(props) {
           </CardBody>
         </Card>
       </GridItem>
-      <GridItem md={6}>
-        <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>PresentationStartTime</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{presentationStartTime.toISOString ? presentationStartTime.toISOString().slice(11, 19) : ""}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem md={6}>
-        <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>Device</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{isIos ? "Is iOS" : "Not iOS"}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
     </GridContainer>
 
 
