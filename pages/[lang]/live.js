@@ -85,7 +85,7 @@ const chartOptions = {
       position: 'top',
     },
     title: {
-      display: true,
+      display: false,
       text: 'Latency',
     },
   },
@@ -106,8 +106,8 @@ export const labels = [];
 export const chartData = {
   labels,
   datasets: [{
-    label: 'Latency (ms)',
-    data: [5000],
+    label: 'Latency (seconds)',
+    data: [6],
     borderColor: '#004E8C',
     backgroundColor: '#004E8C',
   }
@@ -189,7 +189,7 @@ export default function LandingPage(props) {
       setPlayHeadTime(time);
       setLatency(latency)
 
-      chartData.datasets[0].data.push(latency.valueOf());
+      chartData.datasets[0].data.push(latency.valueOf()/1000);
       chartData.labels.push(moment().utc().format("HH:mm:ss"));
       if (chartData.labels.length > 30){  // keep a 10 second window
         chartData.datasets[0].data.shift(); //shift off the oldest data
