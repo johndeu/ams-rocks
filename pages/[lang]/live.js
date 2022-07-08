@@ -58,8 +58,8 @@ const STREAMS = [
     location: "US West"
   },
   {
-    name: 'Azure Media Services Promo',
-    src: 'https://amssamples.streaming.mediaservices.windows.net/3b970ae0-39d5-44bd-b3a3-3136143d6435/AzureMediaServicesPromo.ism/manifest(format=m3u8-cmaf)',
+    name: 'Azure Media Services LL Demo full link',
+    src: 'https://lldemo-usw22.streaming.media.azure.net/6db0506b-6608-4ec1-96ee-513a596408e4/manifest.ism/QualityLevels(128000)/Manifest(audio_und,format=m3u8-cmaf)',
     location: "US West"
   }
 ];
@@ -128,17 +128,17 @@ export default function LandingPage(props) {
   }
 
   function onPlayHeadTimeUpdate(time) {
-    // console.log("PlayHeadTime: " + time)
+    console.log("PlayHeadTime: " + time)
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
 
-
     if (time) {
       var now = moment().utc();
+      console.log("CurrentTime: " + now)
       var latency = now.subtract(time);
-      var msLatency = moment.duration(latency).asMilliseconds();
+      console.log("Latency: " + latency)
       setPlayHeadTime(time);
-      setLatency(msLatency)
+      setLatency(latency)
     }
 
   }
@@ -208,8 +208,7 @@ export default function LandingPage(props) {
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>Playhead Time</span></Badge>
           <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{playHeadTime.toISOString().slice(0, 10)}</span><br />
-            <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
+              <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
           </CardBody>
         </Card>
       </GridItem>
