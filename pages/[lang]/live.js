@@ -305,7 +305,7 @@ export default function LandingPage(props) {
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
                   <Card className={classes.utcTimeBox} md={2}>
-                    <Badge color="white" className={classes.utcTimeLabel}>UTC Time:</Badge>
+                    <Badge color="white" className={classes.utcTimeLabel}>UTC Time (system clock):</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>
