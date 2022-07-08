@@ -65,7 +65,7 @@ class ShakaPlayer extends React.PureComponent {
                     autoCorrectDrift: true
                 },
                 hls: {
-                    ignoreManifestProgramDateTime : false,
+                    ignoreManifestProgramDateTime: false,
                 }
             },
             streaming: {
@@ -107,21 +107,23 @@ class ShakaPlayer extends React.PureComponent {
 
             this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
-            if (video && video.getStartDate) {
+            // In theory this code SHOULD work, but it breaks Next.js on iOS for some reason. No clue why. 
+            
+     /*        if (video && video.getStartDate) {
                 const startDate = video.getStartDate();
                 if (isNaN(startDate.getTime())) {
                     console.error("EXT-X-PROGRAM-DATETIME required to get playhead time as date!");
                 }
-                console.log ("StarDate:" + new Date( startDate.getTime + (player.playhead.getTime() * 1000))) 
-            }else {
+                console.log("StartDate:" + new Date(startDate.getTime + (player.playhead.getTime() * 1000)))
+            } else {
                 //console.log ("No start time");
-            }
+            } */
 
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
             }
             if (stats) {
-                this.props.onStatsUpdate(stats, this.state.presentationStartTime );
+                this.props.onStatsUpdate(stats, this.state.presentationStartTime);
             }
             if (playHeadTime) {
                 this.props.onPlayHeadTimeUpdate(playHeadTime);
