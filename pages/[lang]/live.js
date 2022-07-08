@@ -318,10 +318,11 @@ export default function LandingPage(props) {
                   <Card className={classes.utcTimeBox} md={2}>
                     <CardBody className={classes.cardBody}>
                       <div className={classes.statsContainer}>
-                        <span className={classes.statsItem}><b>Decoded frames:</b>{stats.decodedFrames}<br /></span>
-                        <span className={classes.statsItem}><b>Dropped frames:</b>{stats.droppedFrames}<br /></span>
-                        <span className={classes.statsItem}><b>Stalls detected:</b>{stats.stallsDetected}<br /></span>
-{/*                         <span className={classes.statsItem}><b>PlayTime:</b>{stats.playTime}<br /></span>
+                        <span className={classes.statsItem}><b>Decoded frames:</b> {stats.decodedFrames}<br /></span>
+                        <span className={classes.statsItem}><b>Dropped frames:</b> {stats.droppedFrames}<br /></span>
+                        <span className={classes.statsItem}><b>Stalls detected:</b> {stats.stallsDetected}<br /></span>
+                        <span className={classes.statsItem}><b>Gaps jumped:</b> {stats.gapsJumped}<br /></span>
+{/*                      <span className={classes.statsItem}><b>PlayTime:</b>{stats.playTime}<br /></span>
                         <span className={classes.statsItem}><b>Bufering time:</b>{stats.bufferingTime}<br /></span>
                         <span className={classes.statsItem}><b>Max segment duration:</b>{stats.maxSegmentDuration}<br /></span>
                         <span className={classes.statsItem}><b>Switches:</b>{JSON.stringify(stats.switchHistory)}<br /></span> */}
