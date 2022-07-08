@@ -134,6 +134,19 @@ const livePage = (theme) => ({
     lineHeight:"1.75em",
     letterSpacing: "0.006em",
   },
+  statsContainer : {
+    textAlign: "left",
+    itemAlign: "left",
+    width: "100%",
+    padding: "10px 10px",
+  },
+  statsItem : {
+    lineHeight: "1em",
+    paddingLeft:"20px",
+    textAlign:"left",
+    fontSize : "14px",
+    fontWeight: "400",
+  },
   ...tooltipsStyle,
 });
 
