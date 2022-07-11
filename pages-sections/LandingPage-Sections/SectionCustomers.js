@@ -56,7 +56,7 @@ export default function SectionCarousel() {
           </GridItem>
           <GridItem xs={12} sm={12} md={12} className={classes.trusted}>
             <div>
-              {i18next.t('customers.subHeader')} <a target= "_blank" href="#" className={classes.action}> {i18next.t('customers.callToAction')}</a>
+              {i18next.t('customers.subHeader')} <a target= "_blank" href="https://customers.microsoft.com/en-us/search?sq=%22Azure%20Media%20Services%22&ff=story_product_categories%26%3ECloud%20Platform&p=0&so=story_publish_date%20desc" className={classes.action}> {i18next.t('customers.callToAction')}</a>
             </div>
           </GridItem>
         </GridContainer>

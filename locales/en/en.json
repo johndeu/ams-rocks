@@ -247,6 +247,10 @@
             }
         }
     },
+    "freeLive" : {
+        "title" : "Get started with 5 hours of free live-streaming",
+        "callToAction" : "Start free trial"
+    },
     "tryFree": {
         "title": "Try Azure Media Services for free",
         "description": "Start with a free account for up to 20 minutes of free file encoding and 5 hours each of standard passthrough live, live transcription, and standard streaming endpoint. For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.",

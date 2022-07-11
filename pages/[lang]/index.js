@@ -33,6 +33,7 @@ import styles from "styles/jss/nextjs-material-kit/pages/landingPage.js";
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import IndustrySection from "pages-sections/LandingPage-Sections/SectionIndustry.js";
 import GetStartedSection from "pages-sections/LandingPage-Sections/SectionGetStarted.js";
+import FreeLive from "pages-sections/LandingPage-Sections/SectionFreeLive.js";
 import SectionArea from "../../components/SectionArea/SectionArea";
 import SectionCustomers from "pages-sections/LandingPage-Sections/SectionCustomers.js";
 // import SectionBlog from "pages-sections/LandingPage-Sections/SectionBlog.js";
@@ -157,6 +158,7 @@ export default function LandingPage(props) {
           {/*  <ShakaPlayer src={src} /> */}
 
           <IndustrySection />
+          <FreeLive/>
           <div className={classes.sectionBreak}></div>
 
           <SectionArea
@@ -195,11 +197,10 @@ export default function LandingPage(props) {
             actionText={i18next.t('landing.section.4.callToAction')}
             actionLink="/live"
           />
-          <div className={classes.sectionBreak}></div>
 
         </div>
       </div>
-      <GetStartedSection />
+     {/*  <GetStartedSection /> */}
       <Features />
       <SectionCustomers />
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
