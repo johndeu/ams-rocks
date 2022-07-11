@@ -44,7 +44,9 @@ export default function SectionCarousel() {
                     alt={item.name}
                     height={60}
                     style = {{ 
-                      paddingRight: '30px'
+                      paddingRight: '30px',
+                      webkitFilter: "grayscale(100%)", /* Safari 6.0 - 9.0 */
+                      filter: "grayscale(100%)",
                     }}
                     className="slick-image"
                   />

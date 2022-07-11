@@ -18,6 +18,10 @@ const carouselStyle = {
     fontSize: "16px",
     fontWeight: "400",
   },
+  customerImage  : {
+    webkitFilter: "grayscale(100%)", /* Safari 6.0 - 9.0 */
+    filter: "grayscale(100%)",
+  },
   action: {
     fontWeight: "600",
   }
