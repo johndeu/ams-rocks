@@ -21,13 +21,13 @@ export default function SectionCarousel() {
   const customers = i18next.t('customers.list');
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: true
+    arrows: false
   };
   return (
     <div className={classes.section}>
