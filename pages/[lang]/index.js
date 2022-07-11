@@ -112,8 +112,6 @@ export default function LandingPage(props) {
               <span className={classes.subtitle}>{i18next.t('landing.valueProp')}</span>
             </div>
             <br />
-
-
             <Button
               color="danger"
               size="lg"
@@ -159,8 +157,8 @@ export default function LandingPage(props) {
 
           <IndustrySection />
           <FreeLive/>
-          <div className={classes.sectionBreak}></div>
-
+{/*           <div className={classes.sectionBreak}></div>
+ */}
           <SectionArea
             align="right"
             title={i18next.t('landing.section.1.title')}
