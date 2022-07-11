@@ -343,7 +343,23 @@
         ]
     },
     "liveDemo": {
-        "title": "Live stream demo"
+        "title": "Try low latency live streaming",
+        "metrics" : {
+            "latency" : "Latency",
+            "utcClock" : "UTC Time (system clock)",
+            "bufferSize" : "Buffer size",
+            "bandwidth" : "Bandwidth (Kbps)",
+            "quality" : "Quality",
+            "streamedFrom" : "Streamed from",
+            "playheadTime" : "Playhead time",
+            "decodedFrames" : "Decoded frames",
+            "droppedFrames" : "Dropped frames",
+            "stallsDetected": "Stalls detected",
+            "gapsJumped" : "Gaps jumped",
+            "estimating" : "estimating",
+            "loading" : "loading"
+
+        }
     },
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."

@@ -24,8 +24,15 @@ const livePage = (theme) => ({
     color: "#FFFFFF",
     backgroundColor:"#fff",
     textAlign:"center",
-    paddingTop: "15vh",
+    paddingTop: "2vh",
     ...container,
+  },
+  subHeaderBanner : {
+    paddingTop: "10vh",
+    paddingBottom: "3vh",
+    color: "#FFFFFF",
+    backgroundColor:"#000",
+    textAlign: "center",
   },
   title: {
     ...title,

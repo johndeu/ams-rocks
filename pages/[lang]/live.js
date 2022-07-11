@@ -28,6 +28,7 @@ import {
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
+import Parallax from "components/Parallax/Parallax.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
@@ -39,6 +40,7 @@ import Badge from "components/Badge/Badge.js";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
+import FreeLive from "pages-sections/LandingPage-Sections/SectionFreeLive.js";
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
@@ -208,7 +210,7 @@ export default function LandingPage(props) {
       {!isIos &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
-            <Badge color="white"><span className={classes.label}>Latency</span></Badge>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.latency")}</span></Badge>
             <CardBody className={classes.cardBody}>
               <span className={classes.metric}>{latency && (latency / 1000).toPrecision(4) + "s"}</span>
             </CardBody>
@@ -218,7 +220,7 @@ export default function LandingPage(props) {
       {!isIos &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
-            <Badge color="white"><span className={classes.label}>Buffer Size</span></Badge>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bufferSize")}</span></Badge>
             <CardBody className={classes.cardBody}>
               <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
             </CardBody>
@@ -228,9 +230,9 @@ export default function LandingPage(props) {
       {!isIos &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
-            <Badge color="white"><span className={classes.label}>Bandwidth (Kbps)</span></Badge>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bandwidth")}</span></Badge>
             <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : 'estimating'}</span>
+              <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : i18next.t("liveDemo.metrics.estimating")}</span>
             </CardBody>
           </Card>
         </GridItem>
@@ -238,16 +240,16 @@ export default function LandingPage(props) {
       {!isIos &&
         <GridItem md={6}>
           <Card className={classes.card}>
-            <Badge color="white"><span className={classes.label}>Quality</span></Badge>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.quality")}</span></Badge>
             <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{stats.height ? stats.height + 'p' : 'loading'}</span>
+              <span className={classes.metric}>{stats.height ? stats.height + 'p' : i18next.t("liveDemo.metrics.loading")}</span>
             </CardBody>
           </Card>
         </GridItem>
       }
       <GridItem md={6}>
         <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>Streamed From</span></Badge>
+          <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.streamedFrom")}</span></Badge>
           <CardBody className={classes.cardBody}>
             <span className={classes.metric}>{location}</span>
           </CardBody>
@@ -256,7 +258,7 @@ export default function LandingPage(props) {
       {!isIos &&
         <GridItem md={6}>
           <Card className={classes.card}>
-            <Badge color="white"><span className={classes.label}>Playhead Time</span></Badge>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.playheadTime")}</span></Badge>
             <CardBody className={classes.cardBody}>
               <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
             </CardBody>
@@ -281,8 +283,12 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
+      <div className={classes.subHeaderBanner} >
+        <h3>{i18next.t("liveDemo.title")}</h3>
+      </div>
       <div className={classes.section}>
         <div className={classes.container}>
+
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <GridContainer>
@@ -298,7 +304,7 @@ export default function LandingPage(props) {
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
                   <Card className={classes.utcTimeBox} md={2}>
-                    <Badge color="white" className={classes.utcTimeLabel}>UTC Time (system clock):</Badge>
+                    <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>
@@ -314,10 +320,10 @@ export default function LandingPage(props) {
                     <Card className={classes.utcTimeBox} md={2}>
                       <CardBody className={classes.cardBody}>
                         <div className={classes.statsContainer}>
-                          <span className={classes.statsItem}><b>Decoded frames:</b> {stats.decodedFrames}<br /></span>
-                          <span className={classes.statsItem}><b>Dropped frames:</b> {stats.droppedFrames}<br /></span>
-                          <span className={classes.statsItem}><b>Stalls detected:</b> {stats.stallsDetected}<br /></span>
-                          <span className={classes.statsItem}><b>Gaps jumped:</b> {stats.gapsJumped}<br /></span>
+                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.decodedFrames")}:</b> {stats.decodedFrames}<br /></span>
+                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.droppedFrames")}:</b> {stats.droppedFrames}<br /></span>
+                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.stallsDetected")}:</b> {stats.stallsDetected}<br /></span>
+                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.gapsJumped")}:</b> {stats.gapsJumped}<br /></span>
                           {/*                     <span className={classes.statsItem}><b>Switches:</b>{JSON.stringify(stats.switchHistory)}<br /></span> */}
                         </div>
                       </CardBody>

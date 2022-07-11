@@ -21,13 +21,13 @@ export default function SectionCarousel() {
   const customers = i18next.t('customers.list');
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    arrows: false
+    arrows: true
   };
   return (
     <div className={classes.section}>
@@ -51,7 +51,7 @@ export default function SectionCarousel() {
                     className="slick-image"
                   />
                 </div>
-        
+
                 )}
               </Carousel>
             </Card>
