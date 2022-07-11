@@ -157,7 +157,7 @@ const headerStyle = {
     backgroundSize: "cover",
     paddingTop: "25px",
     color: "#fff",
-    backgroundImage: "url('/img/Mainheader_image-2.png')",
+    backgroundImage: "url('/img/Mainheader_image-2.jpg')",
   },
   dark: {
     color: "#fff !important",
