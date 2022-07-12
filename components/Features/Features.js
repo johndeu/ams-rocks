@@ -29,7 +29,6 @@ export default function Features(props) {
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                         <NavPills
                             color="danger"
-                           
                             horizontal={{
                                 tabsGrid: { xs: 12, sm: 2, md: 2 },
                                 contentGrid: { xs: 12, sm: 10, md: 10 },
@@ -39,56 +38,55 @@ export default function Features(props) {
                                     tabButton: i18next.t('features.live.title'),
                                     tabContent: (
                                         <GridContainer>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.live.0.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.0.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.live.1.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.1.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.live.2.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.2.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.0.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.0.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.live.3.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.3.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.live.4.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.4.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.live.5.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.5.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.1.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.1.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.live.6.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.6.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.live.7.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.live.7.description')}
-                                                    </p>
-                                                    <br />
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.2.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.2.description')}
+                                                </p>
                                             </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.3.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.3.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.4.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.4.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.5.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.5.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.6.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.6.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.live.7.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.live.7.description')}
+                                                </p>
+                                            </GridItem>
+
                                         </GridContainer>
                                     ),
                                 },
@@ -96,55 +94,53 @@ export default function Features(props) {
                                     tabButton: i18next.t('features.processing.title'),
                                     tabContent: (
                                         <GridContainer>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.processing.0.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.0.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.processing.1.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.1.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.processing.2.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.2.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.0.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.0.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.processing.3.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.3.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.processing.4.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.4.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.processing.5.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.5.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.1.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.1.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.processing.6.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.6.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.processing.7.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.processing.7.description')}
-                                                    </p>
-                                                    <br />
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.2.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.2.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.3.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.3.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.4.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.4.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.5.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.5.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.6.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.6.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.processing.7.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.processing.7.description')}
+                                                </p>
                                             </GridItem>
                                         </GridContainer>
                                     ),
@@ -153,55 +149,53 @@ export default function Features(props) {
                                     tabButton: i18next.t('features.streaming.title'),
                                     tabContent: (
                                         <GridContainer>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.streaming.0.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.0.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.streaming.1.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.1.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.streaming.2.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.2.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.0.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.0.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.streaming.3.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.3.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.streaming.4.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.4.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.streaming.5.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.5.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.1.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.1.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.streaming.6.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.6.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.streaming.7.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.streaming.7.description')}
-                                                    </p>
-                                                    <br />
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.2.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.2.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.3.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.3.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.4.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.4.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.5.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.5.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.6.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.6.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.streaming.7.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.streaming.7.description')}
+                                                </p>
                                             </GridItem>
                                         </GridContainer>
                                     ),
@@ -210,56 +204,55 @@ export default function Features(props) {
                                     tabButton: i18next.t('features.managing.title'),
                                     tabContent: (
                                         <GridContainer>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.managing.0.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.0.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.managing.1.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.1.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.managing.2.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.2.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.0.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.0.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.managing.3.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.3.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.managing.4.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.4.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.managing.5.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.5.description')}
-                                                    </p>
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.1.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.1.description')}
+                                                </p>
                                             </GridItem>
-                                            <GridItem xs={12} sm={4} md={4} lg={4}>
-                                                <span>
-                                                    <h5>{i18next.t('features.managing.6.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.6.description')}
-                                                    </p>
-                                                    <br />
-                                                    <h5>{i18next.t('features.managing.7.title')}</h5>
-                                                    <p>
-                                                        {i18next.t('features.managing.7.description')}
-                                                    </p>
-                                                    <br />
-                                                </span>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.2.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.2.description')}
+                                                </p>
                                             </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.3.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.3.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.4.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.4.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="6">
+                                                <h5>{i18next.t('features.managing.5.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.5.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.6.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.6.description')}
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs="12" sm="6">
+                                                <h5>{i18next.t('features.managing.7.title')}</h5>
+                                                <p>
+                                                    {i18next.t('features.managing.7.description')}
+                                                </p>
+                                            </GridItem>
+                                          
                                         </GridContainer>
                                     ),
                                 },
