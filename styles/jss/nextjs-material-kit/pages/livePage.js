@@ -154,6 +154,18 @@ const livePage = (theme) => ({
     fontSize : "14px",
     fontWeight: "400",
   },
+  featureHeader : {
+    textAlign: "center !important",
+    fontSize : "16px",
+    fontWeight: "600",
+    color: "#fff",
+    backgroundColor:"#1f1f1a"
+  },
+  featureBody: {
+    textAlign: "left !important",
+    fontSize : "13px",
+    fontWeight: "400"
+  },
   ...tooltipsStyle,
 });
 

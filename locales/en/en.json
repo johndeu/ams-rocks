@@ -62,6 +62,51 @@
             "imageAlt": "Low latency"
         }
     },
+    "liveDemo": {
+        "title": "Try low latency live streaming",
+        "metrics" : {
+            "latency" : "Latency",
+            "utcClock" : "UTC Time (system clock)",
+            "bufferSize" : "Buffer size",
+            "bandwidth" : "Bandwidth (Kbps)",
+            "quality" : "Quality",
+            "streamedFrom" : "Streamed from",
+            "playheadTime" : "Playhead time",
+            "decodedFrames" : "Decoded frames",
+            "droppedFrames" : "Dropped frames",
+            "stallsDetected": "Stalls detected",
+            "gapsJumped" : "Gaps jumped",
+            "estimating" : "estimating",
+            "loading" : "loading"
+        },
+        "features" :{
+            "title" : "The most feature-rich low latency platform available",
+            "list" : [
+                {
+                    "item" : "Spec compliant support for Apple LL-HLS"
+                },
+                {
+                    "item" : "Fallback to standard HLS for legacy clients"
+                },
+                {
+                    "item" : "Deliver DASH from same published stream"
+                },
+                {
+                    "item" : "Time-shift (DVR) window support up to 8 hours"
+                },
+                {
+                    "item" : "Full DRM and ClearKey encryption (AES-128, PlayReady, Widevine, FairPlay)"
+                },
+                {
+                    "item" : "Dynamic manifest filters (time, tracks, bitrates)"
+                },
+                {
+                    "item" : "Simple live-to-VOD transition from the same URLs cached to CDN during event"
+                }
+            ]
+
+        }
+    },
     "industry": {
         "0": {
             "title": "Enterprise",
@@ -350,25 +395,7 @@
             }
         ]
     },
-    "liveDemo": {
-        "title": "Try low latency live streaming",
-        "metrics" : {
-            "latency" : "Latency",
-            "utcClock" : "UTC Time (system clock)",
-            "bufferSize" : "Buffer size",
-            "bandwidth" : "Bandwidth (Kbps)",
-            "quality" : "Quality",
-            "streamedFrom" : "Streamed from",
-            "playheadTime" : "Playhead time",
-            "decodedFrames" : "Decoded frames",
-            "droppedFrames" : "Dropped frames",
-            "stallsDetected": "Stalls detected",
-            "gapsJumped" : "Gaps jumped",
-            "estimating" : "estimating",
-            "loading" : "loading"
-
-        }
-    },
+ 
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
     },
