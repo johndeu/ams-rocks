@@ -107,7 +107,10 @@
                     "item": "Dynamic manifest filters (time, tracks, bitrates)"
                 },
                 {
-                    "item": "Simple live-to-VOD transition from the same URLs cached to CDN during event"
+                    "item": "Simple live-to-VOD transition from the same URLs cached to the CDN"
+                },
+                {
+                    "item": "Choose your own CDN, or use the integrated Azure CDN"
                 },
                 {
                     "item": "Monitor your events with Event Grid and Azure Monitor"
