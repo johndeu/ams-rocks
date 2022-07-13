@@ -92,7 +92,7 @@
                     "item": "Deliver DASH and HLS simultaneously"
                 },
                 {
-                    "item": "No proprietary player. Works in Shaka, Dash.js, HLS.js, Video.js,ExoPlayer and Apple AVPlayer."
+                    "item": "No proprietary player. Works in Shaka, Dash.js, HLS.js, Video.js, ExoPlayer and Apple AVPlayer."
                 },
                 {
                     "item": "Time-shift (DVR) window support up to 6 hours"

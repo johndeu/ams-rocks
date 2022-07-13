@@ -338,25 +338,27 @@ export default function LandingPage(props) {
                   }
 
                 </GridItem>
-                {!isIos &&
-                  <GridItem xs={12} sm={12} md={4}>
+
+                <GridItem xs={12} sm={12} md={4}>
+                  {!isIos &&
                     <Hidden xsDown >
                       {metricGrid}
                     </Hidden>
-                    <Card  className={classes.card}>
-                      <CardHeader className={classes.featureHeader}>
-                       {i18next.t('liveDemo.features.title')}
-                      </CardHeader>
-                      <CardBody className={classes.featureBody}>
-                        <ul>
-                        {i18next.t("liveDemo.features.list", {returnObjects:true}).map((listItem) => {
+                  }
+                  <Card className={classes.card}>
+                    <CardHeader className={classes.featureHeader}>
+                      {i18next.t('liveDemo.features.title')}
+                    </CardHeader>
+                    <CardBody className={classes.featureBody}>
+                      <ul>
+                        {i18next.t("liveDemo.features.list", { returnObjects: true }).map((listItem) => {
                           return <li>{listItem.item}</li>
                         })}
-                        </ul>
-                      </CardBody>
-                    </Card>
-                  </GridItem>
-                }
+                      </ul>
+                    </CardBody>
+                  </Card>
+                </GridItem>
+
 
               </GridContainer>
             </GridItem>
