@@ -95,6 +95,9 @@
                     "item": "No proprietary player. Works in Shaka, Dash.js, HLS.js, Video.js, ExoPlayer and Apple AVPlayer."
                 },
                 {
+                    "item": "Real time low-latency automatic captions and subtitles available in 50+ languages"
+                },
+                {
                     "item": "Time-shift (DVR) window support up to 6 hours"
                 },
                 {
