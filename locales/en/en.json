@@ -64,6 +64,8 @@
     },
     "liveDemo": {
         "title": "Try low latency live streaming",
+        "playerNotes": "Current player is Shaka player version {{playerVersion}}. The burned-in timecode is generated during encoding using system clock time.",
+        "clockNotes": "Be sure to sync your local system clock before evaluating end-to-end latency. Latency charts are not available on iOS at this time.",
         "metrics": {
             "latency": "Latency",
             "utcClock": "UTC Time (system clock)",

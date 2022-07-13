@@ -141,6 +141,13 @@ const livePage = (theme) => ({
     lineHeight:"1.75em",
     letterSpacing: "0.006em",
   },
+  playerNotes : {
+    color: "#1a1a1f",
+    fontSize:"9px",
+    lineHeight: "10px",
+    fontWeight: "300",
+    letterSpacing: "-0.04em",
+  },
   statsContainer : {
     textAlign: "left",
     itemAlign: "left",
