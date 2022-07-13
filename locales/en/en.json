@@ -95,19 +95,19 @@
                     "item": "No proprietary player. Works in Shaka, Dash.js, HLS.js, Video.js, ExoPlayer and Apple AVPlayer."
                 },
                 {
-                    "item": "Real time low-latency automatic captions and subtitles available in 50+ languages"
+                    "item": "Low-latency automatic captions and subtitles available in 50+ languages"
                 },
                 {
                     "item": "Time-shift (DVR) window support up to 6 hours"
-                },
-                {
-                    "item": "Full DRM and ClearKey encryption (AES-128, PlayReady, Widevine, FairPlay)"
                 },
                 {
                     "item": "Dynamic manifest filters (time, tracks, bitrates)"
                 },
                 {
                     "item": "Simple live-to-VOD transition from the same URLs cached to CDN during event"
+                },
+                {
+                    "item": "Monitor your events with Event Grid and Azure Monitor"
                 }
             ]
         }
