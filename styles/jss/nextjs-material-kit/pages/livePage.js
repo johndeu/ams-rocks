@@ -166,7 +166,7 @@ const livePage = (theme) => ({
   featureBody: {
     textAlign: "left !important",
     fontSize : "13px",
-    fontWeight: "400"
+    fontWeight: "500"
   },
   ...tooltipsStyle,
 });

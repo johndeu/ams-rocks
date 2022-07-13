@@ -83,13 +83,13 @@
             "title": "The most feature-rich low latency platform available",
             "list": [
                 {
-                    "item": "Spec compliant support for Apple LL-HLS"
+                    "item": "Spec compliant Apple LL-HLS"
                 },
                 {
                     "item": "Fallback to standard HLS for legacy clients"
                 },
                 {
-                    "item": "Deliver DASH from same published stream"
+                    "item": "Deliver DASH and HLS simultaneously"
                 },
                 {
                     "item": "Time-shift (DVR) window support up to 6 hours"
