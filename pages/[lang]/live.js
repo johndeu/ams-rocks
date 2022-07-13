@@ -294,7 +294,7 @@ export default function LandingPage(props) {
             <GridItem xs={12} sm={12} md={12}>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8} className={playerClasses} >
-               
+
                   <ShakaPlayer
                     src={src}
                     posterUrl=""
@@ -304,9 +304,9 @@ export default function LandingPage(props) {
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-                  <span className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', {playerVersion: "4.1.1"})}</span><br/> 
-                  <span className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</span> 
-                                    <Card className={classes.utcTimeBox} md={2}>
+                  <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
+                  <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
+                  <Card className={classes.utcTimeBox} md={2}>
                     <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
