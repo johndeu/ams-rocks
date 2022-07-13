@@ -83,6 +83,9 @@
             "title": "The most feature-rich low latency platform available",
             "list": [
                 {
+                    "item": "Low latency between 4-7 seconds at scale"
+                },
+                {
                     "item": "Spec compliant Apple LL-HLS"
                 },
                 {
