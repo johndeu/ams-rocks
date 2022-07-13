@@ -33,18 +33,12 @@ const landingPageStyle = (theme) => ({
   },
   titleSection : {
     position:"relative",
-    [theme.breakpoints.down("xs")]: {
-
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "0vh",
     },
     [theme.breakpoints.down("lg")]: {
-      //paddingTop: "10vh",
-    },
-    [theme.breakpoints.down("md")]: {
-      //paddingTop: "10vh",
-    },
-    [theme.breakpoints.down("xl")]: {
-      //paddingTop: "10vh",
-    },
+      paddingTop: "0vh",
+    }
   },
   title: {
     ...title,

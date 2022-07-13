@@ -24,8 +24,8 @@
             "title": "Live"
         },
         "freeAccount": "Free account",
-        "contactSales" : "Contact Sales",
-        "support" : "Support",
+        "contactSales": "Contact Sales",
+        "support": "Support",
         "signIn": "Sign in"
     },
     "landing": {
@@ -64,110 +64,110 @@
     },
     "liveDemo": {
         "title": "Try low latency live streaming",
-        "metrics" : {
-            "latency" : "Latency",
-            "utcClock" : "UTC Time (system clock)",
-            "bufferSize" : "Buffer size",
-            "bandwidth" : "Bandwidth (Kbps)",
-            "quality" : "Quality",
-            "streamedFrom" : "Streamed from",
-            "playheadTime" : "Playhead time",
-            "decodedFrames" : "Decoded frames",
-            "droppedFrames" : "Dropped frames",
+        "metrics": {
+            "latency": "Latency",
+            "utcClock": "UTC Time (system clock)",
+            "bufferSize": "Buffer size",
+            "bandwidth": "Bandwidth (Kbps)",
+            "quality": "Quality",
+            "streamedFrom": "Streamed from",
+            "playheadTime": "Playhead time",
+            "decodedFrames": "Decoded frames",
+            "droppedFrames": "Dropped frames",
             "stallsDetected": "Stalls detected",
-            "gapsJumped" : "Gaps jumped",
-            "estimating" : "estimating",
-            "loading" : "loading"
+            "gapsJumped": "Gaps jumped",
+            "estimating": "estimating",
+            "loading": "loading"
         },
-        "features" :{
-            "title" : "The most feature-rich low latency platform available",
-            "list" : [
+        "features": {
+            "title": "The most feature-rich low latency platform available",
+            "list": [
                 {
-                    "item" : "Spec compliant support for Apple LL-HLS"
+                    "item": "Spec compliant support for Apple LL-HLS"
                 },
                 {
-                    "item" : "Fallback to standard HLS for legacy clients"
+                    "item": "Fallback to standard HLS for legacy clients"
                 },
                 {
-                    "item" : "Deliver DASH from same published stream"
+                    "item": "Deliver DASH from same published stream"
                 },
                 {
-                    "item" : "Time-shift (DVR) window support up to 8 hours"
+                    "item": "Time-shift (DVR) window support up to 6 hours"
                 },
                 {
-                    "item" : "Full DRM and ClearKey encryption (AES-128, PlayReady, Widevine, FairPlay)"
+                    "item": "Full DRM and ClearKey encryption (AES-128, PlayReady, Widevine, FairPlay)"
                 },
                 {
-                    "item" : "Dynamic manifest filters (time, tracks, bitrates)"
+                    "item": "Dynamic manifest filters (time, tracks, bitrates)"
                 },
                 {
-                    "item" : "Simple live-to-VOD transition from the same URLs cached to CDN during event"
+                    "item": "Simple live-to-VOD transition from the same URLs cached to CDN during event"
                 }
             ]
-
         }
     },
-    "industry": {
-        "0": {
-            "title": "Enterprise",
-            "headline": "Collaborate together",
-            "body": "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
-            "callToAction": ""
-        },
-        "1": {
-            "title": "Live shopping",
-            "headline": "Sell your products",
-            "body": "Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.",
-            "callToAction": ""
-        },
-        "2": {
-            "title": "Fitness",
-            "headline": "Stay fit together",
-            "body": "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
-            "callToAction": ""
-        },
-        "3": {
-            "title": "Government",
-            "headline": "Engage your community",
-            "body": "Give legislators strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
-            "callToAction": ""
-        },
-        "4": {
-            "title": "Education",
-            "headline": "Create learning hubs",
-            "body": "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
-            "callToAction": ""
-        },
-        "5": {
-            "title": "Energy",
-            "headline": "Deliver a clean energy future",
-            "body": "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
-            "callToAction": ""
-        },
-        "6": {
-            "title": "Healthcare",
-            "headline": "Empower patients",
-            "body": "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
-            "callToAction": ""
-        },
-        "7": {
-            "title": "Manufacturing",
-            "headline": "Improve production quality",
-            "body": "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
-            "callToAction": ""
-        }
-    },
+    "industry": 
+        [
+            {
+                "title": "Enterprise",
+                "headline": "Collaborate together",
+                "body": "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
+                "callToAction": ""
+            },
+            {
+                "title": "Live shopping",
+                "headline": "Sell your products",
+                "body": "Empower your sellers to connect with their audience whether it be upvotes or instant advertising of new products. Influential connections mold a brand in seconds.",
+                "callToAction": ""
+            },
+            {
+                "title": "Fitness",
+                "headline": "Stay fit together",
+                "body": "Connect your athletes to one another. Build a leaderboard for everyone to keep track of their core movements.",
+                "callToAction": ""
+            },
+            {
+                "title": "Government",
+                "headline": "Engage your community",
+                "body": "Give legislators strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
+                "callToAction": ""
+            },
+            {
+                "title": "Education",
+                "headline": "Create learning hubs",
+                "body": "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
+                "callToAction": ""
+            },
+            {
+                "title": "Energy",
+                "headline": "Deliver a clean energy future",
+                "body": "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
+                "callToAction": ""
+            },
+            {
+                "title": "Healthcare",
+                "headline": "Empower patients",
+                "body": "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
+                "callToAction": ""
+            },
+            {
+                "title": "Manufacturing",
+                "headline": "Improve production quality",
+                "body": "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
+                "callToAction": ""
+            }
+        ],
     "features": {
         "title": "Live streaming and On-demand features",
         "live": {
             "title": "Adding media / going live",
             "0": {
                 "title": "Direct Uploads",
-                "description": "Upload content from an HTTP/S URL, Azure storage, or directly via the portal"
+                "description": "Upload content from an HTTP/S URL, Azure blob storage, or directly via the portal"
             },
             "1": {
-                "title": "Stream from any encoder with RTMP",
-                "description": "Live stream using any encoder that supports the RTMP/S protocol, including OBS Studio, and many more."
+                "title": "Stream from any encoder",
+                "description": "Live stream using any encoder that supports the RTMP/S protocol."
             },
             "2": {
                 "title": "Wide-range of input file formats",
@@ -187,7 +187,7 @@
             },
             "6": {
                 "title": "Monitor, notify and react",
-                "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early, notify and and respond to changes in your streaming."
+                "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early, notify and respond to changes in your streaming."
             },
             "7": {
                 "title": "Live captions",
@@ -241,7 +241,7 @@
             },
             "2": {
                 "title": "Add Subtitles and Closed Captions",
-                "description": "Late bind subtitles from WebVTT and IMSC files, or use the built-in transcription presets to generate subtitle files using speech-to-text technology."
+                "description": "Add subtitles from WebVTT files, or use the built-in transcription presets to generate subtitle files using speech-to-text technology."
             },
             "3": {
                 "title": "Add descriptive audio tracks",
@@ -300,9 +300,9 @@
             }
         }
     },
-    "freeLive" : {
-        "title" : "Get started with 5 hours of free live-streaming",
-        "callToAction" : "Start free trial"
+    "freeLive": {
+        "title": "Get started with 5 hours of free live-streaming",
+        "callToAction": "Start free trial"
     },
     "tryFree": {
         "title": "Try Azure Media Services for free",
@@ -337,7 +337,6 @@
         "callToAction": "Meet our customers",
         "list": [
             {
-                
                 "name": "Lifetime Fitness",
                 "imgSrc": "Lifetime.svg"
             },
@@ -395,7 +394,6 @@
             }
         ]
     },
- 
     "dashboard": {
         "description": "This example demonstrate how to lazy-load the language on the client side."
     },
