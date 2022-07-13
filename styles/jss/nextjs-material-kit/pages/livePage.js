@@ -159,7 +159,9 @@ const livePage = (theme) => ({
     fontSize : "16px",
     fontWeight: "600",
     color: "#fff",
-    backgroundColor:"#1f1f1a"
+    backgroundColor:"#1f1f1a",
+    border:"4px solid #1f1f1a",
+    borderRadius: "6px",
   },
   featureBody: {
     textAlign: "left !important",
