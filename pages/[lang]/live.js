@@ -304,14 +304,15 @@ export default function LandingPage(props) {
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-                  <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
-                  <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
+               
                   <Card className={classes.utcTimeBox} md={2}>
                     <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
                     <CardBody className={classes.cardBody}>
                       <span className={classes.localTime}>{currentTime}</span>
                     </CardBody>
                   </Card>
+                  <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
+                  <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
                   {!isIos &&
                     <Card className={classes.utcTimeBox} md={2}>
                       <CardBody className={classes.cardBody}>
