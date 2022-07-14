@@ -344,19 +344,6 @@ export default function LandingPage(props) {
                       </CardBody>
                     </Card>
                   }
-                  {!isIos && !isNaN(stats.liveLatency) &&
-                    <Card className={classes.utcTimeBox} md={2}>
-                      <CardBody className={classes.cardBody}>
-                        <div className={classes.statsContainer}>
-                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.decodedFrames")}:</b> {stats.decodedFrames}<br /></span>
-                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.droppedFrames")}:</b> {stats.droppedFrames}<br /></span>
-                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.stallsDetected")}:</b> {stats.stallsDetected}<br /></span>
-                          <span className={classes.statsItem}><b>{i18next.t("liveDemo.metrics.gapsJumped")}:</b> {stats.gapsJumped}<br /></span>
-                          {/*                     <span className={classes.statsItem}><b>Switches:</b>{JSON.stringify(stats.switchHistory)}<br /></span> */}
-                        </div>
-                      </CardBody>
-                    </Card>
-                  }
 
                   {!isIos &&
                     <Hidden smUp>
