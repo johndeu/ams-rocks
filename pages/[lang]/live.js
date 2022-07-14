@@ -72,10 +72,15 @@ const chartOptions = {
   responsive: true,
   redraw: true,
   updateMode: "active",
+  animations: {
+    tension: {
+        duration: 500,
+        easing: 'easeOutQuart'
+    }
+},
   scales: {
     y: {
-      min: 0,
-      max: 15,
+
       suggestedMax: 10,
       suggestedMin: 0,
       grid: {
