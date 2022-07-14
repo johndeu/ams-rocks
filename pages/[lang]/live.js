@@ -128,6 +128,8 @@ export default function LandingPage(props) {
   useEffect(() => {
     setUserAgent(navigator.userAgent);
     setIsIos(/iPhone/.test(userAgent));
+
+    onDemand = onDemandLoaded;
   })
 
 
@@ -145,7 +147,7 @@ export default function LandingPage(props) {
 
 
   function onStatsUpdate(statsUpdate, startTime) {
-    console.log(statsUpdate);
+
     if (statsUpdate) {
       setStats(statsUpdate);
     }
@@ -197,6 +199,19 @@ export default function LandingPage(props) {
     currentTime = now.utc().format("YYYY-MM-DD HH:mm:ss");
     return currentTime;
   }
+
+  var onDemand =
+    <>
+      <div>loading...</div>
+    </> //Empty block for when the page loads and the asset is not yet on-demand
+
+  const onDemandLoaded =
+    <Card className={classes.onDemandBox} md={2}>
+      <Badge color="white" className={classes.onDemandTitle}>{i18next.t("liveDemo.onDemand")}:</Badge>
+      <CardBody className={classes.cardBody}>
+        <span className={classes.onDemandMessage}>{i18next.t("liveDemo.onDemandMessage")}</span>
+      </CardBody>
+    </Card>
 
   const metricGrid =
     <GridContainer>
@@ -312,12 +327,9 @@ export default function LandingPage(props) {
                     </>
                   }
                   {isNaN(stats.liveLatency) &&
-                    <Card className={classes.onDemandBox} md={2}>
-                      <Badge color="white" className={classes.onDemandTitle}>{i18next.t("liveDemo.onDemand")}:</Badge>
-                      <CardBody className={classes.cardBody}>
-                        <span className={classes.onDemandMessage}>{i18next.t("liveDemo.onDemandMessage")}</span>
-                      </CardBody>
-                    </Card>
+                    <>
+                      {onDemand}
+                    </>
                   }
 
 
