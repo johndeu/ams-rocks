@@ -72,6 +72,39 @@ const chartOptions = {
   responsive: true,
   redraw: true,
   updateMode: "active",
+  scales: {
+    y: {
+      min: 0,
+      max: 15,
+      suggestedMax: 10,
+      suggestedMin: 0,
+      grid: {
+        display: true,
+        borderColor: "black",
+        tickColor: "black"
+      },
+      title: {
+        display: true,
+        text: "Latency in Seconds",
+        color: "blue",
+        font: {
+          size: 12,
+          weight: "bold"
+        }
+      },
+    },
+    x: {
+      title: {
+        display: true,
+        text: "UTC time",
+        color: "blue",
+        font: {
+          size: 12,
+          weight: "bold"
+        }
+      }
+    }
+  },
   plugins: {
     legend: {
       position: 'top',
@@ -80,7 +113,7 @@ const chartOptions = {
       display: false,
       text: 'Latency',
     },
-  },
+  }
 };
 
 ChartJS.register(
@@ -183,7 +216,7 @@ export default function LandingPage(props) {
 
       chartData.datasets[0].data.push(latency.valueOf() / 1000);
       chartData.labels.push(moment().utc().format("HH:mm:ss"));
-      if (chartData.labels.length > 30) {  // keep a 10 second window
+      if (chartData.labels.length > 30) {  // keep a sliding window
         chartData.datasets[0].data.shift(); //shift off the oldest data
         chartData.labels.shift(); //shift off the oldest label to keep the window sliding.
       }
@@ -326,8 +359,7 @@ export default function LandingPage(props) {
                           <span className={classes.localTime}>{currentTime}</span>
                         </CardBody>
                       </Card>
-                      <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
-                      <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
+
                     </>
                   }
                   {isNaN(stats.liveLatency) &&
@@ -338,11 +370,16 @@ export default function LandingPage(props) {
 
 
                   {!isIos && !isNaN(stats.liveLatency) &&
-                    <Card className={classes.utcTimeBox} md={2}>
-                      <CardBody className={classes.cardBody}>
-                        <Line ref={chartRef} options={chartOptions} data={chartData} />
-                      </CardBody>
-                    </Card>
+                    <>
+                      <Card className={classes.utcTimeBox} md={2}>
+                        <CardBody className={classes.cardBody}>
+                          <Line ref={chartRef} options={chartOptions} data={chartData} />
+                        </CardBody>
+                      </Card>
+
+                      <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
+                      <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
+                    </>
                   }
 
                   {!isIos &&

@@ -87,11 +87,12 @@ class ShakaPlayer extends React.PureComponent {
         player.load(src, null, "application/vnd.apple.mpegURL").then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
+            // Enable captions
+            player.setTextTrackVisibility(true);
         }).catch(onError);  // onError is executed if the asynchronous load fails.
 
         // Event listeners
         player.addEventListener('loaded', this.onLoaded(this.video.current));
-
 
         this.timerID = setInterval(
             () => this.statsTick(player, this.video.current),
@@ -108,16 +109,16 @@ class ShakaPlayer extends React.PureComponent {
             this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
             // In theory this code SHOULD work, but it breaks Next.js on iOS for some reason. No clue why. 
-            
-     /*        if (video && video.getStartDate) {
-                const startDate = video.getStartDate();
-                if (isNaN(startDate.getTime())) {
-                    console.error("EXT-X-PROGRAM-DATETIME required to get playhead time as date!");
-                }
-                console.log("StartDate:" + new Date(startDate.getTime + (player.playhead.getTime() * 1000)))
-            } else {
-                //console.log ("No start time");
-            } */
+
+            /*        if (video && video.getStartDate) {
+                       const startDate = video.getStartDate();
+                       if (isNaN(startDate.getTime())) {
+                           console.error("EXT-X-PROGRAM-DATETIME required to get playhead time as date!");
+                       }
+                       console.log("StartDate:" + new Date(startDate.getTime + (player.playhead.getTime() * 1000)))
+                   } else {
+                       //console.log ("No start time");
+                   } */
 
             if (bufferedInfo) {
                 this.props.onBufferedInfoUpdate(bufferedInfo);
@@ -143,6 +144,7 @@ class ShakaPlayer extends React.PureComponent {
     // Event Handlers
     onLoaded(currentPlayer) {
         currentPlayer.play();
+
         //console.log('Shaka: Playing');
 
     }
