@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
-
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 
 class MyDocument extends Document {
   render() {
@@ -37,6 +37,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <div id="page-transition"></div>
+
           <Main />
           <NextScript />
         </body>

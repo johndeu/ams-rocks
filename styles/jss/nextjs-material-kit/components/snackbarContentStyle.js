@@ -21,6 +21,7 @@ const snackbarContentStyle = {
     borderRadius: "0px",
     maxWidth: "100%",
     minWidth: "auto",
+    zIndex:"10000",
     boxShadow:
       "0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2)",
   },
@@ -49,22 +50,39 @@ const snackbarContentStyle = {
     color: "#ffffff",
     ...primaryBoxShadow,
   },
+  azure: {
+    backgroundColor: "#2899F5",
+    color: "#ffffff",
+    ...infoBoxShadow,
+  },
   message: {
     padding: "0",
     display: "block",
     maxWidth: "89%",
+    color: "#ffffff",
+    fontWeight: "500",
+    fontSize: "14px",
+    textAlign:"center",
     "&,& *": {
       letterSpacing: "normal",
+      textDecoration: "none"
     },
+    "& a": {
+      color: "#ffffff",
+    },
+    "& a:hover,& a:focus,& a:visited" : {
+      color: "#ffffff",
+      textDecoration: "underline",
+    }
   },
   close: {
-    width: "14px",
-    height: "14px",
+    width: "24px",
+    height: "24px",
   },
   iconButton: {
     width: "24px",
     height: "24px",
-    float: "right",
+    float: "center",
     fontSize: "1.5rem",
     fontWeight: "500",
     lineHeight: "1",

@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 // core components
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -72,23 +73,12 @@ export default function LandingPage(props) {
   const { playerRef, inView, entry } = useInView({ threshold: 0 });
 
   React.useEffect(() => {
-    //window.getShakaInst = () => playerRef.current;
     console.log("use effect hook, InView = ", inView);
   }, [inView]);
 
   return (
     <div>
-    {/*   <AzureHeader
-        color="white"
-        fixed
-        leftLinks={<HeaderLinksLeft />}
-        rightLinks={<HeaderLinksRight />}
-        changeColorOnScroll={{
-          height: 120,
-          color: "white",
-        }}
-        {...rest}
-      /> */}
+
       <Header
         color="white"
         routes={dashboardRoutes}
@@ -102,6 +92,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
+
       <Parallax responsive image="/img/Mainheader_image-2.jpg">
 
         <GridContainer className={classes.container}>
@@ -150,14 +141,25 @@ export default function LandingPage(props) {
         </GridContainer>
 
       </Parallax>
+
       <div className={classNames(classes.main, classes.mainRaised)}>
+        <SnackbarContent
+          message={
+            <span>
+              <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>.
+            </span>
+          }
+          close
+          color="azure"
+          icon="info_outline"
+        />
         <div className={classes.container}>
 
           {/*  <ShakaPlayer src={src} /> */}
 
           <IndustrySection />
-          <FreeLive/>
-{/*           <div className={classes.sectionBreak}></div>
+          <FreeLive />
+          {/*           <div className={classes.sectionBreak}></div>
  */}
           <SectionArea
             align="right"
@@ -198,7 +200,7 @@ export default function LandingPage(props) {
 
         </div>
       </div>
-     {/*  <GetStartedSection /> */}
+      {/*  <GetStartedSection /> */}
       <Features />
       <SectionCustomers />
       <div className={classNames(classes.mainBlue, classes.mainRaised)}>
