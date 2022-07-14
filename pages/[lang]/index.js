@@ -24,6 +24,7 @@ import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Features from "components/Features/Features.js";
 
+
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
 const ShakaPlayer = dynamic(import("components/ShakaPlayer/ShakaPlayerClass.js"), { ssr: false });
@@ -92,7 +93,16 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-
+      <SnackbarContent
+          message={
+            <span>
+              <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>
+            </span>
+          }
+          close
+          color="azure"
+          icon="new_releases_outline"
+        />
       <Parallax responsive image="/img/Mainheader_image-2.jpg">
 
         <GridContainer className={classes.container}>
@@ -143,19 +153,9 @@ export default function LandingPage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SnackbarContent
-          message={
-            <span>
-              <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>.
-            </span>
-          }
-          close
-          color="azure"
-          icon="info_outline"
-        />
+        
         <div className={classes.container}>
 
-          {/*  <ShakaPlayer src={src} /> */}
 
           <IndustrySection />
           <FreeLive />

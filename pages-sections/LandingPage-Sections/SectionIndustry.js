@@ -40,14 +40,14 @@ export default function SectionIndustry() {
                   tabName: i18next.t('industry.0.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Enterprise.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <div className={classes.textSection}>
                           <h3>{i18next.t('industry.0.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -63,14 +63,14 @@ export default function SectionIndustry() {
                   tabName: i18next.t('industry.1.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Shopping.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8} >
+                      <GridItem xs={12} sm={6} md={6} >
                         <div className={classes.textSection}>
                           <h3>{i18next.t('industry.1.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -86,14 +86,14 @@ export default function SectionIndustry() {
                   tabName: i18next.t('industry.2.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Fitness.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8} >
+                      <GridItem xs={12} sm={6} md={6} >
                         <div className={classes.textSection}>
                           <h3>{i18next.t('industry.2.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -109,14 +109,14 @@ export default function SectionIndustry() {
                   tabName: i18next.t('industry.3.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Government.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8} >
+                      <GridItem xs={12} sm={6} md={6}>
                       <div className={classes.textSection}>
                           <h3>{i18next.t('industry.3.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -127,19 +127,19 @@ export default function SectionIndustry() {
                       </GridItem>
                     </GridContainer>
                   ),
-                }/* ,
+                } ,
                 {
                   tabName: i18next.t('industry.4.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Education.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8} >
+                      <GridItem xs={12} sm={6} md={6} >
                       <div className={classes.textSection}>
                           <h3>{i18next.t('industry.4.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -154,14 +154,14 @@ export default function SectionIndustry() {
                   tabName: i18next.t('industry.6.title'),
                   tabContent: (
                     <GridContainer>
-                      <GridItem xs={12} sm={4} md={4}>
+                      <GridItem xs={12} sm={6} md={6}>
                         <img
                           src="/img/Landing/Healthcare.png"
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
-                      <GridItem xs={12} sm={8} md={8} >
+                      <GridItem xs={12} sm={6} md={6} >
                       <div className={classes.textSection}>
                           <h3>{i18next.t('industry.6.headline')}</h3>
                           <p className={classes.textLeft}>
@@ -171,7 +171,7 @@ export default function SectionIndustry() {
                       </GridItem>
                     </GridContainer>
                   ),
-                } */
+                } 
               ]}
             />
           </GridItem>

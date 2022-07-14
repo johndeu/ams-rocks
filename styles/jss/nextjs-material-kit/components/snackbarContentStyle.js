@@ -11,7 +11,8 @@ import {
 const snackbarContentStyle = {
   root: {
     ...defaultFont,
-    position: "relative",
+    position: "sticky",
+    top:"50px",
     padding: "20px 15px",
     lineHeight: "20px",
     marginBottom: "20px",
@@ -21,7 +22,7 @@ const snackbarContentStyle = {
     borderRadius: "0px",
     maxWidth: "100%",
     minWidth: "auto",
-    zIndex:"10000",
+    zIndex:"1",
     boxShadow:
       "0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2)",
   },
