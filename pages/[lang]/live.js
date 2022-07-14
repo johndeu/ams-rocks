@@ -184,7 +184,9 @@ export default function LandingPage(props) {
         chartData.datasets[0].data.shift(); //shift off the oldest data
         chartData.labels.shift(); //shift off the oldest label to keep the window sliding.
       }
-      chartRef.current.update('active');
+      if (chartRef.current) {
+        chartRef.current.update('active');
+      }
     }
 
   }
@@ -239,14 +241,14 @@ export default function LandingPage(props) {
         </GridItem>
       }
       {!isNaN(stats.liveLatency) &&
-      <GridItem md={6}>
-        <Card className={classes.card}>
-          <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.streamedFrom")}</span></Badge>
-          <CardBody className={classes.cardBody}>
-            <span className={classes.metric}>{location}</span>
-          </CardBody>
-        </Card>
-      </GridItem>
+        <GridItem md={6}>
+          <Card className={classes.card}>
+            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.streamedFrom")}</span></Badge>
+            <CardBody className={classes.cardBody}>
+              <span className={classes.metric}>{location}</span>
+            </CardBody>
+          </Card>
+        </GridItem>
       }
       {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
@@ -310,7 +312,7 @@ export default function LandingPage(props) {
                     </>
                   }
                   {isNaN(stats.liveLatency) &&
-                      <Card className={classes.onDemandBox} md={2}>
+                    <Card className={classes.onDemandBox} md={2}>
                       <Badge color="white" className={classes.onDemandTitle}>{i18next.t("liveDemo.onDemand")}:</Badge>
                       <CardBody className={classes.cardBody}>
                         <span className={classes.onDemandMessage}>{i18next.t("liveDemo.onDemandMessage")}</span>
