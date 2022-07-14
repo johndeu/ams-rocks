@@ -299,11 +299,14 @@ export default function LandingPage(props) {
       </div>
       <div className={classes.section}>
         <div className={classes.container}>
-
+          <div className={classes.learnMore} >
+            {i18next.t('liveDemo.callToAction')}
+            <a href='https://docs.microsoft.com/azure/media-services/latest/live-event-latency-reference' target='_blank'> {i18next.t('liveDemo.callToActionLink')}</a>
+          </div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={8} className={playerClasses} >
+                <GridItem xs={12} sm={12} md={7} className={playerClasses} >
 
                   <ShakaPlayer
                     src={src}
@@ -363,7 +366,7 @@ export default function LandingPage(props) {
 
                 </GridItem>
 
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={5}>
                   {!isIos &&
                     <Hidden xsDown >
                       {metricGrid}
@@ -387,10 +390,7 @@ export default function LandingPage(props) {
               </GridContainer>
             </GridItem>
           </GridContainer>
-          <div className={classes.learnMore} >
-            {i18next.t('liveDemo.callToAction')}
-            <a href='https://docs.microsoft.com/azure/media-services/latest/live-event-latency-reference' target='_blank'> {i18next.t('liveDemo.callToActionLink')}</a>
-          </div>
+
         </div>
         <FreeSection />
         <Footer whiteFont logoColor="gray" />

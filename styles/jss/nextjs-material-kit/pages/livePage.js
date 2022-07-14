@@ -197,8 +197,8 @@ const livePage = (theme) => ({
     color:"#000",
     fontSize : "18px",
     fontWeight: "500",
-    paddingTop: "32px",
-    paddingBottom: "32px",
+    paddingTop: "24px",
+    paddingBottom: "24px",
   },
   ...tooltipsStyle,
 });
