@@ -127,8 +127,8 @@
         [
             {
                 "title": "Enterprise",
-                "headline": "Collaborate together",
-                "body": "Help coworkers work closely together in this new hybrid environment. Have more interactive discussions pushing along the product roadmap.",
+                "headline": "Build media applications for today's enterprise",
+                "body": "Add live and on-demand streaming easily to your enterprise applications. Broadcast and archive your company meetings from any source. Secure your media over your own networks with Microsoft's trusted Enterprise level features, Azure Active Directory authentication, encryption at rest, DRM and private networks.",
                 "callToAction": ""
             },
             {
@@ -146,7 +146,7 @@
             {
                 "title": "Government",
                 "headline": "Engage your community",
-                "body": "Give legislators strong transparency and help them build public trust. Government officials now can feel more connected to join process decision-making.",
+                "body": "Broadcast and archive the actions of leaders and legislators. Inform communities on their own schedules through the use of on-demand streaming. Provide accessible streaming to your constituents through the use of live and on-demand transcription and subtitling.",
                 "callToAction": ""
             },
             {
