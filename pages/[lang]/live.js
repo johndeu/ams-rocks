@@ -356,7 +356,7 @@ export default function LandingPage(props) {
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
 
-                  {!isIos && !isNaN(stats.liveLatency) &&
+                  {!isNaN(stats.liveLatency) &&
                     <>
                       <Card className={classes.utcTimeBox} md={2}>
                         <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
