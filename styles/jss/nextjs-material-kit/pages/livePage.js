@@ -133,6 +133,24 @@ const livePage = (theme) => ({
   utcTimeLabel: {
     textAlign: "center !important",
   },
+  onDemandBox: {
+    backgroundColor:"white",
+    color:"rgba(0, 0, 0, 0.80)",
+    textAlign: "center !important",
+    padding:"4px",
+    boxShadow:
+    "0px 2.81768px 13px rgba(0, 0, 0, 0.15);",
+  },
+  onDemandTitle: {
+    textAlign: "center !important",
+    fontSize:"18px",
+    fontWeight: "600"
+  },
+  onDemandMessage: {
+    textAlign: "center !important",
+    fontSize:"14px",
+    fontWeight: "400"
+  },
   metric: {
     color: "#1a1a1f",
     fontSize: "24px",

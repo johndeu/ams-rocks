@@ -60,19 +60,8 @@ const dashboardRoutes = [];
 const useStyles = makeStyles(styles);
 const STREAMS = [
   {
-    name: 'Mux Live Low Latency',
-    src:
-      'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8',
-    location: "Unknown"
-  },
-  {
     name: 'AMS LL-HLS Demo Stream',
     src: 'https://aka.ms/LowLatencyDemo.m3u8',
-    location: "US West"
-  },
-  {
-    name: 'Azure Media Services LL Demo full link',
-    src: 'https://lldemo-usw22.streaming.media.azure.net/6db0506b-6608-4ec1-96ee-513a596408e4/manifest.ism/QualityLevels(128000)/Manifest(audio_und,format=m3u8-cmaf)',
     location: "US West"
   }
 ];
@@ -124,8 +113,8 @@ export default function LandingPage(props) {
   const { ...rest } = props;
   const ref = useRef();
   const chartRef = useRef();
-  const [src, setSrc] = useState(STREAMS[1].src);
-  const [location, setLocation] = useState(STREAMS[1].location);
+  const [src, setSrc] = useState(STREAMS[0].src);
+  const [location, setLocation] = useState(STREAMS[0].location);
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
@@ -156,6 +145,7 @@ export default function LandingPage(props) {
 
 
   function onStatsUpdate(statsUpdate, startTime) {
+    console.log(statsUpdate);
     if (statsUpdate) {
       setStats(statsUpdate);
     }
@@ -208,7 +198,7 @@ export default function LandingPage(props) {
 
   const metricGrid =
     <GridContainer>
-      {!isIos &&
+      {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.latency")}</span></Badge>
@@ -218,7 +208,7 @@ export default function LandingPage(props) {
           </Card>
         </GridItem>
       }
-      {!isIos &&
+      {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bufferSize")}</span></Badge>
@@ -228,7 +218,7 @@ export default function LandingPage(props) {
           </Card>
         </GridItem>
       }
-      {!isIos &&
+      {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
           <Card className={classes.card} md={2}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bandwidth")}</span></Badge>
@@ -238,7 +228,7 @@ export default function LandingPage(props) {
           </Card>
         </GridItem>
       }
-      {!isIos &&
+      {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
           <Card className={classes.card}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.quality")}</span></Badge>
@@ -248,6 +238,7 @@ export default function LandingPage(props) {
           </Card>
         </GridItem>
       }
+      {!isNaN(stats.liveLatency) &&
       <GridItem md={6}>
         <Card className={classes.card}>
           <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.streamedFrom")}</span></Badge>
@@ -256,7 +247,8 @@ export default function LandingPage(props) {
           </CardBody>
         </Card>
       </GridItem>
-      {!isIos &&
+      }
+      {!isIos && !isNaN(stats.liveLatency) &&
         <GridItem md={6}>
           <Card className={classes.card}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.playheadTime")}</span></Badge>
@@ -304,23 +296,37 @@ export default function LandingPage(props) {
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-               
-                  <Card className={classes.utcTimeBox} md={2}>
-                    <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
-                    <CardBody className={classes.cardBody}>
-                      <span className={classes.localTime}>{currentTime}</span>
-                    </CardBody>
-                  </Card>
-                  <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
-                  <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
-                  {!isIos &&
+
+                  {!isIos && !isNaN(stats.liveLatency) &&
+                    <>
+                      <Card className={classes.utcTimeBox} md={2}>
+                        <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
+                        <CardBody className={classes.cardBody}>
+                          <span className={classes.localTime}>{currentTime}</span>
+                        </CardBody>
+                      </Card>
+                      <p className={classes.playerNotes}>* {i18next.t('liveDemo.playerNotes', { playerVersion: "4.1.1" })}</p>
+                      <p className={classes.playerNotes}>{i18next.t('liveDemo.clockNotes')}</p>
+                    </>
+                  }
+                  {isNaN(stats.liveLatency) &&
+                      <Card className={classes.onDemandBox} md={2}>
+                      <Badge color="white" className={classes.onDemandTitle}>{i18next.t("liveDemo.onDemand")}:</Badge>
+                      <CardBody className={classes.cardBody}>
+                        <span className={classes.onDemandMessage}>{i18next.t("liveDemo.onDemandMessage")}</span>
+                      </CardBody>
+                    </Card>
+                  }
+
+
+                  {!isIos && !isNaN(stats.liveLatency) &&
                     <Card className={classes.utcTimeBox} md={2}>
                       <CardBody className={classes.cardBody}>
                         <Line ref={chartRef} options={chartOptions} data={chartData} />
                       </CardBody>
                     </Card>
                   }
-                  {!isIos &&
+                  {!isIos && !isNaN(stats.liveLatency) &&
                     <Card className={classes.utcTimeBox} md={2}>
                       <CardBody className={classes.cardBody}>
                         <div className={classes.statsContainer}>
