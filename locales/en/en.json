@@ -68,6 +68,8 @@
         "clockNotes": "Be sure to sync your local system clock before evaluating end-to-end latency. Latency charts are not available on iOS at this time.",
         "onDemand" : "Offline for maintenance",
         "onDemandMessage": "The live low-latency (LL-HLS) stream demo is currently offline for maintenance. The current playback is not a live stream. Please check back at a later time.",
+        "callToAction": "You can get details on how to get started with low latency live (LL-HLS) streaming in our documentation. ",
+        "callToActionLink": "Learn more.",
         "metrics": {
             "latency": "Latency",
             "utcClock": "UTC Time (system clock)",

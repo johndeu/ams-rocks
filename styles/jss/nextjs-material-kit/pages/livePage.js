@@ -193,6 +193,13 @@ const livePage = (theme) => ({
     fontSize : "13px",
     fontWeight: "500"
   },
+  learnMore : {
+    color:"#000",
+    fontSize : "18px",
+    fontWeight: "500",
+    paddingTop: "32px",
+    paddingBottom: "32px",
+  },
   ...tooltipsStyle,
 });
 

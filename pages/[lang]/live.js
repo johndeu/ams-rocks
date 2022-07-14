@@ -37,6 +37,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Badge from "components/Badge/Badge.js";
+import Button from "components/CustomButtons/Button.js";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -202,7 +203,7 @@ export default function LandingPage(props) {
 
   var onDemand =
     <>
-      <div>loading...</div>
+      <div></div>
     </> //Empty block for when the page loads and the asset is not yet on-demand
 
   const onDemandLoaded =
@@ -386,9 +387,11 @@ export default function LandingPage(props) {
               </GridContainer>
             </GridItem>
           </GridContainer>
-
+          <div className={classes.learnMore} >
+            {i18next.t('liveDemo.callToAction')}
+            <a href='https://docs.microsoft.com/azure/media-services/latest/live-event-latency-reference' target='_blank'> {i18next.t('liveDemo.callToActionLink')}</a>
+          </div>
         </div>
-
         <FreeSection />
         <Footer whiteFont logoColor="gray" />
       </div>
