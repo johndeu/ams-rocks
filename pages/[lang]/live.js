@@ -74,10 +74,10 @@ const chartOptions = {
   updateMode: "active",
   animations: {
     tension: {
-        duration: 500,
-        easing: 'easeOutQuart'
+      duration: 500,
+      easing: 'easeOutQuart'
     }
-},
+  },
   scales: {
     y: {
 
@@ -355,20 +355,19 @@ export default function LandingPage(props) {
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
-                  
-                  <Card className={classes.utcTimeBox} md={2}>
-                    <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
-                    <CardBody className={classes.cardBody}>
-                      <span className={classes.localTime}>{currentTime}</span>
-                    </CardBody>
-                  </Card>
-                  
+
                   {isNaN(stats.liveLatency) &&
                     <>
                       {onDemand}
                     </>
                   }
 
+                  <Card className={classes.utcTimeBox} md={2}>
+                    <Badge color="white" className={classes.utcTimeLabel}>{i18next.t("liveDemo.metrics.utcClock")}:</Badge>
+                    <CardBody className={classes.cardBody}>
+                      <span className={classes.localTime}>{currentTime}</span>
+                    </CardBody>
+                  </Card>
 
                   {!isIos && !isNaN(stats.liveLatency) &&
                     <>
