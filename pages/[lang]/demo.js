@@ -18,6 +18,8 @@ const CAMERA_CONSTRAINTS = {
     audio: true,
     video: true,
     video: { facingMode: "user" },
+    width: { ideal: 1280 },
+    height: { ideal: 720 }
 };
 
 
