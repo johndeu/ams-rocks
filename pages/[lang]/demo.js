@@ -23,10 +23,10 @@ import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
 import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
+
 const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
-
 const useStyles = makeStyles(styles);
 
 const CAMERA_CONSTRAINTS = {
@@ -200,7 +200,6 @@ export default function DemoPage(props) {
     }, []);
 
     return (
-
         <div >
             <Header
                 color="white"
@@ -282,3 +281,20 @@ export default function DemoPage(props) {
         </div>
     );
 };
+
+export async function getStaticPaths() {
+    const paths = getAllLanguageSlugs();
+    return {
+      paths,
+      fallback: false,
+    };
+  }
+  
+  export async function getStaticProps({ params }) {
+    const language = getLanguage(params.lang);
+    return {
+      props: {
+        language,
+      },
+    };
+  }
