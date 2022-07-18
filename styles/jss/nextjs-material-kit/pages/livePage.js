@@ -200,6 +200,33 @@ const livePage = (theme) => ({
     paddingTop: "24px",
     paddingBottom: "24px",
   },
+  cameraEnabled : {
+    "&,& canvas" : {
+      display: "block",
+    }
+  },
+  outputCanvas : {
+    zIndex: "1",
+    "&,& canvas" : {
+      height: "100%",
+      width: "100%",
+      display: "none",
+    }
+  },
+  streamStatus: {
+    paddingLeft : "1.5em",
+    position: "relative",
+    "&, &::before" : {
+      position: "absolute",
+      left : "0em",
+      content : '', 
+      display : "block",
+      height: "1em",
+      width: "1em",
+      borderRadius: "1em",
+      backgroundColor : "#000"
+    }
+  }
   ...tooltipsStyle,
 });
 

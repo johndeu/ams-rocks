@@ -10,9 +10,20 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
+// core components
+import Header from "components/Header/Header.js";
+import Footer from "components/Footer/Footer.js";
+import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
+import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
+
+// Sections for this page
+import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
+
 // Translations
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
+import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
+const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
 
@@ -48,6 +59,10 @@ const getRecorderMimeType = () => {
 }
 
 export default function DemoPage(props) {
+    const classes = useStyles();
+    const router = useRouter();
+    const { ...rest } = props;
+
     const [connected, setConnected] = useState(false);
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [streaming, setStreaming] = useState(false);
@@ -74,6 +89,7 @@ export default function DemoPage(props) {
         // We need to set the canvas height/width to match the video element.
         canvasRef.current.height = videoRef.current.clientHeight;
         canvasRef.current.width = videoRef.current.clientWidth;
+    
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
 
@@ -95,8 +111,8 @@ export default function DemoPage(props) {
             videoRef.current.clientHeight
         );
 
-        ctx.fillStyle = '#FB3C4E';
-        ctx.font = '50px Akkurat';
+        ctx.fillStyle = '#FFF';
+        ctx.font = '24px Segoe UI';
         const date = new Date();
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds().toString().padStart(3, '0')}`;
         ctx.fillText(`${nameRef.current}${dateText}`, 10, 50, canvasRef.current.width - 20);
@@ -184,68 +200,84 @@ export default function DemoPage(props) {
     }, []);
 
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>Wocket</title>
-            </Head>
 
-            <div className={styles.info}>
-                <h1>Wocket</h1>
+        <div >
+            <Header
+                color="white"
+                routes={dashboardRoutes}
+                brand={i18next.t('landing.title')}
+                leftLinks={<HeaderLinksLeft />}
+                rightLinks={<HeaderLinksRight />}
+                fixed
+                changeColorOnScroll={{
+                    height: 120,
+                    color: "white",
+                }}
+                {...rest}
+            />
+            <div className={classes.section}>
+                <div className={classes.container}>
 
-                {cameraEnabled &&
-                    (streaming ? (
-                        <div>
-                            <span
-                                className={`${styles.streamStatus} ${connected ? styles.connected : styles.disconnected
-                                    }`}
-                            >
-                                {connected ? 'Connected' : 'Disconnected'}
-                            </span>
-                            <input
-                                placeholder="Text Overlay"
-                                type="text"
-                                value={textOverlay}
-                                onChange={(e) => setTextOverlay(e.target.value)}
-                            />
-                            <button onClick={stopStreaming}>Stop Streaming</button>
-                        </div>
-                    ) : (
-                        <>
-                            <input
-                                placeholder="rtmps://<your AMS streaming URL>"
-                                type="text"
-                                onChange={(e) => setStreamUrl(e.target.value)}
-                            />
-                            <input
-                                placeholder="Stream key"
-                                type="text"
-                                onChange={(e) => setStreamKey(e.target.value)}
-                            />
-                            <button
-                                className={styles.startButton}
-                                disabled={!streamKey}
-                                onClick={startStreaming}
-                            >
-                                Start Streaming
+                    <div>
+                        <h1 className={classes.title}> Live interactive demo</h1>
+                        {cameraEnabled &&
+                            (streaming ? (
+                                <div>
+                                    <span
+                                        className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
+                                            }`}
+                                    >
+                                        {connected ? 'Connected' : 'Disconnected'}
+                                    </span>
+                                    <input
+                                        placeholder="Text Overlay"
+                                        type="text"
+                                        value={textOverlay}
+                                        onChange={(e) => setTextOverlay(e.target.value)}
+                                    />
+                                    <button onClick={stopStreaming}>Stop Streaming</button>
+                                </div>
+                            ) : (
+                                <>
+                                    <input
+                                        placeholder="rtmps://"
+                                        type="text"
+                                        onChange={(e) => setStreamUrl(e.target.value)}
+                                    />
+                                    <input
+                                        placeholder="Stream key"
+                                        type="text"
+                                        onChange={(e) => setStreamKey(e.target.value)}
+                                    />
+                                    <button
+                                        className={classes.startButton}
+                                        disabled={!streamKey}
+                                        onClick={startStreaming}
+                                    >
+                                        Start Streaming
+                                    </button>
+                                </>
+                            ))}
+                    </div>
+                    <div
+                        className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
+                            }`}
+                    >
+                        {!cameraEnabled && (
+                            <button className={classes.startButton} onClick={enableCamera}>
+                                Enable Camera
                             </button>
-                        </>
-                    ))}
-            </div>
-            <div
-                className={`${styles.videoContainer} ${cameraEnabled && styles.cameraEnabled
-                    }`}
-            >
-                {!cameraEnabled && (
-                    <button className={styles.startButton} onClick={enableCamera}>
-                        Enable Camera
-                    </button>
-                )}
-                <div className={styles.inputVideo}>
-                    <video ref={videoRef} muted playsInline></video>
+                        )}
+                        <div className={classes.inputVideo}>
+                            <video ref={videoRef} muted playsInline></video>
+                        </div>
+                        <div className={classes.outputCanvas}>
+                            <canvas ref={canvasRef}></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.outputCanvas}>
-                    <canvas ref={canvasRef}></canvas>
-                </div>
+                <FreeSection />
+                <Footer whiteFont logoColor="gray" />
             </div>
         </div>
     );
