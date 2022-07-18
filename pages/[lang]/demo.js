@@ -121,7 +121,7 @@ export default function DemoPage(props) {
     };
 
     const stopStreaming = () => {
-        if (mediaRecorderRef.current.state === 'recording') {
+        if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
             mediaRecorderRef.current.stop();
         }
 

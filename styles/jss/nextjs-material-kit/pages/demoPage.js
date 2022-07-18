@@ -102,6 +102,7 @@ const demoPage = (theme) => ({
     streamStatus: {
         paddingLeft: "1.5em",
         position: "relative",
+        fontColor:"#000",
         "&, &::before": {
             position: "absolute",
             left: "0em",
@@ -110,14 +111,25 @@ const demoPage = (theme) => ({
             height: "1em",
             width: "1em",
             borderRadius: "1em",
-            backgroundColor: "#000"
+            backgroundColor: "#000",
+            fontColor:"#000"
         },
-        "&, & connected::before": {
+        "&, & .connected::before": {
+            color:"#000 !important",
             backgroundColor: "#8fe1d3"
         },
-        "&, & disconnected::before": {
+        "&, & .disconnected::before": {
+            color:"#000 !important",
             backgroundColor: "#fb3c4e"
         }
+    },
+    connected : {
+        color:"#000 !important",
+        backgroundColor: "#8fe1d3"
+    },
+    disconnected: {
+        color:"#000 !important",
+        backgroundColor: "#fb3c4e"
     },
     startButton  : {
 
