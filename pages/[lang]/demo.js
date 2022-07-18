@@ -17,6 +17,7 @@ const useStyles = makeStyles(styles);
 const CAMERA_CONSTRAINTS = {
     audio: true,
     video: true,
+    video: { facingMode: "user" },
 };
 
 
