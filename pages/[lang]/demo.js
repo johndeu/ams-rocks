@@ -1,3 +1,7 @@
+// Notices of usage - this page is using code from the Muxlabs/wocket project on github - https://github.com/MuxLabs/wocket
+// This uses code from that demo project to stream from the browser over RTMP to Azure Media Services.
+// It also includes portions of the pull request from @dugaraju to support streaming to any RTMP server - https://github.com/MuxLabs/wocket/pull/20
+
 import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head';
 
