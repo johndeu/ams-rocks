@@ -187,14 +187,6 @@ export default function DemoPage(props) {
 
             <div className={styles.info}>
                 <h1>Wocket</h1>
-                <p>
-                    A demo using modern web technologies to broadcast video from a browser
-                    to a server via WebSockets. To learn more, see the <a href="https://github.com/MuxLabs/wocket">Github repo</a> or check out the <a href="https://mux.com/blog/the-state-of-going-live-from-a-browser/">Mux blog post</a> on the topic.
-                </p>
-
-                <p>
-                    This service is provided "as is," with no uptime guarantees, support, or any of the usual stuff people pay for.
-                </p>
 
                 {cameraEnabled &&
                     (streaming ? (
@@ -216,17 +208,12 @@ export default function DemoPage(props) {
                     ) : (
                         <>
                             <input
-                                placeholder="rtmps://global-live.mux.com/app"
+                                placeholder="rtmps://<your AMS streaming URL>"
                                 type="text"
                                 onChange={(e) => setStreamUrl(e.target.value)}
                             />
                             <input
                                 placeholder="Stream key"
-                                type="text"
-                                onChange={(e) => setStreamKey(e.target.value)}
-                            />
-                            <input
-                                placeholder="Mux Stream Key"
                                 type="text"
                                 onChange={(e) => setStreamKey(e.target.value)}
                             />
