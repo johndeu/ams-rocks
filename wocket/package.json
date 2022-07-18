@@ -1,0 +1,22 @@
+{
+    "name": "wocket-custom-server",
+    "version": "1.0.0",
+    "engines": {
+      "node": "18.x"
+    },
+    "scripts": {
+      "dev": "nodemon server.js",
+      "start": "NODE_ENV=production node server.js"
+    },
+    "nodemonConfig": {
+      "ignore": [
+      ]
+    },
+    "dependencies": {
+      "milligram": "^1.3.0",
+      "ws": "^7.2.3"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.2"
+    }
+  }

@@ -28,6 +28,7 @@
     "pages/posts/[id].js"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "wocket",
   ]
 }
