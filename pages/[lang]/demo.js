@@ -67,6 +67,7 @@ export default function DemoPage(props) {
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [streaming, setStreaming] = useState(false);
     const [streamKey, setStreamKey] = useState(null);
+    const [streamUrl, setStreamUrl] = useState(null);
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
 
     const inputStreamRef = useRef();
@@ -132,11 +133,13 @@ export default function DemoPage(props) {
         setStreaming(true);
         const settings = getRecorderSettings();
 
-        const protocol = window.location.protocol.replace('http', 'ws');
-        const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
-
+        //const protocol = window.location.protocol.replace('http', 'ws');
+        //const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
+        const wsUrl = new URL(`wss://wocketams.politesand-d384087e.eastus2.azurecontainerapps.io/rtmp?key=${streamKey}`);
+       
         wsUrl.searchParams.set('video', settings.video);
         wsUrl.searchParams.set('audio', settings.audio);
+        
         if (streamUrl) {
             wsUrl.searchParams.set('url', streamUrl);
         }

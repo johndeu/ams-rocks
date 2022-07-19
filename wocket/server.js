@@ -1,3 +1,5 @@
+console.log ("Good day to you!");
+
 const http = require('http');
 const https = require('https');
 const { parse } = require('url');
@@ -20,6 +22,8 @@ const options = {
   key
 };
 
+console.log ("Launching the server code in server.js");
+try{
 app.prepare().then(() => {
   const server = (cert ? https : http).createServer(options,(req, res) => {
     const parsedUrl = parse(req.url, true);
@@ -27,9 +31,12 @@ app.prepare().then(() => {
 
     handle(req, res, parsedUrl);
   }).listen(port, host, err => {
-    if (err) throw err;
+    if (err) {
+      console.log ("oh no... what the heck?");
+    }
     console.log(`> Ready on port ${port}`);
   });
+
 
   const wss = new WebSocketServer({
     server: server
@@ -112,4 +119,7 @@ app.prepare().then(() => {
       ffmpeg.kill('SIGINT');
     });
   });
-});
+})}catch (err) {
+  console.error("ERROR: Failed to start the server:");
+  console.error(err);
+};
