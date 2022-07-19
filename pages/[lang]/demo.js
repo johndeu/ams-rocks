@@ -29,6 +29,10 @@ const dashboardRoutes = [];
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
 const useStyles = makeStyles(styles);
 
+// This is set to the URL for the Container App that is hosted on Azure Container App services using the Dockerfile for Wocket
+const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
+const TIMEOUT = process.env.TIMEOUT  // The timeout for the live stream before cutoff. 
+
 const CAMERA_CONSTRAINTS = {
     audio: true,
     video: true,
@@ -133,9 +137,10 @@ export default function DemoPage(props) {
         setStreaming(true);
         const settings = getRecorderSettings();
 
-        //const protocol = window.location.protocol.replace('http', 'ws');
-        //const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
-        const wsUrl = new URL(`wss://wocketams.politesand-d384087e.eastus2.azurecontainerapps.io/rtmp?key=${streamKey}`);
+        // use the CONTAINER_APP_URL as the main URL 
+        // this is obtained on the Overview blade for the container App in Azure portal, under the Application Url. 
+        const containerWsUrl = CONTAINERAPPURL.replace('https://', 'wss://');
+        const wsUrl = new URL(`${containerWsUrl}/rtmp?key=${streamKey}`);
        
         wsUrl.searchParams.set('video', settings.video);
         wsUrl.searchParams.set('audio', settings.audio);
