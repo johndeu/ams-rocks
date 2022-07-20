@@ -34,7 +34,8 @@ jobs:
 
         env:  # Add environment variables here for static build
           CONTAINERAPPURL: https://wocketams.politesand-d384087e.eastus2.azurecontainerapps.io
-
+          TIMEOUT: 3000
+          
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
