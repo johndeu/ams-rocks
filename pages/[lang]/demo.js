@@ -305,8 +305,9 @@ export async function getStaticProps({ params }) {
     // Get .env.local variables
     // This is set to the URL for the Container App that is hosted on Azure Container App services using the Dockerfile for Wocket
     const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
-    const TIMEOUT = process.env.TIMEOUT  // The timeout for the live stream before cutoff. 
-
+    // The timeout for the live stream before cutoff. 
+    const TIMEOUT = process.env.TIMEOUT 
+     
     return {
         props: {
             language,
