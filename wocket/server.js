@@ -48,7 +48,7 @@ app.prepare().then(() => {
 
     const queryString = url.parse(req.url).search;
     const params = new URLSearchParams(queryString);
-    const baseUrl = params.get('url') ?? 'rtmps://global-live.mux.com/app';
+    const baseUrl = params.get('url');
     const key = params.get('key');
     const video = params.get('video');
     const audio = params.get('audio');

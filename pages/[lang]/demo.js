@@ -29,10 +29,6 @@ const dashboardRoutes = [];
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
 const useStyles = makeStyles(styles);
 
-// This is set to the URL for the Container App that is hosted on Azure Container App services using the Dockerfile for Wocket
-const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
-const TIMEOUT = process.env.TIMEOUT  // The timeout for the live stream before cutoff. 
-
 
 const CAMERA_CONSTRAINTS = {
     audio: true,
@@ -142,7 +138,7 @@ export default function DemoPage(props) {
 
         // use the CONTAINER_APP_URL as the main URL 
         // this is obtained on the Overview blade for the container App in Azure portal, under the Application Url. 
-        const containerWsUrl = CONTAINERAPPURL.replace('https://', 'wss://');
+        const containerWsUrl = props.CONTAINERAPPURL.replace('https://', 'wss://');
         const wsUrl = new URL(`${containerWsUrl}/rtmp?key=${streamKey}`);
 
         wsUrl.searchParams.set('video', settings.video);
@@ -305,9 +301,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const language = getLanguage(params.lang);
+
+    // Get .env.local variables
+    // This is set to the URL for the Container App that is hosted on Azure Container App services using the Dockerfile for Wocket
+    const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
+    const TIMEOUT = process.env.TIMEOUT  // The timeout for the live stream before cutoff. 
+
     return {
         props: {
             language,
+            CONTAINERAPPURL,
+            TIMEOUT
         },
     };
 }
