@@ -33,12 +33,13 @@ const useStyles = makeStyles(styles);
 const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
 const TIMEOUT = process.env.TIMEOUT  // The timeout for the live stream before cutoff. 
 
+
 const CAMERA_CONSTRAINTS = {
     audio: true,
     video: true,
-    video: { facingMode: "user" },
-    width: { ideal: 1280, max: 1280 },
-    height: { ideal: 720, max: 720 }
+    video: { facingMode: "user", aspectRatio: 1.777}, // force 16:9 aspect
+    width: { min: 640, ideal: 1280, max: 1280 },
+    height: { min: 360, ideal: 720, max: 720 },
 };
 
 
@@ -65,6 +66,7 @@ const getRecorderMimeType = () => {
 export default function DemoPage(props) {
     const classes = useStyles();
     const router = useRouter();
+ 
     const { ...rest } = props;
 
     const [connected, setConnected] = useState(false);
@@ -73,6 +75,7 @@ export default function DemoPage(props) {
     const [streamKey, setStreamKey] = useState(null);
     const [streamUrl, setStreamUrl] = useState(null);
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
+    const [devices, setDevices] = useState(null);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -94,7 +97,7 @@ export default function DemoPage(props) {
         // We need to set the canvas height/width to match the video element.
         canvasRef.current.height = videoRef.current.clientHeight;
         canvasRef.current.width = videoRef.current.clientWidth;
-    
+
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
 
@@ -141,10 +144,10 @@ export default function DemoPage(props) {
         // this is obtained on the Overview blade for the container App in Azure portal, under the Application Url. 
         const containerWsUrl = CONTAINERAPPURL.replace('https://', 'wss://');
         const wsUrl = new URL(`${containerWsUrl}/rtmp?key=${streamKey}`);
-       
+
         wsUrl.searchParams.set('video', settings.video);
         wsUrl.searchParams.set('audio', settings.audio);
-        
+
         if (streamUrl) {
             wsUrl.searchParams.set('url', streamUrl);
         }
@@ -227,6 +230,8 @@ export default function DemoPage(props) {
 
                     <div>
                         <h1 className={classes.title}> Live interactive demo</h1>
+            
+
                         {cameraEnabled &&
                             (streaming ? (
                                 <div>
@@ -293,16 +298,16 @@ export default function DemoPage(props) {
 export async function getStaticPaths() {
     const paths = getAllLanguageSlugs();
     return {
-      paths,
-      fallback: false,
+        paths,
+        fallback: false,
     };
-  }
-  
-  export async function getStaticProps({ params }) {
+}
+
+export async function getStaticProps({ params }) {
     const language = getLanguage(params.lang);
     return {
-      props: {
-        language,
-      },
+        props: {
+            language,
+        },
     };
-  }
+}

@@ -94,7 +94,7 @@ const demoPage = (theme) => ({
     outputCanvas: {
         zIndex: "1",
         "&,& canvas": {
-            height: "100%",
+            height: "auto",
             width: "100%",
             display: "block",
         }
