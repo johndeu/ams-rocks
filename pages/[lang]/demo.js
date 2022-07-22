@@ -76,6 +76,7 @@ export default function DemoPage(props) {
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
+    const [canvas, setCanvas] = useState([]);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -96,13 +97,29 @@ export default function DemoPage(props) {
 
         await videoRef.current.play();
 
+/*         // If we support offscreen canvas, move it there to improve performance
+       var canvas = 'OffscreenCanvas' in window
+                ? canvasRef.current.transferControlToOffscreen()
+                : canvasRef.current; */
+
+        // set the width and height for the offscreen canvas 
+        //canvas.style = {width: videoRef.current.clientWidth, height: videoRef.current.clientHeight};
+
         // We need to set the canvas height/width to match the video element.
         canvasRef.current.height = videoRef.current.clientHeight;
         canvasRef.current.width = videoRef.current.clientWidth;
 
+        //spawn a worker thread off main
+        /* if (window.Worker) {
+        const worker = new Worker('/scripts/demoworker.js');
+        worker.postMessage({ canvas: canvas, ended: videoRef.current.ended}, [ canvas]);
 
+        //requestAnimationRef.current = worker.requestAnimationFrame(updateCanvas);
+        } else {
+            requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+        }
+        */
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
-
         setCameraEnabled(true);
     };
 
@@ -132,13 +149,13 @@ export default function DemoPage(props) {
 
     const setCamera = (deviceId) => {
         console.log(deviceId);
-        CAMERA_CONSTRAINTS.video = { deviceId: deviceId, aspectRatio: 1.777};
+        CAMERA_CONSTRAINTS.video = { deviceId: deviceId, aspectRatio: 1.777 };
         enableCamera();
     }
 
     const setMicrophone = (deviceId) => {
         console.log(deviceId);
-        CAMERA_CONSTRAINTS.audio = { deviceId: deviceId} 
+        CAMERA_CONSTRAINTS.audio = { deviceId: deviceId }
         enableCamera();
     }
 
