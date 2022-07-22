@@ -12,7 +12,7 @@ export default () => {
 
             <div>
                 <h1>Wocket</h1>
-                <p>Nothing to see, move along </p>
+                <p>Nothing to see, move along folks...</p>
             </div>
         </div>
 

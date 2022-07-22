@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head';
+import moment from 'moment';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -15,6 +16,8 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem.js";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -33,7 +36,7 @@ const useStyles = makeStyles(styles);
 const CAMERA_CONSTRAINTS = {
     audio: true,
     video: true,
-    video: { facingMode: "user", aspectRatio: 1.777}, // force 16:9 aspect
+    video: { facingMode: "user", aspectRatio: 1.777 }, // force 16:9 aspect
     width: { min: 640, ideal: 1280, max: 1280 },
     height: { min: 360, ideal: 720, max: 720 },
 };
@@ -62,7 +65,7 @@ const getRecorderMimeType = () => {
 export default function DemoPage(props) {
     const classes = useStyles();
     const router = useRouter();
- 
+
     const { ...rest } = props;
 
     const [connected, setConnected] = useState(false);
@@ -71,7 +74,8 @@ export default function DemoPage(props) {
     const [streamKey, setStreamKey] = useState(null);
     const [streamUrl, setStreamUrl] = useState(null);
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
-    const [devices, setDevices] = useState(null);
+    const [cameras, setVideoInputs] = useState([]);
+    const [microphones, setAudioInputs] = useState([]);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -80,6 +84,8 @@ export default function DemoPage(props) {
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
     const nameRef = useRef();
+
+
 
     const enableCamera = async () => {
         inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
@@ -124,6 +130,18 @@ export default function DemoPage(props) {
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
     };
 
+    const setCamera = (deviceId) => {
+        console.log(deviceId);
+        CAMERA_CONSTRAINTS.video = { deviceId: deviceId };
+        enableCamera();
+    }
+
+    const setMicrophone = (deviceId) => {
+        console.log(deviceId);
+        CAMERA_CONSTRAINTS.audio = { deviceId: deviceId } 
+        enableCamera();
+    }
+
     const stopStreaming = () => {
         if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
             mediaRecorderRef.current.stop();
@@ -138,7 +156,7 @@ export default function DemoPage(props) {
 
         // use the CONTAINER_APP_URL as the main URL 
         // this is obtained on the Overview blade for the container App in Azure portal, under the Application Url. 
-        const containerWsUrl = props.CONTAINERAPPURL.replace('https://', 'wss://');
+        const containerWsUrl = props.CONTAINERAPPURL.replace('http', 'ws');
         const wsUrl = new URL(`${containerWsUrl}/rtmp?key=${streamKey}`);
 
         wsUrl.searchParams.set('video', settings.video);
@@ -160,6 +178,7 @@ export default function DemoPage(props) {
         wsRef.current.addEventListener('close', () => {
             setConnected(false);
             stopStreaming();
+            console.log("Websocket closed");
         });
 
         const videoOutputStream = canvasRef.current.captureStream(30); // 30 FPS
@@ -196,15 +215,42 @@ export default function DemoPage(props) {
         mediaRecorderRef.current.start(1000);
     };
 
+    // This effect only gets called on first load of page. 
+    useEffect(() => {
+
+        // Enumerate all available devices
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+            console.log("enumerateDevices() not supported.");
+        } else {
+            // List cameras and microphones.
+            navigator.mediaDevices.enumerateDevices()
+                .then(function (devices) {
+                    devices.forEach(function (device) {
+                        if (device.kind == 'videoinput') {
+                            cameras.push(device)
+                            setVideoInputs(cameras);
+                        }
+                        else if (device.kind == 'audioinput') {
+                            microphones.push(device)
+                            setAudioInputs(microphones);
+                        }
+                    });
+                })
+                .catch(function (err) {
+                    console.log(err.name + ": " + err.message);
+                });
+        }
+
+        return () => {
+            cancelAnimationFrame(requestAnimationRef.current);
+        };
+    }, [])
+
+    // This effect is called when the textOverlay value changes
     useEffect(() => {
         nameRef.current = textOverlay;
     }, [textOverlay]);
 
-    useEffect(() => {
-        return () => {
-            cancelAnimationFrame(requestAnimationRef.current);
-        };
-    }, []);
 
     return (
         <div >
@@ -223,66 +269,106 @@ export default function DemoPage(props) {
             />
             <div className={classes.section}>
                 <div className={classes.container}>
-
-                    <div>
-                        <h1 className={classes.title}> Live interactive demo</h1>
-            
-
-                        {cameraEnabled &&
-                            (streaming ? (
-                                <div>
-                                    <span
-                                        className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
-                                            }`}
-                                    >
-                                        {connected ? 'Connected' : 'Disconnected'}
-                                    </span>
-                                    <input
-                                        placeholder="Text Overlay"
-                                        type="text"
-                                        value={textOverlay}
-                                        onChange={(e) => setTextOverlay(e.target.value)}
-                                    />
-                                    <button onClick={stopStreaming}>Stop Streaming</button>
-                                </div>
-                            ) : (
-                                <>
-                                    <input
-                                        placeholder="rtmps://"
-                                        type="text"
-                                        onChange={(e) => setStreamUrl(e.target.value)}
-                                    />
-                                    <input
-                                        placeholder="Stream key"
-                                        type="text"
-                                        onChange={(e) => setStreamKey(e.target.value)}
-                                    />
-                                    <button
-                                        className={classes.startButton}
-                                        disabled={!streamKey}
-                                        onClick={startStreaming}
-                                    >
-                                        Start Streaming
+                    <GridContainer>
+                        <GridItem xs={12} sm={12} md={8}>
+                            <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
+                                }`}
+                            >
+                                {!cameraEnabled && (
+                                    <button className={classes.startButton} onClick={enableCamera}>
+                                        Enable Camera
                                     </button>
-                                </>
-                            ))}
-                    </div>
-                    <div
-                        className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
-                            }`}
-                    >
-                        {!cameraEnabled && (
-                            <button className={classes.startButton} onClick={enableCamera}>
-                                Enable Camera
-                            </button>
-                        )}
-                        <div className={classes.inputVideo}>
-                            <video ref={videoRef} muted playsInline></video>
-                        </div>
-                        <div className={classes.outputCanvas}>
-                            <canvas ref={canvasRef}></canvas>
-                        </div>
-                    </div>
+                                )}
+                                <div className={classes.inputVideo}>
+                                    <video ref={videoRef} muted playsInline></video>
+                                </div>
+                                <div className={classes.outputCanvas}>
+                                    <canvas ref={canvasRef}></canvas>
+                                </div>
+                            </div>
+                        </GridItem>
+                        <GridItem xs={12} sm={12} md={4}>
+                            {cameraEnabled &&
+                                (streaming ? (
+                                    <div>
+                                        <span
+                                            className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
+                                                }`}
+                                        >
+                                            {connected ? 'Connected' : 'Disconnected'}
+                                        </span>
+                                        <input
+                                            placeholder="Text Overlay"
+                                            type="text"
+                                            value={textOverlay}
+                                            onChange={(e) => setTextOverlay(e.target.value)}
+                                        />
+                                        <button onClick={stopStreaming}>Stop Streaming</button>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <label>Nickname</label><br />
+                                        <input
+                                            className={classes.inputTextBox}
+                                            placeholder="Enter your nickname"
+                                            type="text"
+                                            onChange={(e) => setNickname(e.target.value)} />
+                                        <br />
+                                        <label>Camera input</label><br />
+                                        <select
+
+                                            placeholder="finding devices..."
+                                            type="text"
+                                            onChange={(e) => setCamera(e.target.value)}>
+
+                                            {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+
+                                        </select>
+
+
+
+                                        <br />
+
+                                        <label>Microphone input</label><br />
+                                        <select
+                                            placeholder="finding devices..."
+                                            type="text"
+                                            onChange={(e) => setMicrophone(e.value)}>
+                                            {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+                                        </select>
+                                        <br />
+                                        <label>RTMP/S stream URL</label><br />
+                                        <input
+                                            className={classes.inputTextBox}
+                                            placeholder="rtmps://"
+                                            type="text"
+                                            onChange={(e) => setStreamUrl(e.target.value)}
+                                        /><br />
+                                        <label>Stream key</label><br />
+                                        <input
+                                            className={classes.inputTextBox}
+                                            placeholder="Stream key"
+                                            type="text"
+                                            onChange={(e) => setStreamKey(e.target.value)}
+                                        /><br />
+                                        <button
+                                            className={classes.startButton}
+                                            disabled={!streamKey}
+                                            onClick={startStreaming}
+                                        >
+                                            Start Streaming
+                                        </button><br />
+                                        <button
+                                            disabled
+                                            className={classes.shareButton}
+                                        >
+                                            Share event with viewers
+                                        </button>
+                                    </>
+                                ))}
+
+                        </GridItem>
+                    </GridContainer>
                 </div>
                 <FreeSection />
                 <Footer whiteFont logoColor="gray" />
@@ -302,12 +388,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const language = getLanguage(params.lang);
 
-    // Get .env.local variables
-    // This is set to the URL for the Container App that is hosted on Azure Container App services using the Dockerfile for Wocket
+    // These values are set in the Github Actions workflow build yaml file in the .github/workflows/azure-static-web-apps-xxxx.yml file.
     const CONTAINERAPPURL = process.env.CONTAINERAPPURL;
+    console.log(`Static prop CONTAINERAPPURL= ${CONTAINERAPPURL}`);
+
     // The timeout for the live stream before cutoff. 
-    const TIMEOUT = process.env.TIMEOUT 
-     
+    const TIMEOUT = process.env.TIMEOUT
+
     return {
         props: {
             language,

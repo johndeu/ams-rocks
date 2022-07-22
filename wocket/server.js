@@ -8,6 +8,7 @@ const WebSocketServer = require('ws').Server;
 const child_process = require('child_process');
 const url = require('url');
 const fs = require('fs');
+const moment = require('moment');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const host = process.env.HOST || '0.0.0.0';
@@ -17,6 +18,8 @@ const handle = app.getRequestHandler();
 const cert = process.env.CERT_FILE ? fs.readFileSync(process.env.CERT_FILE) : undefined;
 const key = process.env.KEY_FILE ? fs.readFileSync(process.env.KEY_FILE) : undefined;
 const transcode = process.env.SMART_TRANSCODE || true;
+let now = moment.now();
+
 const options = {
   cert,
   key
@@ -46,6 +49,9 @@ app.prepare().then(() => {
     console.log('Streaming socket connected');
     ws.send('Hello from Cloudy City.');
 
+    now = moment.utc.now();
+    console.log(`${now} - starting live web socket`)
+
     const queryString = url.parse(req.url).search;
     const params = new URLSearchParams(queryString);
     const baseUrl = params.get('url');
@@ -62,8 +68,8 @@ app.prepare().then(() => {
 
     const audioCodec = audio === 'aac' && !transcode ? 
       [ '-c:a', 'copy'] :
-      // audio codec config: sampling frequency (11025, 22050, 44100), bitrate 64 kbits
-      ['-c:a', 'aac', '-ar', '44100', '-b:a', '64k'];
+      // audio codec config: sampling frequency (11025, 22050, 44100, 48000), bitrate 64 kbits
+      ['-c:a', 'aac', '-ar', '48000', '-b:a', '64k'];
 
       const ffmpeg = child_process.spawn('ffmpeg', [
       '-i','-',
@@ -83,6 +89,11 @@ app.prepare().then(() => {
       '-bufsize', '1000',
       '-f', 'flv',
 
+      //force to timeout
+      // This is not a GOOD idea for a timeout, because if the frames are not coming in
+      // ffmpeg will just sit here and wait for frames... so a timer is better outside of this.
+      '-t', process.env.TIMEOUT_LIVE_STREAM_SECONDS ?? 120, // Timeout setting in ENV of Docker container, default 2 minute
+
       rtmpUrl
     ]);
 
@@ -96,18 +107,18 @@ app.prepare().then(() => {
     // These errors most commonly occur when FFmpeg closes and there is still
     // data to write.f If left unhandled, the server will crash.
     ffmpeg.stdin.on('error', (e) => {
-      console.log('FFmpeg STDIN Error', e);
+      console.log(`${now} - FFmpeg STDIN Error`, e);
     });
 
     // FFmpeg outputs all of its messages to STDERR. Let's log them to the console.
     ffmpeg.stderr.on('data', (data) => {
-      ws.send('ffmpeg got some data');
-      console.log('FFmpeg STDERR:', data.toString());
+      ws.send(`${now} - ffmpeg got some data`);
+      console.log(`${now} - FFmpeg STDERR:`, data.toString());
     });
 
     ws.on('message', msg => {
       if (Buffer.isBuffer(msg)) {
-        console.log('this is some video data');
+        console.log(`${now} - this is some video data`);
         ffmpeg.stdin.write(msg);
       } else {
         console.log(msg);
@@ -115,11 +126,11 @@ app.prepare().then(() => {
     });
 
     ws.on('close', e => {
-      console.log('bummer man, that stream got closed, whats up with that?');
+      console.log(`${now} - bummer man, that stream got closed, whats up with that?`);
       ffmpeg.kill('SIGINT');
     });
   });
 })}catch (err) {
-  console.error("ERROR: Failed to start the server:");
+  console.error(`${now} - ERROR: Failed to start the server:`);
   console.error(err);
 };

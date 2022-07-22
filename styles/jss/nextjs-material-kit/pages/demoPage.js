@@ -21,11 +21,18 @@ const demoPage = (theme) => ({
     container: {
         zIndex: "4",
         width: "100vw",
+        minHeight:"80vh",
         color: "#FFFFFF",
         backgroundColor: "#fff",
-        textAlign: "center",
-        paddingTop: "2vh",
+        textAlign: "left",
+        paddingTop: "120px",
         ...container,
+
+        "&, & label": {
+            color:"#000",
+            fontSize:"14px",
+            fontWeight:"600",
+        },
     },
     subHeaderBanner: {
         paddingTop: "10vh",
@@ -61,23 +68,29 @@ const demoPage = (theme) => ({
         textAlign: "center !important",
         color: "#EDEBE9"
     },
-    info: {
+
+    videoContainer: {
+        paddingTop:"5px",
+        paddingBottom:"5px",
+        maxWidth: "100%",
+        zIndex: "5",
 
     },
-    videoContainer: {
-        "&,& startButton" : {
-            fontSize: "2em",
-            margin: "0 auto",
-            maxWidth: "50%",
-            zIndex: "5"
-        }
-    },
     inputVideo: {
+        marginBottom: "10px",
         "&,& video": {
+            borderRadius:"14px",
             width: "100%",
             height: "auto",
             visibility: "visible"
         }
+    },
+    inputTextBox: {
+        backgroundColor: "#F3F2F1",
+        border: "1px solid #605E5C",
+        borerRadius: "2px",
+        width: "100%",
+            height: "auto",
     },
     learnMore: {
         color: "#000",
@@ -94,6 +107,7 @@ const demoPage = (theme) => ({
     outputCanvas: {
         zIndex: "1",
         "&,& canvas": {
+            borderRadius:"14px",
             height: "auto",
             width: "100%",
             display: "block",
@@ -132,7 +146,35 @@ const demoPage = (theme) => ({
         backgroundColor: "#fb3c4e"
     },
     startButton  : {
-
+        color:"#fff",
+        fontSize: "13px",
+        fontWeight:"600",
+        lineHeight:"18px",
+        textAlign:"center",
+        alignItems:"center",
+        marginTop:"8px",
+        backgroundColor: "#0078D4",
+        borderRadius: "2px",
+        border:"0px #0078D4",
+        width:"100%",
+        height:"32px",
+        minWidth:"100%",
+    },
+    shareButton  : {
+        color:"#000",
+        fontSize: "13px",
+        fontWeight:"600",
+        lineHeight:"18px",
+        textAlign:"center",
+        alignItems:"center",
+        margin: "10 auto",
+        marginTop:"8px",
+        backgroundColor: "#fff",
+        borderRadius: "2px",
+        border:"1px solid",
+        width:"100%",
+        height:"32px",
+        minWidth:"100%",
     },
     ...tooltipsStyle,
 });
