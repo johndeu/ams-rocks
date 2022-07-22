@@ -132,13 +132,13 @@ export default function DemoPage(props) {
 
     const setCamera = (deviceId) => {
         console.log(deviceId);
-        CAMERA_CONSTRAINTS.video = { deviceId: deviceId };
+        CAMERA_CONSTRAINTS.video = { deviceId: deviceId, aspectRatio: 1.777};
         enableCamera();
     }
 
     const setMicrophone = (deviceId) => {
         console.log(deviceId);
-        CAMERA_CONSTRAINTS.audio = { deviceId: deviceId } 
+        CAMERA_CONSTRAINTS.audio = { deviceId: deviceId} 
         enableCamera();
     }
 
