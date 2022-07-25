@@ -15,10 +15,10 @@ This project is using the following technologies:
 
 1. In one instance of VS Code bash terminal, open the root folder.
 
-    Run this command to launch the Next.js Website
+    Run the following command to launch the Next.js Website
 
     ``` bash
-    npm run start-next
+    npm run dev
     ```
 
 1. You should see next start up with a "ready" started server on http://localhost:3000 
@@ -29,7 +29,7 @@ This project is using the following technologies:
     Run the following command to launch the API functions application. This is an Azure Functions project. 
 
     ``` bash
-    npm run start
+    npm run start-api
     ```
 1. Rename this terminal window to be "API" or "Functions"
 
