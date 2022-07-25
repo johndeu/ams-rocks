@@ -7,7 +7,7 @@
       "name": "req",
       "route": "livestream/golive",
       "methods": [
-        "post"
+        "put"
       ]
     },
     {

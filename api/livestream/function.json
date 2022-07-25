@@ -7,7 +7,8 @@
       "name": "req",
       "route": "livestream",
       "methods": [
-        "put"
+        "POST",
+        "GET"
       ]
     },
     {

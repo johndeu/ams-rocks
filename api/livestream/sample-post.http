@@ -1,0 +1,8 @@
+## Send using the REST Client extension in VS Code
+
+POST http://localhost:4280/api/livestream   HTTP/1.1
+content-type: application/json
+
+{
+    "name": "demo-720-LL-001"
+}
