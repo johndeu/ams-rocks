@@ -2,7 +2,7 @@
 // This uses code from that demo project to stream from the browser over RTMP to Azure Media Services.
 // It also includes portions of the pull request from @dugaraju to support streaming to any RTMP server - https://github.com/MuxLabs/wocket/pull/20
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, setData} from "react";
 import Head from 'next/head';
 import moment from 'moment';
 
@@ -30,6 +30,7 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
+
 const useStyles = makeStyles(styles);
 
 
@@ -77,6 +78,7 @@ export default function DemoPage(props) {
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
     const [canvas, setCanvas] = useState([]);
+    const [liveStream, setLiveStream] = useState([]);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -97,10 +99,10 @@ export default function DemoPage(props) {
 
         await videoRef.current.play();
 
-/*         // If we support offscreen canvas, move it there to improve performance
-       var canvas = 'OffscreenCanvas' in window
-                ? canvasRef.current.transferControlToOffscreen()
-                : canvasRef.current; */
+        /*         // If we support offscreen canvas, move it there to improve performance
+               var canvas = 'OffscreenCanvas' in window
+                        ? canvasRef.current.transferControlToOffscreen()
+                        : canvasRef.current; */
 
         // set the width and height for the offscreen canvas 
         //canvas.style = {width: videoRef.current.clientWidth, height: videoRef.current.clientHeight};
@@ -235,6 +237,15 @@ export default function DemoPage(props) {
     // This effect only gets called on first load of page. 
     useEffect(() => {
 
+        // Get a live event ahead of time...
+
+        // List the livestreams available
+        (async function () {
+            const liveStreams = await (await fetch(`/api/livestream`)).json();
+            setLiveStream(liveStreams);
+        }());
+
+
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
             console.log("enumerateDevices() not supported.");
@@ -296,6 +307,8 @@ export default function DemoPage(props) {
                                         Enable Camera
                                     </button>
                                 )}
+                                {liveStream && <div> LiveStream: {JSON.stringify(liveStream[0])}
+                                </div>}
                                 <div className={classes.inputVideo}>
                                     <video ref={videoRef} muted playsInline></video>
                                 </div>

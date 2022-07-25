@@ -49,6 +49,16 @@ The Static Web Site emulator will launch and the Next.js application is now avai
 Now use port 4280 when you want to use the simulated Azure Static Web app hosted environment.  This allows you to see both the API and the Next.js application on the same port similar to how it will be deployed to Azure Static Web Apps publicly.
 You can now debug and test your app and functions locally.
 
+## How to start both the Next.js app and the API with the CLI
+
+Run the frontend app and API together by starting the app with the Static Web Apps CLI. Running the two parts of your application this way allows the CLI to serve your frontend's build output from a folder, and makes the API accessible to the running app. 
+
+1. A simpler solution is to just use the CLI, you can use the Static Web Apps CLI with the **start** command. In the root folder, call the start command.
+
+```azurecli
+    swa start build --api-location api
+```
+
 ## How to use Azure Static Web Apps
 
 For detailed instructions and a complete How-to on building an Azure Static Web App with an API, see the article [Build a new Static Web App on Azure with Node.js](https://docs.microsoft.com/en-us/azure/developer/javascript/how-to/create-static-web-app)
