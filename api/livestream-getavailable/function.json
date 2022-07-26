@@ -5,7 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "livestream",
+      "route": "livestream/getavailable",
       "methods": [
         "GET"
       ]
@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/livestream/index.js"
+  "scriptFile": "../dist/livestream-getavailable/index.js"
 }

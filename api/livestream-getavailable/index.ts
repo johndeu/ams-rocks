@@ -1,6 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential } from '@azure/identity';
-import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
+import { AzureMediaServices, KnownLiveEventResourceState, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
 
 // This is the main Media Services client object
@@ -22,24 +22,23 @@ const credential = new DefaultAzureCredential({
 // Object to return
 interface liveStream {
     name: string,
-    location: string,
     status: string,
     createdAt: Date,
     protocol: string,
     streamKey: string,
     latencyMode: string,
     ingestUrl: string,
+    location: string,
 }
 
-interface account{
-    name:string,
+interface account {
+    name: string,
     location: string,
 }
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger - Livestream create');
+    console.log('HTTP trigger - Livestream getAvailable');
     console.log("Getting the client for Media Services");
-
 
     try {
         mediaServicesClient = new AzureMediaServices(credential, subscriptionId)
@@ -49,9 +48,9 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     }
 
     if (req.method == "GET") {
-        console.log("Getting live events from AMS accounts");
+        console.log("Getting available live events from AMS accounts");
 
-        await listLiveStreams().then(liveStreams => {
+        await listAvailableStreams().then(liveStreams => {
             if (liveStreams.length > 0) {
                 context.res = {
                     status: 200, /* Defaults to 200 */
@@ -61,7 +60,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 context.res = {
                     status: 404,
                     body: {
-                        "message": "No live streams available at this time",
+                        "message": "No live streams available at this time. Try again later.",
                         "code": 404
                     }
                 }
@@ -73,49 +72,37 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
 };
 
-async function createLiveStream() {
+async function listAvailableStreams(): Promise<liveStream[]> {
+    console.log("Listing available live streams");
 
-    console.log("Creating live stream");
-
-}
-
-async function listLiveStreams(): Promise<liveStream[]> {
-    console.log("Listing live streams");
-
-    let eventsInPool = [];
+    let livesStreamsInPool = [];
 
     for (const account of accountPool) {
         console.log(`Listing events in account:  ${account.name}`)
-        let eventsInAccount = await mediaServicesClient.liveEvents.list(
-            resourceGroup, 
+
+        for await (const liveEvent of mediaServicesClient.liveEvents.list(
+            resourceGroup,
             account.name,
             {
                 abortSignal: AbortController.timeout(3000),
             }
-            );
-        
-        await eventsInAccount.next().then(liveEvent => {
-            let item: LiveEvent = liveEvent.value
+        )) {
+            console.log(`Found event:  ${liveEvent.name}`)
 
-            console.log(`Found event:  ${item.name}`)
-
-            eventsInPool.push({
-                name: item.name,
-                location: item.location,
-                createdAt: item.created,
-                status: item.resourceState,
-                protocol: item.input.streamingProtocol,
-                streamKey: item.input.accessToken,
-                latencyMode: item.streamOptions.includes("LowLatencyV2") ? "LowLatencyV2" : "",
-                ingestUrl: item.input.endpoints[2].url, //HTTPS primary
-               
-            })
-        })
+            if (liveEvent.resourceState == KnownLiveEventResourceState.Stopped) {
+                livesStreamsInPool.push({
+                    location: liveEvent.location,
+                    name: liveEvent.name,
+                    createdAt: liveEvent.created,
+                    protocol: liveEvent.input.streamingProtocol,
+                    streamKey: liveEvent.input.accessToken,
+                    ingestUrl: liveEvent.input.endpoints[2].url, //HTTPS primary
+                })
+            }
+        }
     }
 
-    console.log(`Events in pool: ${eventsInPool}`);
-
-    return eventsInPool;
+    return livesStreamsInPool;
 }
 
 

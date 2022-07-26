@@ -1,6 +1,7 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential } from '@azure/identity';
 import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
+import { AbortController } from '@azure/abort-controller';
 
 // This is the main Media Services client object
 let mediaServicesClient: AzureMediaServices;
@@ -20,10 +21,15 @@ const credential = new DefaultAzureCredential({
     managedIdentityClientId: process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
 });
 
+interface liveStream {
+    name: string,
+    location: string
+}
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger - Livestream Go Live!');
+    console.log('HTTP trigger - Livestream Go Live!');
     console.log("Getting the client for Media Services");
+   
     try {
         mediaServicesClient = new AzureMediaServices(credential, subscriptionId)
     } catch (err) {
@@ -33,19 +39,34 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     if (req.method == "PUT") {
 
-        const name = "demo-720-LL-001";
-        console.log(`Starting live event:  ${name}`);
-    
-        // Attempt to start the long running operation and wait
-        await mediaServicesClient.liveEvents.beginStartAndWait(resourceGroup, accountName, name, { updateIntervalInMs: longRunningOperationUpdateIntervalMs });
+        console.log(`Request body ${JSON.stringify(req.body)}`);
+        const liveStream:liveStream = JSON.parse(req.rawBody) as liveStream;
+        console.log(`liveStream ${liveStream}`);
 
-        context.res = {
-            status: 200, // accepted
-            body: {
-                
-            }
-        };
-    }
+        const name = liveStream.name;
+        console.log(`Starting live event:  ${name}`);
+
+        // Attempt to start the long running operation and wait
+        await mediaServicesClient.liveEvents.beginStartAndWait(
+            resourceGroup,
+            accountName,
+            name,
+            {
+                updateIntervalInMs: longRunningOperationUpdateIntervalMs,
+                abortSignal: AbortController.timeout(12000),
+            }).then(() => {
+                context.res = {
+                    status: 200, // accepted
+                }
+            }).catch(err => {
+                console.error(`Error starting live event : ${name}`)
+                console.error(err);
+
+                context.res = {
+                    status: 500
+                }
+            });
+    };
 };
 
 export default httpTrigger;

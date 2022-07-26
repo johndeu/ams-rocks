@@ -1,0 +1,3 @@
+## Send using the REST Client extension in VS Code
+
+GET http://localhost:4280/api/livestream/getavailable   HTTP/1.1
