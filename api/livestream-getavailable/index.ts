@@ -84,7 +84,8 @@ async function listAvailableStreams(): Promise<liveStream[]> {
             resourceGroup,
             account.name,
             {
-                abortSignal: AbortController.timeout(3000),
+
+                abortSignal: AbortController.timeout(10000), // 10 seconds - throws a 500
             }
         )) {
             console.log(`Found event:  ${liveEvent.name}`)

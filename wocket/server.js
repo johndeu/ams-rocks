@@ -47,10 +47,9 @@ app.prepare().then(() => {
 
   wss.on('connection', (ws, req) => {
     console.log('Streaming socket connected');
-    ws.send('Hello from Cloudy City.');
+    console.log('Hello from Cloudy City.');
 
-    now = moment.utc.now();
-    console.log(`${now} - starting live web socket`)
+    console.log('Setting parameters.');
 
     const queryString = url.parse(req.url).search;
     const params = new URLSearchParams(queryString);
@@ -59,7 +58,11 @@ app.prepare().then(() => {
     const video = params.get('video');
     const audio = params.get('audio');
 
+    console.log('Parameters set.');
+
     const rtmpUrl = `${baseUrl}/${key}`;
+
+    console.log(`Streaming to RTMP ingest URL : ${rtmpUrl}`)
 
     const videoCodec = video === 'h264' && !transcode ? 
       [ '-c:v', 'copy'] :

@@ -22,19 +22,20 @@ This project is using the following technologies:
     ```
 
 1. You should see next start up with a "ready" started server on http://localhost:3000 
-1. At this point, I like to rename the terminal to Next.js so I know what it is.
+1. At this point, I like to rename the terminal to "Next dev"" so I know what it is.
 
 1. Open a second VS code bash terminal instance, change directory to the /api folder
 
     Run the following command to launch the API functions application. This is an Azure Functions project. 
 
     ``` bash
-    npm run start-api
+    npm run start
     ```
 1. Rename this terminal window to be "API" or "Functions"
 
 1. You should see Azure Functions app start up successfully and list the available functions in the console. Look for hello: [GET,POST] http://localhost:7071/api/hello for example.  You can click this and see a response JSON message to make sure it is working.
 1. You should now be able to navigate to http://localhost:3000, and the Functions app should be available on http://localhost:7071/api.  You can test it by hitting the "hello" function on http://localhost:7071/api/hello
+1. Each function has a **.http** file that you can use to setup and test the function while building it out. This acts as a simple REST API query tool for GET, PUT, etc. You need the **REST Client** extension to use this feature in VS Code.
 1. Finally, we will start up the Azure Static Web site emulator, which will create a proxy to the web site and API on port 4280.
    Open a 3rd Bash terminal, change to the root directory and start the proxy:
 
@@ -53,10 +54,10 @@ You can now debug and test your app and functions locally.
 
 Run the frontend app and API together by starting the app with the Static Web Apps CLI. Running the two parts of your application this way allows the CLI to serve your frontend's build output from a folder, and makes the API accessible to the running app. 
 
-1. A simpler solution is to just use the CLI, you can use the Static Web Apps CLI with the **start** command. In the root folder, call the start command.
+1. A simpler solution is to just use the CLI to serve the static "/out" folder along with the API.  You can use the Static Web Apps CLI with the **start** command. In the root folder, call the start command. Downside of this, is that it only serves the static content, so you need to re-build to see updates in the "out" folder.
 
 ```azurecli
-    swa start build --api-location api
+    swa start out --api-location api
 ```
 
 ## How to use Azure Static Web Apps

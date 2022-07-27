@@ -3,5 +3,5 @@ content-type: application/json
 
 {
     "name" : "demo-720-LL-001",
-    "account": "East US"
+    "location": "East US"
 }

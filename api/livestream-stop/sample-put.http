@@ -1,1 +1,7 @@
 PUT http://localhost:4280/api/livestream/stop   HTTP/1.1
+content-type: application/json
+
+{
+    "name" : "demo-720-LL-001",
+    "location": "West US 2"
+}

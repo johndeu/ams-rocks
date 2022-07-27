@@ -2,6 +2,8 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential } from '@azure/identity';
 import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
+import {liveStream} from '../models/liveStream';
+import {account} from '../models/account'
 
 // This is the main Media Services client object
 let mediaServicesClient: AzureMediaServices;
@@ -19,22 +21,6 @@ const credential = new DefaultAzureCredential({
     managedIdentityClientId: process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
 });
 
-// Object to return
-interface liveStream {
-    name: string,
-    location: string,
-    status: string,
-    createdAt: Date,
-    protocol: string,
-    streamKey: string,
-    latencyMode: string,
-    ingestUrl: string,
-}
-
-interface account{
-    name:string,
-    location: string,
-}
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger - Livestream create');
@@ -90,7 +76,7 @@ async function listLiveStreams(): Promise<liveStream[]> {
             resourceGroup, 
             account.name,
             {
-                abortSignal: AbortController.timeout(3000),
+                abortSignal: AbortController.timeout(15000),
             }
             );
         

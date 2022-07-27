@@ -2,7 +2,7 @@
 // This uses code from that demo project to stream from the browser over RTMP to Azure Media Services.
 // It also includes portions of the pull request from @dugaraju to support streaming to any RTMP server - https://github.com/MuxLabs/wocket/pull/20
 
-import React, { useState, useEffect, useRef, setData} from "react";
+import React, { useState, useEffect, useRef, setData } from "react";
 import Head from 'next/head';
 import moment from 'moment';
 
@@ -74,11 +74,13 @@ export default function DemoPage(props) {
     const [streaming, setStreaming] = useState(false);
     const [streamKey, setStreamKey] = useState(null);
     const [streamUrl, setStreamUrl] = useState(null);
+    const [liveStreamStarted, setLiveStreamStarted] = useState(false);
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
     const [canvas, setCanvas] = useState([]);
-    const [liveStream, setLiveStream] = useState([]);
+    const [liveStream, setLiveStream] = useState(null);
+    const [noEvents, setNoEvents] = useState(false);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -91,6 +93,7 @@ export default function DemoPage(props) {
 
 
     const enableCamera = async () => {
+
         inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
             CAMERA_CONSTRAINTS
         );
@@ -123,6 +126,8 @@ export default function DemoPage(props) {
         */
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
+
+        startLiveStream();
     };
 
     const updateCanvas = () => {
@@ -169,6 +174,82 @@ export default function DemoPage(props) {
         setStreaming(false);
     };
 
+    const startLiveStream = () => {
+        if (liveStream) {
+
+            // We have available live streams from the pools, lets start it.
+    
+            const data = {
+                name:  liveStream.name,
+                location: liveStream.location
+            }
+
+            // Start the live stream
+            fetch('/api/livestream/golive', {
+                method: 'PUT',
+                mode:'cors',
+                cache: 'no-cache',
+                credentials:`same-origin`,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                referrerPolicy: 'same-origin',
+                body: JSON.stringify(data)
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Could not start the live event');
+                }
+                console.log('Success: stream started.');
+                console.log(`Set streamkey: ${liveStream.streamKey}`);
+                setStreamKey(liveStream.streamKey);
+                console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+                setStreamUrl(liveStream.ingestUrl);
+                setLiveStreamStarted(true);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
+
+        }
+    }
+
+    const stopLiveStream =()=> {
+
+        if (!liveStream) 
+            throw Error ("Can't stop the live stream - there is no live stream.")
+
+        const data = {
+            name:  liveStream.name,
+            location: liveStream.location
+        }
+
+        // Stop the live stream if the Websocket disconnects or ends. 
+         // Start the live stream
+         fetch('/api/livestream/stop', {
+            method: 'PUT',
+            mode:'cors',
+            cache: 'no-cache',
+            credentials:`same-origin`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify(data)
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Could not start the live event');
+            }
+            console.log('STOPPED:successfully stopped the live stream');
+            console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+           
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+    }
+
     const startStreaming = () => {
         setStreaming(true);
         const settings = getRecorderSettings();
@@ -196,6 +277,8 @@ export default function DemoPage(props) {
 
         wsRef.current.addEventListener('close', () => {
             setConnected(false);
+            console.log(`Stopping live stream : ${liveStream.name} in location ${liveStream.location}`);
+            stopLiveStream();
             stopStreaming();
             console.log("Websocket closed");
         });
@@ -234,17 +317,25 @@ export default function DemoPage(props) {
         mediaRecorderRef.current.start(1000);
     };
 
+    const getAvailableLiveStreams = async () =>  {
+        const liveStreams = await (await fetch(`/api/livestream/getavailable`)).json();
+
+        // We should later try to grab the "closest" regional stream using the BING API for IP location
+        // <TODO> Add ip location and find by region closest.
+        if (liveStreams && liveStreams.length > 0) {
+            setLiveStream(liveStreams[0]);
+        }
+        else {
+            setNoEvents(true);
+            setLiveStream(null);
+        }
+    };
+
     // This effect only gets called on first load of page. 
     useEffect(() => {
 
-        // Get a live event ahead of time...
-
-        // List the livestreams available
-        (async function () {
-            const liveStreams = await (await fetch(`/api/livestream`)).json();
-            setLiveStream(liveStreams);
-        }());
-
+        // Call the API and get a list of available stopped live streams in the pool of accounts
+        getAvailableLiveStreams();
 
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
@@ -269,7 +360,11 @@ export default function DemoPage(props) {
                 });
         }
 
+        // Cleanup: Called when the component unmounts
         return () => {
+            console.log("Cleaning up and stopping live stream");
+            stopLiveStream();
+
             cancelAnimationFrame(requestAnimationRef.current);
         };
     }, [])
@@ -302,12 +397,21 @@ export default function DemoPage(props) {
                             <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                 }`}
                             >
-                                {!cameraEnabled && (
+                                {!liveStream && !noEvents &&
+                                    <div> Looking for available demo sessions... </div>
+                                }
+                                {noEvents && 
+                                    <div> Sorry, there are no available demo sessions at this time. <br/>
+                                    Please try again later.
+                                    </div>
+                                }
+                                
+                                {!cameraEnabled && liveStream && (
                                     <button className={classes.startButton} onClick={enableCamera}>
                                         Enable Camera
                                     </button>
                                 )}
-                                {liveStream && <div> LiveStream: {JSON.stringify(liveStream[0])}
+                                {liveStream && <div> Name : {liveStream.name}  RTMP: {liveStream.ingestUrl}
                                 </div>}
                                 <div className={classes.inputVideo}>
                                     <video ref={videoRef} muted playsInline></video>
@@ -372,18 +476,23 @@ export default function DemoPage(props) {
                                             className={classes.inputTextBox}
                                             placeholder="rtmps://"
                                             type="text"
+                                            value={liveStream.ingestUrl}
                                             onChange={(e) => setStreamUrl(e.target.value)}
                                         /><br />
                                         <label>Stream key</label><br />
                                         <input
                                             className={classes.inputTextBox}
-                                            placeholder="Stream key"
+                                            value={liveStream.streamKey}
                                             type="text"
-                                            onChange={(e) => setStreamKey(e.target.value)}
+                                            disabled
                                         /><br />
+                                        {!liveStreamStarted && <div>
+                                            Waiting for live stream to start...
+                                        </div>
+                                        }
                                         <button
                                             className={classes.startButton}
-                                            disabled={!streamKey}
+                                            disabled={!liveStreamStarted}
                                             onClick={startStreaming}
                                         >
                                             Start Streaming
