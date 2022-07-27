@@ -58,7 +58,7 @@ app.prepare().then(() => {
     const video = params.get('video');
     const audio = params.get('audio');
 
-    console.log('Parameters set.');
+    console.log(`Parameters set.`);
 
     const rtmpUrl = `${baseUrl}/${key}`;
 
@@ -110,18 +110,18 @@ app.prepare().then(() => {
     // These errors most commonly occur when FFmpeg closes and there is still
     // data to write.f If left unhandled, the server will crash.
     ffmpeg.stdin.on('error', (e) => {
-      console.log(`${now} - FFmpeg STDIN Error`, e);
+      console.log(`FFmpeg STDIN Error`, e);
     });
 
     // FFmpeg outputs all of its messages to STDERR. Let's log them to the console.
     ffmpeg.stderr.on('data', (data) => {
-      ws.send(`${now} - ffmpeg got some data`);
-      console.log(`${now} - FFmpeg STDERR:`, data.toString());
+      ws.send(`ffmpeg got some data`);
+      console.log(`FFmpeg STDERR:`, data.toString());
     });
 
     ws.on('message', msg => {
       if (Buffer.isBuffer(msg)) {
-        console.log(`${now} - this is some video data`);
+        console.log(`this is some video data`);
         ffmpeg.stdin.write(msg);
       } else {
         console.log(msg);
@@ -129,11 +129,11 @@ app.prepare().then(() => {
     });
 
     ws.on('close', e => {
-      console.log(`${now} - bummer man, that stream got closed, whats up with that?`);
+      console.log(`bummer man, that stream got closed, whats up with that?`);
       ffmpeg.kill('SIGINT');
     });
   });
 })}catch (err) {
-  console.error(`${now} - ERROR: Failed to start the server:`);
+  console.error(`ERROR: Failed to start the server:`);
   console.error(err);
 };
