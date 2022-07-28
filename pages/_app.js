@@ -48,17 +48,6 @@ Router.events.on("routeChangeError", () => {
 
 export default class MyApp extends App {
 
-
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   componentDidMount() {
     // Import jQuery as a global window object for the Azure Header scripts to work.
     window.jQuery = window.$ = require('jquery');

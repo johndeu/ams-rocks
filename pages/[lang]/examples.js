@@ -1,6 +1,5 @@
 import React from "react";
 import dynamic from 'next/dynamic';
-import { GetStaticPropsContext } from 'next';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -9,8 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // Use framer-motion
 import { motion } from "framer-motion";
-// Use the react-intersection-observer to trigger animations when stuff is in view
-import { useInView } from "react-intersection-observer";
 
 // @material-ui/icons
 
@@ -19,11 +16,11 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+
 import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Card from "components/Card/Card.js";
+
 
 // Need to dynamic load the Shaka Player since it imports a standard Javascript library
 // See the documentation here - https://github.com/amit08255/shaka-player-react-with-ui-config/tree/master/nextjs-shaka-player
