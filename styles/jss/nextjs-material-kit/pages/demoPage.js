@@ -68,7 +68,16 @@ const demoPage = (theme) => ({
         textAlign: "center !important",
         color: "#EDEBE9"
     },
-
+    introMessage :{
+        textAlign: "center !important",
+        color: "#000",
+        align: "center",
+        fontSize: "16px",
+        fontWeight: "400",
+        fontStyle: "normal",
+        lineHeight: "24px",
+        font: "Segoe UI",
+    },
     videoContainer: {
         paddingTop:"5px",
         paddingBottom:"5px",
@@ -77,12 +86,15 @@ const demoPage = (theme) => ({
 
     },
     inputVideo: {
+        visibility:"collapse",
+        position:"absolute",
+        left: "-100vw",
         marginBottom: "10px",
         "&,& video": {
             borderRadius:"14px",
             width: "100%",
             height: "auto",
-            visibility: "visible"
+            visibility: "collapse"
         }
     },
     inputTextBox: {
@@ -146,6 +158,7 @@ const demoPage = (theme) => ({
         backgroundColor: "#fb3c4e"
     },
     startButton  : {
+       
         color:"#fff",
         fontSize: "13px",
         fontWeight:"600",
@@ -155,10 +168,44 @@ const demoPage = (theme) => ({
         marginTop:"8px",
         backgroundColor: "#0078D4",
         borderRadius: "2px",
-        border:"0px #0078D4",
+        border:"1px solid #000",
         width:"100%",
         height:"32px",
-        minWidth:"100%",
+        "&:hover" : {
+            textDecoration: "underline",
+            backgroundColor: "#3293dc"
+        },
+        [theme.breakpoints.down("sm")]: {
+            width:"80%",
+            top: "20vh",
+            left: "10vw",
+        },
+    },
+    enableCameraButton  : {
+    
+        color:"#fff",
+        fontSize: "13px",
+        fontWeight:"600",
+        lineHeight:"18px",
+        textAlign:"center",
+        alignItems:"center",
+        marginTop:"8px",
+        textDecoration: "none",
+        backgroundColor: "#0078D4",
+        borderRadius: "2px",
+        border:"1px solid #000",
+        width:"100%",
+        height:"32px",
+        zIndex:"100",
+        "&:hover" : {
+            textDecoration: "underline",
+            backgroundColor: "#3293dc"
+        },
+        [theme.breakpoints.down("sm")]: {
+            width:"80%",
+            top: "20vh",
+            left: "10vw",
+        },
     },
     shareButton  : {
         color:"#000",
@@ -175,6 +222,39 @@ const demoPage = (theme) => ({
         width:"100%",
         height:"32px",
         minWidth:"100%",
+        zIndex:"100",
+    },
+    getDemoSessions : {
+        position:"absolute",
+        top: "25vh",
+        left: "10vw",
+        color:"#000",
+        fontSize: "24px",
+        fontWeight:"400",
+        textAlign:"center",
+        alignItems:"center",
+        width:"100%",
+        height:"32px",
+        zIndex:"10",
+        paddingRight: "24px",
+    },
+    noEventsAvailable : {
+        position:"absolute",
+        top: "30vh",
+        left: "10vw",
+        color:"#000",
+        fontSize: "24px",
+        fontWeight:"400",
+        textAlign:"center",
+        alignItems:"center",
+        lineHeight: "38px",
+        width:"100%",
+        height:"32px",
+        zIndex:"10",
+        paddingRight: "24px",
+    },
+    videoSideNav : {
+        
     },
     ...tooltipsStyle,
 });

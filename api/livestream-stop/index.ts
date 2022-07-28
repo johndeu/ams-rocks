@@ -50,14 +50,15 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             resourceGroup, 
             account, 
             name, 
-            { removeOutputsOnStop: true }, 
+            { 
+                removeOutputsOnStop: true, 
+            }, 
             { updateIntervalInMs: longRunningOperationUpdateIntervalMs }
         );
 
         context.res = {
             status: 200, // accepted
             body: {
-
             }
         };
     }

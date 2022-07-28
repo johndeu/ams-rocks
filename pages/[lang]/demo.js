@@ -18,6 +18,16 @@ import HeaderLinksLeft from "components/Header/HeaderLinks-left.js";
 import HeaderLinksRight from "components/Header/HeaderLinks-right.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Button from "components/CustomButtons/Button.js";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.js";
+import Slide from "@material-ui/core/Slide";
+// @material-ui/icons
+import Close from "@material-ui/icons/Close";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -30,9 +40,16 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
+import { resolve } from "path";
 
 const useStyles = makeStyles(styles);
 
+// Intro Modal transition
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="down" ref={ref} {...props} />;
+});
+
+Transition.displayName = "Transition";
 
 const CAMERA_CONSTRAINTS = {
     audio: true,
@@ -69,6 +86,7 @@ export default function DemoPage(props) {
 
     const { ...rest } = props;
 
+    const [introModal, setIntroModal] = React.useState(true);
     const [connected, setConnected] = useState(false);
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [streaming, setStreaming] = useState(false);
@@ -78,8 +96,8 @@ export default function DemoPage(props) {
     const [textOverlay, setTextOverlay] = useState('Live from the browser!');
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
-    const [canvas, setCanvas] = useState([]);
     const [liveStream, setLiveStream] = useState(null);
+    const [livePlayback, setLivePlayback] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
 
     const inputStreamRef = useRef();
@@ -89,10 +107,20 @@ export default function DemoPage(props) {
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
     const nameRef = useRef();
+    const progress = useRef();
 
 
+    const startDemo = async () => {
+        setIntroModal(false);
+        console.log("Starting up the demo...");
+
+        // This will start up the live stream while we await the camera and mic to be enabled.
+        startLiveStream();
+    }
 
     const enableCamera = async () => {
+        console.log("Enabling camera");
+
 
         inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
             CAMERA_CONSTRAINTS
@@ -127,7 +155,6 @@ export default function DemoPage(props) {
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
 
-        startLiveStream();
     };
 
     const updateCanvas = () => {
@@ -175,80 +202,103 @@ export default function DemoPage(props) {
     };
 
     const startLiveStream = () => {
+        
+        let ticks = 0;
+        var timerProgress = setInterval(() => {
+            //progress.value = ticks++
+        }, 700);
         if (liveStream) {
 
             // We have available live streams from the pools, lets start it.
-    
+
             const data = {
-                name:  liveStream.name,
+                name: liveStream.name,
                 location: liveStream.location
             }
 
             // Start the live stream
             fetch('/api/livestream/golive', {
                 method: 'PUT',
-                mode:'cors',
+                mode: 'cors',
                 cache: 'no-cache',
-                credentials:`same-origin`,
+                credentials: `same-origin`,
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 referrerPolicy: 'same-origin',
                 body: JSON.stringify(data)
             })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Could not start the live event');
-                }
-                console.log('Success: stream started.');
-                console.log(`Set streamkey: ${liveStream.streamKey}`);
-                setStreamKey(liveStream.streamKey);
-                console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
-                setStreamUrl(liveStream.ingestUrl);
-                setLiveStreamStarted(true);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Could not start the live event');
+                    }
+                    console.log('Success: stream started.');
+                    console.log(`Set streamkey: ${liveStream.streamKey}`);
+                    setStreamKey(liveStream.streamKey);
+                    console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+                    setStreamUrl(liveStream.ingestUrl);
+                    setLivePlayback(response.body);
+                    setLiveStreamStarted(true);
+                    clearInterval(timerProgress);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                })
 
         }
     }
 
-    const stopLiveStream =()=> {
+    const stopLiveStream = () => {
 
-        if (!liveStream) 
-            throw Error ("Can't stop the live stream - there is no live stream.")
+        if (!liveStream) {
+            console.error("Can't stop the live stream - there is no live stream.")
+            return;
+        }
 
         const data = {
-            name:  liveStream.name,
+            name: liveStream.name,
             location: liveStream.location
         }
 
         // Stop the live stream if the Websocket disconnects or ends. 
-         // Start the live stream
-         fetch('/api/livestream/stop', {
+        // Start the live stream
+        fetch('/api/livestream/stop', {
             method: 'PUT',
-            mode:'cors',
+            mode: 'cors',
             cache: 'no-cache',
-            credentials:`same-origin`,
+            credentials: `same-origin`,
             headers: {
                 'Content-Type': 'application/json',
             },
             referrerPolicy: 'same-origin',
             body: JSON.stringify(data)
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Could not start the live event');
-            }
-            console.log('STOPPED:successfully stopped the live stream');
-            console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
-           
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Could not start the live event');
+                }
+                console.log('STOPPED:successfully stopped the live stream');
+                console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
     }
+
+    const getAvailableLiveStreams = async () => {
+        const liveStreams = await (await fetch(`/api/livestream/getavailable`)).json();
+
+        // We should later try to grab the "closest" regional stream using the BING API for IP location
+        // <TODO> Add ip location and find by region closest.
+        if (liveStreams && liveStreams.length > 0) {
+            setLiveStream(liveStreams[0]);
+        }
+        else {
+            setNoEvents(true);
+            setLiveStream(null);
+        }
+    };
 
     const startStreaming = () => {
         setStreaming(true);
@@ -314,22 +364,10 @@ export default function DemoPage(props) {
             wsRef.current.close();
         });
 
-        mediaRecorderRef.current.start(1000);
+        mediaRecorderRef.current.start(500); // this was originally 1000 - it is the timeslices in milliseconds to record into each blob.
     };
 
-    const getAvailableLiveStreams = async () =>  {
-        const liveStreams = await (await fetch(`/api/livestream/getavailable`)).json();
 
-        // We should later try to grab the "closest" regional stream using the BING API for IP location
-        // <TODO> Add ip location and find by region closest.
-        if (liveStreams && liveStreams.length > 0) {
-            setLiveStream(liveStreams[0]);
-        }
-        else {
-            setNoEvents(true);
-            setLiveStream(null);
-        }
-    };
 
     // This effect only gets called on first load of page. 
     useEffect(() => {
@@ -393,26 +431,111 @@ export default function DemoPage(props) {
             <div className={classes.section}>
                 <div className={classes.container}>
                     <GridContainer>
-                        <GridItem xs={12} sm={12} md={8}>
+                        <GridItem id="introPage" xs={12} sm={12} md={12}>
+                            <Dialog
+                                classes={{
+                                    root: classes.center,
+                                    paper: classes.modal,
+                                }}
+                                open={introModal}
+                                TransitionComponent={Transition}
+                                keepMounted
+                                onClose={() => setIntroModal(false)}
+                                aria-labelledby="into-modal-slide-title"
+                                aria-describedby="into-modal-slide-description"
+                            >
+                                <DialogTitle
+                                    id="intro-modal-slide-title"
+                                    disableTypography
+                                    className={classes.modalHeader}
+                                >
+                                    <h4 className={classes.modalTitle}>Azure Media Services Creator Studio</h4>
+                                </DialogTitle>
+                                <DialogContent
+                                    id="intro-modal-slide-description"
+                                    className={classes.modalBody}
+                                >
+
+                                    <div>
+                                        <img src="/img/UnmistablyWindows_0001.jpg"></img>
+                                        <h3>Welcome!</h3>
+                                        <p>
+                                            This is a demo of the Azure Media Services Creator Studio,
+                                            where you can host interactive live events in the browser and broadcast them to your viewers.
+                                            Ready to try it out now?
+                                        </p>
+                                    </div>
+
+                                </DialogContent>
+                                <DialogActions className={classes.modalFooter}>
+                                    <Button
+                                        onClick={() => window.location = '/'}
+                                        color="transparent"
+                                        simple
+                                    >
+                                        Cancel
+                                    </Button>
+                                    {liveStream && !noEvents &&
+                                        <Button
+                                            onClick={() => startDemo()}
+                                            color="danger"
+                                            simple
+                                        >
+                                            Try now
+                                        </Button>
+                                    }
+                                </DialogActions>
+                            </Dialog>
+
+
+                            {/*  Show this when loading available live streams */}
+                            {!liveStream && !noEvents &&
+                                <div className={classes.getDemoSessions}> Looking for available demo sessions... </div>
+                            }
+                            {/*  Show this when there are no available live streams to use in the pool*/}
+                            {noEvents &&
+                                <div className={classes.noEventsAvailable}> Sorry, there are no available demo sessions at this time. <br />
+                                    Please try again later.
+                                </div>
+                            }
+                            {/*  Show this when there is a live stream available and camera is not turned on yet*/}
+
+                            {!cameraEnabled && liveStream && !introModal && (
+                                <div>
+                                    <p className={classes.introMessage}>
+
+                                        This demonstration will allow you to broadcast and view a live stream from your browser for up to 5 minutes.
+                                        After 5 minutes, the live stream and data will be removed.
+                                        <br /><br />
+                                        To get started, you must first allow the browser to access your camera and microphone.
+                                        Click the button below to accept the browser permissions and continue to the Creator Studio.
+                                    </p>
+
+                                    {!liveStreamStarted && !introModal &&
+                                        <>
+                                            <h3>Please wait while we load the demo resources...</h3>
+                                            <CustomLinearProgress
+                                                ref={progress}
+                                                variant="determinate"
+                                                color="warning"
+                                                value={0}
+                                                style={{ width: "100%", display: "inline-block" }}
+                                            />
+                                        </>
+                                    }
+
+                                    {liveStreamStarted &&
+                                        <button className={classes.enableCameraButton} onClick={enableCamera}>
+                                            Enable your camera and microphone
+                                        </button>
+                                    }
+                                </div>
+                            )}
+                        </GridItem>
+                        <GridItem id="studio" xs={12} sm={12} md={8}>
                             <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                 }`}
                             >
-                                {!liveStream && !noEvents &&
-                                    <div> Looking for available demo sessions... </div>
-                                }
-                                {noEvents && 
-                                    <div> Sorry, there are no available demo sessions at this time. <br/>
-                                    Please try again later.
-                                    </div>
-                                }
-                                
-                                {!cameraEnabled && liveStream && (
-                                    <button className={classes.startButton} onClick={enableCamera}>
-                                        Enable Camera
-                                    </button>
-                                )}
-                                {liveStream && <div> Name : {liveStream.name}  RTMP: {liveStream.ingestUrl}
-                                </div>}
                                 <div className={classes.inputVideo}>
                                     <video ref={videoRef} muted playsInline></video>
                                 </div>
@@ -421,7 +544,7 @@ export default function DemoPage(props) {
                                 </div>
                             </div>
                         </GridItem>
-                        <GridItem xs={12} sm={12} md={4}>
+                        <GridItem id="videoSideNav" xs={12} sm={12} md={4} className={classes.videoSideNav} >
                             {cameraEnabled &&
                                 (streaming ? (
                                     <div>
@@ -441,13 +564,6 @@ export default function DemoPage(props) {
                                     </div>
                                 ) : (
                                     <>
-                                        <label>Nickname</label><br />
-                                        <input
-                                            className={classes.inputTextBox}
-                                            placeholder="Enter your nickname"
-                                            type="text"
-                                            onChange={(e) => setNickname(e.target.value)} />
-                                        <br />
                                         <label>Camera input</label><br />
                                         <select
 
@@ -471,7 +587,7 @@ export default function DemoPage(props) {
                                             {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
                                         </select>
                                         <br />
-                                        <label>RTMP/S stream URL</label><br />
+                                        <label>Stream Url</label><br />
                                         <input
                                             className={classes.inputTextBox}
                                             placeholder="rtmps://"
@@ -503,6 +619,7 @@ export default function DemoPage(props) {
                                         >
                                             Share event with viewers
                                         </button>
+                                        {JSON.stringify(livePlayback)}
                                     </>
                                 ))}
 

@@ -1,0 +1,7 @@
+## Send using the REST Client extension in VS Code
+
+POST http://localhost:7071/admin/functions/livestream-sweeper   HTTP/1.1
+content-type: application/json
+
+{
+}

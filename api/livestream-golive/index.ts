@@ -4,9 +4,14 @@ import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
 import { liveStream } from '../models/liveStream';
 import { account } from '../models/account'
+var moment  = require ('moment');
+
 
 // This is the main Media Services client object
 let mediaServicesClient: AzureMediaServices;
+const streamingEndpointName = "default";
+let account = null;
+
 // Long running operation polling interval in milliseconds
 const longRunningOperationUpdateIntervalMs = 1000;
 
@@ -44,8 +49,24 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         const name = liveStream.name;
         console.log(`Starting live event:  ${name}`);
 
-        const account = (await getAccount(liveStream.location)).name;
+        account = (await getAccount(liveStream.location)).name;
 
+        let started: Date = null;
+
+        let liveEvent = await mediaServicesClient.liveEvents.get(resourceGroup, account, name);
+
+        liveEvent.tags = {
+            "startTime": moment().format()
+        }
+
+        await mediaServicesClient.liveEvents.beginUpdateAndWait(
+            resourceGroup,
+            account,
+            name,
+            liveEvent,
+            { updateIntervalInMs: longRunningOperationUpdateIntervalMs }
+        )
+        
         // Attempt to start the long running operation and wait
         await mediaServicesClient.liveEvents.beginStartAndWait(
             resourceGroup,
@@ -55,6 +76,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 updateIntervalInMs: longRunningOperationUpdateIntervalMs,
                 abortSignal: AbortController.timeout(60000), // timeout after 1 minute and fire 500 for now.
             }).then(() => {
+                started = new Date(Date.now());
                 context.res = {
                     status: 200, // accepted
                 }
@@ -66,6 +88,64 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                     message: err
                 }
             });
+
+        const dateString = new Date(Date.now()).toISOString().replace(/:|\./g, '-');
+        const assetName = name + "-" + dateString
+        let asset = await mediaServicesClient.assets.createOrUpdate(resourceGroup, account, assetName, {});
+
+        const liveOutputName = name + "-" + dateString;
+        const manifestName = "manifest";
+
+        // Create a new live Output and get the URL for the manifest
+        await mediaServicesClient.liveOutputs.beginCreateAndWait(
+            resourceGroup,
+            account,
+            name,
+            liveOutputName,
+            {
+                archiveWindowLength: "PT5M",
+                assetName: assetName
+            },
+            {
+                updateIntervalInMs: longRunningOperationUpdateIntervalMs
+            }
+        ).then(() => {
+            context.res = {
+                status: 200, // accepted
+            }
+        }).catch(err => {
+            console.error(`Error starting live output : ${liveOutputName}`)
+            console.error(err);
+            context.res = {
+                status: 500,
+                message: err
+            }
+        });
+
+        // Create a new Streaming Locator
+        let locator = await mediaServicesClient.streamingLocators.create(
+            resourceGroup,
+            account,
+            liveOutputName,
+            {
+                assetName: liveOutputName,
+                streamingPolicyName: "Predefined_ClearStreamingOnly" // clear unencrypted asset
+            }
+        )
+
+
+        let streamingUrls = await buildManifestPaths(locator.streamingLocatorId, manifestName, null);
+
+        // Return some details on the live stream
+        let responseBody = {
+            startTime: started,
+            liveOutputName: liveOutputName,
+            locatorUrl: streamingUrls,
+        }
+
+        context.res = {
+            body: responseBody
+        }
     };
 };
 
@@ -84,6 +164,51 @@ const getAccount = async function (location: string): Promise<account> {
         throw Error("Could not find account in pool that matches location")
 
     return accountMatch;
+}
+
+const buildManifestPaths = async function buildManifestPaths(
+    streamingLocatorId: string | undefined,
+    manifestName: string,
+    filterName: string | undefined) {
+
+    const hlsFormat: string = "format=m3u8-cmaf";
+    const dashFormat: string = "format=mpd-time-cmaf";
+
+    // Get the default streaming endpoint on the account
+    let streamingEndpoint = await mediaServicesClient.streamingEndpoints.get(resourceGroup, account, streamingEndpointName);
+
+    if (streamingEndpoint?.resourceState !== "Running") {
+        console.log(`Streaming endpoint is stopped. Starting the endpoint named ${streamingEndpointName}`);
+        await mediaServicesClient.streamingEndpoints.beginStartAndWait(resourceGroup, account, streamingEndpointName, {
+
+        })
+            .then(() => {
+                console.log("Streaming Endpoint Started.");
+            })
+
+    }
+
+    let manifestBase = `https://${streamingEndpoint.hostName}/${streamingLocatorId}/${manifestName}.ism/manifest`
+
+    let hlsManifest: string;
+
+    if (!filterName) {
+        hlsManifest = `${manifestBase}(${hlsFormat})`;
+    } else {
+        hlsManifest = `${manifestBase}(${hlsFormat},filter=${filterName})`;
+    }
+
+    let dashManifest: string;
+    if (!filterName) {
+        dashManifest = `${manifestBase}(${dashFormat})`;
+    } else {
+        dashManifest = `${manifestBase}(${dashFormat},filter=${filterName})`;
+    }
+
+    return {
+        hls: hlsManifest,
+        dash: dashManifest,
+    }
 }
 
 export default httpTrigger;
