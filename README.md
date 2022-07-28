@@ -40,7 +40,7 @@ This project is using the following technologies:
    Open a 3rd Bash terminal, change to the root directory and start the proxy:
 
     ``` bash
-    npm run start-swa
+    npm run start-swa --api-location /api
     ```
 
 1. Rename this 3rd terminal window to be "SWA" or "Static Web App".

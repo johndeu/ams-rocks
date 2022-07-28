@@ -256,6 +256,15 @@ const demoPage = (theme) => ({
     videoSideNav : {
         
     },
+    splashImage : {
+        borderRadius:"8px",
+        marginLeft:"5px",
+        marginTop:"5px"
+    },
+    modalFooter : {
+        marginRight:"32px",
+        marginBottom:"20px"
+    },
     ...tooltipsStyle,
 });
 

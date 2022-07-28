@@ -444,20 +444,13 @@ export default function DemoPage(props) {
                                 aria-labelledby="into-modal-slide-title"
                                 aria-describedby="into-modal-slide-description"
                             >
-                                <DialogTitle
-                                    id="intro-modal-slide-title"
-                                    disableTypography
-                                    className={classes.modalHeader}
-                                >
-                                    <h4 className={classes.modalTitle}>Azure Media Services Creator Studio</h4>
-                                </DialogTitle>
                                 <DialogContent
                                     id="intro-modal-slide-description"
                                     className={classes.modalBody}
                                 >
 
                                     <div>
-                                        <img src="/img/UnmistablyWindows_0001.jpg"></img>
+                                        <img className={classes.splashImage} src="/img/UnmistablyWindows_0001.jpg"></img>
                                         <h3>Welcome!</h3>
                                         <p>
                                             This is a demo of the Azure Media Services Creator Studio,
@@ -469,9 +462,11 @@ export default function DemoPage(props) {
                                 </DialogContent>
                                 <DialogActions className={classes.modalFooter}>
                                     <Button
-                                        onClick={() => window.location = '/'}
-                                        color="transparent"
-                                        simple
+                                         color="transparent"
+                                         size="lg"
+                                         border="1px solid"
+                                         href="/"
+                                         rel="noreferrer"
                                     >
                                         Cancel
                                     </Button>
@@ -479,7 +474,7 @@ export default function DemoPage(props) {
                                         <Button
                                             onClick={() => startDemo()}
                                             color="danger"
-                                            simple
+                                            size="lg"
                                         >
                                             Try now
                                         </Button>
