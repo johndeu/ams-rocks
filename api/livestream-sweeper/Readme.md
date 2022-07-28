@@ -2,6 +2,15 @@
 
 This function is using a TimerTrigger to clean up and stop all live events that have been running for longer than 5 minutes. 
 
+## Deployment
+Unfortunately, Azure Static Web Apps does not allow you to host a timer trigger... which sucks. 
+"Error in processing api build artifacts: the file 'livestream-sweeper/function.json' has specified an invalid trigger of type 'timerTrigger' and direction 'in'. Currently, only httpTriggers are supported. Visit https://github.com/Azure/azure-functions-host/wiki/function.json for more information."
+
+Options are:
+1. Call this API manually - but that doesn't help much...
+1. Move this to it's own function app standalone.
+
+
 ## Requirements
 
 To debug and run this function locally, you must enable the local storage Emulator by installing the Azurite extension in VS Code. 

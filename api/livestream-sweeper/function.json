@@ -8,5 +8,6 @@
       "runOnStartup": false
     }
   ],
+  "disabled": true,
   "scriptFile": "../dist/livestream-sweeper/index.js"
 }
