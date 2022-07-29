@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Deploy Azure Function App - amsrocks-demo-triggers
+name: Build and deploy Azure Function App - amsrocks-demo-triggers
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'api' # set this to the path to your web app project, in our case it is the "api" folder for the functions app
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'api' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
 
 jobs:
@@ -39,6 +39,6 @@ jobs:
         id: fa
         with:
           app-name: 'amsrocks-demo-triggers'
-          slot-name: 'production'
+          slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_180bb92eb07547a7b0cea23ec9e1893a }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_457F4DCEF56B4BA3967B04594DF1AB97 }}
