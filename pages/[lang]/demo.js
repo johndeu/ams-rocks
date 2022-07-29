@@ -175,7 +175,7 @@ export default function DemoPage(props) {
         ctx.font = '24px Segoe UI';
         const date = new Date();
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds().toString().padStart(3, '0')}`;
-        ctx.fillText(`${nameRef.current}${dateText}`, 10, 50, canvasRef.current.width - 20);
+        ctx.fillText(`${nameRef.current}${dateText}`, 10, canvasRef.current.height - 50, canvasRef.current.width - 20);
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
     };
@@ -204,6 +204,11 @@ export default function DemoPage(props) {
 
         let ticks = 0;
         var timerProgress = setInterval(() => {
+            if (loadingProgress > 100 ){
+                clearInterval(timerProgress);
+                setNoEvents(true);
+                // throw new Error("No events discoverd in time");
+            }
             setLoadingProgress(loadingProgress += 5);
             console.log("tick, tock...");
         }, 500);
@@ -545,7 +550,7 @@ export default function DemoPage(props) {
                                         Click the button below to accept the browser permissions and continue to the Creator Studio.
                                     </p>
 
-                                    {!liveStreamStarted && !introModal &&
+                                    {!liveStreamStarted && !introModal && !noEvents &&
                                         <>
                                             <h3>Please wait while we setup your demo session...</h3>
                                             <CustomLinearProgress

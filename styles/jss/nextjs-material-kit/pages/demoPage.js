@@ -255,9 +255,9 @@ const demoPage = (theme) => ({
         paddingRight: "24px",
     },
     noEventsAvailable : {
-        position:"absolute",
-        top: "30vh",
-        left: "10vw",
+        position:"relative",
+        top: "40vh",
+        left: "0vw",
         color:"#000",
         fontSize: "24px",
         fontWeight:"400",
