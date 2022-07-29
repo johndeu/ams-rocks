@@ -1,8 +1,8 @@
 import { DefaultAzureCredential } from '@azure/identity';
 import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
-import { liveStream } from '../../functionsForDeployment/models/liveStream';
-import { account } from '../../functionsForDeployment/models/account'
+import { liveStream } from '../models/liveStream';
+import { account } from '../models/account'
 var moment = require('moment');
 
 // This is the main Media Services client object
@@ -96,7 +96,7 @@ async function stopLiveStream(liveStream: liveStream): Promise<void> {
 async function listLiveStreams(): Promise<liveStream[]> {
     console.log("Listing live streams");
 
-    let eventsInPool :liveStream[] = [];
+    let eventsInPool[] = [];
 
     for (const account of accountPool) {
         let eventsInAccount = await mediaServicesClient.liveEvents.list(
