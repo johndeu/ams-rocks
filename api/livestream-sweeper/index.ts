@@ -96,7 +96,7 @@ async function stopLiveStream(liveStream: liveStream): Promise<void> {
 async function listLiveStreams(): Promise<liveStream[]> {
     console.log("Listing live streams");
 
-    let eventsInPool[] = [];
+    let eventsInPool: [] = [];
 
     for (const account of accountPool) {
         let eventsInAccount = await mediaServicesClient.liveEvents.list(
