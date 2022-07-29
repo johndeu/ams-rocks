@@ -111,12 +111,12 @@ async function listLiveStreams(): Promise<liveStream[]> {
             let item: LiveEvent = liveEvent.value
 
             eventsInPool.push({
-                id: item.id as string,
-                name: item.name as string,
+                id: item.id,
+                name: item.name,
                 location: item.location,
-                createdAt: item.created as Date,
-                lastModified: item.lastModified as Date,
-                status: item.resourceState as string,
+                createdAt: item.created,
+                lastModified: item.lastModified,
+                status: item.resourceState,
                 tags: item.tags,
                 account: account.name
             })
