@@ -1,14 +1,10 @@
 {
   "bindings": [
     {
-      "authLevel": "function",
-      "type": "httpTrigger",
+      "name": "myTimer",
+      "type": "timerTrigger",
       "direction": "in",
-      "name": "req",
-      "route": "livestream/sweep",
-      "methods": [
-        "get"
-      ]
+      "schedule": "0 */5 * * * *"
     }
   ],
   

@@ -1,8 +1,8 @@
 import { DefaultAzureCredential } from '@azure/identity';
 import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
-import { liveStream } from '../../api/models/liveStream';
-import { account } from '../../api/models/account'
+import { liveStream } from '../models/liveStream';
+import { account } from '../models/account'
 var moment = require('moment');
 
 // This is the main Media Services client object
@@ -14,7 +14,7 @@ const longRunningOperationUpdateIntervalMs = 1000;
 // from your Media Services account's API Access page in the Azure portal.
 const subscriptionId: string = process.env.AZURE_SUBSCRIPTION_ID as string;
 const resourceGroup: string = process.env.AZURE_RESOURCE_GROUP as string;
-const accountPool: account[] = JSON.parse(process.env.ACCOUNT_POOL);
+const accountPool: account[] = JSON.parse(process.env.ACCOUNT_POOL as string) 
 
 // const credential = new ManagedIdentityCredential("<USER_ASSIGNED_MANAGED_IDENTITY_CLIENT_ID>");
 const credential = new DefaultAzureCredential({
@@ -22,7 +22,7 @@ const credential = new DefaultAzureCredential({
 });
 
 
-module.exports = async function (context, myTimer) {
+module.exports = async function (context :any, myTimer:any) {
     var timeStamp = new Date().toISOString();
 
     if (myTimer.isPastDue) {
@@ -96,7 +96,7 @@ async function stopLiveStream(liveStream: liveStream): Promise<void> {
 async function listLiveStreams(): Promise<liveStream[]> {
     console.log("Listing live streams");
 
-    let eventsInPool = [];
+    let eventsInPool :liveStream[] = [];
 
     for (const account of accountPool) {
         let eventsInAccount = await mediaServicesClient.liveEvents.list(
@@ -111,12 +111,12 @@ async function listLiveStreams(): Promise<liveStream[]> {
             let item: LiveEvent = liveEvent.value
 
             eventsInPool.push({
-                id: item.id,
-                name: item.name,
+                id: item.id as string,
+                name: item.name as string,
                 location: item.location,
-                createdAt: item.created,
-                lastModified: item.lastModified,
-                status: item.resourceState,
+                createdAt: item.created as Date,
+                lastModified: item.lastModified as Date,
+                status: item.resourceState as string,
                 tags: item.tags,
                 account: account.name
             })
