@@ -25,7 +25,7 @@ const demoPage = (theme) => ({
         color: "#FFFFFF",
         backgroundColor: "#F0F0F0",
         textAlign: "left",
-        paddingTop: "120px",
+        paddingTop: "80px",
         ...container,
 
         "&, & label": {
@@ -271,11 +271,16 @@ const demoPage = (theme) => ({
         paddingRight: "24px",
     },
     videoTopBar : {
-        paddingLeft: "40px",
+        align:"center",
+        paddingLeft: "60px",
         paddingTop: "0px",
-        paddingBottom: "15px"
+        paddingBottom: "15px",
+        width:"100%",
+        alignItems: "center",
     },
     clock: {
+        position:"relative",
+        top: "5px",
         paddingRight:"25px",
         font: "Segoe UI",
         fontWeight: "600",

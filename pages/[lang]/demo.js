@@ -405,15 +405,6 @@ export default function DemoPage(props) {
         console.log("Stopping stream")
         stopStreaming();
         stopLiveStream();
-
-        console.log("closing WebSocket")
-        wsRef.current.close();
-
-        setStreaming(false);
-        setConnected(false);
-        setLiveStream(null);
-        setLiveStreamStarted(false);
-        setCameraEnabled(false);
     }
 
     // Move this block to it's own page component later...
@@ -599,35 +590,35 @@ export default function DemoPage(props) {
                             )}
                         </GridItem>
                         {liveStreamStarted &&
-                            <GridItem id="studio" xs={12} sm={12} md={12} className={classes.videoTopBar}>
-                                <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
+                        <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
+                            <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
-                                {liveStreamStarted && cameraEnabled && 
-                                <>
-                                    <Button
-                                        color="transparent"
-                                        size="sm"
-                                        border="1px solid"
-                                        target="_blank"
-                                        href="{`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}"
+                            {liveStreamStarted && cameraEnabled && 
+                            <>
+                                <Button
+                                    color="transparent"
+                                    size="sm"
+                                    border="1px solid"
+                                    target="_blank"
+                                    href="{`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}"
 
-                                    >
-                                        <PlayArrow className={classes.icons} /> Watch HLS stream
-                                    </Button>
-                                    <Button
-                                        color="transparent"
-                                        size="sm"
-                                        target="_blank"
-                                        href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
-                                        border="1px solid"
-                                    >
-                                        <PlayArrow className={classes.icons} /> Watch DASH stream
-                                    </Button>
-                                </>
+                                >
+                                    <PlayArrow className={classes.icons} /> Watch HLS stream
+                                </Button>
+                                <Button
+                                    color="transparent"
+                                    size="sm"
+                                    target="_blank"
+                                    href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
+                                    border="1px solid"
+                                >
+                                    <PlayArrow className={classes.icons} /> Watch DASH stream
+                                </Button>
+                            </>
 
-                                }
+                            }
 
-                            </GridItem>
+                        </GridItem>
                         }
                         <GridItem id="studio" xs={12} sm={12} md={8}>
                             <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
@@ -660,9 +651,17 @@ export default function DemoPage(props) {
                                             onChange={(e) => setTextOverlay(e.target.value)}
                                         />
                                         <br></br>
-                                        <button onClick={stopStreaming}>Stop Streaming</button>
+                                        <Button
+                                        onClick={() => cleanUpDemo()}
+                                        color="danger"
+                                        size="sm"
+                                        >
+                                            Stop streaming
+                                        </Button>
                                         <p></p>
+
                                         {sharePlaybackUrl}
+
                                     </div>
                                 ) : (
                                     <>
@@ -681,13 +680,16 @@ export default function DemoPage(props) {
                                             onChange={(e) => setMicrophone(e.value)}>
                                             {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
                                         </select>
-                                        <button
+
+                                        <Button
+                                            onClick={startStreaming}
                                             className={classes.startButton}
                                             disabled={!liveStreamStarted}
-                                            onClick={startStreaming}
-                                        >
-                                            Start Streaming
-                                        </button>
+                                            color="danger"
+                                            size="sm"
+                                            >
+                                                Start Streaming
+                                        </Button>
                                         <p></p>
                                         {sharePlaybackUrl}
                                     </>
