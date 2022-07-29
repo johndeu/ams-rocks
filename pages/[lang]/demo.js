@@ -96,6 +96,7 @@ export default function DemoPage(props) {
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
+    const [timeUp, setTimeUp] = useState(false);
     const [clockTime, setClockTime] = useState("05:00");
 
     const inputStreamRef = useRef();
@@ -255,8 +256,7 @@ export default function DemoPage(props) {
                     setStreamUrl(liveStream.ingestUrl);
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
-                    setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
-                    startClock();
+
                     clearInterval(timerProgress);
                 })
                 .catch((error) => {
@@ -335,6 +335,9 @@ export default function DemoPage(props) {
 
     const startStreaming = () => {
         setStreaming(true);
+        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+        startClock();
+        
         const settings = getRecorderSettings();
 
         // use the CONTAINER_APP_URL as the main URL 
