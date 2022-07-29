@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { DefaultAzureCredential } from '@azure/identity';
+import { DefaultAzureCredential, ManagedIdentityCredential } from '@azure/identity';
 import { AzureMediaServices, KnownLiveEventResourceState, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
 
@@ -13,10 +13,11 @@ const longRunningOperationUpdateIntervalMs = 1000;
 const subscriptionId: string = process.env.AZURE_SUBSCRIPTION_ID as string;
 const resourceGroup: string = process.env.AZURE_RESOURCE_GROUP as string;
 const accountPool: account[] = JSON.parse(process.env.ACCOUNT_POOL);
+const managedIdentityClientId :string =  process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
 
 // const credential = new ManagedIdentityCredential("<USER_ASSIGNED_MANAGED_IDENTITY_CLIENT_ID>");
 const credential = new DefaultAzureCredential({
-    managedIdentityClientId: process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
+    managedIdentityClientId: managedIdentityClientId
 });
 
 // Object to return
@@ -42,6 +43,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     try {
         mediaServicesClient = new AzureMediaServices(credential, subscriptionId)
+        console.log(`Got the AMS client with Managed ID : ${managedIdentityClientId} `);
     } catch (err) {
         console.log(`Error retrieving Media Services Client.`);
         console.error(err);
@@ -50,6 +52,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     if (req.method == "GET") {
         console.log("Getting available live events from AMS accounts");
 
+        console.log(`listing live stream`);
         await listAvailableStreams().then(liveStreams => {
             if (liveStreams.length > 0) {
                 context.res = {
@@ -65,6 +68,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                     }
                 }
             }
+        }).catch((err) => {
+                console.log(`Error getting the live streams ${err}`);
         });
 
 
