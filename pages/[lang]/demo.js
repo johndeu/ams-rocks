@@ -118,6 +118,8 @@ export default function DemoPage(props) {
 
     const enableCamera = async () => {
         console.log("Enabling camera");
+        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+        startClock();
 
 
         inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
@@ -335,9 +337,8 @@ export default function DemoPage(props) {
 
     const startStreaming = () => {
         setStreaming(true);
-        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
-        startClock();
-        
+
+
         const settings = getRecorderSettings();
 
         // use the CONTAINER_APP_URL as the main URL 
