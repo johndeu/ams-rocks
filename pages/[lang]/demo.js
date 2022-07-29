@@ -418,30 +418,22 @@ export default function DemoPage(props) {
 
     // Move this block to it's own page component later...
     const sharePlaybackUrl = <>
-        {livePlayback && <button
-            disabled
-            className={classes.shareButton}
-        >
-            Share event with viewers
-        </button>
-        }
+
         {livePlayback && <>
-            <label for="url">Hls playback</label>
+            <label for="url">HLS manifest</label>
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
                 value={livePlayback.locatorUrl.hls}
             />
-            <a href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`} target="_blank">Playback HLS in Shaka Player</a>
-            <br />
-            <label for="url">Dash playback</label>
+           <br />
+            <label for="url">DASH manifest</label>
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
                 value={livePlayback.locatorUrl.dash}
             />
-            <a href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`} target="_blank">Playback DASH in Azure Media Player</a>
-        </>
+          </>
         }
     </>
 
