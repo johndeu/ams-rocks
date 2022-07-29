@@ -381,6 +381,34 @@ export default function DemoPage(props) {
     };
 
 
+    // Move this block to it's own page component later...
+    const sharePlaybackUrl = <>
+        {livePlayback && <button
+            disabled
+            className={classes.shareButton}
+        >
+            Share event with viewers
+        </button>
+        }
+        {livePlayback && <>
+            <label for="url">Hls playback</label>
+            <input type="url" name="url" id="url"
+                placeholder="Dash playback url"
+                pattern="https://.*" size="40"
+                value={livePlayback.locatorUrl.hls}
+            />
+            <a href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`} target="_blank">Playback HLS in Shaka Player</a>
+            <br />
+            <label for="url">Dash playback</label>
+            <input type="url" name="url" id="url"
+                placeholder="Dash playback url"
+                pattern="https://.*" size="40"
+                value={livePlayback.locatorUrl.dash}
+            />
+            <a href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`} target="_blank">Playback DASH in Azure Media Player</a>
+        </>
+        }
+    </>
 
     // This effect only gets called on first load of page. 
     useEffect(() => {
@@ -572,6 +600,8 @@ export default function DemoPage(props) {
                                             onChange={(e) => setTextOverlay(e.target.value)}
                                         />
                                         <button onClick={stopStreaming}>Stop Streaming</button>
+                                        <p></p>
+                                        {sharePlaybackUrl}
                                     </div>
                                 ) : (
                                     <>
@@ -598,28 +628,7 @@ export default function DemoPage(props) {
                                             Start Streaming
                                         </button>
                                         <p></p>
-                                        {livePlayback && <button
-                                            disabled
-                                            className={classes.shareButton}
-                                        >
-                                            Share event with viewers
-                                        </button>
-                                        }
-                                        <label for="url">Hls playback</label>
-                                        <input type="url" name="url" id="url"
-                                            placeholder="Dash playback url"
-                                            pattern="https://.*" size="40"
-                                            value={livePlayback.locatorUrl.hls}
-                                        />
-                                        <a href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`} target="_blank">Playback HLS in Shaka Player</a>
-                                        <br/>
-                                        <label for="url">Dash playback</label>
-                                        <input type="url" name="url" id="url"
-                                            placeholder="Dash playback url"
-                                            pattern="https://.*" size="40"
-                                            value={livePlayback.locatorUrl.dash}
-                                        />
-                                        <a href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`} target="_blank">Playback DASH in Azure Media Player</a>
+                                        {sharePlaybackUrl}
                                     </>
                                 ))}
 
