@@ -4,7 +4,7 @@ import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
 import { liveStream } from '../models/liveStream';
 import { account } from '../models/account'
-var moment  = require ('moment');
+var moment = require('moment');
 
 
 // This is the main Media Services client object
@@ -55,18 +55,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
         let liveEvent = await mediaServicesClient.liveEvents.get(resourceGroup, account, name);
 
-        liveEvent.tags = {
-            "startTime": moment().format()
-        }
 
-        await mediaServicesClient.liveEvents.beginUpdateAndWait(
-            resourceGroup,
-            account,
-            name,
-            liveEvent,
-            { updateIntervalInMs: longRunningOperationUpdateIntervalMs }
-        )
-        
         // Attempt to start the long running operation and wait
         await mediaServicesClient.liveEvents.beginStartAndWait(
             resourceGroup,
@@ -89,6 +78,19 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 }
             });
 
+
+        liveEvent.tags = {
+            "startTime": moment().format()
+        }
+
+        await mediaServicesClient.liveEvents.beginUpdateAndWait(
+            resourceGroup,
+            account,
+            name,
+            liveEvent,
+            { updateIntervalInMs: longRunningOperationUpdateIntervalMs }
+        )
+        
         const dateString = new Date(Date.now()).toISOString().replace(/:|\./g, '-');
         const assetName = name + "-" + dateString
         let asset = await mediaServicesClient.assets.createOrUpdate(resourceGroup, account, assetName, {});

@@ -9,7 +9,7 @@ import moment from 'moment';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, responsiveFontSizes } from "@material-ui/core/styles";
 
 // core components
 import Header from "components/Header/Header.js";
@@ -99,7 +99,7 @@ export default function DemoPage(props) {
     const [liveStream, setLiveStream] = useState(null);
     const [livePlayback, setLivePlayback] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
-
+    const [loadingProgress, setLoadingProgress] = useState(0);
     const inputStreamRef = useRef();
     const videoRef = useRef();
     const canvasRef = useRef();
@@ -107,7 +107,6 @@ export default function DemoPage(props) {
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
     const nameRef = useRef();
-    const progress = useRef();
 
 
     const startDemo = async () => {
@@ -202,11 +201,12 @@ export default function DemoPage(props) {
     };
 
     const startLiveStream = () => {
-        
+
         let ticks = 0;
         var timerProgress = setInterval(() => {
-            //progress.value = ticks++
-        }, 700);
+            setLoadingProgress(loadingProgress += 5);
+            console.log("tick, tock...");
+        }, 500);
         if (liveStream) {
 
             // We have available live streams from the pools, lets start it.
@@ -217,6 +217,15 @@ export default function DemoPage(props) {
             }
 
             // Start the live stream
+            // Response object is 
+            /*     {
+                    startTime: Date;
+                    liveOutputName: string;
+                    locatorUrl: {
+                        hls: string;
+                        dash: string;
+                    };
+                } */
             fetch('/api/livestream/golive', {
                 method: 'PUT',
                 mode: 'cors',
@@ -232,12 +241,16 @@ export default function DemoPage(props) {
                     if (!response.ok) {
                         throw new Error('Could not start the live event');
                     }
+
+                    return response.json()
+                }).then((body) => {
                     console.log('Success: stream started.');
                     console.log(`Set streamkey: ${liveStream.streamKey}`);
                     setStreamKey(liveStream.streamKey);
                     console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+                    console.log(`LivePlayback URLs : ${JSON.stringify(body)}`)
                     setStreamUrl(liveStream.ingestUrl);
-                    setLivePlayback(response.body);
+                    setLivePlayback(body);
                     setLiveStreamStarted(true);
                     clearInterval(timerProgress);
                 })
@@ -448,7 +461,6 @@ export default function DemoPage(props) {
                                     id="intro-modal-slide-description"
                                     className={classes.modalBody}
                                 >
-
                                     <div>
                                         <img className={classes.splashImage} src="/img/UnmistablyWindows_0001.jpg"></img>
                                         <h3>Welcome!</h3>
@@ -462,23 +474,22 @@ export default function DemoPage(props) {
                                 </DialogContent>
                                 <DialogActions className={classes.modalFooter}>
                                     <Button
-                                         color="transparent"
-                                         size="lg"
-                                         border="1px solid"
-                                         href="/"
-                                         rel="noreferrer"
+                                        color="transparent"
+                                        size="lg"
+                                        border="1px solid"
+                                        href="/"
+                                        rel="noreferrer"
                                     >
                                         Cancel
                                     </Button>
-                                    {liveStream && !noEvents &&
-                                        <Button
-                                            onClick={() => startDemo()}
-                                            color="danger"
-                                            size="lg"
-                                        >
-                                            Try now
-                                        </Button>
-                                    }
+                                    <Button
+                                        onClick={() => startDemo()}
+                                        color="danger"
+                                        size="lg"
+                                    >
+                                        Try now
+                                    </Button>
+
                                 </DialogActions>
                             </Dialog>
 
@@ -508,21 +519,26 @@ export default function DemoPage(props) {
 
                                     {!liveStreamStarted && !introModal &&
                                         <>
-                                            <h3>Please wait while we load the demo resources...</h3>
+                                            <h3>Please wait while we setup your demo session...</h3>
                                             <CustomLinearProgress
-                                                ref={progress}
                                                 variant="determinate"
                                                 color="warning"
-                                                value={0}
+                                                value={loadingProgress}
                                                 style={{ width: "100%", display: "inline-block" }}
                                             />
                                         </>
                                     }
 
                                     {liveStreamStarted &&
-                                        <button className={classes.enableCameraButton} onClick={enableCamera}>
-                                            Enable your camera and microphone
-                                        </button>
+                                        <GridContainer>
+                                            <GridItem sm={2} md={2}></GridItem>
+                                            <GridItem sm={8} md={8}>
+                                                <button className={classes.enableCameraButton} onClick={enableCamera}>
+                                                    Enable your camera and microphone
+                                                </button>
+                                            </GridItem>
+                                            <GridItem sm={2} md={8}></GridItem>
+                                        </GridContainer>
                                     }
                                 </div>
                             )}
@@ -561,19 +577,12 @@ export default function DemoPage(props) {
                                     <>
                                         <label>Camera input</label><br />
                                         <select
-
                                             placeholder="finding devices..."
                                             type="text"
                                             onChange={(e) => setCamera(e.target.value)}>
-
                                             {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
-
                                         </select>
-
-
-
                                         <br />
-
                                         <label>Microphone input</label><br />
                                         <select
                                             placeholder="finding devices..."
@@ -581,40 +590,36 @@ export default function DemoPage(props) {
                                             onChange={(e) => setMicrophone(e.value)}>
                                             {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
                                         </select>
-                                        <br />
-                                        <label>Stream Url</label><br />
-                                        <input
-                                            className={classes.inputTextBox}
-                                            placeholder="rtmps://"
-                                            type="text"
-                                            value={liveStream.ingestUrl}
-                                            onChange={(e) => setStreamUrl(e.target.value)}
-                                        /><br />
-                                        <label>Stream key</label><br />
-                                        <input
-                                            className={classes.inputTextBox}
-                                            value={liveStream.streamKey}
-                                            type="text"
-                                            disabled
-                                        /><br />
-                                        {!liveStreamStarted && <div>
-                                            Waiting for live stream to start...
-                                        </div>
-                                        }
                                         <button
                                             className={classes.startButton}
                                             disabled={!liveStreamStarted}
                                             onClick={startStreaming}
                                         >
                                             Start Streaming
-                                        </button><br />
-                                        <button
+                                        </button>
+                                        <p></p>
+                                        {livePlayback && <button
                                             disabled
                                             className={classes.shareButton}
                                         >
                                             Share event with viewers
                                         </button>
-                                        {JSON.stringify(livePlayback)}
+                                        }
+                                        <label for="url">Hls playback</label>
+                                        <input type="url" name="url" id="url"
+                                            placeholder="Dash playback url"
+                                            pattern="https://.*" size="40"
+                                            value={livePlayback.locatorUrl.hls}
+                                        />
+                                        <a href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`} target="_blank">Playback HLS in Shaka Player</a>
+                                        <br/>
+                                        <label for="url">Dash playback</label>
+                                        <input type="url" name="url" id="url"
+                                            placeholder="Dash playback url"
+                                            pattern="https://.*" size="40"
+                                            value={livePlayback.locatorUrl.dash}
+                                        />
+                                        <a href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`} target="_blank">Playback DASH in Azure Media Player</a>
                                     </>
                                 ))}
 

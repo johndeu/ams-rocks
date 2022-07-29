@@ -1,8 +1,8 @@
 import { DefaultAzureCredential } from '@azure/identity';
 import { AzureMediaServices, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
-import { liveStream } from '../models/liveStream';
-import { account } from '../models/account'
+import { liveStream } from '../../api/models/liveStream';
+import { account } from '../../api/models/account'
 var moment = require('moment');
 
 // This is the main Media Services client object

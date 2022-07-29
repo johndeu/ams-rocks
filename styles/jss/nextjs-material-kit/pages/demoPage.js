@@ -69,11 +69,15 @@ const demoPage = (theme) => ({
         color: "#EDEBE9"
     },
     introMessage :{
-        textAlign: "center !important",
+        textAlign: "left",
+        backgroundColor:"#D4D4D4",
         color: "#000",
-        align: "center",
-        fontSize: "16px",
-        fontWeight: "400",
+        align: "left",
+        fontSize: "20px",
+        fontWeight: "500",
+        borderRadius: "8px",
+        padding: "15px 15px",
+        border: "1px solid black",
         fontStyle: "normal",
         lineHeight: "24px",
         font: "Segoe UI",
@@ -175,26 +179,39 @@ const demoPage = (theme) => ({
             textDecoration: "underline",
             backgroundColor: "#3293dc"
         },
+        
         [theme.breakpoints.down("sm")]: {
             width:"80%",
             top: "20vh",
             left: "10vw",
         },
     },
+    enableContainer: {
+        width:"50vw",
+        marginLeft:"10vw",
+        align:"center !important",
+        maxWidth:"200px",
+        [theme.breakpoints.down("md")]: {
+            width:"50vw",
+            marginLeft:"22vw",
+        },
+        [theme.breakpoints.down("sm")]: {
+            width:"50vw",
+            marginLeft:"20vw",
+        },
+    },
     enableCameraButton  : {
-    
         color:"#fff",
         fontSize: "13px",
         fontWeight:"600",
         lineHeight:"18px",
-        textAlign:"center",
-        alignItems:"center",
         marginTop:"8px",
         textDecoration: "none",
         backgroundColor: "#0078D4",
         borderRadius: "2px",
         border:"1px solid #000",
-        width:"100%",
+        width:"50vw",
+        maxWidth:"600px",
         height:"32px",
         zIndex:"100",
         "&:hover" : {
@@ -202,9 +219,8 @@ const demoPage = (theme) => ({
             backgroundColor: "#3293dc"
         },
         [theme.breakpoints.down("sm")]: {
-            width:"80%",
-            top: "20vh",
-            left: "10vw",
+            width:"50vw",
+            height:"70px",
         },
     },
     shareButton  : {
