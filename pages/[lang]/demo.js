@@ -440,9 +440,6 @@ export default function DemoPage(props) {
     // This effect only gets called on first load of page. 
     useEffect(() => {
 
-
-        startClock();
-
         // Call the API and get a list of available stopped live streams in the pool of accounts
         getAvailableLiveStreams();
 
