@@ -16,14 +16,14 @@ import tooltipsStyle from "styles/jss/nextjs-material-kit/tooltipsStyle.js";
 
 const demoPage = (theme) => ({
     section: {
-
+        backgroundColor: "#F0F0F0",
     },
     container: {
         zIndex: "4",
         width: "100vw",
         minHeight:"80vh",
         color: "#FFFFFF",
-        backgroundColor: "#fff",
+        backgroundColor: "#F0F0F0",
         textAlign: "left",
         paddingTop: "120px",
         ...container,
@@ -276,6 +276,7 @@ const demoPage = (theme) => ({
         paddingBottom: "15px"
     },
     clock: {
+        paddingRight:"25px",
         font: "Segoe UI",
         fontWeight: "600",
         fontSize: "18px",

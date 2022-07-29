@@ -23,6 +23,7 @@ import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearPr
 import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
+import PlayArrow from "@material-ui/icons/PlayArrowOutlined";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -610,7 +611,33 @@ export default function DemoPage(props) {
                         </GridItem>
                         {liveStreamStarted &&
                             <GridItem id="studio" xs={12} sm={12} md={12} className={classes.videoTopBar}>
-                                <div className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></div>
+                                <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
+
+                                {liveStreamStarted && cameraEnabled && 
+                                <>
+                                    <Button
+                                        color="transparent"
+                                        size="sm"
+                                        border="1px solid"
+                                        target="_blank"
+                                        href="{`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}"
+
+                                    >
+                                        <PlayArrow className={classes.icons} /> Watch HLS stream
+                                    </Button>
+                                    <Button
+                                        color="transparent"
+                                        size="sm"
+                                        target="_blank"
+                                        href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
+                                        border="1px solid"
+                                    >
+                                        <PlayArrow className={classes.icons} /> Watch DASH stream
+                                    </Button>
+                                </>
+
+                                }
+
                             </GridItem>
                         }
                         <GridItem id="studio" xs={12} sm={12} md={8}>
@@ -683,7 +710,7 @@ export default function DemoPage(props) {
                 <FreeSection />
                 <Footer whiteFont logoColor="gray" />
             </div>
-        </div>
+        </div >
     );
 };
 
