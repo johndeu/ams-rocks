@@ -174,8 +174,8 @@ export default function DemoPage(props) {
         ctx.fillStyle = '#FFF';
         ctx.font = '24px Segoe UI';
         const date = new Date();
-        const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds().toString().padStart(3, '0')}`;
-        ctx.fillText(`${nameRef.current}${dateText}`, 10, canvasRef.current.height - 50, canvasRef.current.width - 20);
+        const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
+        ctx.fillText(`${nameRef.current}${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
     };
@@ -204,13 +204,13 @@ export default function DemoPage(props) {
 
         let ticks = 0;
         var timerProgress = setInterval(() => {
-            if (loadingProgress > 100 ){
+            if (loadingProgress > 300 ){
                 clearInterval(timerProgress);
                 setNoEvents(true);
                 // throw new Error("No events discoverd in time");
             }
             setLoadingProgress(loadingProgress += 5);
-            console.log("tick, tock...");
+            console.log(`tick, tock...${loadingProgress}`);
         }, 500);
         if (liveStream) {
 
@@ -293,7 +293,7 @@ export default function DemoPage(props) {
         })
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error('Could not start the live event');
+                    throw new Error('Could not STOP the live event');
                 }
                 console.log('STOPPED:successfully stopped the live stream');
                 console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
@@ -562,7 +562,7 @@ export default function DemoPage(props) {
                                         </>
                                     }
 
-                                    {liveStreamStarted &&
+                                    {liveStreamStarted && !noEvents &&
                                         <GridContainer>
                                             <GridItem sm={2} md={2}></GridItem>
                                             <GridItem sm={8} md={8}>
