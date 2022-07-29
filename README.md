@@ -215,6 +215,22 @@ nextjs-web-site
         └── WorkSection.js
 ```
 
+## API Location
+
+This project has an /api folder that contains a set of Azure Functions.  Due to the limits of hosting Azure Functions "managed" in an Azure Static Web app project, I chose to move this to "Bring your own functions" to Azure Static Web Apps instead.  The reason being, I needed to support a TimedTrigger function which is currently not supported in Azure Static Web Apps.  I also wanted to have access to better monitoring and logging to troubleshoot issues that I hit during "managed" deployment. 
+
+See this article for details - https://docs.microsoft.com/en-us/azure/static-web-apps/functions-bring-your-own
+
+To change from managed to "bring your own" - you first need to set the value of the API setting to "" in the workfow configuration file for Github Actions.  See the file in .github/workflows. 
+
+Change this value from "api" to an empty string "" and redeploy so that you can link you static web app to an existing Azure function deployment. 
+
+```yml
+ api_location: "" # Api source code path - optional - set this to api if you use managed functions, but for this project I am using hosted functions
+```
+
+Also, I followed the steps in this article to setup GitHub actions to deploy my Azure Function app. You will need to deploy the function app in the /api folder and link it in the Static Web App project in the portal
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies 
 
 ## Licensing
 
