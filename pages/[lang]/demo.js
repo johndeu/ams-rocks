@@ -118,8 +118,6 @@ export default function DemoPage(props) {
 
     const enableCamera = async () => {
         console.log("Enabling camera");
-        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
-        startClock();
 
 
         inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
@@ -258,7 +256,8 @@ export default function DemoPage(props) {
                     setStreamUrl(liveStream.ingestUrl);
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
-
+                    setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+                    startClock();
                     clearInterval(timerProgress);
                 })
                 .catch((error) => {
