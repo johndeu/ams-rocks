@@ -27,7 +27,6 @@ jobs:
 
       - name: 'Resolve Project Dependencies Using Npm'
         shell: pwsh
-        working-directory: api
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
