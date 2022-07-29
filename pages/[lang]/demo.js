@@ -591,14 +591,17 @@ export default function DemoPage(props) {
                                             className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
                                                 }`}
                                         >
-                                            {connected ? 'Connected' : 'Disconnected'}
+                                            &nbsp;{connected ? 'Connected' : 'Disconnected'}
                                         </span>
+                                        <p></p>
+                                        <label>Text overlay:</label>
                                         <input
                                             placeholder="Text Overlay"
                                             type="text"
                                             value={textOverlay}
                                             onChange={(e) => setTextOverlay(e.target.value)}
                                         />
+                                        <br></br>
                                         <button onClick={stopStreaming}>Stop Streaming</button>
                                         <p></p>
                                         {sharePlaybackUrl}

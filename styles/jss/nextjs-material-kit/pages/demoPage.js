@@ -130,7 +130,7 @@ const demoPage = (theme) => ({
         }
     },
     streamStatus: {
-        paddingLeft: "1.5em",
+        paddingLeft: "1.2em",
         position: "relative",
         fontColor:"#000",
         "&, &::before": {
@@ -146,20 +146,20 @@ const demoPage = (theme) => ({
         },
         "&, & .connected::before": {
             color:"#000 !important",
-            backgroundColor: "#8fe1d3"
+            backgroundColor: "rgba(0,255,0,1)"
         },
         "&, & .disconnected::before": {
             color:"#000 !important",
-            backgroundColor: "#fb3c4e"
+            backgroundColor: "rgba(255,0,0,1)"
         }
     },
     connected : {
         color:"#000 !important",
-        backgroundColor: "#8fe1d3"
+        backgroundColor: "rgba(0,255,0,1)"
     },
     disconnected: {
         color:"#000 !important",
-        backgroundColor: "#fb3c4e"
+        backgroundColor: "rgba(255,0,0,1)"
     },
     startButton  : {
        
@@ -241,9 +241,9 @@ const demoPage = (theme) => ({
         zIndex:"100",
     },
     getDemoSessions : {
-        position:"absolute",
+        position:"relative",
         top: "25vh",
-        left: "10vw",
+        left: "0vw",
         color:"#000",
         fontSize: "24px",
         fontWeight:"400",
