@@ -658,13 +658,13 @@ export async function getStaticProps({ params }) {
     console.log(`Static prop CONTAINERAPPURL= ${CONTAINERAPPURL}`);
 
     // The timeout for the live stream before cutoff. 
-    const TIMEOUT = process.env.TIMEOUT
+    const TIMEOUT_LIVE_STREAM_SECONDS = process.env.TIMEOUT_LIVE_STREAM_SECONDS 
 
     return {
         props: {
             language,
             CONTAINERAPPURL,
-            TIMEOUT
+            TIMEOUT_LIVE_STREAM_SECONDS
         },
     };
 }

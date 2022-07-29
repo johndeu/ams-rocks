@@ -96,7 +96,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         let asset = await mediaServicesClient.assets.createOrUpdate(resourceGroup, account, assetName, {});
 
         const liveOutputName = name + "-" + dateString;
-        const manifestName = "manifest";
+        const manifestName = "demomanifest";
 
         // Create a new live Output and get the URL for the manifest
         await mediaServicesClient.liveOutputs.beginCreateAndWait(
@@ -105,7 +105,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             name,
             liveOutputName,
             {
-                archiveWindowLength: "PT5M",
+                archiveWindowLength: "PT6M",
+                manifestName:manifestName,
                 assetName: assetName
             },
             {

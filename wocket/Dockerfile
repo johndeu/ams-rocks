@@ -3,7 +3,7 @@ FROM node:current-alpine
 # ENV
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-ENV TIMEOUT_LIVE_STREAM_SECONDS=120 
+ENV TIMEOUT_LIVE_STREAM_SECONDS=300 
 
 WORKDIR /app
 

@@ -95,7 +95,7 @@ app.prepare().then(() => {
       //force to timeout
       // This is not a GOOD idea for a timeout, because if the frames are not coming in
       // ffmpeg will just sit here and wait for frames... so a timer is better outside of this.
-      '-t', process.env.TIMEOUT_LIVE_STREAM_SECONDS ?? 120, // Timeout setting in ENV of Docker container, default 2 minute
+      '-t', process.env.TIMEOUT_LIVE_STREAM_SECONDS ?? 300, // Timeout setting in ENV of Docker container, default 5 minute
 
       rtmpUrl
     ]);
