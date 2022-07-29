@@ -121,6 +121,7 @@ const demoPage = (theme) => ({
         }
     },
     outputCanvas: {
+        paddingBottom:"50px",
         zIndex: "1",
         "&,& canvas": {
             borderRadius:"14px",
@@ -268,6 +269,23 @@ const demoPage = (theme) => ({
         height:"32px",
         zIndex:"10",
         paddingRight: "24px",
+    },
+    videoTopBar : {
+        paddingLeft: "40px",
+        paddingTop: "0px",
+        paddingBottom: "15px"
+    },
+    clock: {
+        font: "Segoe UI",
+        fontWeight: "600",
+        fontSize: "18px",
+        lineHeight: "24px"
+    },
+    clockLabel: {
+        font: "Segoe UI",
+        fontWeight: "400",
+        fontSize: "18px",
+        lineHeight: "24px"
     },
     videoSideNav : {
         

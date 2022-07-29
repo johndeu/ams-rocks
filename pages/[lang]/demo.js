@@ -2,14 +2,11 @@
 // This uses code from that demo project to stream from the browser over RTMP to Azure Media Services.
 // It also includes portions of the pull request from @dugaraju to support streaming to any RTMP server - https://github.com/MuxLabs/wocket/pull/20
 
-import React, { useState, useEffect, useRef, setData } from "react";
-import Head from 'next/head';
+import React, { useState, useEffect, useRef } from "react";
 import moment from 'moment';
 
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // @material-ui/core components
-import { makeStyles, responsiveFontSizes } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 // core components
 import Header from "components/Header/Header.js";
@@ -20,10 +17,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
-import IconButton from "@material-ui/core/IconButton";
 import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.js";
 import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
@@ -40,7 +35,6 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
-import { resolve } from "path";
 
 const useStyles = makeStyles(styles);
 
@@ -100,6 +94,9 @@ export default function DemoPage(props) {
     const [livePlayback, setLivePlayback] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
+    const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
+    const [clockTime, setClockTime] = useState("05:00");
+
     const inputStreamRef = useRef();
     const videoRef = useRef();
     const canvasRef = useRef();
@@ -204,13 +201,13 @@ export default function DemoPage(props) {
 
         let ticks = 0;
         var timerProgress = setInterval(() => {
-            if (loadingProgress > 300 ){
+            if (loadingProgress > 500) {
                 clearInterval(timerProgress);
                 setNoEvents(true);
                 // throw new Error("No events discoverd in time");
             }
-            setLoadingProgress(loadingProgress += 5);
-            console.log(`tick, tock...${loadingProgress}`);
+            setLoadingProgress(loadingProgress += 2);
+            console.log(`tick, tock...`);
         }, 500);
         if (liveStream) {
 
@@ -257,6 +254,8 @@ export default function DemoPage(props) {
                     setStreamUrl(liveStream.ingestUrl);
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
+                    setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+                    startClock();
                     clearInterval(timerProgress);
                 })
                 .catch((error) => {
@@ -264,6 +263,19 @@ export default function DemoPage(props) {
                 })
 
         }
+    }
+
+    const startClock = () => {
+        let clockTimer = setInterval(() => {
+            let timeRemaining = endTime.diff(moment());
+            if (timeRemaining <= 0) {
+                clearInterval(clockTimer);
+                cleanUpDemo();
+            }
+            else {
+                setClockTime(moment(timeRemaining).format('mm:ss'));
+            }
+        }, 1000)
     }
 
     const stopLiveStream = () => {
@@ -317,6 +329,8 @@ export default function DemoPage(props) {
             setLiveStream(null);
         }
     };
+
+
 
     const startStreaming = () => {
         setStreaming(true);
@@ -385,6 +399,21 @@ export default function DemoPage(props) {
         mediaRecorderRef.current.start(500); // this was originally 1000 - it is the timeslices in milliseconds to record into each blob.
     };
 
+    const cleanUpDemo = () => {
+        console.log("Cleaning Up Demo...")
+        console.log("Stopping stream")
+        stopStreaming();
+        stopLiveStream();
+
+        console.log("closing WebSocket")
+        wsRef.current.close();
+
+        setStreaming(false);
+        setConnected(false);
+        setLiveStream(null);
+        setLiveStreamStarted(false);
+        setCameraEnabled(false);
+    }
 
     // Move this block to it's own page component later...
     const sharePlaybackUrl = <>
@@ -417,6 +446,9 @@ export default function DemoPage(props) {
 
     // This effect only gets called on first load of page. 
     useEffect(() => {
+
+
+        startClock();
 
         // Call the API and get a list of available stopped live streams in the pool of accounts
         getAvailableLiveStreams();
@@ -529,11 +561,11 @@ export default function DemoPage(props) {
 
                             {/*  Show this when loading available live streams */}
                             {!liveStream && !noEvents &&
-                                <div className={classes.getDemoSessions}> Looking for available demo sessions... </div>
+                                <div className={classes.getDemoSessions}> Getting available demo sessions... </div>
                             }
                             {/*  Show this when there are no available live streams to use in the pool*/}
-                            {noEvents &&
-                                <div className={classes.noEventsAvailable}> Sorry, there are no available demo sessions at this time. <br />
+                            {noEvents && !cameraEnabled &&
+                                <div className={classes.noEventsAvailable}> This is a bummer, but there are no available live streams. <br />
                                     Please try again later.
                                 </div>
                             }
@@ -552,7 +584,7 @@ export default function DemoPage(props) {
 
                                     {!liveStreamStarted && !introModal && !noEvents &&
                                         <>
-                                            <h3>Please wait while we setup your demo session...</h3>
+                                            <h3>Please stand by while we setup...</h3>
                                             <CustomLinearProgress
                                                 variant="determinate"
                                                 color="warning"
@@ -576,6 +608,11 @@ export default function DemoPage(props) {
                                 </div>
                             )}
                         </GridItem>
+                        {liveStreamStarted &&
+                            <GridItem id="studio" xs={12} sm={12} md={12} className={classes.videoTopBar}>
+                                <div className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></div>
+                            </GridItem>
+                        }
                         <GridItem id="studio" xs={12} sm={12} md={8}>
                             <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                 }`}
@@ -666,7 +703,7 @@ export async function getStaticProps({ params }) {
     console.log(`Static prop CONTAINERAPPURL= ${CONTAINERAPPURL}`);
 
     // The timeout for the live stream before cutoff. 
-    const TIMEOUT_LIVE_STREAM_SECONDS = process.env.TIMEOUT_LIVE_STREAM_SECONDS 
+    const TIMEOUT_LIVE_STREAM_SECONDS = process.env.TIMEOUT_LIVE_STREAM_SECONDS
 
     return {
         props: {
