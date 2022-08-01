@@ -122,6 +122,7 @@ export default function DemoPage(props) {
         console.log("Starting up the demo...");
         setDemoState(STATES.LOADING);
         // This will start up the live stream while we await the camera and mic to be enabled.
+
         startLiveStream();
 
     }
@@ -229,6 +230,7 @@ export default function DemoPage(props) {
 
         if (liveStream) {
 
+            console.log(`Staring up live stream ${liveStream.name} in location ${liveStream.location}`)
             // We have available live streams from the pools, lets start it.
 
             const data = {
@@ -338,20 +340,25 @@ export default function DemoPage(props) {
 
     const getAvailableLiveStreams = async () => {
         console.log("Fetching available live streams");
-        const liveStreams = await (await fetch(`/api/livestream/getavailable`)).json();
+
+        const liveStreams = await (await fetch(`/api/livestream/getavailable`).then()).json()
+            .then( (liveStreams) => {
+            // We should later try to grab the "closest" regional stream using the BING API for IP location
+            // <TODO> Add ip location and find by region closest.
+            if (liveStreams && liveStreams.length > 0) {
+                setLiveStream(liveStreams[0]);
+                console.log("Found a live stream");
+                console.log(`Name: ${liveStreams[0].name} location: ${liveStreams[0].location}`);
+            }
+            else {
+                console.log("Sorry, no live streams available");
+                setNoEvents(true);
+                setLiveStream(null);
+            }
+        });
 
 
-        // We should later try to grab the "closest" regional stream using the BING API for IP location
-        // <TODO> Add ip location and find by region closest.
-        if (liveStreams && liveStreams.length > 0) {
-            setLiveStream(liveStreams[0]);
-            console.log("Found a live stream");
-        }
-        else {
-            console.log("Sorry, no live streams available");
-            setNoEvents(true);
-            setLiveStream(null);
-        }
+
     };
 
 
@@ -430,11 +437,17 @@ export default function DemoPage(props) {
         console.log("Stopping stream")
         stopStreaming();
         stopLiveStream();
+        setCameraEnabled(false);
+        setLiveStreamStarted(false);
+        setLiveStream(null);
+        setNoEvents(false);
         setDemoState(STATES.COMPLETE);
 
         //REST for now.. do something else later.
         setDemoState(STATES.INTRO)
         setIntroModal(true);
+        getAvailableLiveStreams()
+
     }
 
     // Move this block to it's own page component later...
@@ -462,7 +475,7 @@ export default function DemoPage(props) {
     useEffect(() => {
 
         // Call the API and get a list of available stopped live streams in the pool of accounts
-        getAvailableLiveStreams();
+        getAvailableLiveStreams()
 
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {

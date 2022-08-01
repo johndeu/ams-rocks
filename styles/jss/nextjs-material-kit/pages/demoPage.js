@@ -164,7 +164,6 @@ const demoPage = (theme) => ({
         backgroundColor: "rgba(255,0,0,1)"
     },
     startButton  : {
-       
         color:"#fff",
         fontSize: "13px",
         fontWeight:"600",
@@ -321,9 +320,13 @@ const demoPage = (theme) => ({
     stopButton : {
         backgroundColor:"#D24726 !important",
         borderRadius: "15px",
+        zIndex: "15",
         "&:hover" : {
             backgroundColor:"#db6b51",
             textDecoration: "underline",
+        },
+        "&, &:hover" : {
+            backgroundColor:"#000",
         }
     },
     ...tooltipsStyle,
