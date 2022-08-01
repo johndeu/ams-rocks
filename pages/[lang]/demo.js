@@ -642,10 +642,10 @@ export default function DemoPage(props) {
                         </GridItem>
                         {liveStreamStarted && (demoState == STATES.STREAMING) &&
                             <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
-                                <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
                                 {liveStreamStarted && cameraEnabled &&
                                     <>
+                                        <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
                                         <Button
                                             color="transparent"
                                             size="sm"
@@ -682,16 +682,18 @@ export default function DemoPage(props) {
                                     <div className={classes.outputCanvas}>
                                         <canvas ref={canvasRef}></canvas>
                                     </div>
-                                    <div className={classes.playerControls}>
-                                        <Button
-                                            className={classes.stopButton}
-                                            color="danger"
-                                            size="sm"
-                                            onClick={() => cleanUpDemo()}
-                                        >
-                                            <StopRounded className={classes.icons} /> Stop
-                                        </Button>
-                                    </div>
+                                    {liveStreamStarted && cameraEnabled &&
+                                        <div className={classes.playerControls}>
+                                            <Button
+                                                className={classes.stopButton}
+                                                color="danger"
+                                                size="sm"
+                                                onClick={() => cleanUpDemo()}
+                                            >
+                                                <StopRounded className={classes.icons} /> Stop
+                                            </Button>
+                                        </div>
+                                    }
                                 </div>
                             </GridItem>
                         }
