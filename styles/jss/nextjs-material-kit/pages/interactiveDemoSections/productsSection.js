@@ -4,10 +4,16 @@ const productSection = {
     container: {
       ...container,
       zIndex: "2",
+      position:"relative",
+      
     },
     imageProduct :{
       position:"relative",
-      translate:"-10%"
+      translate:"-18%",
+      transform: "scale(105%,115%)",
+      objectFit:"fill",
+      width: "auto",
+      maxHeight:"auto"
     },
     title : {
       fontColor: "#323130 !important",

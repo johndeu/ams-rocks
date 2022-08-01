@@ -21,8 +21,8 @@ export default function productsSection() {
                 <GridContainer justify="left">
                     <GridItem xs={12} sm={12} md={12}>
                         <GridContainer className={classes.productBox}>
-                            <GridItem xs={12} sm={12} md={4} className={classes.imageProduct}>
-                                <img src="/img/products/product-1.jpg"></img>
+                            <GridItem xs={12} sm={12} md={4} >
+                                <img src="/img/products/product-1.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8}>
                                 <span className={classes.description}>Contoso Studios dark grey mini shoulder...</span><br></br>
@@ -34,7 +34,7 @@ export default function productsSection() {
                     <GridItem xs={12} sm={12} md={12}>
                         <GridContainer className={classes.productBox}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-2.jpg"></img>
+                                <img src="/img/products/product-2.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Contoso Studios cognac brown dist...</span><br></br>
@@ -46,7 +46,7 @@ export default function productsSection() {
                     <GridItem xs={12} sm={12} md={12}>
                         <GridContainer className={classes.productBox}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-3.jpg"></img>
+                                <img src="/img/products/product-3.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
 
@@ -59,7 +59,7 @@ export default function productsSection() {
                     <GridItem xs={12} sm={12} md={12}>
                         <GridContainer className={classes.productBox}>
                             <GridItem xs={12} sm={12} md={4}>
-                                <img src="/img/products/product-4.jpg"></img>
+                                <img src="/img/products/product-4.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Ami de Coeur backpack</span><br></br>
