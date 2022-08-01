@@ -90,6 +90,7 @@ export default function DemoPage(props) {
     const { ...rest } = props;
 
     const [introModal, setIntroModal] = React.useState(true);
+    const [stopStreamModal, setStopStreamModal] = React.useState(false);
     const [connected, setConnected] = useState(false);
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [streaming, setStreaming] = useState(false);
@@ -135,7 +136,10 @@ export default function DemoPage(props) {
             CAMERA_CONSTRAINTS
         );
 
-        videoRef.current.srcObject = inputStreamRef.current;
+        if (videoRef && videoRef.current)
+            videoRef.current.srcObject = inputStreamRef.current;
+        else 
+            throw Error("Can't start the camera on this device");
 
         await videoRef.current.play();
 
@@ -168,26 +172,9 @@ export default function DemoPage(props) {
         startClock();
     };
 
-    const reStartCamera = async () => {
-        console.log("re-starting camera");
-
-        inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
-            CAMERA_CONSTRAINTS
-        );
-
-        videoRef.current.srcObject = inputStreamRef.current;
-        // We need to set the canvas height/width to match the video element.
-        canvasRef.current.height = videoRef.current.clientHeight;
-        canvasRef.current.width = videoRef.current.clientWidth;
-
-        await videoRef.current.play();
-        requestAnimationRef.current = requestAnimationFrame(updateCanvas);
-        setCameraEnabled(true);
-    }
-
     const resizeCanvas = async () => {
         console.log("Resizing canvas");
-        
+
         if (canvasRef && canvasRef.current) {
             // We need to set the canvas height/width to match the video element.
             canvasRef.current.height = videoRef.current.clientHeight;
@@ -469,6 +456,7 @@ export default function DemoPage(props) {
     const cleanUpDemo = () => {
         console.log("Cleaning Up Demo...")
         console.log("Stopping stream")
+        setStopStreamModal(false);
         stopStreaming();
         stopLiveStream();
         setCameraEnabled(false);
@@ -727,7 +715,7 @@ export default function DemoPage(props) {
                                                 className={classes.stopButton}
                                                 color="danger"
                                                 size="sm"
-                                                onClick={() => setDemoState(STATES.COMPLETE)}
+                                                onClick={() => setStopStreamModal(true)}
                                             >
                                                 <StopRounded className={classes.icons} /> Stop
                                             </Button>
@@ -783,7 +771,7 @@ export default function DemoPage(props) {
                             root: classes.center,
                             paper: classes.modal,
                         }}
-                        open={(demoState == STATES.COMPLETE)}
+                        open={stopStreamModal}
                         TransitionComponent={Transition}
                         keepMounted
                         aria-labelledby="into-modal-slide-title"
@@ -815,8 +803,7 @@ export default function DemoPage(props) {
                                 border="1px solid"
                                 rel="noreferrer"
                                 onClick={() => {
-                                    setDemoState(STATES.STREAMING);
-                                    reStartCamera();
+                                    setStopStreamModal(false);
                                 }
                                 }
                             >
