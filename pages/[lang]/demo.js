@@ -28,6 +28,7 @@ import StopRounded from "@material-ui/icons/StopRounded";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
+import ProductSection from "pages-sections/InteractiveDemo-Sections/ProductsSection.js";
 
 // Translations
 import { useRouter } from 'next/router';
@@ -107,6 +108,7 @@ export default function DemoPage(props) {
     const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
     const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
+    const [timerProgress, setTimeProgress] = useState(null);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -168,6 +170,7 @@ export default function DemoPage(props) {
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
 
+        clearInterval(timerProgress);
         // Start the clock
         startClock();
     };
@@ -233,7 +236,7 @@ export default function DemoPage(props) {
 
 
         let ticks = 0;
-        var timerProgress = setInterval(() => {
+        let timer = setInterval(() => {
             if (loadingProgress > 300) {
                 clearInterval(timerProgress);
                 setNoEvents(true);
@@ -242,6 +245,8 @@ export default function DemoPage(props) {
             setLoadingProgress(loadingProgress += 2);
             console.log(`tick, tock...`);
         }, 500);
+
+        setTimeProgress(timer);
 
         // If we don't have a live stream chosen from the pool yet - keep waiting...
         if (!liveStream) {
@@ -456,6 +461,7 @@ export default function DemoPage(props) {
     const cleanUpDemo = () => {
         console.log("Cleaning Up Demo...")
         console.log("Stopping stream")
+        
         setStopStreamModal(false);
         stopStreaming();
         stopLiveStream();
@@ -529,8 +535,8 @@ export default function DemoPage(props) {
         // Cleanup: Called when the component unmounts
         return () => {
             console.log("Cleaning up and stopping live stream");
+            clearInterval(timerProgress)
             stopLiveStream();
-
             cancelAnimationFrame(requestAnimationRef.current);
         };
     }, [])
@@ -664,6 +670,7 @@ export default function DemoPage(props) {
 
                                 {liveStreamStarted && cameraEnabled &&
                                     <>
+                                      
                                         <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
                                         <Button
                                             color="transparent"
@@ -729,7 +736,7 @@ export default function DemoPage(props) {
                                 {cameraEnabled &&
                                     (streaming ? (
                                         <div>
-                                            {sharePlaybackUrl}
+                                            <ProductSection />
                                         </div>
                                     ) : (
                                         <>
