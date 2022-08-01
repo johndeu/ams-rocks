@@ -21,7 +21,7 @@ export default function productsSection() {
                 <GridContainer justify="left">
                     <GridItem xs={12} sm={12} md={12}>
                         <GridContainer className={classes.productBox}>
-                            <GridItem xs={12} sm={12} md={4} >
+                            <GridItem xs={12} sm={12} md={4} className={classes.imageProduct}>
                                 <img src="/img/products/product-1.jpg"></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8}>

@@ -5,6 +5,10 @@ const productSection = {
       ...container,
       zIndex: "2",
     },
+    imageProduct :{
+      position:"relative",
+      translate:"-10%"
+    },
     title : {
       fontColor: "#323130 !important",
       fontWeight: "400",
