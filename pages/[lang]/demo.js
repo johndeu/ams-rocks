@@ -676,13 +676,21 @@ export default function DemoPage(props) {
                                 <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                     }`}
                                 >
+                                     {liveStreamStarted && cameraEnabled &&
+                                    <div
+                                        className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
+                                            }`}
+                                    >
+                                        {connected ? 'Live' : 'Disconnected'}
+                                    </div>
+                                    }
                                     <div className={classes.inputVideo}>
                                         <video ref={videoRef} muted playsInline></video>
                                     </div>
                                     <div className={classes.outputCanvas}>
                                         <canvas ref={canvasRef}></canvas>
                                     </div>
-                                    {liveStreamStarted && cameraEnabled &&
+                                    {liveStreamStarted && cameraEnabled && streaming &&
                                         <div className={classes.playerControls}>
                                             <Button
                                                 className={classes.stopButton}
@@ -702,24 +710,7 @@ export default function DemoPage(props) {
                                 {cameraEnabled &&
                                     (streaming ? (
                                         <div>
-                                            <span
-                                                className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
-                                                    }`}
-                                            >
-                                                &nbsp;{connected ? 'Connected' : 'Disconnected'}
-                                            </span>
-                                            <p></p>
-                                            <label>Text overlay:</label>
-                                            <input
-                                                placeholder="Text Overlay"
-                                                type="text"
-                                                value={textOverlay}
-                                                onChange={(e) => setTextOverlay(e.target.value)}
-                                            />
-                                            <br></br>
-
                                             {sharePlaybackUrl}
-
                                         </div>
                                     ) : (
                                         <>

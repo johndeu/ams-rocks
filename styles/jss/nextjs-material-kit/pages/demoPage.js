@@ -133,35 +133,22 @@ const demoPage = (theme) => ({
     },
     streamStatus: {
         paddingLeft: "1.2em",
-        position: "relative",
-        fontColor:"#000",
-        "&, &::before": {
-            position: "absolute",
-            left: "0em",
-            content: '',
-            display: "block",
-            height: "1em",
-            width: "1em",
-            borderRadius: "1em",
-            backgroundColor: "#000",
-            fontColor:"#000"
-        },
-        "&, & .connected::before": {
-            color:"#000 !important",
-            backgroundColor: "rgba(0,255,0,1)"
-        },
-        "&, & .disconnected::before": {
-            color:"#000 !important",
-            backgroundColor: "rgba(255,0,0,1)"
-        }
+        paddingRight: "1.2em",
+        position: "absolute",
+        top:"15px",
+        left:"25px",
+        fontColor:"#fff",
+        borderRadius:"8px",
+        backgroundColor:"gray",
+        fontWeight: "400"
     },
     connected : {
-        color:"#000 !important",
-        backgroundColor: "rgba(0,255,0,1)"
+        color:"#fff !important",
+        backgroundColor: "#D24726"
     },
     disconnected: {
-        color:"#000 !important",
-        backgroundColor: "rgba(255,0,0,1)"
+        color:"#fff !important",
+        backgroundColor: "gray"
     },
     startButton  : {
         color:"#fff",
