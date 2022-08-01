@@ -24,6 +24,7 @@ import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
 import PlayArrow from "@material-ui/icons/PlayArrowOutlined";
+import StopRounded from "@material-ui/icons/StopRounded";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -54,6 +55,13 @@ const CAMERA_CONSTRAINTS = {
     height: { min: 360, ideal: 720, max: 720 },
 };
 
+const STATES = {
+    INTRO: 'intro',
+    LOADING: 'loading',
+    STREAMING: 'streaming',
+    TIMEOUT: 'timeout',
+    COMPLETE: 'complete'
+}
 
 const getRecorderSettings = () => {
     const settings = {};
@@ -96,7 +104,7 @@ export default function DemoPage(props) {
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
-    const [timeUp, setTimeUp] = useState(false);
+    const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
 
     const inputStreamRef = useRef();
@@ -110,10 +118,12 @@ export default function DemoPage(props) {
 
     const startDemo = async () => {
         setIntroModal(false);
-        console.log("Starting up the demo...");
 
+        console.log("Starting up the demo...");
+        setDemoState(STATES.LOADING);
         // This will start up the live stream while we await the camera and mic to be enabled.
         startLiveStream();
+
     }
 
     const enableCamera = async () => {
@@ -153,9 +163,14 @@ export default function DemoPage(props) {
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
 
+        // Start the clock
+        startClock();
     };
 
     const updateCanvas = () => {
+        if (!videoRef.current)
+            return;
+
         if (videoRef.current.ended || videoRef.current.paused) {
             return;
         }
@@ -203,7 +218,7 @@ export default function DemoPage(props) {
 
         let ticks = 0;
         var timerProgress = setInterval(() => {
-            if (loadingProgress > 500) {
+            if (loadingProgress > 300) {
                 clearInterval(timerProgress);
                 setNoEvents(true);
                 // throw new Error("No events discoverd in time");
@@ -211,6 +226,7 @@ export default function DemoPage(props) {
             setLoadingProgress(loadingProgress += 2);
             console.log(`tick, tock...`);
         }, 500);
+
         if (liveStream) {
 
             // We have available live streams from the pools, lets start it.
@@ -256,8 +272,7 @@ export default function DemoPage(props) {
                     setStreamUrl(liveStream.ingestUrl);
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
-                    setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
-                    startClock();
+                    setDemoState(STATES.STREAMING);
                     clearInterval(timerProgress);
                 })
                 .catch((error) => {
@@ -268,9 +283,12 @@ export default function DemoPage(props) {
     }
 
     const startClock = () => {
+        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+
         let clockTimer = setInterval(() => {
             let timeRemaining = endTime.diff(moment());
             if (timeRemaining <= 0) {
+                setDemoState(STATES.TIMEOUT);
                 clearInterval(clockTimer);
                 cleanUpDemo();
             }
@@ -319,14 +337,18 @@ export default function DemoPage(props) {
     }
 
     const getAvailableLiveStreams = async () => {
+        console.log("Fetching available live streams");
         const liveStreams = await (await fetch(`/api/livestream/getavailable`)).json();
+
 
         // We should later try to grab the "closest" regional stream using the BING API for IP location
         // <TODO> Add ip location and find by region closest.
         if (liveStreams && liveStreams.length > 0) {
             setLiveStream(liveStreams[0]);
+            console.log("Found a live stream");
         }
         else {
+            console.log("Sorry, no live streams available");
             setNoEvents(true);
             setLiveStream(null);
         }
@@ -408,6 +430,11 @@ export default function DemoPage(props) {
         console.log("Stopping stream")
         stopStreaming();
         stopLiveStream();
+        setDemoState(STATES.COMPLETE);
+
+        //REST for now.. do something else later.
+        setDemoState(STATES.INTRO)
+        setIntroModal(true);
     }
 
     // Move this block to it's own page component later...
@@ -420,14 +447,14 @@ export default function DemoPage(props) {
                 pattern="https://.*" size="40"
                 value={livePlayback.locatorUrl.hls}
             />
-           <br />
+            <br />
             <label for="url">DASH manifest</label>
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
                 value={livePlayback.locatorUrl.dash}
             />
-          </>
+        </>
         }
     </>
 
@@ -492,6 +519,7 @@ export default function DemoPage(props) {
             />
             <div className={classes.section}>
                 <div className={classes.container}>
+                    <h4>Demo State = {demoState}</h4>
                     <GridContainer>
                         <GridItem id="introPage" xs={12} sm={12} md={12}>
                             <Dialog
@@ -548,7 +576,7 @@ export default function DemoPage(props) {
                                 <div className={classes.getDemoSessions}> Getting available demo sessions... </div>
                             }
                             {/*  Show this when there are no available live streams to use in the pool*/}
-                            {noEvents && !cameraEnabled &&
+                            {noEvents && !cameraEnabled && (demoState == STATES.LOADING) &&
                                 <div className={classes.noEventsAvailable}> This is a bummer, but there are no available live streams. <br />
                                     Please try again later.
                                 </div>
@@ -592,113 +620,119 @@ export default function DemoPage(props) {
                                 </div>
                             )}
                         </GridItem>
-                        {liveStreamStarted &&
-                        <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
-                            <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
+                        {liveStreamStarted && (demoState == STATES.STREAMING) &&
+                            <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
+                                <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
-                            {liveStreamStarted && cameraEnabled && 
-                            <>
-                                <Button
-                                    color="transparent"
-                                    size="sm"
-                                    border="1px solid"
-                                    target="_blank"
-                                    href="{`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}"
-
-                                >
-                                    <PlayArrow className={classes.icons} /> Watch HLS stream
-                                </Button>
-                                <Button
-                                    color="transparent"
-                                    size="sm"
-                                    target="_blank"
-                                    href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
-                                    border="1px solid"
-                                >
-                                    <PlayArrow className={classes.icons} /> Watch DASH stream
-                                </Button>
-                            </>
-
-                            }
-
-                        </GridItem>
-                        }
-                        <GridItem id="studio" xs={12} sm={12} md={8}>
-                            <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
-                                }`}
-                            >
-                                <div className={classes.inputVideo}>
-                                    <video ref={videoRef} muted playsInline></video>
-                                </div>
-                                <div className={classes.outputCanvas}>
-                                    <canvas ref={canvasRef}></canvas>
-                                </div>
-                            </div>
-                        </GridItem>
-                        <GridItem id="videoSideNav" xs={12} sm={12} md={4} className={classes.videoSideNav} >
-                            {cameraEnabled &&
-                                (streaming ? (
-                                    <div>
-                                        <span
-                                            className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
-                                                }`}
-                                        >
-                                            &nbsp;{connected ? 'Connected' : 'Disconnected'}
-                                        </span>
-                                        <p></p>
-                                        <label>Text overlay:</label>
-                                        <input
-                                            placeholder="Text Overlay"
-                                            type="text"
-                                            value={textOverlay}
-                                            onChange={(e) => setTextOverlay(e.target.value)}
-                                        />
-                                        <br></br>
-                                        <Button
-                                        onClick={() => cleanUpDemo()}
-                                        color="danger"
-                                        size="sm"
-                                        >
-                                            Stop streaming
-                                        </Button>
-                                        <p></p>
-
-                                        {sharePlaybackUrl}
-
-                                    </div>
-                                ) : (
+                                {liveStreamStarted && cameraEnabled &&
                                     <>
-                                        <label>Camera input</label><br />
-                                        <select
-                                            placeholder="finding devices..."
-                                            type="text"
-                                            onChange={(e) => setCamera(e.target.value)}>
-                                            {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
-                                        </select>
-                                        <br />
-                                        <label>Microphone input</label><br />
-                                        <select
-                                            placeholder="finding devices..."
-                                            type="text"
-                                            onChange={(e) => setMicrophone(e.value)}>
-                                            {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
-                                        </select>
-
                                         <Button
-                                            onClick={startStreaming}
-                                            className={classes.startButton}
-                                            disabled={!liveStreamStarted}
+                                            color="transparent"
+                                            size="sm"
+                                            border="1px solid"
+                                            target="_blank"
+                                            href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
+
+                                        >
+                                            <PlayArrow className={classes.icons} /> Watch HLS stream
+                                        </Button>
+                                        <Button
+                                            color="transparent"
+                                            size="sm"
+                                            target="_blank"
+                                            href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
+                                            border="1px solid"
+                                        >
+                                            <PlayArrow className={classes.icons} /> Watch DASH stream
+                                        </Button>
+                                    </>
+
+                                }
+
+                            </GridItem>
+                        }
+                        {(demoState == STATES.STREAMING) &&
+                            <GridItem id="studio" xs={12} sm={12} md={8}>
+                                <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
+                                    }`}
+                                >
+                                    <div className={classes.inputVideo}>
+                                        <video ref={videoRef} muted playsInline></video>
+                                    </div>
+                                    <div className={classes.outputCanvas}>
+                                        <canvas ref={canvasRef}></canvas>
+                                    </div>
+                                    <div className={classes.playerControls}>
+                                        <Button
+                                            className={classes.stopButton}
                                             color="danger"
                                             size="sm"
+                                            onClick={() => cleanUpDemo()}
+                                        >
+                                            <StopRounded className={classes.icons} /> Stop
+                                        </Button>
+                                    </div>
+                                </div>
+                            </GridItem>
+                        }
+                        {(demoState == STATES.STREAMING) &&
+                            <GridItem id="videoSideNav" xs={12} sm={12} md={4} className={classes.videoSideNav} >
+                                {cameraEnabled &&
+                                    (streaming ? (
+                                        <div>
+                                            <span
+                                                className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
+                                                    }`}
+                                            >
+                                                &nbsp;{connected ? 'Connected' : 'Disconnected'}
+                                            </span>
+                                            <p></p>
+                                            <label>Text overlay:</label>
+                                            <input
+                                                placeholder="Text Overlay"
+                                                type="text"
+                                                value={textOverlay}
+                                                onChange={(e) => setTextOverlay(e.target.value)}
+                                            />
+                                            <br></br>
+
+                                            {sharePlaybackUrl}
+
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <label>Camera input</label><br />
+                                            <select
+                                                placeholder="finding devices..."
+                                                type="text"
+                                                onChange={(e) => setCamera(e.target.value)}>
+                                                {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+                                            </select>
+                                            <br />
+                                            <label>Microphone input</label><br />
+                                            <select
+                                                placeholder="finding devices..."
+                                                type="text"
+                                                onChange={(e) => setMicrophone(e.value)}>
+                                                {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+                                            </select>
+
+                                            <Button
+                                                onClick={startStreaming}
+                                                className={classes.startButton}
+                                                disabled={!liveStreamStarted}
+                                                color="danger"
+                                                size="sm"
                                             >
                                                 Start Streaming
-                                        </Button>
-                                        <p></p>
-                                        {sharePlaybackUrl}
-                                    </>
-                                ))}
+                                            </Button>
+                                            <p></p>
+                                            {sharePlaybackUrl}
+                                        </>
+                                    ))}
 
-                        </GridItem>
+                            </GridItem>
+                        }
                     </GridContainer>
                 </div>
                 <FreeSection />

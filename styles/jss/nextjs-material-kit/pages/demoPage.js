@@ -83,8 +83,10 @@ const demoPage = (theme) => ({
         font: "Segoe UI",
     },
     videoContainer: {
+        display:"flex",
+        flexDirection: "column",
         paddingTop:"5px",
-        paddingBottom:"5px",
+        paddingBottom:"0px",
         maxWidth: "100%",
         zIndex: "5",
 
@@ -121,10 +123,9 @@ const demoPage = (theme) => ({
         }
     },
     outputCanvas: {
-        paddingBottom:"50px",
         zIndex: "1",
         "&,& canvas": {
-            borderRadius:"14px",
+            borderRadius:"14px 14px 0px 0px",
             height: "auto",
             width: "100%",
             display: "block",
@@ -304,6 +305,26 @@ const demoPage = (theme) => ({
     modalFooter : {
         marginRight:"32px",
         marginBottom:"20px"
+    },
+    playerControls: {
+        marginTop: "auto",
+        backgroundColor: "#000",
+        width:"100%",
+        align:"center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems:"center",
+        borderRadius: "0px 0px 14px 14px",
+        padding: "8px 10px 8px 10px",
+        zIndex: "10",
+    },
+    stopButton : {
+        backgroundColor:"#D24726 !important",
+        borderRadius: "15px",
+        "&:hover" : {
+            backgroundColor:"#db6b51",
+            textDecoration: "underline",
+        }
     },
     ...tooltipsStyle,
 });
