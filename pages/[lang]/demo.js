@@ -217,6 +217,7 @@ export default function DemoPage(props) {
 
     const startLiveStream = () => {
 
+
         let ticks = 0;
         var timerProgress = setInterval(() => {
             if (loadingProgress > 300) {
@@ -227,6 +228,12 @@ export default function DemoPage(props) {
             setLoadingProgress(loadingProgress += 2);
             console.log(`tick, tock...`);
         }, 500);
+
+        // If we don't have a live stream chosen from the pool yet - keep waiting...
+        if (!liveStream) {
+            setTimeout(startLiveStream, 1000);
+            return;
+        }
 
         if (liveStream) {
 
@@ -342,20 +349,20 @@ export default function DemoPage(props) {
         console.log("Fetching available live streams");
 
         const liveStreams = await (await fetch(`/api/livestream/getavailable`).then()).json()
-            .then( (liveStreams) => {
-            // We should later try to grab the "closest" regional stream using the BING API for IP location
-            // <TODO> Add ip location and find by region closest.
-            if (liveStreams && liveStreams.length > 0) {
-                setLiveStream(liveStreams[0]);
-                console.log("Found a live stream");
-                console.log(`Name: ${liveStreams[0].name} location: ${liveStreams[0].location}`);
-            }
-            else {
-                console.log("Sorry, no live streams available");
-                setNoEvents(true);
-                setLiveStream(null);
-            }
-        });
+            .then((liveStreams) => {
+                // We should later try to grab the "closest" regional stream using the BING API for IP location
+                // <TODO> Add ip location and find by region closest.
+                if (liveStreams && liveStreams.length > 0) {
+                    setLiveStream(liveStreams[0]);
+                    console.log("Found a live stream");
+                    console.log(`Name: ${liveStreams[0].name} location: ${liveStreams[0].location}`);
+                }
+                else {
+                    console.log("Sorry, no live streams available");
+                    setNoEvents(true);
+                    setLiveStream(null);
+                }
+            });
 
 
 
@@ -532,7 +539,7 @@ export default function DemoPage(props) {
             />
             <div className={classes.section}>
                 <div className={classes.container}>
-                    <h4>Demo State = {demoState}</h4>
+                    {/*  <h4>Demo State = {demoState}</h4> */}
                     <GridContainer>
                         <GridItem id="introPage" xs={12} sm={12} md={12}>
                             <Dialog

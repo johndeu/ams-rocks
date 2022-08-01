@@ -13,7 +13,7 @@ const streamingEndpointName = "default";
 let account = null;
 
 // Long running operation polling interval in milliseconds
-const longRunningOperationUpdateIntervalMs = 1000;
+const longRunningOperationUpdateIntervalMs = 500;
 
 // Copy the samples.env file and rename it to .env first, then populate it's values with the values obtained 
 // from your Media Services account's API Access page in the Azure portal.

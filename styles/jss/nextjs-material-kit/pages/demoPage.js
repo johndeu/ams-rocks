@@ -307,6 +307,7 @@ const demoPage = (theme) => ({
     },
     playerControls: {
         marginTop: "auto",
+        marginBottom:"50px",
         backgroundColor: "#000",
         width:"100%",
         align:"center",
