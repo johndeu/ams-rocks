@@ -108,7 +108,7 @@ export default function DemoPage(props) {
     const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
     const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
-    const [timerProgress, setTimeProgress] = useState(null);
+    const [timerProgress, setTimerProgress] = useState(null);
 
     const inputStreamRef = useRef();
     const videoRef = useRef();
@@ -176,8 +176,6 @@ export default function DemoPage(props) {
     };
 
     const resizeCanvas = async () => {
-        console.log("Resizing canvas");
-
         if (canvasRef && canvasRef.current) {
             // We need to set the canvas height/width to match the video element.
             canvasRef.current.height = videoRef.current.clientHeight;
@@ -246,7 +244,7 @@ export default function DemoPage(props) {
             console.log(`tick, tock...`);
         }, 500);
 
-        setTimeProgress(timer);
+        setTimerProgress(timer);
 
         // If we don't have a live stream chosen from the pool yet - keep waiting...
         if (!liveStream) {
@@ -668,7 +666,7 @@ export default function DemoPage(props) {
                         {liveStreamStarted && (demoState == STATES.STREAMING) &&
                             <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
 
-                                {liveStreamStarted && cameraEnabled &&
+                                {liveStreamStarted && cameraEnabled && streaming &&
                                     <>
                                       
                                         <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>

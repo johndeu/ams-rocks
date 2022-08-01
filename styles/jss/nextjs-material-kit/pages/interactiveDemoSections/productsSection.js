@@ -4,16 +4,14 @@ const productSection = {
     container: {
       ...container,
       zIndex: "2",
-      position: "relative",
-      paddingTop: "20vh",
-      color: "#FFFFFF",
     },
     title : {
       fontColor: "#323130 !important",
       fontWeight: "400",
       fontSize: "14px",
       lineHeight: "20px",
-      fontStyle:"normal"
+      fontStyle:"normal",
+      width:"100%",
     },
     description: {
       fontWeight: "700",
@@ -21,6 +19,7 @@ const productSection = {
       lineHeight: "18px",
       fontColor: "#111111 !important",
       textOverflow : "ellipsis",
+      width:"100%",
     },
     productBox : {
       backgroundColor: "#FFFFFF",
