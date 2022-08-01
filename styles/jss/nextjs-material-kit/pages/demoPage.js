@@ -323,7 +323,7 @@ const demoPage = (theme) => ({
         borderRadius: "15px",
         zIndex: "15",
         "&:hover" : {
-            backgroundColor:"#db6b51",
+            backgroundColor:"#eca695 !important",
             textDecoration: "underline",
         },
         "&, &:hover" : {
