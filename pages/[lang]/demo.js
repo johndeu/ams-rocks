@@ -189,6 +189,7 @@ export default function DemoPage(props) {
             return;
         }
 
+        const c = canvasRef.current;
         const ctx = canvasRef.current.getContext('2d');
 
         ctx.drawImage(
@@ -198,12 +199,23 @@ export default function DemoPage(props) {
             videoRef.current.clientWidth,
             videoRef.current.clientHeight
         );
+        
+        
+        var grd = ctx.createLinearGradient(0, (c.height/2), c.width,  (c.height/2));
+        grd.addColorStop(0, '#000');   
+        grd.addColorStop(1, 'rgba(255,0,0,.25');
+                
+        // Fill background rec with gradient
+        ctx.rect(0,0,c.width,c.height);
+        ctx.fillStyle = grd;
+        ctx.fill();
 
+        // Draw clock
         ctx.fillStyle = '#FFF';
         ctx.font = '24px Segoe UI';
         const date = new Date();
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
-        ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
+        ctx.fillText(`${dateText}`, 10, c.height - 25, connected.width - 20);
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
     };

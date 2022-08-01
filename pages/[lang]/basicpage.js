@@ -55,6 +55,19 @@ const STREAMS = [
   }
 ];
 
+
+const imageClasses = classNames(
+  classes.imgRaised,
+  classes.imgRoundedCircle,
+  classes.imgFluid
+);
+
+const playerClasses = classNames(
+  classes.player,
+  classes.imgRaised,
+  classes.imgRoundedCircle,
+);
+
 export default function basicPage(props) {
   const classes = useStyles();
   const router = useRouter();
@@ -66,6 +79,9 @@ export default function basicPage(props) {
   const [location, setLocation] = useState(STREAMS[0].location);
   const [userAgent, setUserAgent] = useState("");
   const [isIos, setIsIos] = useState(false);
+  const [stats, setStats] = useState({});
+  const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
+  const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
 
   // On page loaded
   useEffect(() => {
@@ -107,9 +123,6 @@ export default function basicPage(props) {
                     posterUrl=""
                     stats={stats}
                     raised
-                    onStatsUpdate={onStatsUpdate}
-                    onBufferedInfoUpdate={onBufferedInfoUpdate}
-                    onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
                   />
 
                 </GridItem>
