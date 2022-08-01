@@ -454,6 +454,12 @@ export default function DemoPage(props) {
         mediaRecorderRef.current.start(500); // this was originally 1000 - it is the timeslices in milliseconds to record into each blob.
     };
 
+    // Triggered on product selected
+    const productSelected= (productName) => {
+        console.log(`Product Selected:  ${productName}`);
+
+    };
+
     const cleanUpDemo = () => {
         console.log("Cleaning Up Demo...")
         console.log("Stopping stream")
@@ -727,7 +733,7 @@ export default function DemoPage(props) {
                                 {cameraEnabled &&
                                     (streaming ? (
                                         <div>
-                                            <ProductSection />
+                                            <ProductSection onProductSelected={productSelected}/>
                                         </div>
                                     ) : (
                                         <>

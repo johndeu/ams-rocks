@@ -5,7 +5,7 @@ const productSection = {
       ...container,
       zIndex: "2",
       position:"relative",
-      
+
     },
     imageProduct :{
       position:"relative",
@@ -16,7 +16,7 @@ const productSection = {
       maxHeight:"auto"
     },
     title : {
-      fontColor: "#323130 !important",
+      color: "#323130 !important",
       fontWeight: "400",
       fontSize: "14px",
       lineHeight: "20px",
@@ -27,13 +27,13 @@ const productSection = {
       fontWeight: "700",
       fontSize: "13px",
       lineHeight: "18px",
-      fontColor: "#111111 !important",
+      color: "#111111 !important",
       textOverflow : "ellipsis",
       width:"100%",
     },
     productBox : {
       backgroundColor: "#FFFFFF",
-      fontColor: "#111111 !important",
+      color: "#111111 !important",
       boxShadow: " 0px 1.2px 3.6px rgba(0, 0, 0, 0.1), 0px 6.4px 14.4px rgba(0, 0, 0, 0.13);",
       borderRadius: "6px",
       width:"100%",
@@ -46,7 +46,7 @@ const productSection = {
       marginBottom:"auto",
     },
     price : {
-      fontColor: "#111111 !important",
+      color: "#111111 !important",
       fontWeight: "400",
       fontSize: "10px",
       lineHeight: "12px",
@@ -54,7 +54,7 @@ const productSection = {
       textOverflow : "ellipsis",
     },
     seller : {
-      fontColor: "#111111 !important",
+      color: "#111111 !important",
       fontWeight: "300",
       fontSize: "10px",
       lineHeight: "10px",

@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -12,19 +14,32 @@ import styles from "styles/jss/nextjs-material-kit/pages/interactiveDemoSections
 
 const useStyles = makeStyles(styles);
 
-export default function productsSection() {
+export default function productsSection({ 
+        onProductSelected}) {
+
     const classes = useStyles();
+
+    const [product, setProduct] = React.useState("product-1");
+
+    const productChange = (productId) => {
+        setProduct(productId);
+        
+        if (onProductSelected)
+            onProductSelected(productId);
+    }
+ 
     return (
         <div className={classes.section}>
             <div className={classes.container}>
-                <span className={classes.title}>Products</span>
+                <span className={classes.title}> Products </span>
+                <h4 className={classes.title}> Selected: {product} </h4>
                 <GridContainer justify="left">
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox}>
+                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product1")}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-1.jpg" className={classes.imageProduct}></img>
+                                <img src="/img/products/product-1.jpg" className={classes.imageProduct} ></img>
                             </GridItem>
-                            <GridItem xs={12} sm={12} md={8}>
+                            <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Contoso Studios dark grey mini shoulder...</span><br></br>
                                 <span className={classes.price}>$334.99</span><br></br>
                                 <span className={classes.seller}>Walmart.com</span>
@@ -32,7 +47,7 @@ export default function productsSection() {
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox}>
+                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product2")}>
                             <GridItem xs={12} sm={12} md={4} >
                                 <img src="/img/products/product-2.jpg" className={classes.imageProduct}></img>
                             </GridItem>
@@ -44,7 +59,7 @@ export default function productsSection() {
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox}>
+                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product3")}>
                             <GridItem xs={12} sm={12} md={4} >
                                 <img src="/img/products/product-3.jpg" className={classes.imageProduct}></img>
                             </GridItem>
@@ -57,7 +72,7 @@ export default function productsSection() {
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox}>
+                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product4")}>
                             <GridItem xs={12} sm={12} md={4}>
                                 <img src="/img/products/product-4.jpg" className={classes.imageProduct}></img>
                             </GridItem>
@@ -69,7 +84,12 @@ export default function productsSection() {
                         </GridContainer>
                     </GridItem>
                 </GridContainer>
+                
             </div>
         </div>
     );
+}
+
+productsSection.propTypes = {
+    onProductSelected: PropTypes.func,
 }
