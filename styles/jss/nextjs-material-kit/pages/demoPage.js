@@ -21,7 +21,7 @@ const demoPage = (theme) => ({
     container: {
         zIndex: "4",
         width: "100vw",
-        minHeight:"80vh",
+        minHeight: "80vh",
         color: "#FFFFFF",
         backgroundColor: "#F0F0F0",
         textAlign: "left",
@@ -29,9 +29,9 @@ const demoPage = (theme) => ({
         ...container,
 
         "&, & label": {
-            color:"#000",
-            fontSize:"14px",
-            fontWeight:"600",
+            color: "#000",
+            fontSize: "14px",
+            fontWeight: "600",
         },
     },
     subHeaderBanner: {
@@ -68,9 +68,9 @@ const demoPage = (theme) => ({
         textAlign: "center !important",
         color: "#EDEBE9"
     },
-    introMessage :{
+    introMessage: {
         textAlign: "left",
-        backgroundColor:"#D4D4D4",
+        backgroundColor: "#D4D4D4",
         color: "#000",
         align: "left",
         fontSize: "20px",
@@ -83,21 +83,21 @@ const demoPage = (theme) => ({
         font: "Segoe UI",
     },
     videoContainer: {
-        display:"flex",
+        display: "flex",
         flexDirection: "column",
-        paddingTop:"5px",
-        paddingBottom:"0px",
+        paddingTop: "5px",
+        paddingBottom: "0px",
         maxWidth: "100%",
         zIndex: "5",
 
     },
     inputVideo: {
-        visibility:"collapse",
-        position:"absolute",
+        visibility: "collapse",
+        position: "absolute",
         left: "-100vw",
         marginBottom: "10px",
         "&,& video": {
-            borderRadius:"14px",
+            borderRadius: "14px",
             width: "100%",
             height: "auto",
             visibility: "collapse"
@@ -108,7 +108,7 @@ const demoPage = (theme) => ({
         border: "1px solid #605E5C",
         borerRadius: "2px",
         width: "100%",
-            height: "auto",
+        height: "auto",
     },
     learnMore: {
         color: "#000",
@@ -125,7 +125,7 @@ const demoPage = (theme) => ({
     outputCanvas: {
         zIndex: "1",
         "&,& canvas": {
-            borderRadius:"14px 14px 0px 0px",
+            borderRadius: "14px 14px 0px 0px",
             height: "auto",
             width: "100%",
             display: "block",
@@ -135,140 +135,140 @@ const demoPage = (theme) => ({
         paddingLeft: "1.2em",
         paddingRight: "1.2em",
         position: "absolute",
-        top:"15px",
-        left:"25px",
-        fontColor:"#fff",
-        borderRadius:"8px",
-        backgroundColor:"gray",
+        top: "15px",
+        left: "25px",
+        fontColor: "#fff",
+        borderRadius: "8px",
+        backgroundColor: "gray",
         fontWeight: "400"
     },
-    connected : {
-        color:"#fff !important",
+    connected: {
+        color: "#fff !important",
         backgroundColor: "#D24726"
     },
     disconnected: {
-        color:"#fff !important",
+        color: "#fff !important",
         backgroundColor: "gray"
     },
-    startButton  : {
-        color:"#fff",
+    startButton: {
+        color: "#fff",
         fontSize: "13px",
-        fontWeight:"600",
-        lineHeight:"18px",
-        textAlign:"center",
-        alignItems:"center",
-        marginTop:"8px",
+        fontWeight: "600",
+        lineHeight: "18px",
+        textAlign: "center",
+        alignItems: "center",
+        marginTop: "8px",
         backgroundColor: "#0078D4",
         borderRadius: "2px",
-        border:"1px solid #000",
-        width:"100%",
-        height:"32px",
-        "&:hover" : {
+        border: "1px solid #000",
+        width: "100%",
+        height: "32px",
+        "&:hover": {
             textDecoration: "underline",
             backgroundColor: "#3293dc"
         },
-        
+
         [theme.breakpoints.down("sm")]: {
-            width:"80%",
+            width: "80%",
             top: "20vh",
             left: "10vw",
         },
     },
     enableContainer: {
-        width:"50vw",
-        marginLeft:"10vw",
-        align:"center !important",
-        maxWidth:"200px",
+        width: "50vw",
+        marginLeft: "10vw",
+        align: "center !important",
+        maxWidth: "200px",
         [theme.breakpoints.down("md")]: {
-            width:"50vw",
-            marginLeft:"22vw",
+            width: "50vw",
+            marginLeft: "22vw",
         },
         [theme.breakpoints.down("sm")]: {
-            width:"50vw",
-            marginLeft:"20vw",
+            width: "50vw",
+            marginLeft: "20vw",
         },
     },
-    enableCameraButton  : {
-        color:"#fff",
+    enableCameraButton: {
+        color: "#fff",
         fontSize: "13px",
-        fontWeight:"600",
-        lineHeight:"18px",
-        marginTop:"8px",
+        fontWeight: "600",
+        lineHeight: "18px",
+        marginTop: "8px",
         textDecoration: "none",
         backgroundColor: "#0078D4",
         borderRadius: "2px",
-        border:"1px solid #000",
-        width:"50vw",
-        maxWidth:"600px",
-        height:"32px",
-        zIndex:"100",
-        "&:hover" : {
+        border: "1px solid #000",
+        width: "50vw",
+        maxWidth: "600px",
+        height: "32px",
+        zIndex: "100",
+        "&:hover": {
             textDecoration: "underline",
             backgroundColor: "#3293dc"
         },
         [theme.breakpoints.down("sm")]: {
-            width:"50vw",
-            height:"70px",
+            width: "50vw",
+            height: "70px",
         },
     },
-    shareButton  : {
-        color:"#000",
+    shareButton: {
+        color: "#000",
         fontSize: "13px",
-        fontWeight:"600",
-        lineHeight:"18px",
-        textAlign:"center",
-        alignItems:"center",
+        fontWeight: "600",
+        lineHeight: "18px",
+        textAlign: "center",
+        alignItems: "center",
         margin: "10 auto",
-        marginTop:"8px",
+        marginTop: "8px",
         backgroundColor: "#fff",
         borderRadius: "2px",
-        border:"1px solid",
-        width:"100%",
-        height:"32px",
-        minWidth:"100%",
-        zIndex:"100",
+        border: "1px solid",
+        width: "100%",
+        height: "32px",
+        minWidth: "100%",
+        zIndex: "100",
     },
-    getDemoSessions : {
-        position:"relative",
+    getDemoSessions: {
+        position: "relative",
         top: "25vh",
         left: "0vw",
-        color:"#000",
+        color: "#000",
         fontSize: "24px",
-        fontWeight:"400",
-        textAlign:"center",
-        alignItems:"center",
-        width:"100%",
-        height:"32px",
-        zIndex:"10",
+        fontWeight: "400",
+        textAlign: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "32px",
+        zIndex: "10",
         paddingRight: "24px",
     },
-    noEventsAvailable : {
-        position:"relative",
+    noEventsAvailable: {
+        position: "relative",
         top: "40vh",
         left: "0vw",
-        color:"#000",
+        color: "#000",
         fontSize: "24px",
-        fontWeight:"400",
-        textAlign:"center",
-        alignItems:"center",
+        fontWeight: "400",
+        textAlign: "center",
+        alignItems: "center",
         lineHeight: "38px",
-        width:"100%",
-        height:"32px",
-        zIndex:"10",
+        width: "100%",
+        height: "32px",
+        zIndex: "10",
         paddingRight: "24px",
     },
-    videoTopBar : {
-        align:"center",
+    videoTopBar: {
+        align: "center",
         paddingLeft: "60px",
         paddingTop: "0px",
         paddingBottom: "15px",
-        width:"100%",
+        width: "100%",
         alignItems: "center",
     },
     clock: {
-        position:"relative",
+        position: "relative",
         top: "5px",
-        paddingRight:"25px",
+        paddingRight: "25px",
         font: "Segoe UI",
         fontWeight: "600",
         fontSize: "18px",
@@ -280,41 +280,47 @@ const demoPage = (theme) => ({
         fontSize: "18px",
         lineHeight: "24px"
     },
-    videoSideNav : {
-        
+    videoSideNav: {
+
     },
-    splashImage : {
-        borderRadius:"8px",
-        marginLeft:"5px",
-        marginTop:"5px"
+    splashImage: {
+        borderRadius: "8px",
+        marginLeft: "5px",
+        marginTop: "5px"
     },
-    modalFooter : {
-        marginRight:"32px",
-        marginBottom:"20px"
+    splashText: {
+        fontWeight:"400",
+        fontSize:"13px",
+        lineHeight:"18px",
+        fontColor:"#000",
+    },
+    modalFooter: {
+        marginRight: "32px",
+        marginBottom: "20px"
     },
     playerControls: {
         marginTop: "auto",
-        marginBottom:"50px",
+        marginBottom: "50px",
         backgroundColor: "#000",
-        width:"100%",
-        align:"center",
+        width: "100%",
+        align: "center",
         display: "flex",
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         borderRadius: "0px 0px 14px 14px",
         padding: "8px 10px 8px 10px",
         zIndex: "10",
     },
-    stopButton : {
-        backgroundColor:"#D24726 !important",
+    stopButton: {
+        backgroundColor: "#D24726 !important",
         borderRadius: "15px",
         zIndex: "15",
-        "&:hover" : {
-            backgroundColor:"#eca695 !important",
+        "&:hover": {
+            backgroundColor: "#eca695 !important",
             textDecoration: "underline",
         },
-        "&, &:hover" : {
-            backgroundColor:"#000",
+        "&, &:hover": {
+            backgroundColor: "#000",
         }
     },
     ...tooltipsStyle,

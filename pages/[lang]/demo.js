@@ -577,9 +577,9 @@ export default function DemoPage(props) {
                                     <div>
                                         <img className={classes.splashImage} src="/img/UnmistablyWindows_0001.jpg"></img>
                                         <h3>Welcome!</h3>
-                                        <p>
-                                            This is a demo of the Azure Media Services Creator Studio,
-                                            where you can host interactive live events in the browser and broadcast them to your viewers.
+                                        <p className={classes.splashText}>
+                                            This is a demo of the <b>Azure Media Creator Studio</b>,
+                                            where you can host your live events and broadcast them to your viewers.
                                             Ready to try it out now?
                                         </p>
                                     </div>
