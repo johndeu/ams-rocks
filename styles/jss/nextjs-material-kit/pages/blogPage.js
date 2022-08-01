@@ -10,3 +10,5 @@ const blogPageStyle = {
       paddingBottom: "200px",
     }
 }
+
+export default blogPageStyle
