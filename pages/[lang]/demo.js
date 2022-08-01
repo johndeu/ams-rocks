@@ -168,6 +168,33 @@ export default function DemoPage(props) {
         startClock();
     };
 
+    const reStartCamera = async () => {
+        console.log("re-starting camera");
+
+        inputStreamRef.current = await navigator.mediaDevices.getUserMedia(
+            CAMERA_CONSTRAINTS
+        );
+
+        videoRef.current.srcObject = inputStreamRef.current;
+        // We need to set the canvas height/width to match the video element.
+        canvasRef.current.height = videoRef.current.clientHeight;
+        canvasRef.current.width = videoRef.current.clientWidth;
+
+        await videoRef.current.play();
+        requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+        setCameraEnabled(true);
+    }
+
+    const resizeCanvas = async () => {
+        console.log("Resizing canvas");
+        
+        if (canvasRef && canvasRef.current) {
+            // We need to set the canvas height/width to match the video element.
+            canvasRef.current.height = videoRef.current.clientHeight;
+            canvasRef.current.width = videoRef.current.clientWidth;
+        }
+    }
+
     const updateCanvas = () => {
         if (!videoRef.current)
             return;
@@ -484,6 +511,10 @@ export default function DemoPage(props) {
         // Call the API and get a list of available stopped live streams in the pool of accounts
         getAvailableLiveStreams()
 
+        if (window) {
+            window.addEventListener('resize', resizeCanvas);
+        }
+
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
             console.log("enumerateDevices() not supported.");
@@ -676,13 +707,13 @@ export default function DemoPage(props) {
                                 <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                     }`}
                                 >
-                                     {liveStreamStarted && cameraEnabled &&
-                                    <div
-                                        className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
-                                            }`}
-                                    >
-                                        {connected ? 'Live' : 'Disconnected'}
-                                    </div>
+                                    {liveStreamStarted && cameraEnabled &&
+                                        <div
+                                            className={`${classes.streamStatus} ${connected ? classes.connected : classes.disconnected
+                                                }`}
+                                        >
+                                            {connected ? 'Live' : 'Disconnected'}
+                                        </div>
                                     }
                                     <div className={classes.inputVideo}>
                                         <video ref={videoRef} muted playsInline></video>
@@ -696,7 +727,7 @@ export default function DemoPage(props) {
                                                 className={classes.stopButton}
                                                 color="danger"
                                                 size="sm"
-                                                onClick={() => cleanUpDemo()}
+                                                onClick={() => setDemoState(STATES.COMPLETE)}
                                             >
                                                 <StopRounded className={classes.icons} /> Stop
                                             </Button>
@@ -747,6 +778,54 @@ export default function DemoPage(props) {
                             </GridItem>
                         }
                     </GridContainer>
+                    <Dialog
+                        classes={{
+                            root: classes.center,
+                            paper: classes.modal,
+                        }}
+                        open={(demoState == STATES.COMPLETE)}
+                        TransitionComponent={Transition}
+                        keepMounted
+                        aria-labelledby="into-modal-slide-title"
+                        aria-describedby="into-modal-slide-description"
+                    >
+                        <DialogContent
+                            id="intro-modal-slide-description"
+                            className={classes.modalBody}
+                        >
+                            <div>
+                                <h3>Stop stream?</h3>
+                                <p>
+                                    By ending the stream now, we'll redirect you back to the homepage.
+                                </p>
+                            </div>
+
+                        </DialogContent>
+                        <DialogActions className={classes.modalFooter}>
+                            <Button
+                                onClick={() => cleanUpDemo()}
+                                color="danger"
+                                size="lg"
+                            >
+                                Yes, end stream
+                            </Button>
+                            <Button
+                                color="transparent"
+                                size="lg"
+                                border="1px solid"
+                                rel="noreferrer"
+                                onClick={() => {
+                                    setDemoState(STATES.STREAMING);
+                                    reStartCamera();
+                                }
+                                }
+                            >
+                                No, continue streaming
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+
+
                 </div>
                 <FreeSection />
                 <Footer whiteFont logoColor="gray" />
