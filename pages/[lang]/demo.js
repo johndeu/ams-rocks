@@ -98,7 +98,6 @@ export default function DemoPage(props) {
     const [streamKey, setStreamKey] = useState(null);
     const [streamUrl, setStreamUrl] = useState(null);
     const [liveStreamStarted, setLiveStreamStarted] = useState(false);
-    const [textOverlay, setTextOverlay] = useState('Live from the browser!');
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
     const [liveStream, setLiveStream] = useState(null);
@@ -116,7 +115,6 @@ export default function DemoPage(props) {
     const wsRef = useRef();
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
-    const nameRef = useRef();
 
 
     const startDemo = async () => {
@@ -205,7 +203,7 @@ export default function DemoPage(props) {
         ctx.font = '24px Segoe UI';
         const date = new Date();
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
-        ctx.fillText(`${nameRef.current}${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
+        ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
         requestAnimationRef.current = requestAnimationFrame(updateCanvas);
     };
@@ -538,11 +536,6 @@ export default function DemoPage(props) {
             cancelAnimationFrame(requestAnimationRef.current);
         };
     }, [])
-
-    // This effect is called when the textOverlay value changes
-    useEffect(() => {
-        nameRef.current = textOverlay;
-    }, [textOverlay]);
 
 
     return (
