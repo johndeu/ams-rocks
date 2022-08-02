@@ -193,7 +193,7 @@ export default function DemoPage(props) {
         ctx.fillStyle = '#FFF';
         ctx.font = '24px Segoe UI';
         const date = new Date();
-        const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
+        const dateText = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
         ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
@@ -225,7 +225,7 @@ export default function DemoPage(props) {
 
         let ticks = 0;
         timerProgressRef.current = setInterval(() => {
-            if (loadingProgress > 300) {
+            if (loadingProgress > 200) {
                 clearInterval(timerProgressRef.current);
                 setNoEvents(true);
                 // throw new Error("No events discoverd in time");
