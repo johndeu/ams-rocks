@@ -56,17 +56,6 @@ const STREAMS = [
 ];
 
 
-const imageClasses = classNames(
-  classes.imgRaised,
-  classes.imgRoundedCircle,
-  classes.imgFluid
-);
-
-const playerClasses = classNames(
-  classes.player,
-  classes.imgRaised,
-  classes.imgRoundedCircle,
-);
 
 export default function basicPage(props) {
   const classes = useStyles();
@@ -82,6 +71,19 @@ export default function basicPage(props) {
   const [stats, setStats] = useState({});
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
+
+
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+    classes.imgFluid
+  );
+
+  const playerClasses = classNames(
+    classes.player,
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+  );
 
   // On page loaded
   useEffect(() => {
@@ -112,7 +114,7 @@ export default function basicPage(props) {
       </div>
       <div className={classes.section}>
         <div className={classes.container}>
-          
+
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <GridContainer>
