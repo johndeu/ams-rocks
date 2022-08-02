@@ -480,6 +480,7 @@ export default function DemoPage(props) {
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
+                onChange={()=> {console.log("HLS manifest")}}
                 value={livePlayback.locatorUrl.hls}
             />
             <br />
@@ -487,6 +488,7 @@ export default function DemoPage(props) {
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
+                onChange={()=> {console.log("DASH manifest")}}
                 value={livePlayback.locatorUrl.dash}
             />
         </>
