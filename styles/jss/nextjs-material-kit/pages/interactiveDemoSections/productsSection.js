@@ -5,7 +5,7 @@ const productSection = {
       ...container,
       zIndex: "2",
       position:"relative",
-
+      top:"-5px",
     },
     imageProduct :{
       position:"relative",

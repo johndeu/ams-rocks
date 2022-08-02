@@ -38,11 +38,16 @@ module.exports = async function (context :any, myTimer:any) {
         console.error(err);
     }
 
+    
     await listLiveStreams().then(liveStreams => {
         if (liveStreams.length > 0) {
+            console.log("Looking for Running events");
             liveStreams.forEach(liveStream => {
+                if (liveStream.status == "Stopped") {
+                    console.log("This live Stream is already stopped", liveStream.name);
+                }
                 if (liveStream.status == "Running") {
-                    console.log("Found a running live event", liveStream.name);
+                    console.log("Found a RUNNNING live event", liveStream.name);
 
                     let startTime = liveStream.tags.startTime;
                     if (startTime) {
@@ -60,6 +65,8 @@ module.exports = async function (context :any, myTimer:any) {
                 }
             });
         } else {
+            console.log("No live streams found to stop");
+
             context.res = {
                 status: 404,
                 body: {
@@ -107,9 +114,11 @@ async function listLiveStreams(): Promise<liveStream[]> {
             }
         );
 
-        await eventsInAccount.next().then(liveEvent => {
-            let item: LiveEvent = liveEvent.value
+        console.log(`Events in account ${account.name}`)
 
+        for await (const liveEvent of eventsInAccount) {
+            let item: LiveEvent = liveEvent;
+            console.log(`Found event: ${item.name} in location: ${item.location} in state : ${item.resourceState}`)
             eventsInPool.push({
                 id: item.id,
                 name: item.name,
@@ -120,9 +129,10 @@ async function listLiveStreams(): Promise<liveStream[]> {
                 tags: item.tags,
                 account: account.name
             })
-        })
+        }
     }
 
+    console.log(`Count of events in pool : ${eventsInPool.length}`);
     return eventsInPool;
 }
 

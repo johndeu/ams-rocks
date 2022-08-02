@@ -122,10 +122,7 @@ export default function DemoPage(props) {
 
         console.log("Starting up the demo...");
         setDemoState(STATES.LOADING);
-        // This will start up the live stream while we await the camera and mic to be enabled.
-
         startLiveStream();
-
     }
 
     const enableCamera = async () => {
@@ -138,7 +135,7 @@ export default function DemoPage(props) {
 
         if (videoRef && videoRef.current)
             videoRef.current.srcObject = inputStreamRef.current;
-        else 
+        else
             throw Error("Can't start the camera on this device");
 
         await videoRef.current.play();
@@ -199,16 +196,18 @@ export default function DemoPage(props) {
             videoRef.current.clientWidth,
             videoRef.current.clientHeight
         );
-        
-        
-        var grd = ctx.createLinearGradient(0, (c.height/2), c.width,  (c.height/2));
-        grd.addColorStop(0, '#000');   
-        grd.addColorStop(1, 'rgba(255,0,0,.25');
-                
-        // Fill background rec with gradient
-        ctx.rect(0,0,c.width,c.height);
-        ctx.fillStyle = grd;
-        ctx.fill();
+
+
+        /*     var grd = ctx.createLinearGradient(0, (c.height / 2), c.width, (c.height / 2));
+            grd.addColorStop(0, '#000');
+            grd.addColorStop(1, 'rgba(255,0,0,.25');
+    
+            // Fill background rec with gradient
+            ctx.rect(10, c.height - 25, c.width, 25, c.width / 3);
+            ctx.fillStyle = grd;
+            ctx.fill();
+    
+            ctx.moveTo(0, 0); */
 
         // Draw clock
         ctx.fillStyle = '#FFF';
@@ -240,8 +239,9 @@ export default function DemoPage(props) {
         setStreaming(false);
     };
 
-    const startLiveStream = () => {
 
+    const startLiveStream = () => {
+        console.log("Starting live Stream");
 
         let ticks = 0;
         let timer = setInterval(() => {
@@ -256,15 +256,8 @@ export default function DemoPage(props) {
 
         setTimerProgress(timer);
 
-        // If we don't have a live stream chosen from the pool yet - keep waiting...
-        if (!liveStream) {
-            setTimeout(startLiveStream, 1000);
-            return;
-        }
-
         if (liveStream) {
-
-            console.log(`Staring up live stream ${liveStream.name} in location ${liveStream.location}`)
+            console.log(`Starting up live stream ${liveStream.name} in location ${liveStream.location}`)
             // We have available live streams from the pools, lets start it.
 
             const data = {
@@ -309,10 +302,10 @@ export default function DemoPage(props) {
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
                     setDemoState(STATES.STREAMING);
-                    clearInterval(timerProgress);
+                    clearInterval(timer);
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    console.error('Error Starting Live Event:', error);
                 })
 
         }
@@ -467,7 +460,7 @@ export default function DemoPage(props) {
     };
 
     // Triggered on product selected
-    const productSelected= (productName) => {
+    const productSelected = (productName) => {
         console.log(`Product Selected:  ${productName}`);
 
     };
@@ -475,7 +468,7 @@ export default function DemoPage(props) {
     const cleanUpDemo = () => {
         console.log("Cleaning Up Demo...")
         console.log("Stopping stream")
-        
+
         setStopStreamModal(false);
         stopStreaming();
         stopLiveStream();
@@ -496,14 +489,14 @@ export default function DemoPage(props) {
     const sharePlaybackUrl = <>
 
         {livePlayback && <>
-            <label for="url">HLS manifest</label>
+            <label >HLS manifest</label>
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
                 value={livePlayback.locatorUrl.hls}
             />
             <br />
-            <label for="url">DASH manifest</label>
+            <label>DASH manifest</label>
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
@@ -549,7 +542,6 @@ export default function DemoPage(props) {
         // Cleanup: Called when the component unmounts
         return () => {
             console.log("Cleaning up and stopping live stream");
-            clearInterval(timerProgress)
             stopLiveStream();
             cancelAnimationFrame(requestAnimationRef.current);
         };
@@ -617,8 +609,9 @@ export default function DemoPage(props) {
                                         onClick={() => startDemo()}
                                         color="danger"
                                         size="lg"
+                                        disabled={!liveStream}
                                     >
-                                        Try now
+                                        {!liveStream ? 'Loading...' : 'Try now'}
                                     </Button>
 
                                 </DialogActions>
@@ -675,36 +668,42 @@ export default function DemoPage(props) {
                             )}
                         </GridItem>
                         {liveStreamStarted && (demoState == STATES.STREAMING) &&
-                            <GridItem id="studio" xs={12} sm={12} md={8} className={classes.videoTopBar}>
+                            <>
+                                <GridItem xs={12} sm={12} md={8} className={classes.videoTopBar}>
+                                    {liveStreamStarted && cameraEnabled && streaming &&
+                                        <>
 
+                                            <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
+                                            <Button
+                                                color="transparent"
+                                                size="sm"
+                                                border="1px solid"
+                                                target="_blank"
+                                                href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
+
+                                            >
+                                                <PlayArrow className={classes.icons} /> Watch HLS stream
+                                            </Button>
+                                            <Button
+                                                color="transparent"
+                                                size="sm"
+                                                target="_blank"
+                                                href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
+                                                border="1px solid"
+                                            >
+                                                <PlayArrow className={classes.icons} /> Watch DASH stream
+                                            </Button>
+                                        </>
+
+                                    }
+                                </GridItem>
                                 {liveStreamStarted && cameraEnabled && streaming &&
-                                    <>
-                                      
-                                        <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
-                                        <Button
-                                            color="transparent"
-                                            size="sm"
-                                            border="1px solid"
-                                            target="_blank"
-                                            href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
-
-                                        >
-                                            <PlayArrow className={classes.icons} /> Watch HLS stream
-                                        </Button>
-                                        <Button
-                                            color="transparent"
-                                            size="sm"
-                                            target="_blank"
-                                            href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
-                                            border="1px solid"
-                                        >
-                                            <PlayArrow className={classes.icons} /> Watch DASH stream
-                                        </Button>
-                                    </>
-
+                                    <GridItem xs={12} sm={12} md={2} >
+                                        <span className={classes.productTitle}>Products</span>
+                                    </GridItem>
                                 }
+                            </>
 
-                            </GridItem>
                         }
                         {(demoState == STATES.STREAMING) &&
                             <GridItem id="studio" xs={12} sm={12} md={8}>
@@ -745,7 +744,7 @@ export default function DemoPage(props) {
                                 {cameraEnabled &&
                                     (streaming ? (
                                         <div>
-                                            <ProductSection onProductSelected={productSelected}/>
+                                            <ProductSection onProductSelected={productSelected} />
                                         </div>
                                     ) : (
                                         <>

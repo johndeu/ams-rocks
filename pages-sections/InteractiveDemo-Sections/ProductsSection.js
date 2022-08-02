@@ -23,7 +23,7 @@ export default function productsSection({
 
     const productChange = (productId) => {
         setProduct(productId);
-        
+
         if (onProductSelected)
             onProductSelected(productId);
     }
@@ -31,11 +31,9 @@ export default function productsSection({
     return (
         <div className={classes.section}>
             <div className={classes.container}>
-                <span className={classes.title}> Products </span>
-                <h4 className={classes.title}> Selected: {product} </h4>
-                <GridContainer justify="left">
+                <GridContainer align="left">
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product1")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product1")}>
                             <GridItem xs={12} sm={12} md={4} >
                                 <img src="/img/products/product-1.jpg" className={classes.imageProduct} ></img>
                             </GridItem>
@@ -47,7 +45,7 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product2")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product2")}>
                             <GridItem xs={12} sm={12} md={4} >
                                 <img src="/img/products/product-2.jpg" className={classes.imageProduct}></img>
                             </GridItem>
@@ -59,7 +57,7 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product3")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product3")}>
                             <GridItem xs={12} sm={12} md={4} >
                                 <img src="/img/products/product-3.jpg" className={classes.imageProduct}></img>
                             </GridItem>
@@ -72,7 +70,7 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} justify="left" onClick={() => productChange("product4")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product4")}>
                             <GridItem xs={12} sm={12} md={4}>
                                 <img src="/img/products/product-4.jpg" className={classes.imageProduct}></img>
                             </GridItem>
