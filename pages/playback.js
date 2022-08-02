@@ -47,6 +47,15 @@ const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
+const STREAMS = [
+  {
+    name: 'AMS LL-HLS Demo Stream',
+    src: 'https://aka.ms/LowLatencyDemo.m3u8',
+    location: "US West"
+  }
+];
+
+
 export default function basicPage(props) {
   const classes = useStyles();
   const router = useRouter();
