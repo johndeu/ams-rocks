@@ -284,7 +284,7 @@ const demoPage = (theme) => ({
     },
     productTitle: {
         position:"relative",
-        top:"15px",
+        top:"-15px",
         color: "#323130 !important",
         fontWeight:"400",
         fontSize:"14px"

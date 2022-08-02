@@ -52,9 +52,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         account = (await getAccount(liveStream.location)).name;
 
         let started: Date = null;
-
-        let liveEvent = await mediaServicesClient.liveEvents.get(resourceGroup, account, name);
-
+        let ingestUrl:string = null;
 
         // Attempt to start the long running operation and wait
         await mediaServicesClient.liveEvents.beginStartAndWait(
@@ -78,6 +76,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 }
             });
 
+        let liveEvent = await mediaServicesClient.liveEvents.get(resourceGroup, account, name);
+        ingestUrl = liveEvent.input?.endpoints[2]?.url; // get the RTMPS primary ingest URL from this live event
 
         liveEvent.tags = {
             "startTime": moment().format()
@@ -144,6 +144,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             startTime: started,
             liveOutputName: liveOutputName,
             locatorUrl: streamingUrls,
+            ingestUrl: ingestUrl
         }
 
         context.res = {

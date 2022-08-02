@@ -28,7 +28,6 @@ interface liveStream {
     protocol: string,
     streamKey: string,
     latencyMode: string,
-    ingestUrl: string,
     location: string,
 }
 
@@ -102,7 +101,6 @@ async function listAvailableStreams(): Promise<liveStream[]> {
                     createdAt: liveEvent.created,
                     protocol: liveEvent.input.streamingProtocol,
                     streamKey: liveEvent.input.accessToken,
-                    ingestUrl: liveEvent.input.endpoints[2].url, //HTTPS primary
                 })
             }
         }

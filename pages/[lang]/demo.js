@@ -97,7 +97,7 @@ export default function DemoPage(props) {
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [streaming, setStreaming] = useState(false);
     const [streamKey, setStreamKey] = useState(null);
-    const [streamUrl, setStreamUrl] = useState(null);
+    const [streamRtmpUrl, setStreamRtmpUrl] = useState(null);
     const [liveStreamStarted, setLiveStreamStarted] = useState(false);
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
@@ -241,6 +241,7 @@ export default function DemoPage(props) {
             const data = {
                 name: liveStream.name,
                 location: liveStream.location
+
             }
 
             // Start the live stream
@@ -252,6 +253,7 @@ export default function DemoPage(props) {
                         hls: string;
                         dash: string;
                     };
+                    ingestUrl: string 
                 } */
             fetch('/api/livestream/golive', {
                 method: 'PUT',
@@ -273,9 +275,9 @@ export default function DemoPage(props) {
                 }).then((body) => {
                     console.log('Success: stream started.');
                     setStreamKey(liveStream.streamKey);
-                    console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
+                    console.log(`Set ingestUrl: ${body.ingestUrl}`);
                     console.log(`LivePlayback URLs : ${JSON.stringify(body)}`)
-                    setStreamUrl(liveStream.ingestUrl);
+                    setStreamRtmpUrl(body.ingestUrl);
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
                     setDemoState(STATES.STREAMING);
@@ -380,8 +382,8 @@ export default function DemoPage(props) {
         wsUrl.searchParams.set('video', settings.video);
         wsUrl.searchParams.set('audio', settings.audio);
 
-        if (streamUrl) {
-            wsUrl.searchParams.set('url', streamUrl);
+        if (streamRtmpUrl) {
+            wsUrl.searchParams.set('url', streamRtmpUrl);
         }
         if (streamKey) {
             wsUrl.searchParams.set('key', streamKey);
@@ -614,7 +616,7 @@ export default function DemoPage(props) {
                                         <p className={classes.introMessage}>
 
                                             This demonstration will allow you to broadcast and view a live stream from your browser for up to 5 minutes.
-                                            After 5 minutes, the live stream and data will be removed.
+                                            The live stream data and recordings will be removed on completion.
 
                                         </p>
                                     }
@@ -654,41 +656,45 @@ export default function DemoPage(props) {
                             <>
                                 <GridItem xs={12} sm={12} md={8} className={classes.videoTopBar}>
                                     {liveStreamStarted && cameraEnabled && streaming &&
-                                        <>
+                                        <GridContainer>
+                                            <GridItem xs={12} sm={12} md={2}>
+                                                <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
-                                            <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
-                                            <Button
-                                                color="transparent"
-                                                size="sm"
-                                                border="1px solid"
-                                                target="_blank"
-                                                href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
+                                            </GridItem>
+                                            {!isIOS && <>
+                                                <GridItem xs={10} sm={2} md={2}>
+                                                    <Button
+                                                        color="transparent"
+                                                        size="sm"
+                                                        border="1px solid"
+                                                        target="_blank"
+                                                        href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
 
-                                            >
-                                                <PlayArrow className={classes.icons} /> Watch HLS stream
-                                            </Button>
-                                            <Button
-                                                color="transparent"
-                                                size="sm"
-                                                target="_blank"
-                                                href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
-                                                border="1px solid"
-                                            >
-                                                <PlayArrow className={classes.icons} /> Watch DASH stream
-                                            </Button>
-                                        </>
-
+                                                    >
+                                                        <PlayArrow className={classes.icons} /> Watch HLS stream
+                                                    </Button>
+                                                </GridItem>
+                                                <GridItem xs={12} sm={8} md={8}>
+                                                    <Button
+                                                        color="transparent"
+                                                        size="sm"
+                                                        target="_blank"
+                                                        href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
+                                                        border="1px solid"
+                                                    >
+                                                        <PlayArrow className={classes.icons} /> Watch DASH stream
+                                                    </Button>
+                                                </GridItem>
+                                            </>}
+                                        </GridContainer>
                                     }
                                 </GridItem>
-                                {liveStreamStarted && cameraEnabled && streaming &&
-                                    <GridItem xs={12} sm={12} md={2} >
-                                        <span className={classes.productTitle}>Products</span>
-                                    </GridItem>
-                                }
+                             
                             </>
 
                         }
                         {(demoState == STATES.STREAMING) &&
+                        
                             <GridItem id="studio" xs={12} sm={12} md={8}>
                                 <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                     }`}
@@ -726,6 +732,7 @@ export default function DemoPage(props) {
                             <GridItem id="videoSideNav" xs={12} sm={12} md={4} className={classes.videoSideNav} >
                                 {cameraEnabled && streaming &&
                                     < div >
+                                        <span className={classes.productTitle}>Products</span>
                                         <ProductSection onProductSelected={productSelected} />
                                     </div>
                                 }
