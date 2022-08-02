@@ -494,9 +494,8 @@ export default function DemoPage(props) {
             window.addEventListener('resize', resizeCanvas);
         }
 
-        // isIOS.current = /iPhone/.test(navigator.userAgent);
-        isIOS.current = true;
-
+        isIOS.current = /iPhone/.test(navigator.userAgent);
+        
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
             console.log("enumerateDevices() not supported.");
