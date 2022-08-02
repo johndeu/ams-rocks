@@ -495,7 +495,7 @@ export default function DemoPage(props) {
         }
 
         isIOS.current = /iPhone/.test(navigator.userAgent);
-        
+
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
             console.log("enumerateDevices() not supported.");
@@ -761,7 +761,7 @@ export default function DemoPage(props) {
                                             Start Streaming
                                         </Button>
                                         <p></p>
-                                        {!isIOS && sharePlaybackUrl }
+                                        {!isIOS && sharePlaybackUrl}
                                     </>
                                 }
 
@@ -792,25 +792,31 @@ export default function DemoPage(props) {
 
                         </DialogContent>
                         <DialogActions className={classes.modalFooter}>
-                            <Button
-                                onClick={() => cleanUpDemo()}
-                                color="danger"
-                                size="lg"
-                            >
-                                Yes, end stream
-                            </Button>
-                            <Button
-                                color="transparent"
-                                size="lg"
-                                border="1px solid"
-                                rel="noreferrer"
-                                onClick={() => {
-                                    setStopStreamModal(false);
-                                }
-                                }
-                            >
-                                No, continue streaming
-                            </Button>
+                            <GridContainer>
+                                <GridItem xs={12} sm={12} md={6}>
+                                    <Button
+                                        onClick={() => cleanUpDemo()}
+                                        color="danger"
+                                        size="lg"
+                                    >
+                                        Yes, end stream
+                                    </Button>
+                                </GridItem>
+                                <GridItem xs={12} sm={12} md={6}>
+                                    <Button
+                                        color="transparent"
+                                        size="lg"
+                                        border="1px solid"
+                                        rel="noreferrer"
+                                        onClick={() => {
+                                            setStopStreamModal(false);
+                                        }
+                                        }
+                                    >
+                                        No, continue streaming
+                                    </Button>
+                                </GridItem>
+                            </GridContainer>
                         </DialogActions>
                     </Dialog>
 
