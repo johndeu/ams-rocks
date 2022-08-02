@@ -43,7 +43,6 @@ import Hidden from "@material-ui/core/Hidden";
 // Translations
 import { useRouter } from 'next/router';
 import i18next from 'i18next';
-import { getAllLanguageSlugs, getLanguage } from '../lib/lang';
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -130,21 +129,4 @@ export default function basicPage(props) {
 
     </div>
   );
-}
-
-export async function getStaticPaths() {
-  const paths = getAllLanguageSlugs();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const language = getLanguage(params.lang);
-  return {
-    props: {
-      language,
-    },
-  };
 }
