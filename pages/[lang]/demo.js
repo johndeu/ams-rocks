@@ -661,8 +661,8 @@ export default function DemoPage(props) {
                                                 <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
                                             </GridItem>
-                                            {!isIOS && <>
-                                                <GridItem xs={10} sm={2} md={2}>
+                                            {!isIOS.current && <>
+                                                <GridItem xs={10} sm={2} md={3}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
@@ -674,7 +674,7 @@ export default function DemoPage(props) {
                                                         <PlayArrow className={classes.icons} /> Watch HLS stream
                                                     </Button>
                                                 </GridItem>
-                                                <GridItem xs={12} sm={8} md={8}>
+                                                <GridItem xs={12} sm={8} md={7}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
@@ -736,7 +736,7 @@ export default function DemoPage(props) {
                                         <ProductSection onProductSelected={productSelected} />
                                     </div>
                                 }
-                                {cameraEnabled && !streaming && !isIOS &&
+                                {cameraEnabled && !streaming && !isIOS.current &&
                                     <>
                                         <label>Camera input</label><br />
                                         <select
@@ -768,7 +768,7 @@ export default function DemoPage(props) {
                                             Start Streaming
                                         </Button>
                                         <p></p>
-                                        {!isIOS && sharePlaybackUrl}
+                                        {!isIOS.current && sharePlaybackUrl}
                                     </>
                                 }
 
