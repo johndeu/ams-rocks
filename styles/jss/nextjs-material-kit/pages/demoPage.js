@@ -170,7 +170,7 @@ const demoPage = (theme) => ({
 
         [theme.breakpoints.down("sm")]: {
             width: "80%",
-            top: "20vh",
+            top: "15px",
             left: "10vw",
         },
     },
@@ -198,8 +198,7 @@ const demoPage = (theme) => ({
         backgroundColor: "#0078D4",
         borderRadius: "2px",
         border: "1px solid #000",
-        width: "50vw",
-        maxWidth: "600px",
+        width: "100%",
         height: "32px",
         zIndex: "100",
         "&:hover": {
@@ -207,7 +206,7 @@ const demoPage = (theme) => ({
             backgroundColor: "#3293dc"
         },
         [theme.breakpoints.down("sm")]: {
-            width: "50vw",
+            width: "100%",
             height: "70px",
         },
     },
@@ -293,7 +292,9 @@ const demoPage = (theme) => ({
     splashImage: {
         borderRadius: "8px",
         marginLeft: "5px",
-        marginTop: "5px"
+        marginTop: "5px",
+        width:"100%",
+        height: "auto",
     },
     splashText: {
         fontWeight:"400",

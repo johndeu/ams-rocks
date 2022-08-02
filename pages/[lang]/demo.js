@@ -117,6 +117,8 @@ export default function DemoPage(props) {
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
     const workerTimerAnimationRef = useRef();
+    const isIOS = useRef(false);
+
 
     const startDemo = async () => {
         setIntroModal(false);
@@ -141,11 +143,10 @@ export default function DemoPage(props) {
 
         await videoRef.current.play();
 
-        /*         // If we support offscreen canvas, move it there to improve performance
-               var canvas = 'OffscreenCanvas' in window
-                        ? canvasRef.current.transferControlToOffscreen()
-                        : canvasRef.current; */
-
+        // If we support offscreen canvas, move it there to improve performance
+        /*      var canvas = 'OffscreenCanvas' in window
+                     ? canvasRef.current.transferControlToOffscreen()
+                     : canvasRef.current; */
         // set the width and height for the offscreen canvas 
         //canvas.style = {width: videoRef.current.clientWidth, height: videoRef.current.clientHeight};
 
@@ -153,20 +154,8 @@ export default function DemoPage(props) {
         canvasRef.current.height = videoRef.current.clientHeight;
         canvasRef.current.width = videoRef.current.clientWidth;
 
-        //spawn a worker thread off main
-        /* if (window.Worker) {
-        const worker = new Worker('/scripts/demoworker.js');
-        worker.postMessage({ canvas: canvas, ended: videoRef.current.ended}, [ canvas]);
+        workerTimerAnimationRef = workerTimers.setTimeout(updateCanvas, (1000 / 30));
 
-        //requestAnimationRef.current = worker.requestAnimationFrame(updateCanvas);
-        } else {
-            requestAnimationRef.current = requestAnimationFrame(updateCanvas);
-        }
-        */
-
-        workerTimerAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000/30));
-
-        // requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
 
         clearInterval(timerProgressRef);
@@ -183,8 +172,6 @@ export default function DemoPage(props) {
     }
 
     const updateCanvas = () => {
-        console.log("Updating Canvas");
-
         if (!videoRef.current)
             return;
 
@@ -209,7 +196,7 @@ export default function DemoPage(props) {
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
         ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
-        requestAnimationRef.current = workerTimers.setTimeout(updateCanvas,(1000/30));
+        requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
 
     const setCamera = (deviceId) => {
@@ -244,7 +231,6 @@ export default function DemoPage(props) {
                 // throw new Error("No events discoverd in time");
             }
             setLoadingProgress(loadingProgress += 2);
-            console.log(`tick, tock...`);
         }, 500);
 
 
@@ -286,7 +272,6 @@ export default function DemoPage(props) {
                     return response.json()
                 }).then((body) => {
                     console.log('Success: stream started.');
-                    console.log(`Set streamkey: ${liveStream.streamKey}`);
                     setStreamKey(liveStream.streamKey);
                     console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
                     console.log(`LivePlayback URLs : ${JSON.stringify(body)}`)
@@ -349,7 +334,6 @@ export default function DemoPage(props) {
                     throw new Error('Could not STOP the live event');
                 }
                 console.log('STOPPED:successfully stopped the live stream');
-                console.log(`Set ingestUrl: ${liveStream.ingestUrl}`);
 
             })
             .catch((error) => {
@@ -485,7 +469,7 @@ export default function DemoPage(props) {
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
-                onChange={()=> {console.log("HLS manifest")}}
+                onChange={() => { console.log("HLS manifest") }}
                 value={livePlayback.locatorUrl.hls}
             />
             <br />
@@ -493,7 +477,7 @@ export default function DemoPage(props) {
             <input type="url" name="url" id="url"
                 placeholder="Dash playback url"
                 pattern="https://.*" size="40"
-                onChange={()=> {console.log("DASH manifest")}}
+                onChange={() => { console.log("DASH manifest") }}
                 value={livePlayback.locatorUrl.dash}
             />
         </>
@@ -509,6 +493,9 @@ export default function DemoPage(props) {
         if (window) {
             window.addEventListener('resize', resizeCanvas);
         }
+
+        // isIOS.current = /iPhone/.test(navigator.userAgent);
+        isIOS.current = true;
 
         // Enumerate all available devices
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
@@ -537,7 +524,6 @@ export default function DemoPage(props) {
         return () => {
             console.log("Cleaning up and stopping live stream");
             stopLiveStream();
-            workerTimers.clearTimeout(workerTimerAnimationRef.current);
         };
     }, [])
 
@@ -559,7 +545,6 @@ export default function DemoPage(props) {
             />
             <div className={classes.section}>
                 <div className={classes.container}>
-                    {/*  <h4>Demo State = {demoState}</h4> */}
                     <GridContainer>
                         <GridItem id="introPage" xs={12} sm={12} md={12}>
                             <Dialog
@@ -626,15 +611,14 @@ export default function DemoPage(props) {
 
                             {!cameraEnabled && liveStream && !introModal && (
                                 <div>
-                                    <p className={classes.introMessage}>
+                                    {!liveStreamStarted && !noEvents &&
+                                        <p className={classes.introMessage}>
 
-                                        This demonstration will allow you to broadcast and view a live stream from your browser for up to 5 minutes.
-                                        After 5 minutes, the live stream and data will be removed.
-                                        <br /><br />
-                                        To get started, you must first allow the browser to access your camera and microphone.
-                                        Click the button below to accept the browser permissions and continue to the Creator Studio.
-                                    </p>
+                                            This demonstration will allow you to broadcast and view a live stream from your browser for up to 5 minutes.
+                                            After 5 minutes, the live stream and data will be removed.
 
+                                        </p>
+                                    }
                                     {!liveStreamStarted && !introModal && !noEvents &&
                                         <>
                                             <h3>Please stand by while we setup...</h3>
@@ -649,13 +633,19 @@ export default function DemoPage(props) {
 
                                     {liveStreamStarted && !noEvents &&
                                         <GridContainer>
-                                            <GridItem sm={2} md={2}></GridItem>
-                                            <GridItem sm={8} md={8}>
+                                            <GridItem sm={12} md={12} >
+                                                <p className={classes.introMessage} >
+                                                    To get started, you must first allow the browser to access your camera and microphone.
+                                                    Click the button below to accept the browser permissions and continue to the Creator Studio.
+                                                </p>
+                                            </GridItem>
+                                            <GridItem xs={2} md={4} lg={4} ></GridItem>
+                                            <GridItem xs={8} md={4} lg={4} >
                                                 <button className={classes.enableCameraButton} onClick={enableCamera}>
                                                     Enable your camera and microphone
                                                 </button>
                                             </GridItem>
-                                            <GridItem sm={2} md={8}></GridItem>
+                                            <GridItem xs={2} md={4} lg={4} ></GridItem>
                                         </GridContainer>
                                     }
                                 </div>
@@ -735,42 +725,46 @@ export default function DemoPage(props) {
                         }
                         {(demoState == STATES.STREAMING) &&
                             <GridItem id="videoSideNav" xs={12} sm={12} md={4} className={classes.videoSideNav} >
-                                {cameraEnabled &&
-                                    (streaming ? (
-                                        <div>
-                                            <ProductSection onProductSelected={productSelected} />
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <label>Camera input</label><br />
-                                            <select
-                                                placeholder="finding devices..."
-                                                type="text"
-                                                onChange={(e) => setCamera(e.target.value)}>
-                                                {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
-                                            </select>
-                                            <br />
-                                            <label>Microphone input</label><br />
-                                            <select
-                                                placeholder="finding devices..."
-                                                type="text"
-                                                onChange={(e) => setMicrophone(e.value)}>
-                                                {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
-                                            </select>
+                                {cameraEnabled && streaming &&
+                                    < div >
+                                        <ProductSection onProductSelected={productSelected} />
+                                    </div>
+                                }
+                                {cameraEnabled && !streaming && !isIOS &&
+                                    <>
+                                        <label>Camera input</label><br />
+                                        <select
+                                            placeholder="finding devices..."
+                                            type="text"
+                                            onChange={(e) => setCamera(e.target.value)}>
+                                            {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+                                        </select>
+                                        <br />
+                                        <label>Microphone input</label><br />
+                                        <select
+                                            placeholder="finding devices..."
+                                            type="text"
+                                            onChange={(e) => setMicrophone(e.value)}>
+                                            {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
+                                        </select>
+                                    </>
+                                }
 
-                                            <Button
-                                                onClick={startStreaming}
-                                                className={classes.startButton}
-                                                disabled={!liveStreamStarted}
-                                                color="danger"
-                                                size="sm"
-                                            >
-                                                Start Streaming
-                                            </Button>
-                                            <p></p>
-                                            {sharePlaybackUrl}
-                                        </>
-                                    ))}
+                                {cameraEnabled && !streaming &&
+                                    <>
+                                        <Button
+                                            onClick={startStreaming}
+                                            className={classes.startButton}
+                                            disabled={!liveStreamStarted}
+                                            color="danger"
+                                            size="sm"
+                                        >
+                                            Start Streaming
+                                        </Button>
+                                        <p></p>
+                                        {!isIOS && sharePlaybackUrl }
+                                    </>
+                                }
 
                             </GridItem>
                         }
