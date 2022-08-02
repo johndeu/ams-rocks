@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import moment from 'moment';
+import * as workerTimers from 'worker-timers';
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -100,22 +101,22 @@ export default function DemoPage(props) {
     const [liveStreamStarted, setLiveStreamStarted] = useState(false);
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
-    const [liveStream, setLiveStream] = useState(null);
     const [livePlayback, setLivePlayback] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
     const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
-    const [timerProgress, setTimerProgress] = useState(null);
+    const [liveStream, setLiveStream] = useState(null);
 
+    const timerProgressRef = useRef()
     const inputStreamRef = useRef();
     const videoRef = useRef();
     const canvasRef = useRef();
     const wsRef = useRef();
     const mediaRecorderRef = useRef();
     const requestAnimationRef = useRef();
-
+    const workerTimerAnimationRef = useRef();
 
     const startDemo = async () => {
         setIntroModal(false);
@@ -162,10 +163,13 @@ export default function DemoPage(props) {
             requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         }
         */
-        requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+
+        workerTimerAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000/30));
+
+        // requestAnimationRef.current = requestAnimationFrame(updateCanvas);
         setCameraEnabled(true);
 
-        clearInterval(timerProgress);
+        clearInterval(timerProgressRef);
         // Start the clock
         startClock();
     };
@@ -179,6 +183,8 @@ export default function DemoPage(props) {
     }
 
     const updateCanvas = () => {
+        console.log("Updating Canvas");
+
         if (!videoRef.current)
             return;
 
@@ -203,7 +209,7 @@ export default function DemoPage(props) {
         const dateText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
         ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
-        requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+        requestAnimationRef.current = workerTimers.setTimeout(updateCanvas,(1000/30));
     };
 
     const setCamera = (deviceId) => {
@@ -231,9 +237,9 @@ export default function DemoPage(props) {
         console.log("Starting live Stream");
 
         let ticks = 0;
-        let timer = setInterval(() => {
+        timerProgressRef.current = setInterval(() => {
             if (loadingProgress > 300) {
-                clearInterval(timerProgress);
+                clearInterval(timerProgressRef.current);
                 setNoEvents(true);
                 // throw new Error("No events discoverd in time");
             }
@@ -241,7 +247,6 @@ export default function DemoPage(props) {
             console.log(`tick, tock...`);
         }, 500);
 
-        setTimerProgress(timer);
 
         if (liveStream) {
             console.log(`Starting up live stream ${liveStream.name} in location ${liveStream.location}`)
@@ -289,7 +294,7 @@ export default function DemoPage(props) {
                     setLivePlayback(body);
                     setLiveStreamStarted(true);
                     setDemoState(STATES.STREAMING);
-                    clearInterval(timer);
+                    clearInterval(timerProgressRef.current);
                 })
                 .catch((error) => {
                     console.error('Error Starting Live Event:', error);
@@ -532,7 +537,7 @@ export default function DemoPage(props) {
         return () => {
             console.log("Cleaning up and stopping live stream");
             stopLiveStream();
-            cancelAnimationFrame(requestAnimationRef.current);
+            workerTimers.clearTimeout(workerTimerAnimationRef.current);
         };
     }, [])
 
