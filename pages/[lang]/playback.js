@@ -1,4 +1,5 @@
 import React, { useState, setState, useEffect, useRef } from "react";
+import Head from "next/head";
 import dynamic from 'next/dynamic';
 import moment from "moment";
 
@@ -49,13 +50,11 @@ const dashboardRoutes = [];
 const useStyles = makeStyles(styles);
 
 
-
 export default function basicPage(props) {
   const classes = useStyles();
   const router = useRouter();
 
   const { ...rest } = props;
-  const ref = useRef();
   const [src, setSrc] = useState(router.query.hls);
   const [userAgent, setUserAgent] = useState("");
   const [isIos, setIsIos] = useState(false);
@@ -63,6 +62,8 @@ export default function basicPage(props) {
   const [bufferTime, setBufferTime] = useState(30); //default for Shaka player is 30 seconds of buffer
   const [playHeadTime, setPlayHeadTime] = useState(moment.utc());
 
+  const playerRef = useRef();
+  const videoRef = useRef();
 
   const imageClasses = classNames(
     classes.imgRaised,
@@ -82,14 +83,27 @@ export default function basicPage(props) {
     setIsIos(/iPhone/.test(userAgent));
 
     // Get the playback url
-    if (router.query.hls){
+    if (router.query.hls) {
       // set the HLS path
       setSrc(router.query.hls)
       console.log(`HLS path found : ${router.query.hls}`)
-    }else {
+    } else {
       console.log(`No HLS path`)
     }
   })
+
+  const onInitPlayer = (player) => {
+    // Attach the player and video element to the window for easy debugging in browser console.
+    window.player = player
+    playerRef.current = player;
+    console.log("Got the player object from Shaka player");
+
+/*     window.analyticsTool = new AzurePlayerAnalytics.ShakaPlayerAnalytics(player, player.getMediaElement(), {
+      endpoint: "https://amsts631.sf.media.azure-test.net:9025/ClientAnalytics",
+      token: 'johndeumdflkdsmflkdsmdflsdkljbd',
+      pollingInterval: 15,
+    })  */
+  }
 
   const onStatsUpdate = (stats) => {
 
@@ -104,54 +118,64 @@ export default function basicPage(props) {
   }
 
   return (
-    <div >
-      <Header
-        color="white"
-        routes={dashboardRoutes}
-        brand={i18next.t('landing.title')}
-        leftLinks={<HeaderLinksLeft />}
-        rightLinks={<HeaderLinksRight />}
-        fixed
-        changeColorOnScroll={{
-          height: 120,
-          color: "white",
-        }}
-        {...rest}
-      />
-      <div className={classes.subHeaderBanner} >
-        <h3>Watch your live stream</h3>
-      </div>
-      <div className={classes.section}>
-        <div className={classes.container}>
-
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={12}>
-              <GridContainer>
-                <GridItem xs={12} sm={2} md={1}></GridItem>
-                <GridItem xs={12} sm={10} md={10} className={playerClasses} >
-
-                  <ShakaPlayer
-                    src={src}
-                    posterUrl=""
-                    stats={stats}
-                    raised
-                    onStatsUpdate={onStatsUpdate}
-                    onBufferedInfoUpdate={onBufferedInfoUpdate}
-                    onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
-                  />
-
-                </GridItem>
-                <GridItem xs={12} sm={2} md={1}></GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-
+    <>
+      <React.Fragment>
+        <Head>
+          <script src="https://unpkg.com/azure-media-playeranalytics@1.0.1/dist/shaka.js"></script>
+          <link href="https://unpkg.com/tabulator-tables@5.2.3/dist/css/tabulator_bootstrap4.min.css" rel="stylesheet"/>
+          <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.2.3/dist/js/tabulator.min.js"></script>
+        </Head>
+      </React.Fragment>
+      <div >
+        <Header
+          color="white"
+          routes={dashboardRoutes}
+          brand={i18next.t('landing.title')}
+          leftLinks={<HeaderLinksLeft />}
+          rightLinks={<HeaderLinksRight />}
+          fixed
+          changeColorOnScroll={{
+            height: 120,
+            color: "white",
+          }}
+          {...rest}
+        />
+        <div className={classes.subHeaderBanner} >
+          <h3>Watch your live stream</h3>
         </div>
-        <FreeSection />
-        <Footer whiteFont logoColor="gray" />
-      </div>
+        <div className={classes.section}>
+          <div className={classes.container}>
 
-    </div>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12}>
+                <GridContainer>
+                  <GridItem xs={12} sm={2} md={1}></GridItem>
+                  <GridItem xs={12} sm={10} md={10} className={playerClasses} >
+
+                    <ShakaPlayer
+                      src={src}
+                      ref={playerRef}
+                      posterUrl=""
+                      stats={stats}
+                      raised
+                      onInitPlayer={onInitPlayer}
+                      onStatsUpdate={onStatsUpdate}
+                      onBufferedInfoUpdate={onBufferedInfoUpdate}
+                      onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
+                    />
+
+                  </GridItem>
+                  <GridItem xs={12} sm={2} md={1}></GridItem>
+                </GridContainer>
+              </GridItem>
+            </GridContainer>
+
+          </div>
+          <FreeSection />
+          <Footer whiteFont logoColor="gray" />
+        </div>
+
+      </div></>
   );
 }
 

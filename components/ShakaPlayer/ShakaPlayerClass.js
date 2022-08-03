@@ -36,7 +36,7 @@ class ShakaPlayer extends React.PureComponent {
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
 
-        var player = new shaka.Player(video);
+        let player = new shaka.Player(video);
 
         const ui = new shaka.ui.Overlay(player, videoContainer, video);
         const controls = ui.getControls();
@@ -92,6 +92,11 @@ class ShakaPlayer extends React.PureComponent {
 
         // Event listeners
         player.addEventListener('loaded', this.onLoaded(this.video.current));
+
+        if (this.props.onInitPlayer) {
+            // Pass the player up to parent if needed
+            this.props.onInitPlayer(player);
+        }
 
         this.timerID = setInterval(
             () => this.statsTick(player, this.video.current),
@@ -151,9 +156,10 @@ class ShakaPlayer extends React.PureComponent {
 
     render() {
         return (
-            <div ref={this.videoContainer} >
+            <div ref={this.videoContainer} data-shaka-player-container data-shaka-player-cast-receiver-id="BBED8D28">
                 <video
                     id="video"
+                    data-shaka-player 
                     ref={this.video}
                     autoPlay
                     muted
@@ -176,6 +182,7 @@ ShakaPlayer.propTypes = {
     licenseServer: PropTypes.string,
     src: PropTypes.string,
     posterUrl: PropTypes.string,
+    onInitPlayer: PropTypes.func,
     onStatsUpdate: PropTypes.func,
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,

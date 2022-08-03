@@ -681,18 +681,7 @@ export default function DemoPage(props) {
                                                         target="_blank"
                                                         href={`/playback?hls=${livePlayback.locatorUrl.hls}.m3u8`}
                                                     >
-                                                        <PlayArrow className={classes.icons} /> Watch HLS stream
-                                                    </Button>
-                                                </GridItem>
-                                                <GridItem xs={12} sm={8} md={6}>
-                                                    <Button
-                                                        color="transparent"
-                                                        size="sm"
-                                                        target="_blank"
-                                                        href={`http://ampdemo.azureedge.net/?url=${livePlayback.locatorUrl.dash}.mpd`}
-                                                        border="1px solid"
-                                                    >
-                                                        <PlayArrow className={classes.icons} /> Watch DASH stream
+                                                        <PlayArrow className={classes.icons} /> Watch the stream
                                                     </Button>
                                                 </GridItem>
                                             </>}
