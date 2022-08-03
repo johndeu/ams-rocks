@@ -104,12 +104,12 @@ export default function DemoPage(props) {
     const [livePlayback, setLivePlayback] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
-    const [endTime, setEndTime] = useState(moment().add(5, 'minutes'));
     const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
     const [liveStream, setLiveStream] = useState(null);
 
     const timerProgressRef = useRef()
+    const endTimeRef = useRef();
     const inputStreamRef = useRef();
     const videoRef = useRef();
     const canvasRef = useRef();
@@ -291,14 +291,16 @@ export default function DemoPage(props) {
     }
 
     const startClock = () => {
-        setEndTime(moment().add(5, 'minutes')); // set the start time of the live event so we can update the clock
+        endTimeRef.current = moment().add(5, 'minutes'); // set the start time of the live event so we can update the clock
 
         let clockTimer = setInterval(() => {
-            let timeRemaining = endTime.diff(moment());
+            let timeRemaining = endTimeRef.current.diff(moment());
             if (timeRemaining <= 0) {
-                setDemoState(STATES.TIMEOUT);
+                if(demoState == STATES.STREAMING){
+                    setDemoState(STATES.TIMEOUT);
+                    cleanUpDemo();  
+                }
                 clearInterval(clockTimer);
-                cleanUpDemo();
             }
             else {
                 setClockTime(moment(timeRemaining).format('mm:ss'));
@@ -335,7 +337,7 @@ export default function DemoPage(props) {
                 if (!response.ok) {
                     throw new Error('Could not STOP the live event');
                 }
-                console.log('STOPPED:successfully stopped the live stream');
+                console.log(`STOPPED:successfully stopped stream: ${liveStream.name} in location: ${liveStream.location}`);
 
             })
             .catch((error) => {
@@ -655,26 +657,25 @@ export default function DemoPage(props) {
                         {liveStreamStarted && (demoState == STATES.STREAMING) &&
                             <>
                                 <GridItem xs={12} sm={12} md={8} className={classes.videoTopBar}>
-                                    {liveStreamStarted && cameraEnabled && streaming &&
+                                    {liveStreamStarted && cameraEnabled &&
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={2}>
+                                            <GridItem xs={12} sm={12} md={3}>
                                                 <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
                                             </GridItem>
-                                            {!isIOS.current && <>
+                                            {cameraEnabled && streaming && !isIOS.current && <>
                                                 <GridItem xs={10} sm={2} md={3}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
                                                         border="1px solid"
                                                         target="_blank"
-                                                        href={`https://shaka-player-demo.appspot.com/demo/#audiolang=en-US;textlang=en-US;uilang=en-US;asset=${livePlayback.locatorUrl.hls}.m3u8;panel=CUSTOM%20CONTENT;build=uncompiled`}
-
+                                                        href={`/playback?hls=${livePlayback.locatorUrl.hls}.m3u8`}
                                                     >
                                                         <PlayArrow className={classes.icons} /> Watch HLS stream
                                                     </Button>
                                                 </GridItem>
-                                                <GridItem xs={12} sm={8} md={7}>
+                                                <GridItem xs={12} sm={8} md={6}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"

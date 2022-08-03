@@ -19,12 +19,11 @@ class ShakaPlayer extends React.PureComponent {
         this.video = React.createRef();
         this.videoContainer = React.createRef();
         this.state = {
+            source: props.src,
             presentationStartTime: {},
             stats: [],
-            bufferdInfo: {}
+            bufferedInfo: {}
         }
-
-
     }
 
     componentDidMount() {

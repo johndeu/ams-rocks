@@ -67,7 +67,7 @@ app.prepare().then(() => {
     const videoCodec = video === 'h264' && !transcode ? 
       [ '-c:v', 'copy'] :
       // video codec config: low latency, adaptive bitrate
-      ['-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'zerolatency', '-vf', 'scale=w=-2:0'];
+      ['-c:v', 'libx264', '-preset', 'ultrafast', '-g', '30', '-r','30', '-tune', 'zerolatency', '-vf', 'scale=w=-2:0'];
 
     const audioCodec = audio === 'aac' && !transcode ? 
       [ '-c:a', 'copy'] :
@@ -88,8 +88,13 @@ app.prepare().then(() => {
 
       ...audioCodec,
       //'-filter_complex', 'aresample=44100', // resample audio to 44100Hz, needed if input is not 44100
-      //'-strict', 'experimental',
-      '-bufsize', '1000',
+      '-strict', '-2',
+      '-crf', '18',
+      '-profile:v', 'baseline',
+      '-pix_fmt','yuv420p',
+      '-flvflags', 'no_duration_filesize', //try to avoid the failed to update header with correct duration/filesize error
+
+      '-bufsize', '969k',
       '-f', 'flv',
 
       //force to timeout
@@ -110,18 +115,18 @@ app.prepare().then(() => {
     // These errors most commonly occur when FFmpeg closes and there is still
     // data to write.f If left unhandled, the server will crash.
     ffmpeg.stdin.on('error', (e) => {
-      console.log(`FFmpeg STDIN Error`, e);
+      console.log(`FFmpeg STDIN ERROR :`, e);
     });
 
     // FFmpeg outputs all of its messages to STDERR. Let's log them to the console.
     ffmpeg.stderr.on('data', (data) => {
       ws.send(`ffmpeg got some data`);
-      console.log(`FFmpeg STDERR:`, data.toString());
+      console.log(`FFmpeg :`, data.toString());
     });
 
     ws.on('message', msg => {
       if (Buffer.isBuffer(msg)) {
-        console.log(`this is some video data`);
+        console.log(`Received video data buffer`);
         ffmpeg.stdin.write(msg);
       } else {
         console.log(msg);
