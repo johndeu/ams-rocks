@@ -184,15 +184,15 @@
             "items": [
                 {
                     "title": "Direct Uploads",
-                    "description": "Upload content from an HTTP/S URL, Azure blob storage, or directly via the portal"
+                    "description": "Provide any authenticated upload URL"
                 },
                 {
                     "title": "Stream from any encoder",
-                    "description": "Live stream using any encoder that supports the RTMP/S protocol."
+                    "description": "Supports RTMP/RTMPS protocol for live streaming."
                 },
                 {
                     "title": "Wide-range of input file formats",
-                    "description": "We accept many types of input video file formats and codecs"
+                    "description": "We accept many types of input video file formats"
                 },
                 {
                     "title": "Seamless live to VOD",
@@ -204,7 +204,7 @@
                 },
                 {
                     "title": "Stream live",
-                    "description": "Go live easily. Start a live transcoding or pass-through event, get the input RTMP URL and delivery LL-HLS or DASH immediately."
+                    "description": "Go live easily: just get the input URL and go."
                 },
                 {
                     "title": "Monitor, notify and react",
@@ -220,36 +220,36 @@
             "title": "Encoding",
             "items": [
                 {
-                    "title": "Any Input",
-                    "description": "We support most input video formats, including professional-grade ones such as H.264, H.265, and Apple ProRes."
+                    "title": "Choose your input",
+                    "description": "We support most input video formats, including professional-grade: H.264, H.265, and Apple ProRes"
                 },
                 {
-                    "title": "Made-for-you Presets",
-                    "description": "AMS provides a dozens of built-in commonly-used encoding presets that you can choose from - or you can create your own custom ones."
+                    "title": "All presets",
+                    "description": "Choose from dozens of commonly-used encoding presets, or create custom presets"
                 },
                 {
                     "title": "Dynamic Packaging",
-                    "description": "Deliver adaptive-bitrate content in HLS and MPEG-DASH streaming protocol formats using our built in packaging capabilities."
+                    "description": "Deliver adaptive-bitrate content in HLS and MPEG-DASH streaming protocol formats using our built-in packaging capabilities"
                 },
                 {
-                    "title": "Captioning and Subtitling",
-                    "description": "Get automatic speech-to-text transcribed captions and subtitles in 50+ different languages."
+                    "title": "Subtitles and closed captions",
+                    "description": "Get automatic speech-to-text transcriptions and subtitles in 50+ languages"
                 },
                 {
                     "title": "Content Protection",
-                    "description": "Encrypt your encoded content with AES-128 or any of the major DRM systems: Microsoft PlayReady, Apple FairPlay, or Google Widevine."
+                    "description": "Encrypt your encoded content with AES-128 or any of the major DRM systems: Microsoft PlayReady, Apple FairPlay, or Google Widevine"
                 },
                 {
-                    "title": "Content aware encoding",
-                    "description": "Stream the best versions of your content and save storage costs by allowing us to choose the perfect bitrates and resolution settings for your encodings with the content aware encoding presets."
+                    "title": "Content-aware encoding",
+                    "description": "Our presets are built to optimize bitrate and resolution for the best streaming and storage cost"
                 },
                 {
                     "title": "Automatic scaling without reservation",
-                    "description": "Submit encoding jobs across multiple regions without the fear of limits. Media Services encoding automatically scales to meet your needs."
+                    "description": "Submit encoding jobs across multiple regions without the fear of limit—encoding automatically scales to meet your needs"
                 },
                 {
                     "title": "Static package and deliver from anywhere",
-                    "description": "Encode and output your content as static HLS or DASH files for streaming direct from any HTTP/S cloud storage or web server."
+                    "description": "Encode and output your content as static HLS or DASH files for streaming direct from any HTTP/S cloud storage or web server"
                 }
             ]
         },
@@ -258,35 +258,35 @@
             "items": [
                 {
                     "title": "Encode with us, or upload your content",
-                    "description": "Encode with our content aware encoding preset to get the right results, or upload your own MP4 content to stream instantly."
+                    "description": "Use our content-aware encoding preset for the best results, or upload your own MP4 content to stream instantly"
                 },
                 {
-                    "title": "Deliver HLS and DASH from the same stored MP4s",
-                    "description": "Save storage costs by storing a single set of MP4s and use the power of dynamic manifest to deliver both HLS and DASH from a single set of MP4 files."
+                    "title": "HLS and DASH from the same stored MP4s",
+                    "description": "Save storage costs by storing a single set of MP4s and use dynamic manifest to deliver both HLS and DASH from a single set of MP4 files"
                 },
                 {
-                    "title": "Add Subtitles and Closed Captions",
-                    "description": "Add subtitles from WebVTT files, or use the built-in transcription presets to generate subtitle files using speech-to-text technology."
+                    "title": "Subtitles and Closed Captions",
+                    "description": "Add subtitles from WebVTT files, or use the built-in transcription presets to generate subtitle files using speech-to-text technology"
                 },
                 {
                     "title": "Add descriptive audio tracks",
-                    "description": "Provide accessibility by adding descriptive audio tracks to your streams"
+                    "description": "Enhance accessibility by adding descriptive audio tracks to your streams"
                 },
                 {
                     "title": "Instant highlights and clipping",
-                    "description": "Clip any live or on-demand video to any length you want using simple filters when publishing."
+                    "description": "Clip any video to the length you want using simple filters when publishing"
                 },
                 {
                     "title": "Stream live",
-                    "description": "Go live easily. Get the RTMP input URL and go"
+                    "description": "Get a RTMP input URL for easy live streaming "
                 },
                 {
                     "title": "RTMP/RTMPS Input",
-                    "description": "Supports RTMP and RTMPS protocol for simple integration with live streaming software like OBS"
+                    "description": "We support RTMP and RTMPS protocols for simple integration with live streaming software like OBS Studio"
                 },
                 {
                     "title": "Live captions",
-                    "description": "Real-time transcription in 50+ languages without sacrificing latency"
+                    "description": "Get automatic speech-to-text transcriptions and subtitles in 50+ languages without sacrificing latency"
                 }
             ]
         },
@@ -295,35 +295,35 @@
             "items": [
                 {
                     "title": "Client SDKs and samples",
-                    "description": "Get started quickly with client SDKs and samples available for .NET, Node.js/Javascript, Python, Java, Go."
+                    "description": "Get started quickly with client SDKs and samples available for .NET, Node.js/Javascript, Python, Java, Go"
                 },
                 {
-                    "title": "Manage your accounts in the Azure portal",
-                    "description": "Easy management in the portal of all account features, integrations, security and monitoring."
+                    "title": "Azure portal account management ",
+                    "description": "Manage features, integrations, security, and monitoring all in one place"
                 },
                 {
-                    "title": "Private links",
-                    "description": "Enable private link support to securely access your Media Services accounts on your own private network."
+                    "title": "Private network management",
+                    "description": "Turn on private link support to securely access your Media Services accounts on your own private network"
                 },
                 {
                     "title": "Role-based access control",
-                    "description": "Enable role-based access control to lock down access to critical resources in your accounts."
+                    "description": "Restrict access to critical resources in your accounts"
                 },
                 {
                     "title": "Bring your own keys",
-                    "description": "Bring your own content keys for protected streaming, account encryption and storage account access."
+                    "description": "Bring your own content keys for protected streaming, account encryption, and storage account access"
                 },
                 {
-                    "title": "Enable trusted storage with Managed Identities",
-                    "description": "Restrict access to your storage accounts with trusted storage and system or user assigned Managed Identity. "
+                    "title": "Get trusted storage with Managed Identities",
+                    "description": "Allow access to storage accounts protected by firewalls by turning on Managed Identities"
                 },
                 {
                     "title": "Encrypt all of your assets at rest",
-                    "description": "Use the default storage side encryption to encrypt all of your assets at rest, or bring your own key to control the encryption."
+                    "description": "Use the default storage side encryption to encrypt all of your assets at rest, or bring your own key to control the encryption"
                 },
                 {
-                    "title": "Fine grained security using Azure Policy",
-                    "description": "Enable fine-grained security settings using the built-in Azure Policy definitions for Media Services. Restrict outbound internet streaming and limit content delivery to your private network only."
+                    "title": "Fine-grained security using Azure Policy",
+                    "description": "Get built-in fine-grained security, restrict outbound internet streaming, and limit content delivery to only your private network"
                 }
             ]
         }
