@@ -196,23 +196,23 @@
                 },
                 {
                     "title": "Seamless live to VOD",
-                    "description": "Live events in Media Services have always supported instant live to VOD. Easily archive your live events, and stream VOD from the same CDN cache as your live event."
+                    "description": "Live events in Media Services have always supported instant live to VOD. Easily archive your live events, and stream VOD from the same CDN cache as your live event"
                 },
                 {
                     "title": "Clipping and highlights",
-                    "description": "Instantly generate highlights using dynamic manifest filters, or export clips from the encoder to share with external systems and services."
+                    "description": "Instantly generate highlights using dynamic manifest filters, or export clips from the encoder to share with external systems and services"
                 },
                 {
                     "title": "Stream live",
-                    "description": "Go live easily: just get the input URL and go."
+                    "description": "Go live easily: just get the input URL and go"
                 },
                 {
                     "title": "Monitor, notify and react",
-                    "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early, notify and respond to changes in your streaming."
+                    "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early, notify and respond to changes in your streaming"
                 },
                 {
                     "title": "Live captions",
-                    "description": "Reach your audience with real-time transcription in 50+ languages without sacrificing latency."
+                    "description": "Reach your audience with real-time transcription in 50+ languages without sacrificing latency"
                 }
             ]
         },
