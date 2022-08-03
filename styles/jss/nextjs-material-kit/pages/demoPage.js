@@ -125,7 +125,7 @@ const demoPage = (theme) => ({
     outputCanvas: {
         zIndex: "1",
         "&,& canvas": {
-            borderRadius: "14px 14px 0px 0px",
+            borderRadius: "14px 14px 14px 14px",
             height: "auto",
             width: "100%",
             display: "block",
@@ -307,6 +307,8 @@ const demoPage = (theme) => ({
         marginBottom: "20px"
     },
     playerControls: {
+        position:"relative",
+        top: "-11px",
         marginTop: "auto",
         marginBottom: "50px",
         backgroundColor: "#000",

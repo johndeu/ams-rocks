@@ -118,6 +118,7 @@ export default function DemoPage(props) {
     const requestAnimationRef = useRef();
     const workerTimerAnimationRef = useRef();
     const isIOS = useRef(false);
+    const productSelectedRef = useRef();
 
 
     const startDemo = async () => {
@@ -193,9 +194,16 @@ export default function DemoPage(props) {
         ctx.fillStyle = '#FFF';
         ctx.font = '24px Segoe UI';
         const date = new Date();
-        const dateText = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
+
+        const dateText = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}`;
         ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
+        if (productSelectedRef.current) {
+            const productText = `Current Product: ${productSelectedRef.current}`;
+
+            // (text, left X, top Y, maxWidth)
+            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2), canvasRef.current.height - 25, canvasRef.current.width);
+        }
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
 
@@ -296,9 +304,9 @@ export default function DemoPage(props) {
         let clockTimer = setInterval(() => {
             let timeRemaining = endTimeRef.current.diff(moment());
             if (timeRemaining <= 0) {
-                if(demoState == STATES.STREAMING){
+                if (demoState == STATES.STREAMING) {
                     setDemoState(STATES.TIMEOUT);
-                    cleanUpDemo();  
+                    cleanUpDemo();
                 }
                 clearInterval(clockTimer);
             }
@@ -441,6 +449,7 @@ export default function DemoPage(props) {
 
     // Triggered on product selected
     const productSelected = (productName) => {
+        productSelectedRef.current = productName;
         console.log(`Product Selected:  ${productName}`);
 
     };
@@ -690,12 +699,12 @@ export default function DemoPage(props) {
                                         </GridContainer>
                                     }
                                 </GridItem>
-                             
+
                             </>
 
                         }
                         {(demoState == STATES.STREAMING) &&
-                        
+
                             <GridItem id="studio" xs={12} sm={12} md={8}>
                                 <div className={`${classes.videoContainer} ${cameraEnabled && classes.cameraEnabled
                                     }`}
@@ -801,7 +810,7 @@ export default function DemoPage(props) {
                         </DialogContent>
                         <DialogActions className={classes.modalFooter}>
                             <GridContainer>
-                                <GridItem xs={12} sm={12} md={6}>
+                                <GridItem xs={12} sm={12} md={5}>
                                     <Button
                                         onClick={() => cleanUpDemo()}
                                         color="danger"
@@ -810,7 +819,7 @@ export default function DemoPage(props) {
                                         Yes, end stream
                                     </Button>
                                 </GridItem>
-                                <GridItem xs={12} sm={12} md={6}>
+                                <GridItem xs={12} sm={12} md={7}>
                                     <Button
                                         color="transparent"
                                         size="lg"
