@@ -174,7 +174,7 @@ export default function LandingPage(props) {
             align="left"
             title={i18next.t('landing.section.2.title')}
             description={i18next.t('landing.section.2.description')}
-            imgSrc="/img/Landing/LowLatency.png"
+            imgSrc="/img/Landing/Lowlatency.png"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
             actionText={i18next.t('landing.section.2.callToAction')}
             actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-live-transcription-how-to"
