@@ -30,35 +30,35 @@
     },
     "landing": {
         "title": "Azure Media Services",
-        "tagline1": "Live streaming",
-        "tagline2": "Built for scale and security",
-        "valueProp": "Azure Media Services is an API that enables developers to build low latency live and on-demand video experiences",
-        "ctaButton": "Get started",
-        "readDocs": "Documentation",
+        "tagline1": "Build fast, reliable video ",
+        "tagline2": "experiences with Azure Media Services",
+        "valueProp": "See it in action with up to 5 hours of free live streaming.",
+        "ctaButton": "Create a free Azure account",
+        "readDocs": "See documentation",
         "loginButton": "Start free",
-        "getStartedFree": "Get started free",
+        "getStartedFree": "Create a free Azure account",
         "section.1": {
-            "title": "A full, end-to-end solution",
-            "description": "Azure Media Services is a full solution that manages the ingestion, transcoding, packaging, and delivery of your live content, the same technology that powers Teams and LinkedIn.",
-            "callToAction": "Create a live event ",
+            "title": "Your end-to-end streaming solution",
+            "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams and LinkedIn.",
+            "callToAction": "",
             "imageAlt": "Solution"
         },
         "section.2": {
-            "title": "Make your live content accessible, with real-time transcription",
-            "description": "Automatic real-time transcription in 100+ languages without sacrificing latency.",
-            "callToAction": "Find out more",
-            "imageAlt": "Accessibility"
+            "title": "Low-latency live video with less than 5 seconds of delay",
+            "description": "Whether you’re streaming to an audience of dozens or millions, your viewers will watch in near-realtime on all platforms and devices around the world.",
+            "callToAction": "",
+            "imageAlt": "Low latency"
         },
         "section.3": {
             "title": "Protect your content from upload to playback",
-            "description": "With Azure Media Service's uncompromising commitment to privacy and security, you can enable viewing restrictions with Digital Rights Management, Geo-blocking, and URL token signing.",
+            "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
             "callToAction": "",
             "imageAlt": "Security"
         },
         "section.4": {
-            "title": "Deliver low latency live streaming at global scale",
-            "description": "4-7 seconds of delay, delivered to all your viewers, devices and platforms. Whether it’s a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime.",
-            "callToAction": "Try it out",
+            "title": "Built-in accessibility for an inclusive video experience",
+            "description": "Get automatic real-time transcription in 100+ languages without sacrificing quality or speed.",
+            "callToAction": "",
             "imageAlt": "Low latency"
         }
     },
@@ -66,7 +66,7 @@
         "title": "Try low latency live streaming",
         "playerNotes": "Current player is Shaka player version {{playerVersion}}. The burned-in timecode is generated during encoding using system clock time.",
         "clockNotes": "Be sure to sync your local system clock before evaluating end-to-end latency. Latency charts are not available on iOS at this time.",
-        "onDemand" : "Offline for maintenance",
+        "onDemand": "Offline for maintenance",
         "onDemandMessage": "The live low-latency (LL-HLS) stream demo is currently offline for maintenance. The current playback is not a live stream. Please check back at a later time.",
         "callToAction": "You can get details on how to get started with low latency live (LL-HLS) streaming in our documentation. ",
         "callToActionLink": "Learn more.",
@@ -86,7 +86,7 @@
             "loading": "loading"
         },
         "features": {
-            "title": "The most feature-rich low latency platform available",
+            "title": "Fully customizable features for all your video needs",
             "list": [
                 {
                     "item": "Low latency between 4-7 seconds at scale"
@@ -127,62 +127,61 @@
             ]
         }
     },
-    "industry": 
-        [
-            {
-                "title": "Enterprise",
-                "headline": "Build media applications for today's enterprise",
-                "body": "Add live and on-demand streaming easily to your enterprise applications. Broadcast and archive your company meetings from any source. Secure your media over your own networks with Microsoft's trusted Enterprise level features, Azure Active Directory authentication, encryption at rest, DRM and private networks.",
-                "callToAction": ""
-            },
-            {
-                "title": "Live shopping",
-                "headline": "Sell your products",
-                "body": "Empower your sellers to connect with their audience whether it be up-votes or instant advertising of new products. Influential connections mold a brand in seconds.",
-                "callToAction": ""
-            },
-            {
-                "title": "Fitness",
-                "headline": "Stay fit together",
-                "body": "Connect your athletes to one another. Build a leader board for everyone to keep track of their core movements. Deliver classes from a few hundred viewers to thousands in an instant. Build a library of on-demand classes for your subscribers and protect the content with digital rights management.",
-                "callToAction": ""
-            },
-            {
-                "title": "Government",
-                "headline": "Engage your community",
-                "body": "Broadcast and archive the actions of leaders and legislators. Inform communities on their own schedules through the use of on-demand streaming. Provide accessible streaming to your constituents through the use of live and on-demand transcription and subtitling.",
-                "callToAction": ""
-            },
-            {
-                "title": "Education",
-                "headline": "Create learning hubs",
-                "body": "Elevate online learning with more interactivity. Inspire students to push their learnings with in-depth calls, raise their virtual hands, and foster their creativity. ",
-                "callToAction": ""
-            },
-            {
-                "title": "Energy",
-                "headline": "Deliver a clean energy future",
-                "body": "Inspire conference attendees to ask more questions and get hands on with the conference speakers. Build on the personal connection and dive deep into climate and clean energy.",
-                "callToAction": ""
-            },
-            {
-                "title": "Healthcare",
-                "headline": "Empower patients",
-                "body": "Provide virtual care for patients and providers to get the best remote health care and avoid the unnecessary in-person contact. Give accessible care quickly and easily.",
-                "callToAction": ""
-            },
-            {
-                "title": "Manufacturing",
-                "headline": "Improve production quality",
-                "body": "From the production line equipment to products, capture real time footage and data for a more efficient supply chain. Live stream with robotics for remote welding operations.",
-                "callToAction": ""
-            }
-        ],
+    "industry": [
+        {
+            "title": "Fitness",
+            "headline": "Stay fit together",
+            "body": "Connect your athletes to one another. Build a leader board for everyone to keep track of their core movements. Deliver classes from a few hundred viewers to thousands in an instant. Build a library of on-demand classes for your subscribers and protect the content with digital rights management.",
+            "callToAction": ""
+        },
+        {
+            "title": "Enterprise",
+            "headline": "Build a global workforce",
+            "body": "Let your teams work together wherever they are with virtual meetings that are as close to in-person as it gets.",
+            "callToAction": ""
+        },
+        {
+            "title": "Live shopping",
+            "headline": "Bring the in-store experience home",
+            "body": "Drive customer engagement and get instant feedback on products through live, interactive shopping experiences.",
+            "callToAction": ""
+        },
+        {
+            "title": "Government",
+            "headline": "Connect with your community",
+            "body": "Foster communication between government officials and the public with live legislative sessions, virtual town halls, and more.",
+            "callToAction": ""
+        },
+        {
+            "title": "Education",
+            "headline": "Elevate online education",
+            "body": "Create high-quality, interactive learning experiences that bring the virtual classroom to life.",
+            "callToAction": ""
+        },
+        {
+            "title": "Energy",
+            "headline": "Deliver a clean energy future",
+            "body": "Cut your carbon footprint and minimize travel with virtual or hybrid events.",
+            "callToAction": ""
+        },
+        {
+            "title": "Healthcare",
+            "headline": "Meet patients where they are",
+            "body": "Make health care more accessible and efficient for patients who want to connect with a doctor from the comfort of their own homes.",
+            "callToAction": ""
+        },
+        {
+            "title": "Manufacturing",
+            "headline": "Boost production quality",
+            "body": "Capture real-time footage and data at every step in your operation to identify gaps, reduce costs, and improve your products.",
+            "callToAction": ""
+        }
+    ],
     "features": {
-        "title": "Live streaming and On-demand features",
+        "title": "Fully customizable features for all your video needs",
         "live": {
-            "title": "Adding media / going live",
-            "items" : [
+            "title": "Adding video and live streaming",
+            "items": [
                 {
                     "title": "Direct Uploads",
                     "description": "Upload content from an HTTP/S URL, Azure blob storage, or directly via the portal"
@@ -219,7 +218,7 @@
         },
         "processing": {
             "title": "Encoding",
-            "items" : [
+            "items": [
                 {
                     "title": "Any Input",
                     "description": "We support most input video formats, including professional-grade ones such as H.264, H.265, and Apple ProRes."
@@ -255,12 +254,12 @@
             ]
         },
         "streaming": {
-            "title": "Streaming out",
-            "items" : [
+            "title": "Outbound streaming",
+            "items": [
                 {
                     "title": "Encode with us, or upload your content",
                     "description": "Encode with our content aware encoding preset to get the right results, or upload your own MP4 content to stream instantly."
-                }, 
+                },
                 {
                     "title": "Deliver HLS and DASH from the same stored MP4s",
                     "description": "Save storage costs by storing a single set of MP4s and use the power of dynamic manifest to deliver both HLS and DASH from a single set of MP4 files."
@@ -292,8 +291,8 @@
             ]
         },
         "managing": {
-            "title": "Managing",
-            "items" : [
+            "title": "Management + security",
+            "items": [
                 {
                     "title": "Client SDKs and samples",
                     "description": "Get started quickly with client SDKs and samples available for .NET, Node.js/Javascript, Python, Java, Go."
@@ -330,17 +329,17 @@
         }
     },
     "freeLive": {
-        "title": "Get started with 5 hours of free live streaming",
-        "callToAction": "Start free trial"
+        "title": "Get up to 5 hours of free live streaming.",
+        "callToAction": "Create a free Azure account"
     },
     "tryFree": {
         "title": "Try Azure Media Services for free",
-        "description": "Start with a free account for up to 20 minutes of free file encoding and 5 hours each of standard passthrough live, live transcription, and standard streaming endpoint. For unlimited encoding and live streaming, create an Azure Media Services account with your own Azure subscription.",
-        "callToAction": "Get started free"
+        "description": "Get up to 5 hours of live streaming.",
+        "callToAction": "Create a free Azure account"
     },
     "readyToStart": {
         "title": "Ready to start?",
-        "callToAction": "Get started free"
+        "callToAction": "Create a free Azure account"
     },
     "customers": {
         "title": "Customers",

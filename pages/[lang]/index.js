@@ -94,15 +94,15 @@ export default function LandingPage(props) {
         {...rest}
       />
       <SnackbarContent
-          message={
-            <span>
-              <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>
-            </span>
-          }
-          close
-          color="azure"
-          icon="new_releases_outline"
-        />
+        message={
+          <span>
+            <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>
+          </span>
+        }
+        close
+        color="azure"
+        icon="new_releases_outline"
+      />
       <Parallax responsive image="/img/Mainheader_image-2.jpg">
 
         <GridContainer className={classes.container}>
@@ -153,12 +153,12 @@ export default function LandingPage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        
+
         <div className={classes.container}>
 
 
           <IndustrySection />
-          <FreeLive />
+
           {/*           <div className={classes.sectionBreak}></div>
  */}
           <SectionArea
@@ -174,11 +174,13 @@ export default function LandingPage(props) {
             align="left"
             title={i18next.t('landing.section.2.title')}
             description={i18next.t('landing.section.2.description')}
-            imgSrc="/img/Landing/Accessibility.png"
+            imgSrc="/img/Landing/LowLatency.png"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
             actionText={i18next.t('landing.section.2.callToAction')}
             actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-live-transcription-how-to"
           />
+          <div className={classes.sectionBreak}></div>
+          <FreeLive />
           <SectionArea
             align="right"
             title={i18next.t('landing.section.3.title')}
@@ -192,7 +194,7 @@ export default function LandingPage(props) {
             align="left"
             title={i18next.t('landing.section.4.title')}
             description={i18next.t('landing.section.4.description')}
-            imgSrc="/img/Landing/Lowlatency.png"
+            imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
             actionText={i18next.t('landing.section.4.callToAction')}
             actionLink="/live"
