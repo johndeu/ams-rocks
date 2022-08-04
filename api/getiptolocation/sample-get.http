@@ -1,3 +1,5 @@
 ## Send using the REST Client extension in VS Code
 
 GET http://localhost:4280/api/getiptolocation?ip=2601:282:1680:5de0::ac9c   HTTP/1.1
+
+
