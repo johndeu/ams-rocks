@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Head from "next/head";
+
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -27,7 +29,26 @@ const useStyles = makeStyles(styles);
 export default function Header(props) {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  let siteConsent = React.useRef();
+  let WcpConsent = React.useRef();
+
   React.useEffect(() => {
+
+    WcpConsent = window.WcpConsent;
+
+    //Init method 
+    WcpConsent && WcpConsent.init(i18next.language, "cookie-banner", (err, _siteConsent) => {
+      if (err) {
+        alert(err);
+      } else {
+        siteConsent.current = _siteConsent;
+        console.log("getConsent()", siteConsent.current.getConsent());
+        console.log("getConsent().Required", siteConsent.current.getConsent().Required);
+      }
+    }, onConsentChanged);
+
+ 
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
     }
@@ -37,9 +58,25 @@ export default function Header(props) {
       }
     };
   });
+
+     //call back method when consent is changed by user
+  const onConsentChanged=(newConsent) => {
+      console.log("onConsentChanged", newConsent);
+      console.log("getConsent()", siteConsent.current.getConsent());
+      console.log("getConsentFor(wcpConsentCategory.Required)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Required));
+      console.log("getConsentFor(wcpConsentCategory.ThirdPartyAnalytics)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Analytics));
+      console.log("getConsentFor(wcpConsentCategory.SocialMedia)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.SocialMedia));
+      console.log("getConsentFor(wcpConsentCategory.Advertising)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Advertising));
+    }
+
+  const manageConsent= () =>{
+      siteConsent.current.manageConsent();
+  }
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const headerColorChange = () => {
     const { color, changeColorOnScroll } = props;
     const windowsScrollTop = window.pageYOffset;
@@ -94,67 +131,76 @@ export default function Header(props) {
   )
 
   return (
-    <AppBar className={appBarClasses} >
-      <Toolbar className={classes.container}>
-        <Hidden mdUp>
-          <CustomButton
-            color="azure2"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 65">
-              <rect width="100" height="10"></rect>
-              <rect y="30" width="100" height="10"></rect>
-              <rect y="60" width="100" height="10"></rect>
-            </svg>
-          </CustomButton>
-          <Hidden xsDown>
-            <div className={classes.msftIconCenter}>{msftBox}</div>
+    <>
+      <React.Fragment>
+        <Head >
+          <script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+
+        </Head>
+      </React.Fragment>
+      <div id="cookie-banner"></div>
+      <AppBar className={appBarClasses} >
+        <Toolbar className={classes.container}>
+          <Hidden mdUp>
+            <CustomButton
+              color="azure2"
+              aria-label="open drawer"
+              onClick={handleDrawerToggle}
+            >
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 65">
+                <rect width="100" height="10"></rect>
+                <rect y="30" width="100" height="10"></rect>
+                <rect y="60" width="100" height="10"></rect>
+              </svg>
+            </CustomButton>
+            <Hidden xsDown>
+              <div className={classes.msftIconCenter}>{msftBox}</div>
+            </Hidden>
           </Hidden>
-        </Hidden>
-        <Hidden smDown implementation="css">
-          {msftBox}
-        </Hidden>
+          <Hidden smDown implementation="css">
+            {msftBox}
+          </Hidden>
 
-        {leftLinks !== undefined ? brandComponent : null}
-        <div className={classes.flex}>
-          {leftLinks !== undefined ? (
-            <>
+          {leftLinks !== undefined ? brandComponent : null}
+          <div className={classes.flex}>
+            {leftLinks !== undefined ? (
+              <>
 
-              <Hidden smDown implementation="css">
-                <div className={classes.leftLinkGap}>
-                  {leftLinks}
-                </div>
-              </Hidden>
+                <Hidden smDown implementation="css">
+                  <div className={classes.leftLinkGap}>
+                    {leftLinks}
+                  </div>
+                </Hidden>
 
-            </>
-          ) : (
-            brandComponent
-          )}
-        </div>
-
-        <Hidden implementation="css">
-          {rightLinks}
-        </Hidden>
-
-      </Toolbar>
-      <Hidden mdUp implementation="js">
-        <Drawer
-          variant="temporary"
-          anchor={"right"}
-          open={mobileOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          onClose={handleDrawerToggle}
-        >
-          <div className={classes.appResponsive}>
-            {leftLinks}
-            {rightLinks}
+              </>
+            ) : (
+              brandComponent
+            )}
           </div>
-        </Drawer>
-      </Hidden>
-    </AppBar>
+
+          <Hidden implementation="css">
+            {rightLinks}
+          </Hidden>
+
+        </Toolbar>
+        <Hidden mdUp implementation="js">
+          <Drawer
+            variant="temporary"
+            anchor={"right"}
+            open={mobileOpen}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            onClose={handleDrawerToggle}
+          >
+            <div className={classes.appResponsive}>
+              {leftLinks}
+              {rightLinks}
+            </div>
+          </Drawer>
+        </Hidden>
+      </AppBar>
+    </>
   );
 }
 

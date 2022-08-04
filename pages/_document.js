@@ -23,7 +23,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
           />
 
-           <script type="text/javascript"
+          <script type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){
@@ -34,6 +34,8 @@ class MyDocument extends Document {
               `,
             }}
           />
+
+          <script type="text/javascript" src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
         </Head>
         <body>
           <div id="page-transition"></div>

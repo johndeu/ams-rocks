@@ -2,13 +2,14 @@ import React from "react";
 import Head from "next/head";
 // core components
 import styles from "styles/jss/nextjs-material-kit/components/headerStyle.js";
-
+import 'wcp-consent-init.js';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import i18next from "i18next";
 
 const useStyles = makeStyles(styles);
 
@@ -41,11 +42,6 @@ export default function AzureHeader(props) {
                  $('.header-container').html(headerMarkup);
 
             }) 
-
-
-        if (props.changeColorOnScroll) {
-            window.addEventListener("scroll", headerColorChange);
-        }
 
 
         return function cleanup() {
@@ -118,6 +114,7 @@ export default function AzureHeader(props) {
             <React.Fragment>
                 <Head >
                     <script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+                    
                 </Head>
             </React.Fragment>
             <div id="cookie-banner"></div>
