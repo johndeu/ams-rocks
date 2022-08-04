@@ -73,7 +73,8 @@
     "styled-components": "5.3.0",
     "tailwindcss": "^2.2.4",
     "webpack": "^5.45.1",
-    "worker-timers": "^7.0.51"
+    "worker-timers": "^7.0.51",
+    "node-fetch": "^3.2.10"
   },
   "devDependencies": {
     "@azure/functions": "^1.2.3",
