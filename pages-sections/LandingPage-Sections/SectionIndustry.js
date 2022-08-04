@@ -42,7 +42,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Enterprise.png"
+                          src= {i18next.t('industry.0.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -65,7 +65,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Shopping.png"
+                          src= {i18next.t('industry.1.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -88,7 +88,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Fitness.png"
+                          src= {i18next.t('industry.2.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -111,7 +111,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Government.png"
+                          src= {i18next.t('industry.3.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -134,7 +134,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Education.png"
+                          src= {i18next.t('industry.4.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -156,7 +156,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src="/img/Landing/Healthcare.png"
+                          src= {i18next.t('industry.6.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
