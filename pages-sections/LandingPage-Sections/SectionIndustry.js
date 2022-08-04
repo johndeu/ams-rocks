@@ -171,7 +171,29 @@ export default function SectionIndustry() {
                       </GridItem>
                     </GridContainer>
                   ),
-                } 
+                },
+                {
+                  tabName: i18next.t('industry.7.title'),
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={6} md={6}>
+                        <img
+                          src= {i18next.t('industry.7.imgSrc')}
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={6} md={6} >
+                      <div className={classes.textSection}>
+                          <h3>{i18next.t('industry.7.headline')}</h3>
+                          <p className={classes.textLeft}>
+                            {i18next.t('industry.7.body')}
+                          </p>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                }  
               ]}
             />
           </GridItem>
