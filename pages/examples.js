@@ -13,7 +13,7 @@ export default function Examples({ allLangsData }) {
 	useEffect(() => {
 		const { pathname } = router;
 		if (pathname == '/examples') {
-			router.push('/' + i18next.language.substring(0, 2) + '/examples');
+			router.push('/' + i18next.language + '/examples');
 		}
 	});
 

@@ -16,6 +16,7 @@ import { useInView } from "react-intersection-observer";
 import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
+import AzureFooter from "components/Footer/AzureFooter.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
@@ -211,7 +212,8 @@ export default function LandingPage(props) {
         </div>
       </div>
 
-      <Footer whiteFont logoColor="gray" />
+      <AzureFooter></AzureFooter>
+     {/*  <Footer whiteFont logoColor="gray" /> */}
     </div>
   );
 }

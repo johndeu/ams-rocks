@@ -6,7 +6,7 @@ import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" className="azure-header-static">
+      <Html lang="en-us" className="azure-header-static">
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#000000" />
@@ -22,6 +22,11 @@ class MyDocument extends Document {
             type="text/css"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
           />
+
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://azurecomcdn.azureedge.net/en-us/asset/footercss/"></link>
 
           <script type="text/javascript"
             dangerouslySetInnerHTML={{

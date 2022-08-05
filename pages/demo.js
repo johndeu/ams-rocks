@@ -11,7 +11,7 @@ export default function Demo({ allLangsData }) {
 	useEffect(() => {
 		const { pathname } = router;
 		if (pathname == '/demo') {
-			router.push('/' + i18next.language.substring(0, 2) + '/demo');
+			router.push('/' + i18next.language + '/demo');
 		}
 	});
 

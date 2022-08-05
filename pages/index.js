@@ -11,7 +11,7 @@ export default function Home({ allLangsData }) {
 	useEffect(() => {
 		const { pathname } = router;
 		if (pathname == '/') {
-			router.push('/' + i18next.language.substring(0, 2));
+			router.push('/' + i18next.language);
 		}
 	});
 

@@ -48,6 +48,8 @@ i18next.use(LanguageDetector).init({
 	ns: ['translations'],
 	defaultNS: 'translations',
 	returnObjects: true,
+	nonExplicitSupportedLngs: false,
+	lowerCaseLng:true,
 	debug: false,
 	interpolation: {
 		escapeValue: false, // not needed for react!!

@@ -12,7 +12,7 @@ export default function Playback({ allLangsData }) {
 		const { pathname} = router;
 		if (pathname == '/playback') {
 			router.push( {
-				pathname: '/' + i18next.language.substring(0, 2) + '/playback',
+				pathname: '/' + i18next.language + '/playback',
 				query: router.query
 		});
 		}
