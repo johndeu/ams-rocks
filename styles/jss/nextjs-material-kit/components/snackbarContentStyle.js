@@ -52,7 +52,7 @@ const snackbarContentStyle = {
     ...primaryBoxShadow,
   },
   azure: {
-    backgroundColor: "#2899F5",
+    backgroundColor: "#1e74bc",
     color: "#ffffff",
     ...infoBoxShadow,
   },

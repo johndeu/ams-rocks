@@ -593,6 +593,7 @@ export default function DemoPage(props) {
                                         border="1px solid"
                                         href="/"
                                         rel="noreferrer"
+                                        aria-label="Cancel"
                                     >
                                         Cancel
                                     </Button>
@@ -814,6 +815,7 @@ export default function DemoPage(props) {
                                         size="lg"
                                         border="1px solid"
                                         rel="noreferrer"
+                                        aria-label="No, continue streaming"
                                         onClick={() => {
                                             setStopStreamModal(false);
                                         }

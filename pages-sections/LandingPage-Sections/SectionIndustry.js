@@ -53,7 +53,6 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.0.body')}
                           </p>
-                          {/* <a href="#">{i18next.t('industry.0.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
@@ -76,7 +75,7 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.1.body')}
                           </p>
-                         {/*  <a href="#">{i18next.t('industry.1.callToAction')}</a> */}
+    
                         </div>
                       </GridItem>
                     </GridContainer>
@@ -99,7 +98,6 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.2.body')}
                           </p>
-                          {/* <a href="#">{i18next.t('industry.2.callToAction')}</a> */}
                         </div>
                       </GridItem>
                     </GridContainer>
@@ -122,7 +120,7 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.3.body')}
                           </p>
-                          {/* <a href="#">{i18next.t('industry.3.callToAction')}</a> */}
+                    
                         </div>
                       </GridItem>
                     </GridContainer>

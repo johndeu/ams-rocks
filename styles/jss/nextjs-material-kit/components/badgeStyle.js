@@ -43,7 +43,7 @@ const badgeStyle = {
     backgroundColor: "#6c757d",
   },
   azure : {
-    backgroundColor: "#2899F5",
+    backgroundColor: "#1e74bc",
   },
 };
 

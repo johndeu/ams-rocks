@@ -89,7 +89,7 @@ const defaultFont = {
   fontWeight: "400",
   lineHeight: "1.5em",
 };
-const blueColor = "#2899F5";
+const blueColor = "#1e74bc";
 
 const primaryColor = "#9c27b0";
 const warningColor = "#ff9800";

@@ -51,7 +51,7 @@ export default function SectionArea(props) {
             <p className={classes.description}>
               {description}
             </p>
-            <a href={actionLink} rel="noreferrer">{actionText}</a>
+            <a href={actionLink} rel="noreferrer" aria-label={actionText}>{actionText}</a>
           </div>
         </GridItem>
         {align == "right" &&

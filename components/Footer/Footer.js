@@ -65,7 +65,7 @@ export default function Footer(props) {
         <div className={classes.right}>
           <List className={classes.list}>
           <ListItem className={classes.inlineBlock}>
-              <a className={classes.footerAnchor} rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank">{i18next.t("footer.privacy")}</a> &nbsp;&nbsp;
+              <a className={classes.footerAnchor} rel="noreferrer" href="https://privacy.microsoft.com/privacystatement" target="_blank" >{i18next.t("footer.privacy")}</a> &nbsp;&nbsp;
             </ListItem>
             { i18next.language == 'de' &&  
               <ListItem className={classes.inlineBlock}>

@@ -71,24 +71,24 @@ export default function HeaderLinks(props) {
           }}
           dropdownList={[
             <Link href="https://docs.microsoft.com/azure/media-services/">
-              <a className={classes.dropdownLink} target="_blank" >{i18next.t('menu.docs.documentation')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.documentation')}>{i18next.t('menu.docs.documentation')}</a>
             </Link>,
             <Link href="https://docs.microsoft.com/rest/api/media/">
-              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.api')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.api')}>{i18next.t('menu.docs.api')}</a>
             </Link>,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/limits-quotas-constraints-reference">
-              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.quotas')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.quotas')}>{i18next.t('menu.docs.quotas')}</a>
             </Link>,
             <Divider />,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/live-event-obs-quickstart">
-              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.quickStarts')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.quickStarts')}>{i18next.t('menu.docs.quickStarts')}</a>
             </Link>,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/samples-overview">
-              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.samples')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.samples')}>{i18next.t('menu.docs.samples')}</a>
             </Link>,
             <Divider />,
             <Link href="https://docs.microsoft.com/azure/media-services/latest/player-media-players-concept">
-              <a className={classes.dropdownLink} target="_blank">{i18next.t('menu.docs.players')}</a>
+              <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.players')}>{i18next.t('menu.docs.players')}</a>
             </Link>,
           ]}
         />

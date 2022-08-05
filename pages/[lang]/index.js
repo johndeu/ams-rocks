@@ -97,7 +97,7 @@ export default function LandingPage(props) {
       <SnackbarContent
         message={
           <span>
-            <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live">now available. Try it now.</a>
+            <b>New!</b> Low latency live streaming with LL-HLS is <a href="/live" aria-label="Try it now">now available. Try it now.</a>
           </span>
         }
         close
@@ -120,6 +120,7 @@ export default function LandingPage(props) {
               href="https://azure.microsoft.com/free/"
               target="_blank"
               rel="noreferrer"
+              aria-label={i18next.t('landing.ctaButton')}
             >
               {i18next.t('landing.ctaButton')}
             </Button>
@@ -130,6 +131,7 @@ export default function LandingPage(props) {
               href="https://docs.microsoft.com/azure/media-services/"
               target="_blank"
               rel="noreferrer"
+              aria-label={i18next.t('landing.readDocs')}
             >
               {i18next.t('landing.readDocs')}
             </Button>
@@ -169,6 +171,7 @@ export default function LandingPage(props) {
             imgSrc="/img/Landing/Solution.png"
             imgAlt={i18next.t('landing.section.1.imageAlt')}
             actionText={i18next.t('landing.section.1.callToAction')}
+            aria-label={i18next.t('landing.section.1.title')}
             actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-obs-quickstart"
           />
           <SectionArea
@@ -178,6 +181,7 @@ export default function LandingPage(props) {
             imgSrc="/img/Landing/Lowlatency.png"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
             actionText={i18next.t('landing.section.2.callToAction')}
+            aria-label={i18next.t('landing.section.2.title')}
             actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-live-transcription-how-to"
           />
           <div className={classes.sectionBreak}></div>
@@ -185,6 +189,7 @@ export default function LandingPage(props) {
           <SectionArea
             align="right"
             title={i18next.t('landing.section.3.title')}
+            aria-label={i18next.t('landing.section.3.title')}
             description={i18next.t('landing.section.3.description')}
             imgSrc="/img/Landing/Security.png"
             imgAlt={i18next.t('landing.section.3.imageAlt')}
@@ -194,6 +199,7 @@ export default function LandingPage(props) {
           <SectionArea
             align="left"
             title={i18next.t('landing.section.4.title')}
+            aria-label={i18next.t('landing.section.4.title')}
             description={i18next.t('landing.section.4.description')}
             imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
