@@ -26,7 +26,7 @@ jobs:
                   url: https://media.microsoft.com
 
                   # Provide any additional inputs here
-                  fail-on-accessibility-error: false
+                  fail-on-accessibility-error: true
 
             - name: Upload report artifact
               if: success() || failure()
