@@ -14,23 +14,23 @@ const useStyles = makeStyles(styles);
 
 export default function SectionArea(props) {
   const classes = useStyles();
-  const { 
-    title, 
-    description, 
-    actionText, 
+  const {
+    title,
+    description,
+    actionText,
     actionLink,
-    imgSrc, 
-    imgAlt, 
+    imgSrc,
+    imgAlt,
     align,
     imgRaised,
-    imgRounded 
+    imgRounded
   } = props;
 
   const imageClasses = classNames({
-    [classes.imgRaised] : imgRaised,
-    [classes.imgRounded] :imgRounded,
-    [classes.imgFluid] : true
-  }  );
+    [classes.imgRaised]: imgRaised,
+    [classes.imgRounded]: imgRounded,
+    [classes.imgFluid]: true
+  });
 
 
   return (
@@ -51,7 +51,9 @@ export default function SectionArea(props) {
             <p className={classes.description}>
               {description}
             </p>
-            <a href={actionLink} rel="noreferrer" aria-label={actionText}>{actionText}</a>
+            {actionLink &&
+              <a href={actionLink} rel="noreferrer" aria-label={actionText}>{actionText}</a>
+            }
           </div>
         </GridItem>
         {align == "right" &&

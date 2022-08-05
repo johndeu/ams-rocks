@@ -99,6 +99,7 @@ export default function HeaderLinks(props) {
           href={"/live"}
           color="transparent"
           target=""
+          aria-label={i18next.t('menu.live.title')}
           className={classes.navLink}
         >
           {i18next.t('menu.live.title')}
@@ -109,6 +110,7 @@ export default function HeaderLinks(props) {
           href="https://azure.microsoft.com/pricing/details/media-services/"
           color="transparent"
           target="_blank"
+          aria-label={i18next.t('menu.pricing.title')}
           className={classes.navLink}
         >
           {i18next.t('menu.pricing.title')}

@@ -170,9 +170,7 @@ export default function LandingPage(props) {
             description={i18next.t('landing.section.1.description')}
             imgSrc="/img/Landing/Solution.png"
             imgAlt={i18next.t('landing.section.1.imageAlt')}
-            actionText={i18next.t('landing.section.1.callToAction')}
             aria-label={i18next.t('landing.section.1.title')}
-            actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-obs-quickstart"
           />
           <SectionArea
             align="left"
@@ -180,9 +178,7 @@ export default function LandingPage(props) {
             description={i18next.t('landing.section.2.description')}
             imgSrc="/img/Landing/Lowlatency.png"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
-            actionText={i18next.t('landing.section.2.callToAction')}
             aria-label={i18next.t('landing.section.2.title')}
-            actionLink="https://docs.microsoft.com/azure/media-services/latest/live-event-live-transcription-how-to"
           />
           <div className={classes.sectionBreak}></div>
           <FreeLive />
@@ -193,8 +189,6 @@ export default function LandingPage(props) {
             description={i18next.t('landing.section.3.description')}
             imgSrc="/img/Landing/Security.png"
             imgAlt={i18next.t('landing.section.3.imageAlt')}
-            actionText={i18next.t('landing.section.3.callToAction')}
-            actionLink="#"
           />
           <SectionArea
             align="left"
@@ -203,8 +197,6 @@ export default function LandingPage(props) {
             description={i18next.t('landing.section.4.description')}
             imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
-            actionText={i18next.t('landing.section.4.callToAction')}
-            actionLink="/live"
           />
 
         </div>
