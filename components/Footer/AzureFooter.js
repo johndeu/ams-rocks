@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 // core components
-import styles from "styles/jss/nextjs-material-kit/components/headerStyle.js";
+import styles from "styles/jss/nextjs-material-kit/components/footerStyle.js";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -45,6 +45,9 @@ export default function AzureFooter(props) {
                 document.querySelector("[data-bi-id='feedback']").href="https://feedback.azure.com/forums/169396-azure-media-services"
                 document.querySelector("[data-bi-id='contact-us']").href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/"
                 
+                // fix some bad style contrast in the default footer
+                document.getElementById("dropdown-cultures").className= classes.culturesDropdown;
+
             })
 
       

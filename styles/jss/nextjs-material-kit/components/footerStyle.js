@@ -72,5 +72,11 @@ const footerStyle = {
     position: "relative",
     top: "3px",
   },
+  culturesDropdown: {
+    color: "#000 !important",
+    "& label" : {
+      color: "#000 !important",
+    }
+  }
 };
 export default footerStyle;
