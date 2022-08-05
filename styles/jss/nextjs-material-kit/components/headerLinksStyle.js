@@ -29,7 +29,7 @@ const headerLinksStyle = (theme) => ({
         display: "block",
         height: "0px",
         marginLeft: "15px",
-        backgroundColor: "#e5e5e5",
+        backgroundColor: "#F7F7F7",
       },
     },
   },

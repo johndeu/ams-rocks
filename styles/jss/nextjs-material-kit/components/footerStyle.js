@@ -15,7 +15,7 @@ const footerStyle = {
   logoMicrosoft: {
     height:"18px",
     width: "81px",
-    color:"#E5E5E5",
+    color:"#F7F7F7",
     marginTop:"2px",
     top: "4px",
     position: "relative"
@@ -43,16 +43,16 @@ const footerStyle = {
     position: "relative",
   },
   footerAnchor: {
-    color:"#E5E5E5 !important",
+    color:"#F7F7F7 !important",
     "&,&:hover,&:focus": {
-      color: "#E5E5E5",
+      color: "#F7F7F7",
     },
     textDecoration: "none",
     backgroundColor: "transparent",
   },
   footerWhiteFont: {
     "&,&:hover,&:focus": {
-      color: "#E5E5E5",
+      color: "#F7F7F7",
     },
   },
   container,

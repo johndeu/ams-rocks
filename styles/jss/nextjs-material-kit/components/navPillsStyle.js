@@ -83,7 +83,7 @@ const navPillsStyle = (theme) => ({
       color: "#FFFFFF",
       borderLeft: "3px solid",
       borderColor: primaryColor,
-      backgroundColor: "#E5E5E5",
+      backgroundColor: "#F7F7F7",
       /* backgroundColor: primaryColor, */
       /* boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         primaryColor,
@@ -95,7 +95,7 @@ const navPillsStyle = (theme) => ({
     "&,&:hover": {
       color: infoColor,
       borderColor: infoColor,
-      backgroundColor: "#E5E5E5",
+      backgroundColor: "#F7F7F7",
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         infoColor,
         0.4
@@ -107,7 +107,7 @@ const navPillsStyle = (theme) => ({
       color: successColor,
       borderLeft: "3px solid",
       borderColor: successColor,
-      backgroundColor: "#E5E5E5",
+      backgroundColor: "#F7F7F7",
      /*  boxShadow: `0 2px 2px 0 ${hexToRGBAlpha(
         successColor,
         0.14
@@ -122,7 +122,7 @@ const navPillsStyle = (theme) => ({
       color: warningColor,
       borderLeft: "3px solid",
       borderColor: warningColor,
-      backgroundColor: "#E5E5E5",
+      backgroundColor: "#F7F7F7",
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         warningColor,
         0.4
@@ -134,7 +134,7 @@ const navPillsStyle = (theme) => ({
       color: dangerColor,
       borderLeft: "3px solid",
       borderColor: dangerColor,
-      backgroundColor: "#E5E5E5",
+      backgroundColor: "#F7F7F7",
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         dangerColor,
         0.4
