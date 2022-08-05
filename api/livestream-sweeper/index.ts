@@ -25,7 +25,7 @@ const credential = new DefaultAzureCredential({
 
 // DURATIONS:
 const liveEventTtlMinutes = 5
-const assetLiveTtlMinutes = 10
+const assetLiveTtlMinutes = 15
 
 module.exports = async function (context: any, myTimer: any) {
     var timeStamp = new Date().toISOString();

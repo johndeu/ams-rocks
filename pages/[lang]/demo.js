@@ -39,6 +39,7 @@ import { getAllLanguageSlugs, getLanguage } from '../../lib/lang';
 const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
+import Link from "next/link";
 
 const useStyles = makeStyles(styles);
 
@@ -306,7 +307,7 @@ export default function DemoPage(props) {
             if (timeRemaining <= 0) {
                 if (demoState == STATES.STREAMING) {
                     setDemoState(STATES.TIMEOUT);
-                    cleanUpDemo();
+                    completeDemo();
                 }
                 clearInterval(clockTimer);
             }
@@ -454,8 +455,8 @@ export default function DemoPage(props) {
 
     };
 
-    const cleanUpDemo = () => {
-        console.log("Cleaning Up Demo...")
+    const completeDemo = () => {
+        console.log("Completing the Demo...")
         console.log("Stopping stream")
 
         setStopStreamModal(false);
@@ -466,12 +467,6 @@ export default function DemoPage(props) {
         setLiveStream(null);
         setNoEvents(false);
         setDemoState(STATES.COMPLETE);
-
-        //REST for now.. do something else later.
-        setDemoState(STATES.INTRO)
-        setIntroModal(true);
-        getAvailableLiveStreams()
-
     }
 
     // Move this block to it's own page component later...
@@ -611,7 +606,7 @@ export default function DemoPage(props) {
 
 
                             {/*  Show this when loading available live streams */}
-                            {!liveStream && !noEvents &&
+                            {!liveStream && !noEvents && demoState == STATES.INTRO &&
                                 <div className={classes.getDemoSessions}> Getting available demo sessions... </div>
                             }
                             {/*  Show this when there are no available live streams to use in the pool*/}
@@ -768,7 +763,7 @@ export default function DemoPage(props) {
                                             Start Streaming
                                         </Button>
                                         <p></p>
-                                        {!isIOS.current && sharePlaybackUrl}
+                                        {/*    {!isIOS.current && sharePlaybackUrl} */}
                                     </>
                                 }
 
@@ -802,7 +797,7 @@ export default function DemoPage(props) {
                             <GridContainer>
                                 <GridItem xs={12} sm={12} md={5}>
                                     <Button
-                                        onClick={() => cleanUpDemo()}
+                                        onClick={() => completeDemo()}
                                         color="danger"
                                         size="lg"
                                     >
@@ -828,6 +823,37 @@ export default function DemoPage(props) {
                         </DialogActions>
                     </Dialog>
 
+                    {demoState == STATES.COMPLETE &&
+                        <GridContainer>
+                            <GridItem xs={12} sm={12} md={12} className={classes.demoComplete}>
+                                <div>Thanks for trying the demo.</div>
+                                <br></br>
+                            </GridItem>
+                            <GridItem xs={12} sm={12} md={12} className={classes.demoComplete}>
+                                <Button
+                                    color="transparent"
+                                    size="sm"
+                                    border="1px solid"
+                                    target="_blank"
+                                    href={`/playback?hls=${livePlayback.locatorUrl.hls}.m3u8`}
+                                >
+                                    <PlayArrow className={classes.icons} /> Watch the stream replay for up to 10 minutes
+                                </Button>
+                            </GridItem>
+                            <GridItem xs={12} sm={12} md={12} className={classes.demoComplete}>
+                                <Link href="/demo">
+                                    <a className={classes.link} aria-label="restart">
+                                        Restart demo
+                                    </a>
+                                </Link>
+                                <Link href="/">
+                                    <a className={classes.link} aria-label="Return to homepage">
+                                        Return to home
+                                    </a>
+                                </Link>
+                            </GridItem>
+                        </GridContainer>
+                    }
 
                 </div>
                 <FreeSection />

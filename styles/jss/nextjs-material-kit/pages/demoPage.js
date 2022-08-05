@@ -333,6 +333,22 @@ const demoPage = (theme) => ({
             backgroundColor: "#000",
         }
     },
+    demoComplete : {
+        paddingTop: "20px",
+        height:"100%",
+        width:"100%",
+        fontSize:"24px",
+        fontWeight:600,
+        align: "center",
+        textAlign: "center",
+    },
+    link: {
+        fontSize:"18px",
+        fontWeight:400,
+        paddingTop: "20px",
+        marginLeft: "20px",
+        marginRight: "20px"
+    },
     ...tooltipsStyle,
 });
 
