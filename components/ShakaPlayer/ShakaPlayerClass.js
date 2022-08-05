@@ -6,7 +6,9 @@ const shaka = require('shaka-player/dist/shaka-player.ui.js');
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "styles/jss/nextjs-material-kit/components/playerStyle.js";
 import controlStyles from "shaka-player/dist/controls.css";
-import { type } from 'os';
+
+// nodejs library that concatenates classes
+import classNames from "classnames";
 
 const classes = makeStyles(styles);
 
@@ -24,6 +26,7 @@ class ShakaPlayer extends React.PureComponent {
             stats: [],
             bufferedInfo: {}
         }
+
     }
 
     componentDidMount() {
@@ -35,6 +38,7 @@ class ShakaPlayer extends React.PureComponent {
 
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
+    
 
         let player = new shaka.Player(video);
 
@@ -55,8 +59,6 @@ class ShakaPlayer extends React.PureComponent {
             }
         }
         ui.configure(uiConfig);
-
-        //console.log(Object.keys(shaka.ui));
 
         player.configure({
             manifest: {
@@ -159,7 +161,7 @@ class ShakaPlayer extends React.PureComponent {
             <div ref={this.videoContainer} data-shaka-player-container data-shaka-player-cast-receiver-id="BBED8D28">
                 <video
                     id="video"
-                    data-shaka-player 
+                    data-shaka-player
                     ref={this.video}
                     autoPlay
                     muted
@@ -187,7 +189,7 @@ ShakaPlayer.propTypes = {
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,
     stats: PropTypes.object,
-    raised: PropTypes.bool,
+    className: PropTypes.string,
 }
 
 export default ShakaPlayer;

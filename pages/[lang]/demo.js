@@ -26,6 +26,8 @@ import Slide from "@material-ui/core/Slide";
 import Close from "@material-ui/icons/Close";
 import PlayArrow from "@material-ui/icons/PlayArrowOutlined";
 import StopRounded from "@material-ui/icons/StopRounded";
+import CameraFrontOutline from "@material-ui/icons/CameraFrontOutlined";
+import MicrophoneOutline from "@material-ui/icons/MicOutlined";
 
 // Sections for this page
 import FreeSection from "pages-sections/LandingPage-Sections/FreeSection.js";
@@ -734,17 +736,23 @@ export default function DemoPage(props) {
                                 {cameraEnabled && !streaming && !isIOS.current &&
                                     <>
                                         <label>Camera input</label><br />
+                                        <CameraFrontOutline className={classes.cameraIcon}></CameraFrontOutline>
                                         <select
                                             placeholder="finding devices..."
+                                            className={classes.selectCamera}
                                             type="text"
+                                            width="30"
                                             onChange={(e) => setCamera(e.target.value)}>
                                             {cameras.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
                                         </select>
                                         <br />
                                         <label>Microphone input</label><br />
+                                        <MicrophoneOutline className={classes.micIcon}></MicrophoneOutline>
                                         <select
                                             placeholder="finding devices..."
+                                            className={classes.selectMic}
                                             type="text"
+                                            width="30"
                                             onChange={(e) => setMicrophone(e.value)}>
                                             {microphones.map(device => <option key={device.deviceId} value={device.deviceId}>{device.label}</option>)}
                                         </select>

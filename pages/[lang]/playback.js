@@ -96,6 +96,11 @@ export default function basicPage(props) {
     // Attach the player and video element to the window for easy debugging in browser console.
     window.player = player
     playerRef.current = player;
+    videoRef.current = player.getMediaElement();
+    if (videoRef.current) {
+     videoRef.current.className = classNames(videoRef.current.className,classes.videoControl);
+    }
+
     console.log("Got the player object from Shaka player");
 
 /*     window.analyticsTool = new AzurePlayerAnalytics.ShakaPlayerAnalytics(player, player.getMediaElement(), {
@@ -157,7 +162,6 @@ export default function basicPage(props) {
                       ref={playerRef}
                       posterUrl=""
                       stats={stats}
-                      raised
                       onInitPlayer={onInitPlayer}
                       onStatsUpdate={onStatsUpdate}
                       onBufferedInfoUpdate={onBufferedInfoUpdate}

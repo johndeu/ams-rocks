@@ -80,6 +80,7 @@ const livePage = (theme) => ({
   player : {
     padding:"10px 10px",
     paddingBottom:"12vh"
+
   },
   card : {
     backgroundColor:"white",
@@ -199,6 +200,9 @@ const livePage = (theme) => ({
     fontWeight: "500",
     paddingTop: "24px",
     paddingBottom: "24px",
+  },
+  videoControl : {
+    borderRadius:"8px"
   },
   ...tooltipsStyle,
 });

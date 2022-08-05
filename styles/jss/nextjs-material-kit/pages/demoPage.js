@@ -349,6 +349,28 @@ const demoPage = (theme) => ({
         marginLeft: "20px",
         marginRight: "20px"
     },
+    cameraIcon : {
+        width:"auto",
+        height:"16px",
+        position:"relative",
+        top: "5px"
+    },
+    micIcon : {
+        width:"auto",
+        height:"16px",
+        position:"relative",
+        top: "5px"
+    },
+    selectCamera:{
+        width:"90%",
+        marginLeft: "10px",
+        marginBottom:"20px",
+    },
+    selectMic : {
+        width:"90%",
+        marginLeft: "10px",
+        marginBottom:"20px",
+    },
     ...tooltipsStyle,
 });
 

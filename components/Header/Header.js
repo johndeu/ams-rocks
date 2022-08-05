@@ -43,8 +43,8 @@ export default function Header(props) {
         alert(err);
       } else {
         siteConsent.current = _siteConsent;
-        console.log("getConsent()", siteConsent.current.getConsent());
-        console.log("getConsent().Required", siteConsent.current.getConsent().Required);
+        //console.log("getConsent()", siteConsent.current.getConsent());
+        //console.log("getConsent().Required", siteConsent.current.getConsent().Required);
       }
     }, onConsentChanged);
 
