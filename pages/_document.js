@@ -28,7 +28,7 @@ class MyDocument extends Document {
             type="text/css"
             href="https://azurecomcdn.azureedge.net/en-us/asset/footercss/"></link>
 
-          <script type="text/javascript"
+{/*           <script type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){
@@ -38,7 +38,7 @@ class MyDocument extends Document {
                 })(window, document, "clarity", "script", "cbwra7gn5x");
               `,
             }}
-          />
+          /> */}
 
           <script type="text/javascript" src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
         </Head>
