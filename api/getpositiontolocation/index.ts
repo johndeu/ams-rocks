@@ -7,6 +7,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const position = (req.body);
     const subscriptionKey = process.env.MAPS_SUBSCRIPTION_KEY as string;
     
+    if (!subscriptionKey) {
+        context.res = {
+            body: "Need to configure the MAPS_SUBSCRIPTION_KEY in configuration settings",
+            status: 500,
+        }
+        return;
+    }
+     
     console.log (`Position: ${position}`)
     const format = "json";
     const lat = position.latitude;
@@ -62,6 +70,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         .catch((err) => {
             console.error("Error calling Map API geolocation: " + err.message);
             context.res = {
+                body: err,
                 status: 500,
             }
             return;

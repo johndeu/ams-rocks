@@ -420,9 +420,10 @@ export default function DemoPage(props) {
 
         const liveStreams = await (await fetch(`/api/livestream/getavailable`).then()).json()
             .then((liveStreams) => {
-                // We should later try to grab the "closest" regional stream using the BING API for IP location
-                // <TODO> Add ip location and find by region closest.
                 if (liveStreams && liveStreams.length > 0) {
+                    // We should later try to grab the "closest" regional stream using the BING API for IP location
+                    // <TODO> Use the continent state that we got back from the position to decide which regions to use. 
+
                     setLiveStream(liveStreams[0]);
                     console.log("Found a live stream");
                     console.log(`Name: ${liveStreams[0].name} location: ${liveStreams[0].location}`);
