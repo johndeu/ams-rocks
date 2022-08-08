@@ -33,9 +33,9 @@ export default function productsSection({
             <div className={classes.container}>
                 <GridContainer align="left">
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product1")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product-1")}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-1.jpg" className={classes.imageProduct} ></img>
+                                <img id="product-1-img" src="/img/products/product-1.jpg" className={classes.imageProduct} ></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Contoso Studios dark grey mini shoulder...</span><br></br>
@@ -45,9 +45,9 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product2")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product-2")}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-2.jpg" className={classes.imageProduct}></img>
+                                <img id="product-2-img" src="/img/products/product-2.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Contoso Studios cognac brown dist...</span><br></br>
@@ -57,9 +57,9 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product3")}>
+                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product-3")}>
                             <GridItem xs={12} sm={12} md={4} >
-                                <img src="/img/products/product-3.jpg" className={classes.imageProduct}></img>
+                                <img id="product-3-img" src="/img/products/product-3.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
 
@@ -70,9 +70,9 @@ export default function productsSection({
                         </GridContainer>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12}>
-                        <GridContainer className={classes.productBox} align="left" onClick={() => productChange("product4")}>
+                        <GridContainer  className={classes.productBox} align="left" onClick={() => productChange("product-4")}>
                             <GridItem xs={12} sm={12} md={4}>
-                                <img src="/img/products/product-4.jpg" className={classes.imageProduct}></img>
+                                <img id="product-4-img" src="/img/products/product-4.jpg" className={classes.imageProduct}></img>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={8} >
                                 <span className={classes.description}>Ami de Coeur backpack</span><br></br>

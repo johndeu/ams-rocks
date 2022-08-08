@@ -205,10 +205,14 @@ export default function DemoPage(props) {
         ctx.fillText(`${dateText}`, 10, canvasRef.current.height - 25, canvasRef.current.width - 20);
 
         if (productSelectedRef.current) {
-            const productText = `Current Product: ${productSelectedRef.current}`;
+            const productText = `For sale: ${productSelectedRef.current}`;
 
+            var img = document.getElementById(`${productSelectedRef.current}-img`);
+            if (img) {
+                ctx.drawImage(img, 10, 50);
+            }
             // (text, left X, top Y, maxWidth)
-            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2), canvasRef.current.height - 25, canvasRef.current.width);
+            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2)+50, canvasRef.current.height - 25, canvasRef.current.width);
         }
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
