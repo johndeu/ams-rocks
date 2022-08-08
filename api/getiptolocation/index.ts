@@ -10,6 +10,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     console.log(`IPAddress: ${ipAddress}`);
     const subscriptionKey = process.env.MAPS_SUBSCRIPTION_KEY as string;
 
+    if (!subscriptionKey) {
+        context.res = {
+            body: "Need to configure the MAPS_SUBSCRIPTION_KEY in configuration settings",
+            status: 500,
+        }
+        return;
+    }
+
     var countryCodes;
 
     try {
@@ -36,13 +44,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 }
             });
             context.res = {
-                // status: 200, /* Defaults to 200 */
+                status: 200, /* Defaults to 200 */
                 body: {
                     countryRegion: isoCode,
                     continent: currentCountry.continent,
                     countryName: currentCountry.countryName
                 }
             };
+            return;
 
 
         })
