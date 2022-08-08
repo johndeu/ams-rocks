@@ -42,6 +42,7 @@ const dashboardRoutes = [];
 
 import styles from "styles/jss/nextjs-material-kit/pages/demoPage.js";
 import Link from "next/link";
+import { request } from "http";
 
 const useStyles = makeStyles(styles);
 
@@ -110,6 +111,8 @@ export default function DemoPage(props) {
     const [demoState, setDemoState] = useState(STATES.INTRO);
     const [clockTime, setClockTime] = useState("05:00");
     const [liveStream, setLiveStream] = useState(null);
+    const [position, setPosition] = useState(null);
+    const [continent, setContinent] = useState(null);
 
     const timerProgressRef = useRef()
     const endTimeRef = useRef();
@@ -356,6 +359,62 @@ export default function DemoPage(props) {
             })
     }
 
+    const getContinentFromPosition = async () => {
+        console.log("Getting the continent for the current user");
+        if (!position) {
+            console.error("No geo position set");
+            return;
+        }
+
+        console.log(`Position : ${position.latitude},${position.longitude},`)
+
+        fetch(`/api/getpositiontolocation`, {
+            method: 'put',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: `same-origin`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify({
+                latitude: position.latitude,
+                longitude: position.longitude
+            })
+        }).then((response) => {
+            if (!response.ok) {
+                throw new Error('Could not STOP the live event');
+            }
+            return response.json();
+        }).then((data) => {
+            // console.log("Region: " + JSON.stringify(data));
+            if (data && data.continent) {
+                setContinent(data.continent)
+            }else{
+                console.log ("No continent found from position");
+            }
+        })
+
+    }
+
+    const getCurrentPosition = async () => {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                // console.log(`Your location lat: ${position.coords.latitude} long: ${position.coords.longitude} `)
+                setPosition(position.coords);
+                return position.coords;
+            }, () => {
+                console.error("Could not access the geolocation. Please allow access to the position to use the demo.");
+                setPosition(undefined);
+            },
+                {
+                    timeout: 10000
+                });
+
+        }
+    }
+
     const getAvailableLiveStreams = async () => {
         console.log("Fetching available live streams");
 
@@ -374,9 +433,6 @@ export default function DemoPage(props) {
                     setLiveStream(null);
                 }
             });
-
-
-
     };
 
 
@@ -494,11 +550,19 @@ export default function DemoPage(props) {
         }
     </>
 
+    // This is called when the geo location position is updated
+     useEffect(() => {
+        getContinentFromPosition();
+     },[position])
+
+
     // This effect only gets called on first load of page. 
     useEffect(() => {
+        // Get the browser location permissions
+        getCurrentPosition();
 
         // Call the API and get a list of available stopped live streams in the pool of accounts
-        getAvailableLiveStreams()
+        getAvailableLiveStreams();
 
         if (window) {
             window.addEventListener('resize', resizeCanvas);
@@ -579,6 +643,12 @@ export default function DemoPage(props) {
                                             This is a demo of the <b>Azure Media Creator Studio</b>,
                                             where you can host your live events and broadcast them to your viewers.
                                             Ready to try it out now?
+                                        </p>
+                                        <p className={classes.splashText}>
+                                        Please allow this site to access your location before starting demo.
+                                        <br></br>
+                                        <b>We detected your continent as: {continent ? continent : "We were not able to detect your location."}
+                                        </b>
                                         </p>
                                     </div>
 

@@ -77,6 +77,6 @@ SectionArea.defaultProps = {
 SectionArea.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  actionText: PropTypes.string.isRequired,
-  actionLink: PropTypes.string.isRequired
+  actionText: PropTypes.string,
+  actionLink: PropTypes.string
 };

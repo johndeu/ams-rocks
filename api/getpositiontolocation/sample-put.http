@@ -1,0 +1,8 @@
+
+
+PUT http://localhost:4280/api/getpositiontolocation   HTTP/1.1
+
+{
+    "longitude": 39.7214,
+    "latitude": -104.8942
+}

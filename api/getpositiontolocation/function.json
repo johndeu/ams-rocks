@@ -5,9 +5,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "getiptolocation",
+      "route": "getpositiontolocation",
       "methods": [
-        "get"
+        "put"
       ]
     },
     {
@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/getiptolocation/index.js"
+  "scriptFile": "../dist/getpositiontolocation/index.js"
 }
