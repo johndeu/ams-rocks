@@ -496,7 +496,8 @@ export default function DemoPage(props) {
 
         mediaRecorderRef.current = new MediaRecorder(outputStream, {
             mimeType: getRecorderMimeType(),
-            videoBitsPerSecond: 3000000,
+            videoBitsPerSecond: 4000000, // 4 Mbps video
+            audioBitsPerSecond : 128000 // 128kbps audio
         });
 
         mediaRecorderRef.current.addEventListener('dataavailable', (e) => {
@@ -746,7 +747,7 @@ export default function DemoPage(props) {
 
                                             </GridItem>
                                             {cameraEnabled && streaming && !isIOS.current && <>
-                                                <GridItem xs={10} sm={2} md={3}>
+                                                <GridItem xs={10} sm={3} md={3}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
