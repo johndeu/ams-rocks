@@ -732,12 +732,12 @@ export default function DemoPage(props) {
                                 <GridItem xs={12} sm={12} md={8} className={classes.videoTopBar}>
                                     {liveStreamStarted && cameraEnabled &&
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={3}>
+                                            <GridItem xs={4} sm={6} md={3}>
                                                 <span className={classes.clock}>{clockTime} <span className={classes.clockLabel}>Left</span></span>
 
                                             </GridItem>
                                             {cameraEnabled && streaming && !isIOS.current && <>
-                                                <GridItem xs={10} sm={3} md={4}>
+                                                <GridItem xs={4} sm={3} md={4}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
@@ -751,7 +751,7 @@ export default function DemoPage(props) {
                                                 <GridItem xs={10} sm={3} md={4}>{playBackButton}</GridItem>
                                             </>}
                                             {cameraEnabled && streaming && isIOS.current && <>
-                                                <GridItem xs={10} sm={3} md={4}>
+                                                <GridItem xs={4} sm={3} md={4}>
                                                     {playBackButton}
                                                 </GridItem>
                                             </>}
