@@ -642,7 +642,7 @@ export default function DemoPage(props) {
                                         <p className={classes.splashText}>
                                             Please allow this site to access your location before starting demo.
                                             <br></br>
-                                            <b>We detected your continent as: {continent ? continent : "We were not able to detect your location."}
+                                            <b>We detected your continent as: {continent ? continent : "Trying to detect... make sure you have consented to allow location."}
                                             </b>
                                         </p>
                                     </div>
