@@ -374,7 +374,7 @@ const demoPage = (theme) => ({
     copySuccess: {
         fontWeight:500,
         paddingLeft:"15px",
-        color:"#00CC00",
+        color:"#000000",
         fontSize: "14px",
     },
     ...tooltipsStyle,
