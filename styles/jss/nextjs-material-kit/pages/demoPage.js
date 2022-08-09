@@ -371,6 +371,12 @@ const demoPage = (theme) => ({
         marginLeft: "10px",
         marginBottom:"20px",
     },
+    copySuccess: {
+        fontWeight:500,
+        paddingLeft:"15px",
+        color:"#00CC00",
+        fontSize: "14px",
+    },
     ...tooltipsStyle,
 });
 

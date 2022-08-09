@@ -106,6 +106,8 @@ export default function DemoPage(props) {
     const [cameras, setVideoInputs] = useState([]);
     const [microphones, setAudioInputs] = useState([]);
     const [livePlayback, setLivePlayback] = useState(null);
+    const [playbackUrl, setPlaybackUrl] = useState(null);
+    const [copySuccess, setCopySuccess] = useState(false);
     const [noEvents, setNoEvents] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [demoState, setDemoState] = useState(STATES.INTRO);
@@ -212,7 +214,7 @@ export default function DemoPage(props) {
                 ctx.drawImage(img, 10, 50);
             }
             // (text, left X, top Y, maxWidth)
-            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2)+50, canvasRef.current.height - 25, canvasRef.current.width);
+            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2) + 50, canvasRef.current.height - 25, canvasRef.current.width);
         }
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
@@ -297,6 +299,7 @@ export default function DemoPage(props) {
                     console.log(`LivePlayback URLs : ${JSON.stringify(body)}`)
                     setStreamRtmpUrl(body.ingestUrl);
                     setLivePlayback(body);
+                    setPlaybackUrl(`https://media.microsoft.com/playback?hls=${body.locatorUrl.hls}.m3u8`)
                     setLiveStreamStarted(true);
                     setDemoState(STATES.STREAMING);
                     clearInterval(timerProgressRef.current);
@@ -370,8 +373,6 @@ export default function DemoPage(props) {
             return;
         }
 
-        console.log(`Position : ${position.latitude},${position.longitude},`)
-
         fetch(`/api/getpositiontolocation`, {
             method: 'put',
             mode: 'cors',
@@ -394,8 +395,8 @@ export default function DemoPage(props) {
             // console.log("Region: " + JSON.stringify(data));
             if (data && data.continent) {
                 setContinent(data.continent)
-            }else{
-                console.log ("No continent found from position");
+            } else {
+                console.log("No continent found from position");
             }
         })
 
@@ -496,8 +497,8 @@ export default function DemoPage(props) {
 
         mediaRecorderRef.current = new MediaRecorder(outputStream, {
             mimeType: getRecorderMimeType(),
-            videoBitsPerSecond: 4000000, // 4 Mbps video
-            audioBitsPerSecond : 128000 // 128kbps audio
+            videoBitsPerSecond: 3500000, // 3.5 Mbps video
+            audioBitsPerSecond: 128000 // 128kbps audio
         });
 
         mediaRecorderRef.current.addEventListener('dataavailable', (e) => {
@@ -533,33 +534,10 @@ export default function DemoPage(props) {
         setDemoState(STATES.COMPLETE);
     }
 
-    // Move this block to it's own page component later...
-    const sharePlaybackUrl = <>
-
-        {livePlayback && <>
-            <label >HLS manifest</label>
-            <input type="url" name="url" id="url"
-                placeholder="Dash playback url"
-                pattern="https://.*" size="40"
-                onChange={() => { console.log("HLS manifest") }}
-                value={livePlayback.locatorUrl.hls}
-            />
-            <br />
-            <label>DASH manifest</label>
-            <input type="url" name="url" id="url"
-                placeholder="Dash playback url"
-                pattern="https://.*" size="40"
-                onChange={() => { console.log("DASH manifest") }}
-                value={livePlayback.locatorUrl.dash}
-            />
-        </>
-        }
-    </>
-
     // This is called when the geo location position is updated
-     useEffect(() => {
+    useEffect(() => {
         getContinentFromPosition();
-     },[position])
+    }, [position])
 
 
     // This effect only gets called on first load of page. 
@@ -606,6 +584,17 @@ export default function DemoPage(props) {
         };
     }, [])
 
+    const playBackButton = <Button
+        color="transparent"
+        size="sm"
+        border="1px solid"
+        target="_blank"
+        onClick={() => { navigator.clipboard.writeText(playbackUrl); setCopySuccess('Copied!')}}
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg>
+        Copy Playback Url
+        <span className={classes.copySuccess}>{copySuccess}</span>
+    </Button>
 
     return (
         <div >
@@ -651,10 +640,10 @@ export default function DemoPage(props) {
                                             Ready to try it out now?
                                         </p>
                                         <p className={classes.splashText}>
-                                        Please allow this site to access your location before starting demo.
-                                        <br></br>
-                                        <b>We detected your continent as: {continent ? continent : "We were not able to detect your location."}
-                                        </b>
+                                            Please allow this site to access your location before starting demo.
+                                            <br></br>
+                                            <b>We detected your continent as: {continent ? continent : "We were not able to detect your location."}
+                                            </b>
                                         </p>
                                     </div>
 
@@ -747,7 +736,7 @@ export default function DemoPage(props) {
 
                                             </GridItem>
                                             {cameraEnabled && streaming && !isIOS.current && <>
-                                                <GridItem xs={10} sm={3} md={3}>
+                                                <GridItem xs={10} sm={3} md={4}>
                                                     <Button
                                                         color="transparent"
                                                         size="sm"
@@ -757,6 +746,12 @@ export default function DemoPage(props) {
                                                     >
                                                         <PlayArrow className={classes.icons} /> Watch the stream
                                                     </Button>
+                                                </GridItem>
+                                                <GridItem xs={10} sm={3} md={4}>{playBackButton}</GridItem>
+                                            </>}
+                                            {cameraEnabled && streaming && isIOS.current && <>
+                                                <GridItem xs={10} sm={3} md={4}>
+                                                    {playBackButton}
                                                 </GridItem>
                                             </>}
                                         </GridContainer>
