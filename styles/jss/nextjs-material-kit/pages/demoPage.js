@@ -258,7 +258,7 @@ const demoPage = (theme) => ({
     },
     videoTopBar: {
         align: "center",
-        paddingLeft: "60px",
+        paddingLeft: "20px",
         paddingTop: "0px",
         paddingBottom: "15px",
         width: "100%",
@@ -266,8 +266,8 @@ const demoPage = (theme) => ({
     },
     clock: {
         position: "relative",
-        top: "5px",
-        paddingRight: "25px",
+        top: "15px",
+        paddingRight: "10px",
         font: "Segoe UI",
         fontWeight: "600",
         fontSize: "18px",
