@@ -215,7 +215,7 @@ export default function DemoPage(props) {
                 ctx.drawImage(img, 10, 50);
             }
             // (text, left X, top Y, maxWidth)
-            ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2) + 50, canvasRef.current.height - 25, canvasRef.current.width);
+            //ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2) + 50, canvasRef.current.height - 25, canvasRef.current.width);
         }
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
