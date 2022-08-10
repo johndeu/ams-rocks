@@ -684,17 +684,16 @@ export default function DemoPage(props) {
                                     >
                                         Cancel
                                     </Button>
-                                    {!notAvailable == "NotAvailable" &&
-                                        <Button
-                                            onClick={() => startDemo()}
-                                            color="danger"
-                                            size="lg"
-                                            disabled={!liveStream}
-                                        >
-                                            {!liveStream ? 'Loading...' : 'Try now'}
-                                        </Button>
-                                    }
-
+                                    
+                                    <Button
+                                        onClick={() => startDemo()}
+                                        color="danger"
+                                        size="lg"
+                                        disabled={!liveStream}
+                                    >
+                                        {!liveStream ? 'Checking availability...' : 'Try now'}
+                                    </Button>
+                                
                                 </DialogActions>
                             </Dialog>
 
