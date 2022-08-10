@@ -2,6 +2,7 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential, ManagedIdentityCredential } from '@azure/identity';
 import { AzureMediaServices, KnownLiveEventResourceState, LiveEvent } from '@azure/arm-mediaservices';
 import { AbortController } from '@azure/abort-controller';
+const fs = require('fs');
 
 // This is the main Media Services client object
 let mediaServicesClient: AzureMediaServices;
@@ -13,7 +14,7 @@ const longRunningOperationUpdateIntervalMs = 1000;
 const subscriptionId: string = process.env.AZURE_SUBSCRIPTION_ID as string;
 const resourceGroup: string = process.env.AZURE_RESOURCE_GROUP as string;
 const accountPool: account[] = JSON.parse(process.env.ACCOUNT_POOL);
-const managedIdentityClientId :string =  process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
+const managedIdentityClientId: string = process.env.USER_MANAGED_IDENTITY_CLIENT_ID as string
 
 // const credential = new ManagedIdentityCredential("<USER_ASSIGNED_MANAGED_IDENTITY_CLIENT_ID>");
 const credential = new DefaultAzureCredential({
@@ -40,6 +41,21 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     console.log('HTTP trigger - Livestream getAvailable');
     console.log("Getting the client for Media Services");
 
+    let continent: string | undefined;
+    let regionMap: any;
+
+    if (req.method == "PUT") {
+        continent = req.body.continent;
+        console.log(`Request contains continent: ${continent}`)
+
+        try {
+            var contents = fs.readFileSync('./livestream-getavailable/continentToRegion.json')
+            regionMap = JSON.parse(contents)
+        } catch (err) {
+            console.log(`Failed to load JSON ${err}`)
+        }
+    }
+
     try {
         mediaServicesClient = new AzureMediaServices(credential, subscriptionId)
         console.log(`Got the AMS client with Managed ID : ${managedIdentityClientId} `);
@@ -48,11 +64,23 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         console.error(err);
     }
 
-    if (req.method == "GET") {
+    if (req.method == "GET" || req.method == "PUT") {
         console.log("Getting available live events from AMS accounts");
 
+        let regionsToSearch: String[]
+        if (continent) {
+            regionMap.forEach(item => {
+                if (item.continent == continent) {
+                    if (item.regions.length > 0)
+                        regionsToSearch = item.regions;
+                    console.log(`Found accounts in continent: ${item.continent}`)
+                }
+
+            });
+        }
+
         console.log(`listing live stream`);
-        await listAvailableStreams().then(liveStreams => {
+        await listAvailableStreams(regionsToSearch).then(liveStreams => {
             if (liveStreams.length > 0) {
                 context.res = {
                     status: 200, /* Defaults to 200 */
@@ -68,7 +96,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 }
             }
         }).catch((err) => {
-                console.log(`Error getting the live streams ${err}`);
+            console.log(`Error getting the live streams ${err}`);
         });
 
 
@@ -76,13 +104,21 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
 };
 
-async function listAvailableStreams(): Promise<liveStream[]> {
+async function listAvailableStreams(regionsToSearch: String[]): Promise<liveStream[]> {
     console.log("Listing available live streams");
 
     let livesStreamsInPool = [];
 
     for (const account of accountPool) {
         console.log(`Listing events in account:  ${account.name}`)
+     
+        if (regionsToSearch) {
+            console.log(`Searching across regions: ${JSON.stringify(regionsToSearch)}`)
+            if (!regionsToSearch.includes(account.location)){
+               console.log(`account:${account.name} in region : ${account.location} is not in the continent regions list.`);
+               continue;
+            }
+        }
 
         for await (const liveEvent of mediaServicesClient.liveEvents.list(
             resourceGroup,

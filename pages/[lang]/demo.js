@@ -421,9 +421,26 @@ export default function DemoPage(props) {
     }
 
     const getAvailableLiveStreams = async () => {
-        console.log("Fetching available live streams");
+        if (!continent){
+            console.error("No location is set, we can't find a local account. Enable location on the browser.");
+            return;
+        }
 
-        const liveStreams = await (await fetch(`/api/livestream/getavailable`).then()).json()
+        console.log(`Fetching available live streams in pool for continent ${continent}`);
+
+        const liveStreams = await (await fetch(`/api/livestream/getavailable`, {
+            method: 'put',
+            mode: 'cors',
+            cache: 'no-cache',
+            credential: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify({
+                    continent:continent
+            })
+        }).then()).json()
             .then((liveStreams) => {
                 if (liveStreams && liveStreams.length > 0) {
                     // We should later try to grab the "closest" regional stream using the BING API for IP location
@@ -539,14 +556,15 @@ export default function DemoPage(props) {
         getContinentFromPosition();
     }, [position])
 
+    // This is called when the continent is updated
+    useEffect(() => {
+        getAvailableLiveStreams();
+    }, [continent])
 
     // This effect only gets called on first load of page. 
     useEffect(() => {
         // Get the browser location permissions
         getCurrentPosition();
-
-        // Call the API and get a list of available stopped live streams in the pool of accounts
-        getAvailableLiveStreams();
 
         if (window) {
             window.addEventListener('resize', resizeCanvas);

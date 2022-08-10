@@ -1,0 +1,46 @@
+[
+  {
+    "continent":"Africa",
+    "regions": [
+
+    ]
+  },
+  {
+    "continent":"Antarctica",
+    "regions": [
+      
+    ]
+  },
+  {
+    "continent":"Asia",
+    "regions": [
+      
+    ]
+  },
+  {
+    "continent":"Europe",
+    "regions": [
+      "West Europe"
+    ]
+  },
+  {
+    "continent":"North America",
+    "regions": [
+      "West US 2",
+      "East US 2"
+    ]
+  },
+  {
+    "continent":"Oceania",
+    "regions": [
+      
+    ]
+  },
+  {
+    "continent":"South America",
+    "regions": [
+      
+    ]
+  }
+
+]
