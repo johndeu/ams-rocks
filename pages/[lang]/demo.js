@@ -115,6 +115,7 @@ export default function DemoPage(props) {
     const [liveStream, setLiveStream] = useState(null);
     const [position, setPosition] = useState(null);
     const [continent, setContinent] = useState(null);
+    const [notAvailable, setNotAvailable] = useState("Checking");
 
     const timerProgressRef = useRef()
     const endTimeRef = useRef();
@@ -421,7 +422,7 @@ export default function DemoPage(props) {
     }
 
     const getAvailableLiveStreams = async () => {
-        if (!continent){
+        if (!continent) {
             console.error("No location is set, we can't find a local account. Enable location on the browser.");
             return;
         }
@@ -438,7 +439,7 @@ export default function DemoPage(props) {
             },
             referrerPolicy: 'same-origin',
             body: JSON.stringify({
-                    continent:continent
+                continent: continent
             })
         }).then()).json()
             .then((liveStreams) => {
@@ -451,7 +452,8 @@ export default function DemoPage(props) {
                     console.log(`Name: ${liveStreams[0].name} location: ${liveStreams[0].location}`);
                 }
                 else {
-                    console.log("Sorry, no live streams available");
+                    console.log("Sorry, no regions available at this time");
+                    setNotAvailable("NotAvailable");
                     setNoEvents(true);
                     setLiveStream(null);
                 }
@@ -608,11 +610,11 @@ export default function DemoPage(props) {
             size="sm"
             border="1px solid"
             target="_blank"
-            onClick={() => { navigator.clipboard.writeText(playbackUrl); setCopySuccess(true); setTimeout(() =>{setCopySuccess(false)}, 2000) }}
+            onClick={() => { navigator.clipboard.writeText(playbackUrl); setCopySuccess(true); setTimeout(() => { setCopySuccess(false) }, 2000) }}
         >
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg>
-            <span className={classes.copySuccess}>{copySuccess? 'Copied': 'Copy Url'}</span>
-        </Button> 
+            <span className={classes.copySuccess}>{copySuccess ? 'Copied' : 'Copy Url'}</span>
+        </Button>
     </>
 
     return (
@@ -664,6 +666,10 @@ export default function DemoPage(props) {
                                             <b>We detected your continent as: {continent ? continent : "Trying to detect... make sure you have consented to allow location."}
                                             </b>
                                         </p>
+                                        {notAvailable == "NotAvailable" &&
+                                            <p className={classes.splashNotAvailable}>
+                                                Sorry the demo is not available in you region at this time.
+                                            </p>}
                                     </div>
 
                                 </DialogContent>
@@ -678,14 +684,16 @@ export default function DemoPage(props) {
                                     >
                                         Cancel
                                     </Button>
-                                    <Button
-                                        onClick={() => startDemo()}
-                                        color="danger"
-                                        size="lg"
-                                        disabled={!liveStream}
-                                    >
-                                        {!liveStream ? 'Loading...' : 'Try now'}
-                                    </Button>
+                                    {!notAvailable == "NotAvailable" &&
+                                        <Button
+                                            onClick={() => startDemo()}
+                                            color="danger"
+                                            size="lg"
+                                            disabled={!liveStream}
+                                        >
+                                            {!liveStream ? 'Loading...' : 'Try now'}
+                                        </Button>
+                                    }
 
                                 </DialogActions>
                             </Dialog>

@@ -302,6 +302,12 @@ const demoPage = (theme) => ({
         lineHeight:"18px",
         fontColor:"#000",
     },
+    splashNotAvailable: {
+        fontWeight:"600",
+        fontSize:"16px",
+        lineHeight:"18px",
+        color: "red",
+    },
     modalFooter: {
         marginRight: "32px",
         marginBottom: "20px"
