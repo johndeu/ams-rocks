@@ -494,6 +494,7 @@ export default function DemoPage(props) {
             console.log(`Stopping live stream : ${liveStream.name} in location ${liveStream.location}`);
             stopLiveStream();
             stopStreaming();
+            setDemoState(STATES.COMPLETE);
             console.log("Websocket closed");
         });
 
