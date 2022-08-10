@@ -129,7 +129,6 @@ export default function DemoPage(props) {
     const isIOS = useRef(false);
     const productSelectedRef = useRef();
 
-
     const startDemo = async () => {
         setIntroModal(false);
 
@@ -214,8 +213,19 @@ export default function DemoPage(props) {
             if (img) {
                 ctx.drawImage(img, 10, 50);
             }
+
             // (text, left X, top Y, maxWidth)
             //ctx.fillText(productText, (canvasRef.current.width - canvasRef.current.width / 2) + 50, canvasRef.current.height - 25, canvasRef.current.width);
+        }
+
+        if (demoState == STATES.STREAMING) {
+            var logo = document.getElementById('amsLogo');
+            if (logo) {
+                ctx.save();
+                ctx.globalAlpha = 0.8;
+                ctx.drawImage(logo, canvasRef.current.width - 65, 15, 50, 50);
+                ctx.restore();
+            }
         }
         requestAnimationRef.current = workerTimers.setTimeout(updateCanvas, (1000 / 30));
     };
@@ -685,7 +695,7 @@ export default function DemoPage(props) {
                                     >
                                         Cancel
                                     </Button>
-                                    
+
                                     <Button
                                         onClick={() => startDemo()}
                                         color="danger"
@@ -694,7 +704,7 @@ export default function DemoPage(props) {
                                     >
                                         {!liveStream ? 'Checking availability...' : 'Try now'}
                                     </Button>
-                                
+
                                 </DialogActions>
                             </Dialog>
 
@@ -808,6 +818,7 @@ export default function DemoPage(props) {
                                     <div className={classes.outputCanvas}>
                                         <canvas ref={canvasRef}></canvas>
                                     </div>
+                                    <img className={classes.amsLogo} id="amsLogo" src="/img/AzureMediaService.png"></img>
                                     {liveStreamStarted && cameraEnabled && streaming &&
                                         <div className={classes.playerControls}>
                                             <Button

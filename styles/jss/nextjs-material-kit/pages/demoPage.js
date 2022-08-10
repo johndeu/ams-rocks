@@ -383,6 +383,13 @@ const demoPage = (theme) => ({
         color:"#000000",
         fontSize: "13px",
     },
+    amsLogo: {
+        position:"absolute",
+        left:"-4000px",
+        zIndex:"-10",
+        width:"40px",
+        height:"auto",
+    },
     ...tooltipsStyle,
 });
 
