@@ -3,5 +3,5 @@
 PUT http://localhost:4280/api/livestream/getavailable   HTTP/1.1
 
 {
-    "continent":"Europe"
+    "continent":"North America"
 }

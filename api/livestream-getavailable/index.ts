@@ -64,10 +64,10 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         console.error(err);
     }
 
-    if (req.method == "GET" || req.method == "PUT") {
+    if (req.method == "PUT") {
         console.log("Getting available live events from AMS accounts");
 
-        let regionsToSearch: String[]
+        let regionsToSearch: String[] | undefined
         if (continent) {
             regionMap.forEach(item => {
                 if (item.continent == continent) {
@@ -79,6 +79,19 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             });
         }
 
+        if (!regionsToSearch)
+        {
+            console.log("No regions for this continent.")
+            context.res = {
+                status: 400,
+                body : {
+                    "message": "No demo regions available in the continent provided at this time.",
+                    "code": 400
+                }
+            }
+            return;
+        }
+
         console.log(`listing live stream`);
         await listAvailableStreams(regionsToSearch).then(liveStreams => {
             if (liveStreams.length > 0) {
@@ -88,7 +101,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 };
             } else {
                 context.res = {
-                    status: 404,
+                    status: 400,
                     body: {
                         "message": "No live streams available at this time. Try again later.",
                         "code": 404
