@@ -378,10 +378,10 @@ const demoPage = (theme) => ({
         marginBottom:"20px",
     },
     copySuccess: {
-        fontWeight:500,
+        fontWeight:400,
         paddingLeft:"15px",
         color:"#000000",
-        fontSize: "14px",
+        fontSize: "13px",
     },
     ...tooltipsStyle,
 });
