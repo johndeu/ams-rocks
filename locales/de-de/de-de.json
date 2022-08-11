@@ -1,27 +1,422 @@
 {
-    "menu":{
-        "examples": "Examples",
-        "live":"Live",
-        "pricing": "Pricing",
-        "tour":"Tour",
-        "docs": "Docs",
-        "loginButton": "Get started free"
+    "menu": {
+        "examples": {
+            "title": "Beispiele",
+            "samples": "Beispiele",
+            "allSamples": "Alle Beispiele"
+        },
+        "pricing": {
+            "title": "Preise"
+        },
+        "docs": {
+            "title": "Dokumente",
+            "documentation": "Dokumentation",
+            "api": "API-Referenz",
+            "quotas": "Quoten und Limits",
+            "quickStarts": "Schnellstarts",
+            "samples": "Beispiele",
+            "players": "Spieler"
+        },
+        "tour": {
+            "title": "Tour"
+        },
+        "live": {
+            "title": "Live"
+        },
+        "freeAccount": "Kostenloses Konto",
+        "contactSales": "Vertrieb kontaktieren",
+        "support": "Unterstützung",
+        "signIn": "Anmelden"
     },
     "landing": {
         "title": "Azure Media Services",
-        "tagline": "Live streaming without limits",
-        "valueProp": "Dieses Produkt rockt einfach total. Wenn Sie es nicht ausprobiert haben, was zum Teufel Mann? Sie brauchen das.  Und Sie brauchen es heute. Geben Sie uns Ihre Live-Streams. wirklich. Was ist los mit dir? Komm schon, es ist großartig.",
-        "ctaButton": "Stream a video now"
-       
+        "tagline1": "Schnelles, zuverlässiges Video erstellen",
+        "tagline2": "Erfahrungen mit Azure Media Services",
+        "valueProp": "Sehen Sie es in Aktion mit bis zu 5 Stunden kostenlosem Live-Streaming.",
+        "ctaButton": "Kostenloses Azure-Konto erstellen",
+        "readDocs": "Siehe Dokumentation",
+        "loginButton": "Kostenlos starten",
+        "getStartedFree": "Kostenloses Azure-Konto erstellen",
+        "section.1": {
+            "title": "Ihre End-to-End-Streaming-Lösung",
+            "description": "Azure Media Services verwaltet jeden Schritt Ihres Videoerlebnisses, von der Aufnahme und Transcodierung bis hin zur Verpackung und Bereitstellung, und verwendet dieselbe Technologie, die Teams und LinkedIn unterstützt.",
+            "imageAlt": "Lösung"
+        },
+        "section.2": {
+            "title": "Live-Video mit geringer Latenz und weniger als 5 Sekunden Verzögerung",
+            "description": "Egal, ob Sie zu Dutzenden oder Millionen Zuschauern streamen, Ihre Zuschauer sehen nahezu in Echtzeit auf allen Plattformen und Geräten auf der ganzen Welt zu.",
+            "imageAlt": "Niedrige Latenz"
+        },
+        "section.3": {
+            "title": "Schützen Sie Ihre Inhalte vom Hochladen bis zur Wiedergabe",
+            "description": "Wir vertrauen Regierungen und Unternehmen auf der ganzen Welt und bieten sicheres Video-Streaming mit digitaler Rechteverwaltung, Geoblocking, URL-Signierung und mehr.",
+            "imageAlt": "Sicherheit"
+        },
+        "section.4": {
+            "title": "Eingebaute Zugänglichkeit für ein inklusives Videoerlebnis",
+            "description": "Automatische Transkription in Echtzeit in über 100 Sprachen ohne Einbußen bei Qualität oder Geschwindigkeit.",
+            "imageAlt": "Niedrige Latenz"
+        }
     },
-    "dashboard": {
-        "description": "In diesem Beispiel wird veranschaulicht, wie die Sprache auf der Clientseite verzögert geladen wird."
+    "liveDemo": {
+        "title": "Versuchen Sie Live-Streaming mit niedriger Latenzzeit",
+        "playerNotes": "Der aktuelle Player ist die Shaka-Player-Version {{playerVersion}}. Der eingebrannte Timecode wird während der Codierung mit der Systemuhrzeit generiert.",
+        "clockNotes": "Achten Sie darauf, Ihre lokale Systemuhr zu synchronisieren, bevor Sie die End-to-End-Latenz auswerten. Latenzdiagramme sind derzeit nicht auf iOS verfügbar.",
+        "onDemand": "Zur Wartung offline",
+        "onDemandMessage": "Die Demo des Live-Streams mit geringer Latenz (LL-HLS) ist derzeit wegen Wartungsarbeiten offline. Die aktuelle Wiedergabe ist kein Live-Stream. Bitte versuchen Sie es später erneut.",
+        "callToAction": "Details zu den ersten Schritten mit Live-Streaming mit niedriger Latenz (LL-HLS) finden Sie in unserer Dokumentation. ",
+        "callToActionLink": "Mehr erfahren.",
+        "metrics": {
+            "latency": "Latenz",
+            "utcClock": "UTC-Zeit (Systemuhr)",
+            "bufferSize": "Puffergröße",
+            "bandwidth": "Bandbreite (Kbit/s)",
+            "quality": "Qualität",
+            "streamedFrom": "Gestreamt von",
+            "playheadTime": "Abspielkopfzeit",
+            "decodedFrames": "Decodierte Framess",
+            "droppedFrames": "Ausgelassene Frames",
+            "stallsDetected": "Stalls erkannt",
+            "gapsJumped": "Übersprungene Lücken",
+            "estimating": "schätzen",
+            "loading": "Laden"
+        },
+        "features": {
+            "title": "Fully customizable features for all your video needs",
+            "list": [
+                {
+                    "item": "Low latency between 4-7 seconds at scale"
+                },
+                {
+                    "item": "Spec compliant Apple LL-HLS"
+                },
+                {
+                    "item": "Fallback to standard HLS for legacy clients"
+                },
+                {
+                    "item": "Deliver DASH and HLS simultaneously"
+                },
+                {
+                    "item": "No proprietary player. Works in Shaka, Dash.js, HLS.js, Video.js, ExoPlayer and Apple AVPlayer."
+                },
+                {
+                    "item": "Full HD 1080p 30fps with adaptive bitrates at low-latency"
+                },
+                {
+                    "item": "Low-latency automatic captions and subtitles available in 50+ languages"
+                },
+                {
+                    "item": "Time-shift (DVR) window support up to 6 hours"
+                },
+                {
+                    "item": "Dynamic manifest filters (time, tracks, bitrates)"
+                },
+                {
+                    "item": "Simple live-to-VOD transition from the same URLs cached to the CDN"
+                },
+                {
+                    "item": "Choose your own CDN, or use the integrated Azure CDN"
+                },
+                {
+                    "item": "Monitor your events with Event Grid and Azure Monitor"
+                }
+            ]
+        }
     },
-    "footer" : {
+    "industry": [
+        {
+            "title": "Fitness",
+            "headline": "Stay fit together",
+            "body": "Connect your athletes to one another. Build a leader board for everyone to keep track of their core movements. Deliver classes from a few hundred viewers to thousands in an instant. Build a library of on-demand classes for your subscribers and protect the content with digital rights management.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Fitness.png"
+        },
+        {
+            "title": "Enterprise",
+            "headline": "Build a global workforce",
+            "body": "Let your teams work together wherever they are with virtual meetings that are as close to in-person as it gets.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Enterprise.png"
+        },
+        {
+            "title": "Live shopping",
+            "headline": "Bring the in-store experience home",
+            "body": "Drive customer engagement and get instant feedback on products through live, interactive shopping experiences.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Shopping.png"
+        },
+        {
+            "title": "Government",
+            "headline": "Connect with your community",
+            "body": "Foster communication between government officials and the public with live legislative sessions, virtual town halls, and more.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Government.png"
+        },
+        {
+            "title": "Education",
+            "headline": "Elevate online education",
+            "body": "Create high-quality, interactive learning experiences that bring the virtual classroom to life.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Education.png"
+        },
+        {
+            "title": "Energy",
+            "headline": "Deliver a clean energy future",
+            "body": "Cut your carbon footprint and minimize travel with virtual or hybrid events.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Energy.png"
+        },
+        {
+            "title": "Healthcare",
+            "headline": "Meet patients where they are",
+            "body": "Make health care more accessible and efficient for patients who want to connect with a doctor from the comfort of their own homes.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Energy.png"
+        },
+        {
+            "title": "Manufacturing",
+            "headline": "Boost production quality",
+            "body": "Capture real-time footage and data at every step in your operation to identify gaps, reduce costs, and improve your products.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Manufacturing.png"
+            
+        }
+    ],
+    "features": {
+        "title": "Fully customizable features for all your video needs",
+        "live": {
+            "title": "Adding video and live streaming",
+            "items": [
+                {
+                    "title": "Direct Uploads",
+                    "description": "Provide any authenticated upload URL"
+                },
+                {
+                    "title": "Stream from any encoder",
+                    "description": "Supports RTMP/RTMPS protocol for live streaming."
+                },
+                {
+                    "title": "Wide-range of input file formats",
+                    "description": "We accept many types of input video file formats"
+                },
+                {
+                    "title": "Seamless live to VOD",
+                    "description": "Live events in Media Services have always supported instant live to VOD. Easily archive your live events, and stream VOD from the same CDN cache as your live event"
+                },
+                {
+                    "title": "Clipping and highlights",
+                    "description": "Instantly generate highlights using dynamic manifest filters, or export clips from the encoder to share with external systems and services"
+                },
+                {
+                    "title": "Stream live",
+                    "description": "Go live easily: just get the input URL and go"
+                },
+                {
+                    "title": "Monitor, notify and react",
+                    "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early, notify and respond to changes in your streaming"
+                },
+                {
+                    "title": "Live captions",
+                    "description": "Reach your audience with real-time transcription in 50+ languages without sacrificing latency"
+                }
+            ]
+        },
+        "processing": {
+            "title": "Encoding",
+            "items": [
+                {
+                    "title": "Choose your input",
+                    "description": "We support most input video formats, including professional-grade: H.264, H.265, and Apple ProRes"
+                },
+                {
+                    "title": "All presets",
+                    "description": "Choose from dozens of commonly-used encoding presets, or create custom presets"
+                },
+                {
+                    "title": "Dynamic Packaging",
+                    "description": "Deliver adaptive-bitrate content in HLS and MPEG-DASH streaming protocol formats using our built-in packaging capabilities"
+                },
+                {
+                    "title": "Subtitles and closed captions",
+                    "description": "Get automatic speech-to-text transcriptions and subtitles in 50+ languages"
+                },
+                {
+                    "title": "Content Protection",
+                    "description": "Encrypt your encoded content with AES-128 or any of the major DRM systems: Microsoft PlayReady, Apple FairPlay, or Google Widevine"
+                },
+                {
+                    "title": "Content-aware encoding",
+                    "description": "Our presets are built to optimize bitrate and resolution for the best streaming and storage cost"
+                },
+                {
+                    "title": "Automatic scaling without reservation",
+                    "description": "Submit encoding jobs across multiple regions without the fear of limit—encoding automatically scales to meet your needs"
+                },
+                {
+                    "title": "Static package and deliver from anywhere",
+                    "description": "Encode and output your content as static HLS or DASH files for streaming direct from any HTTP/S cloud storage or web server"
+                }
+            ]
+        },
+        "streaming": {
+            "title": "Outbound streaming",
+            "items": [
+                {
+                    "title": "Encode with us, or upload your content",
+                    "description": "Use our content-aware encoding preset for the best results, or upload your own MP4 content to stream instantly"
+                },
+                {
+                    "title": "HLS and DASH from the same stored MP4s",
+                    "description": "Save storage costs by storing a single set of MP4s and use dynamic manifest to deliver both HLS and DASH from a single set of MP4 files"
+                },
+                {
+                    "title": "Subtitles and Closed Captions",
+                    "description": "Add subtitles from WebVTT files, or use the built-in transcription presets to generate subtitle files using speech-to-text technology"
+                },
+                {
+                    "title": "Add descriptive audio tracks",
+                    "description": "Enhance accessibility by adding descriptive audio tracks to your streams"
+                },
+                {
+                    "title": "Instant highlights and clipping",
+                    "description": "Clip any video to the length you want using simple filters when publishing"
+                },
+                {
+                    "title": "Stream live",
+                    "description": "Get a RTMP input URL for easy live streaming "
+                },
+                {
+                    "title": "RTMP/RTMPS Input",
+                    "description": "We support RTMP and RTMPS protocols for simple integration with live streaming software like OBS Studio"
+                },
+                {
+                    "title": "Live captions",
+                    "description": "Get automatic speech-to-text transcriptions and subtitles in 50+ languages without sacrificing latency"
+                }
+            ]
+        },
+        "managing": {
+            "title": "Management + security",
+            "items": [
+                {
+                    "title": "Client SDKs and samples",
+                    "description": "Get started quickly with client SDKs and samples available for .NET, Node.js/Javascript, Python, Java, Go"
+                },
+                {
+                    "title": "Azure portal account management ",
+                    "description": "Manage features, integrations, security, and monitoring all in one place"
+                },
+                {
+                    "title": "Private network management",
+                    "description": "Turn on private link support to securely access your Media Services accounts on your own private network"
+                },
+                {
+                    "title": "Role-based access control",
+                    "description": "Restrict access to critical resources in your accounts"
+                },
+                {
+                    "title": "Bring your own keys",
+                    "description": "Bring your own content keys for protected streaming, account encryption, and storage account access"
+                },
+                {
+                    "title": "Get trusted storage with Managed Identities",
+                    "description": "Allow access to storage accounts protected by firewalls by turning on Managed Identities"
+                },
+                {
+                    "title": "Encrypt all of your assets at rest",
+                    "description": "Use the default storage side encryption to encrypt all of your assets at rest, or bring your own key to control the encryption"
+                },
+                {
+                    "title": "Fine-grained security using Azure Policy",
+                    "description": "Get built-in fine-grained security, restrict outbound internet streaming, and limit content delivery to only your private network"
+                }
+            ]
+        }
+    },
+    "freeLive": {
+        "title": "Get up to 5 hours of free live streaming.",
+        "callToAction": "Create a free Azure account"
+    },
+    "tryFree": {
+        "title": "Try Azure Media Services for free",
+        "description": "Get up to 5 hours of live streaming.",
+        "callToAction": "Create a free Azure account"
+    },
+    "readyToStart": {
+        "title": "Ready to start?",
+        "callToAction": "Create a free Azure account"
+    },
+    "customers": {
+        "title": "Customers",
+        "subHeader": "Trusted by the world's most ambitious streaming teams.",
+        "callToAction": "Meet our customers",
+        "list": [
+            {
+                "name": "Lifetime Fitness",
+                "imgSrc": "Lifetime.svg"
+            },
+            {
+                "name": "LinkedIn",
+                "imgSrc": "LinkedIn.svg"
+            },
+            {
+                "name": "Johnson & Johnson",
+                "imgSrc": "johnson-johnson.png"
+            },
+            {
+                "name": "AT&T",
+                "imgSrc": "ATT_logo.svg"
+            },
+            {
+                "name": "Brainshark",
+                "imgSrc": "Brainshark.svg"
+            },
+            {
+                "name": "House.gov",
+                "imgSrc": "house-gov.svg"
+            },
+            {
+                "name": "Forte.fit",
+                "imgSrc": "forte-fit.png"
+            },
+            {
+                "name": "Microsoft Teams",
+                "imgSrc": "Microsoft_teams.svg"
+            },
+            {
+                "name": "Yammer",
+                "imgSrc": "Microsoft_yammer.svg"
+            },
+            {
+                "name": "Rakuten TV",
+                "imgSrc": "Rakuten_TV_logo.svg"
+            },
+            {
+                "name": "Rogers Canada",
+                "imgSrc": "Rogers_logo.svg"
+            },
+            {
+                "name": "Seismic",
+                "imgSrc": "seismic.svg"
+            },
+            {
+                "name": "SRG SSR",
+                "imgSrc": "SRG-SSR-logo.svg"
+            },
+            {
+                "name": "Videofutur",
+                "imgSrc": "videofutur.svg"
+            }
+        ]
+    },
+    "footer": {
         "privacy": "Privacy and Cookies",
-        "termsOfUse" : "Terms of Use",
-        "trademarks" : "Trademarks",
-        "feedback" : "Feedback",
-        "contact" : "Contact Us"
+        "termsOfUse": "Terms of Use",
+        "trademarks": "Trademarks",
+        "feedback": "Feedback",
+        "contact": "Contact Us"
+    },
+    "404": {
+        "message": "Emptiness, all is eternal sadness..."
     }
 }
