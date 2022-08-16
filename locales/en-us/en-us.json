@@ -217,7 +217,7 @@
                 },
                 {
                     "title": "Stream from any encoder",
-                    "description": "Supports RTMP/RTMPS protocol for live streaming."
+                    "description": "Supports RTMP/RTMPS ingest for live streaming from many encoders."
                 },
                 {
                     "title": "Wide-range of input file formats",
