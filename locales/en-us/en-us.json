@@ -29,8 +29,15 @@
         "support": "Support",
         "signIn": "Sign in"
     },
+    "meta": {
+        "pageTitle":"Azure Media Services",
+        "site": "https://media.microsoft.com",
+        "description": "Azure Media Services is a cloud platform service for live streaming, encoding, and content protection that allows you to build fast, reliable video experiences. Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams and LinkedIn. View samples, quick starts, demos, and live low-latency HLS and DASH streaming, and quickly build out your own unique video solutions with our SDKs.",
+        "keywords" :"Video analytics, video AI, Video, Audio, Encoding, Transcoding, Cloud encoding, Cloud transcoding, Azure Media Services, AMS, Azure, Video Indexer, Microsoft video, interactive video, Teams, Azure Communications Services, ACS, live streaming, live video, live, video, stream, easy, api, xbox, linkedin live, code, demo, demos, api, sdk, azure active directory, test, interactive, interactivity, service, latency, scale, scalable, player, sdk, calculator, QoS, quality, examples, calculator, cost. samples, github, dynamic, packaging, DRM, PlayRead, FairPlay, Widevine, content protection, AES-128, H.264, H264, HEVC, H.265, AAC, audio streaming, live audio streaming, podcast, ProRes, Dolby, Dolby Atmos, Dolby Digital, DD+, AC-3, CMAF, MPEG-DASH, HLS, Apple HTTP Live Streaming, LL-HLS, LL-DASH, low latency dash, low latency hls,compliance, regulatory, FedRamp, DOD CC SRG IL2, DOD CC SG IL 4, GDPR,Node, Node.js, TypeScript, JavaScript, SDK, client, library,Content aware encoding, encode, transcode, ABR, adaptive bitrate, resolution, HLS, DASH, Smooth, per title encoding, per title, per scene encoding, scene based, QVBR, Quality Defined Variable Bitrate, Quality-Defined,basic pass-through, standard pass-through, pass through, pass, pass-through, cloud encoding, cloud transcoding, cloud encoding, encoding channel, 4K, 1080P, 720P, streaming, live, live event, low latency, RTMP, Smooth, RTMPS, HLS, LL-HLS, low latency HLS, low latency DASH, interactivity, timed metadata, translation, live speech, DVR, DASH, LL-DASH, live streaming, broadcast, channel, SRT, WebRTC, RTSP,origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming, audio, video, LL-HLS, LL-DASH, ultra low latency, packaging, dynamic packaging, dynamic packager, encryption, dynamic encryption"
+    },
     "landing": {
         "title": "Azure Media Services",
+
         "tagline1": "Build fast, reliable video ",
         "tagline2": "experiences with Azure Media Services",
         "valueProp": "See it in action with up to 5 hours of free live streaming.",

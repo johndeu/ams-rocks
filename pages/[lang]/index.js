@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import dynamic from 'next/dynamic';
 import { GetStaticPropsContext } from 'next';
 
@@ -80,6 +81,33 @@ export default function LandingPage(props) {
 
   return (
     <div>
+      <Head>
+          {/*  <!-- Robots --> */}
+          <meta name="robots" content="all, noarchive" />
+          <meta name="Description" content={i18next.t("meta.description")} />
+          <meta name="Keywords" content={i18next.t("meta.keywords")} />
+          {/*  <!-- Schema.org markup for Google+ --> */}
+          <meta itemprop="title" content={i18next.t("meta.pageTitle")} />
+          <meta itemprop="name" content={i18next.t("meta.pageTitle")} />
+          <meta itemprop="description" content={i18next.t("meta.description")} />
+          <meta itemprop="image" content="https://media.microsoft.com/img/AzureMediaService.png" />
+          {/*  <!-- Twitter Card data --> */}
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content={i18next.t("meta.site")} />
+          <meta name="twitter:title" content={i18next.t("meta.pageTitle")} />
+          <meta name="twitter:description" content={i18next.t("meta.description")} />
+          <meta name="twitter:creator" content="@microsoft" />
+          <meta name="twitter:image:src" content="https://media.microsoft.com/img/AzureMediaService.png" />
+          {/*  <!-- Open Graph data --> */}
+          <meta property="og:title" content={i18next.t("meta.pageTitle")} />
+          <meta property="og:url" content={i18next.t("meta.site")} />
+          <meta property="og:image" content="http://media.microsoft.com/img/AzureMediaService.png" />
+          <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AzureMediaService.png" />
+          <meta property="og:description" content={i18next.t("meta.description")} />
+          <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
+          {/*  <!-- DNS prefetch --> */}
+          <link rel="dns-prefetch" href="//microsoft.com" />
+      </Head>
 
       <Header
         color="white"
@@ -146,7 +174,7 @@ export default function LandingPage(props) {
 
 
           <IndustrySection />
-          
+
           <SectionArea
             align="right"
             titleNormal={i18next.t('landing.section.1.title.normal')}
@@ -168,7 +196,7 @@ export default function LandingPage(props) {
           <div className={classes.sectionBreak}></div>
           <FreeLive />
           <div className={classes.sectionBreak}></div>
-          
+
           <SectionArea
             align="right"
             titleNormal={i18next.t('landing.section.3.title.normal')}
@@ -191,7 +219,7 @@ export default function LandingPage(props) {
 
         </div>
       </div>
-      
+
       {/*  <GetStartedSection /> */}
       <Features />
       <SectionCustomers />
@@ -202,7 +230,7 @@ export default function LandingPage(props) {
       </div>
 
       <AzureFooter></AzureFooter>
-     {/*  <Footer whiteFont logoColor="gray" /> */}
+      {/*  <Footer whiteFont logoColor="gray" /> */}
     </div>
   );
 }
