@@ -90,6 +90,10 @@ export default function HeaderLinks(props) {
             <Link href="https://docs.microsoft.com/azure/media-services/latest/player-media-players-concept">
               <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.players')}>{i18next.t('menu.docs.players')}</a>
             </Link>,
+             <Divider />,
+             <Link href="https://docs.microsoft.com/azure/media-services/latest/release-notes">
+               <a className={classes.dropdownLink} target="_blank" aria-label={i18next.t('menu.docs.releases')}>{i18next.t('menu.docs.releases')}</a>
+             </Link>,
           ]}
         />
       </ListItem>
