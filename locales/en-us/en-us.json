@@ -235,6 +235,10 @@
                 {
                     "title": "Live captions",
                     "description": "Reach your audience with real-time transcription in 50+ languages without sacrificing latency"
+                },
+                {
+                    "title": "Late binding audio, video, and text tracks",
+                    "description": "Add new audio, video, or text tracks at any time to an existing assets to enhance the viewer experience"
                 }
             ]
         },
@@ -309,6 +313,10 @@
                 {
                     "title": "Live captions",
                     "description": "Get automatic speech-to-text transcriptions and subtitles in 50+ languages without sacrificing latency"
+                },
+                {
+                    "title": "Enhance your streams as you grow",
+                    "description": "Add new descriptive audio or additional subtitle tracks at any time to existing assets"
                 }
             ]
         },
