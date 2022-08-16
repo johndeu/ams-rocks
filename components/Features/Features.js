@@ -230,7 +230,7 @@ export default function Features(props) {
                                                     {i18next.t('features.managing.items.4.description')}
                                                 </p>
                                             </GridItem>
-                                            <GridItem xs="6">
+                                            <GridItem xs={12} sm={6}>
                                                 <h5>{i18next.t('features.managing.items.5.title')}</h5>
                                                 <p>
                                                     {i18next.t('features.managing.items.5.description')}
