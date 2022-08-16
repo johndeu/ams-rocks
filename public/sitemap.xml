@@ -5,5 +5,9 @@
        <loc>https://media.microsoft.com</loc>
        <lastmod>2022-08-16</lastmod>
      </url>
+      <url>
+       <loc>https://media.microsoft.com/live</loc>
+       <lastmod>2022-08-16</lastmod>
+     </url>
    </urlset>
    </xml>
