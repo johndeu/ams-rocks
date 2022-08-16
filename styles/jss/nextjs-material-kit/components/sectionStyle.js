@@ -62,7 +62,7 @@ const sectionStyle = {
   },
   title:{
     color: "#000",
-    fontFamily: 'Segoe UI',
+    fontFamily: "Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "48px",
@@ -70,7 +70,7 @@ const sectionStyle = {
   },
   titleHighlight:{
     color: blueColor,
-    fontFamily: 'Segoe UI',
+    fontFamily: "Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "48px",
@@ -78,7 +78,7 @@ const sectionStyle = {
   },
   description: {
     fontWeight: "400",
-    fontFamily: 'Segoe UI',
+    fontFamily: "Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif",
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: "18px",
