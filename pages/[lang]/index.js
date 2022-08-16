@@ -135,21 +135,6 @@ export default function LandingPage(props) {
             >
               {i18next.t('landing.readDocs')}
             </Button>
-
-            {/*<PrimaryButton
-              target="_blank"
-              className={[classes.callToAction, classes.callToActionPrimary]}
-              href="https://azure.microsoft.com/free/">
-              {i18next.t('landing.ctaButton')}
-            </PrimaryButton>
-            <DefaultButton
-              target="_blank"
-              className={[classes.callToAction, classes.callToActionSecondary]}
-              href="https://docs.microsoft.com/azure/media-services/"
-             >
-              {i18next.t('landing.readDocs')}
-            </DefaultButton>
-            */}
           </GridItem>
         </GridContainer>
 
@@ -161,46 +146,52 @@ export default function LandingPage(props) {
 
 
           <IndustrySection />
-
-          {/*           <div className={classes.sectionBreak}></div>
- */}
+          
           <SectionArea
             align="right"
-            title={i18next.t('landing.section.1.title')}
+            titleNormal={i18next.t('landing.section.1.title.normal')}
+            titleHighlight={i18next.t('landing.section.1.title.highlight')}
             description={i18next.t('landing.section.1.description')}
             imgSrc="/img/Landing/Solution.png"
             imgAlt={i18next.t('landing.section.1.imageAlt')}
             aria-label={i18next.t('landing.section.1.title')}
           />
           <SectionArea
-            align="left"
-            title={i18next.t('landing.section.2.title')}
+            align="right"
+            titleNormal={i18next.t('landing.section.2.title.normal')}
+            titleHighlight={i18next.t('landing.section.2.title.highlight')}
             description={i18next.t('landing.section.2.description')}
-            imgSrc="/img/Landing/Lowlatency.png"
+            imgSrc="/img/Landing/lowlatencyfootball.jpg"
             imgAlt={i18next.t('landing.section.2.imageAlt')}
             aria-label={i18next.t('landing.section.2.title')}
           />
           <div className={classes.sectionBreak}></div>
           <FreeLive />
+          <div className={classes.sectionBreak}></div>
+          
           <SectionArea
             align="right"
-            title={i18next.t('landing.section.3.title')}
+            titleNormal={i18next.t('landing.section.3.title.normal')}
+            titleHighlight={i18next.t('landing.section.3.title.highlight')}
             aria-label={i18next.t('landing.section.3.title')}
             description={i18next.t('landing.section.3.description')}
             imgSrc="/img/Landing/Security.png"
             imgAlt={i18next.t('landing.section.3.imageAlt')}
           />
           <SectionArea
-            align="left"
-            title={i18next.t('landing.section.4.title')}
+            align="right"
+            titleNormal={i18next.t('landing.section.4.title.normal')}
+            titleHighlight={i18next.t('landing.section.4.title.highlight')}
             aria-label={i18next.t('landing.section.4.title')}
             description={i18next.t('landing.section.4.description')}
             imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
           />
 
+
         </div>
       </div>
+      
       {/*  <GetStartedSection /> */}
       <Features />
       <SectionCustomers />

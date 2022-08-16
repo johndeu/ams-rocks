@@ -38,25 +38,37 @@
         "loginButton": "Start free",
         "getStartedFree": "Create a free Azure account",
         "section.1": {
-            "title": "Your end-to-end streaming solution",
+            "title": {
+                "normal": "Your end-to-end ",
+                "highlight": "streaming solution"
+            },
             "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams and LinkedIn.",
             "callToAction": "",
             "imageAlt": "Solution"
         },
         "section.2": {
-            "title": "Low-latency live video with less than 5 seconds of delay",
-            "description": "Whether you’re streaming to an audience of dozens or millions, your viewers will watch in near-realtime on all platforms and devices around the world.",
+            "title": {
+                "normal": "Low-latency live video with ",
+                "highlight": "less than 5 seconds of delay"
+            },
+            "description": "Whether it’s a dozen to milions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
             "callToAction": "",
             "imageAlt": "Low latency"
         },
         "section.3": {
-            "title": "Protect your content from upload to playback",
+            "title": {
+                "normal": "Protect your content ",
+                "highlight": "from upload to playback"
+            },
             "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
             "callToAction": "",
             "imageAlt": "Security"
         },
         "section.4": {
-            "title": "Built-in accessibility for an inclusive video experience",
+            "title": {
+                "normal": "Built-in accessibility ",
+                "highlight": "for an inclusive video experience"
+            },
             "description": "Get automatic real-time transcription in 100+ languages without sacrificing quality or speed.",
             "callToAction": "",
             "imageAlt": "Low latency"
@@ -86,7 +98,7 @@
             "loading": "loading"
         },
         "features": {
-            "title": "Fully customizable features for all your video needs",
+            "title": "Customizable features for all your video needs",
             "list": [
                 {
                     "item": "Low latency between 4-7 seconds at scale"

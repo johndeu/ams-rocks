@@ -8,7 +8,7 @@ const featuresStyle = {
         align: "center",
         textAlign: "left !important",
         color: "#000 !important",
-        backgroundColor: "#fff"
+        backgroundColor: "#FAF9F8"
     },
     textSection: {
         padding: "15px",

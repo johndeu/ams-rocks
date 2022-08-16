@@ -250,6 +250,7 @@ export {
   grayColor,
   mainBlue,
   darkBlue,
+  blueColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,

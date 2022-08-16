@@ -28,7 +28,7 @@ const landingPageStyle = (theme) => ({
     ...container,
   },
   sectionBreak :{
-    minHeight: "50px",
+    minHeight: "60px",
     color: "#FFFFFF"
   },
   titleSection : {

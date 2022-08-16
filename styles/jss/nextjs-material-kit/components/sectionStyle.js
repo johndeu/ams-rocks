@@ -6,6 +6,7 @@ import {
   infoColor,
   roseColor,
   grayColor,
+  blueColor,
   title,
 } from "styles/jss/nextjs-material-kit.js";
 
@@ -15,9 +16,8 @@ import imagesStyle from "styles/jss/nextjs-material-kit/imagesStyles.js";
 
 const sectionStyle = {
   sectionArea: {
-    maxWidth: "360px",
-    margin: "0 auto",
-    padding: "0px",
+    paddingTop: "40px",
+    paddingBottom: "40px",
   },
   section: {
     padding: "40px 20px 0",
@@ -61,13 +61,28 @@ const sectionStyle = {
     overflow: "hidden",
   },
   title:{
-    ...title,
-    fontSize: "20px"
+    color: "#000",
+    fontFamily: 'Segoe UI',
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "48px",
+    lineHeight: "54px",
+  },
+  titleHighlight:{
+    color: blueColor,
+    fontFamily: 'Segoe UI',
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "48px",
+    lineHeight: "54px",
   },
   description: {
     fontWeight: "400",
-    fontSize: "14px",
-    lineHeight: "20px",
+    fontFamily: 'Segoe UI',
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: "18px",
+    lineHeight: "24px",
   },
 };
 

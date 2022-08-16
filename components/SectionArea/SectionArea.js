@@ -15,7 +15,8 @@ const useStyles = makeStyles(styles);
 export default function SectionArea(props) {
   const classes = useStyles();
   const {
-    title,
+    titleNormal,
+    titleHighlight,
     description,
     actionText,
     actionLink,
@@ -35,9 +36,9 @@ export default function SectionArea(props) {
 
   return (
     <div className={classes.section}>
-      <GridContainer>
+      <GridContainer className={classes.sectionArea}>
         {align == "left" &&
-          <GridItem xs={12} sm={4} md={4}>
+          <GridItem xs={12} sm={6} md={6}>
             <img
               src={imgSrc}
               alt={imgAlt}
@@ -45,9 +46,10 @@ export default function SectionArea(props) {
             />
           </GridItem>
         }
-        <GridItem xs={12} sm={8} md={8}>
+        <GridItem xs={12} sm={6} md={6}>
           <div className={classes.textSection}>
-            <h3>{title}</h3>
+            <span className={classes.title}>{titleNormal}</span>
+            <span className={classes.titleHighlight}>{titleHighlight}</span>
             <p className={classes.description}>
               {description}
             </p>
@@ -57,7 +59,7 @@ export default function SectionArea(props) {
           </div>
         </GridItem>
         {align == "right" &&
-          <GridItem xs={12} sm={4} md={4}>
+          <GridItem xs={12} sm={6} md={6}>
             <img
               src={imgSrc}
               alt={imgAlt}
