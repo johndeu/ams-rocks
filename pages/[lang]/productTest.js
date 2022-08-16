@@ -14,8 +14,8 @@ import { useInView } from "react-intersection-observer";
 
 
 // core components
-import Header from "components/Header/Header.js";
-import Footer from "components/Footer/Footer.js";
+import UHFHeader from "components/Header/UHFHeader.js";
+import UHFFooter from "components/Footer/UHFFooter.js";
 import Parallax from "components/Parallax/Parallax.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -76,17 +76,13 @@ export default function basicPage(props) {
   })
 
   const productSelected = (product) => {
-    console.log ("PRODUCT SELECTED at root page: " + product)
+    console.log("PRODUCT SELECTED at root page: " + product)
   }
 
   return (
     <div >
-      <Header
+      <UHFHeader
         color="white"
-        routes={dashboardRoutes}
-        brand={i18next.t('landing.title')}
-        leftLinks={<HeaderLinksLeft />}
-        rightLinks={<HeaderLinksRight />}
         fixed
         changeColorOnScroll={{
           height: 120,
@@ -99,7 +95,7 @@ export default function basicPage(props) {
       </div>
       <div className={classes.section}>
         <div className={classes.container}>
-          
+
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <GridContainer>
@@ -116,7 +112,14 @@ export default function basicPage(props) {
 
         </div>
         <FreeSection />
-        <Footer whiteFont logoColor="gray" />
+        <UHFFooter
+          color="white"
+          fixed
+          changeColorOnScroll={{
+            height: 60,
+            color: "danger",
+          }}
+        ></UHFFooter>
       </div>
 
     </div>

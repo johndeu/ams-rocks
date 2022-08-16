@@ -44,6 +44,7 @@ const headerStyle = {
   fixed: {
     position: "fixed",
     zIndex: "1100",
+    width: "100vw",
   },
   container: {
     ...container,

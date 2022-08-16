@@ -54,7 +54,11 @@ const navPillsStyle = (theme) => ({
     opacity: "1",
     maxWidth: "100%",
     margin: "0 5px",
-    color: "#323130"
+    color: "#323130",
+    "&.Mui-selected > span" : {
+      fontSize:"16px",
+      fontWeight:600,
+    }
   },
   pillsWithIcons: {
     borderRadius: "4px",
@@ -84,6 +88,9 @@ const navPillsStyle = (theme) => ({
       borderLeft: "3px solid",
       borderColor: primaryColor,
       backgroundColor: "#F7F7F7",
+      fontSize: "16px",
+      lineHeight: "22px",
+      fontWeight: "600",
       /* backgroundColor: primaryColor, */
       /* boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         primaryColor,
@@ -96,6 +103,9 @@ const navPillsStyle = (theme) => ({
       color: infoColor,
       borderColor: infoColor,
       backgroundColor: "#F7F7F7",
+      fontSize: "16px",
+      lineHeight: "22px",
+      fontWeight: "600",
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         infoColor,
         0.4
@@ -108,6 +118,9 @@ const navPillsStyle = (theme) => ({
       borderLeft: "3px solid",
       borderColor: successColor,
       backgroundColor: "#F7F7F7",
+      fontSize: "16px",
+      lineHeight: "22px",
+      fontWeight: "600",
      /*  boxShadow: `0 2px 2px 0 ${hexToRGBAlpha(
         successColor,
         0.14
@@ -123,6 +136,9 @@ const navPillsStyle = (theme) => ({
       borderLeft: "3px solid",
       borderColor: warningColor,
       backgroundColor: "#F7F7F7",
+      fontSize: "16px",
+      lineHeight: "22px",
+      fontWeight: "600",
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         warningColor,
         0.4
@@ -132,19 +148,24 @@ const navPillsStyle = (theme) => ({
   danger: {
     "&,&:hover": {
       color: dangerColor,
-      borderLeft: "3px solid",
+      borderBottom: "3px solid",
       borderColor: dangerColor,
-      backgroundColor: "#F7F7F7",
+
+     /*  backgroundColor: "#F7F7F7", */
      /*  boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         dangerColor,
         0.4
       )}`, */
     },
+  
   },
   rose: {
     "&,&:hover": {
       color: roseColor,
       backgroundColor: roseColor,
+      fontSize: "16px",
+      lineHeight: "22px",
+      fontWeight: "600",
       boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px ${hexToRGBAlpha(
         roseColor,
         0.4
@@ -158,13 +179,15 @@ const navPillsStyle = (theme) => ({
   tabWrapper: {
     color: "inherit",
     position: "relative",
-    fontSize: "12px",
-    lineHeight: "24px",
-    fontWeight: "500",
+    fontSize: "14px",
+    lineHeight: "20px",
+    fontWeight: "400",
     "&,& *": {
       letterSpacing: "normal",
     },
+
   },
+
 });
 
 export default navPillsStyle;

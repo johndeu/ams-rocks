@@ -17,6 +17,7 @@ const featuresStyle = {
     navBox: {
         borderRadius: "0px",
     },
+    
     container
 };
 

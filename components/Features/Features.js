@@ -29,10 +29,6 @@ export default function Features(props) {
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                         <NavPills
                             color="danger"
-                            horizontal={{
-                                tabsGrid: { xs: 12, sm: 2, md: 2 },
-                                contentGrid: { xs: 12, sm: 10, md: 10 },
-                            }}
                             tabs={[
                                 {
                                     tabButton: i18next.t('features.live.title'),
