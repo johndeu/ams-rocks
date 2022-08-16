@@ -99,6 +99,7 @@ export default function LandingPage(props) {
           <meta name="twitter:creator" content="@microsoft" />
           <meta name="twitter:image:src" content="https://media.microsoft.com/img/AzureMediaService.png" />
           {/*  <!-- Open Graph data --> */}
+          <meta name="og:type" property="og:type" content="website"></meta>
           <meta property="og:title" content={i18next.t("meta.pageTitle")} />
           <meta property="og:url" content={i18next.t("meta.site")} />
           <meta property="og:image" content="http://media.microsoft.com/img/AzureMediaService.png" />
@@ -107,6 +108,8 @@ export default function LandingPage(props) {
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
+          <link rel="canonical" href="https://media.microsoft.com/en-us/"></link>
+          <link rel="preconnect" href="//wcpstatic.microsoft.com" crossorigin></link>
       </Head>
 
       <Header
