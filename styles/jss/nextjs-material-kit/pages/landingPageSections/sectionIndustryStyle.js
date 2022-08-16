@@ -2,6 +2,7 @@ import { container } from "styles/jss/nextjs-material-kit.js";
 import imagesStyle from "styles/jss/nextjs-material-kit/imagesStyles.js";
 
 const tabsStyle = (theme) => ({
+
   section: {
     padding: "15px 0",
     paddingBottom: "42px",
@@ -15,6 +16,15 @@ const tabsStyle = (theme) => ({
       "& div.MuiTabs-root": {
         width: "-webkit-fill-available"
       }
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& div.MuiTabs-flexContainer": {
+        overflowX: "auto",
+        width: "auto"
+      },
+      "& div.MuiTabs-root": {
+        width: "auto"
+      }
     }
   },
   container,
@@ -27,6 +37,7 @@ const tabsStyle = (theme) => ({
   imgIndustry: {
 
   }
+
 });
 
 export default tabsStyle;
