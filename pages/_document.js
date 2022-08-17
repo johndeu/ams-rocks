@@ -33,7 +33,10 @@ class MyDocument extends Document {
           <meta property="og:description" content={i18next.t("meta.description")} />
           <meta property="og:url" content={i18next.t("meta.site")} />
           <meta property="og:image" content="http://media.microsoft.com/img/AMS-Social.jpg" />
-          <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AMS-Social.jpg" />
+          <meta property="og:image:type" content="image/jpeg" /> 
+          <meta property="og:image:width" content="400" /> 
+          <meta property="og:image:height" content="300" />
+         {/*  <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AMS-Social.jpg" /> */}
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
