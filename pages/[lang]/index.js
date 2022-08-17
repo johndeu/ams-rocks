@@ -218,7 +218,17 @@ export default function LandingPage(props) {
             imgSrc="/img/Landing/Accessibility.png"
             imgAlt={i18next.t('landing.section.4.imageAlt')}
           />
-
+           <SectionArea
+            align="right"
+            titleNormal={i18next.t('landing.section.5.title.normal')}
+            titleHighlight={i18next.t('landing.section.5.title.highlight')}
+            aria-label={i18next.t('landing.section.5.title')}
+            description={i18next.t('landing.section.5.description')}
+            imgSrc="/img/video-indexer.png"
+            imgAlt={i18next.t('landing.section.5.imageAlt')}
+            actionLink="https://vi.microsoft.com/"
+            actionText={i18next.t('landing.section.5.callToAction')}
+          />
 
         </div>
       </div>

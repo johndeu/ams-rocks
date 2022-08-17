@@ -79,7 +79,17 @@
             "description": "Get automatic real-time transcription in 50+ languages without sacrificing quality or speed.",
             "callToAction": "",
             "imageAlt": "Low latency"
+        },
+        "section.5": {
+            "title": {
+                "normal": "Unlock video insights ",
+                "highlight": "with Azure Video Indexer"
+            },
+            "description": "Seamless integration with Azure Video Indexer to extract deep insights from your videos. Power new forms of content discovery such as searching for spoken words, faces, characters, and more. Enrich your apps with embedded video insights to drive user engagement.",
+            "callToAction": "Learn more about Azure Video Indexer",
+            "imageAlt": "Video Indexer"
         }
+       
     },
     "liveDemo": {
         "title": "Try low latency live streaming",
