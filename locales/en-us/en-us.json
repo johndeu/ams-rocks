@@ -30,14 +30,13 @@
         "signIn": "Sign in"
     },
     "meta": {
-        "pageTitle":"Azure Media Services",
+        "pageTitle": "Azure Media Services",
         "site": "https://media.microsoft.com",
         "description": "Azure Media Services is a cloud platform service for live streaming, encoding, and content protection that allows you to build fast, reliable video experiences. Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams live events and LinkedIn Live. View samples, quick starts, demos, and live low-latency HLS and DASH streaming, and quickly build out your own unique video solutions with our SDKs.",
-        "keywords" :"Video analytics, video AI, Video, Audio, Encoding, Transcoding, Cloud encoding, Cloud transcoding, Azure Media Services, AMS, Azure, Video Indexer, Microsoft video, interactive video, Teams, Azure Communications Services, ACS, live streaming, live video, live, video, stream, easy, api, xbox, linkedin live, code, demo, demos, api, sdk, azure active directory, test, interactive, interactivity, service, latency, scale, scalable, player, sdk, calculator, QoS, quality, examples, calculator, cost. samples, github, dynamic, packaging, DRM, PlayRead, FairPlay, Widevine, content protection, AES-128, H.264, H264, HEVC, H.265, AAC, audio streaming, live audio streaming, podcast, ProRes, Dolby, Dolby Atmos, Dolby Digital, DD+, AC-3, CMAF, MPEG-DASH, HLS, Apple HTTP Live Streaming, LL-HLS, LL-DASH, low latency dash, low latency hls,compliance, regulatory, FedRamp, DOD CC SRG IL2, DOD CC SG IL 4, GDPR,Node, Node.js, TypeScript, JavaScript, SDK, client, library,Content aware encoding, encode, transcode, ABR, adaptive bitrate, resolution, HLS, DASH, Smooth, per title encoding, per title, per scene encoding, scene based, QVBR, Quality Defined Variable Bitrate, Quality-Defined,basic pass-through, standard pass-through, pass through, pass, pass-through, cloud encoding, cloud transcoding, cloud encoding, encoding channel, 4K, 1080P, 720P, streaming, live, live event, low latency, RTMP, Smooth, RTMPS, HLS, LL-HLS, low latency HLS, low latency DASH, interactivity, timed metadata, translation, live speech, DVR, DASH, LL-DASH, live streaming, broadcast, channel, SRT, WebRTC, RTSP,origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming, audio, video, LL-HLS, LL-DASH, ultra low latency, packaging, dynamic packaging, dynamic packager, encryption, dynamic encryption"
+        "keywords": "Video analytics, video AI, Video, Audio, Encoding, Transcoding, Cloud encoding, Cloud transcoding, Azure Media Services, AMS, Azure, Video Indexer, Microsoft video, interactive video, Teams, Azure Communications Services, ACS, live streaming, live video, live, video, stream, easy, api, xbox, linkedin live, code, demo, demos, api, sdk, azure active directory, test, interactive, interactivity, service, latency, scale, scalable, player, sdk, calculator, QoS, quality, examples, calculator, cost. samples, github, dynamic, packaging, DRM, PlayRead, FairPlay, Widevine, content protection, AES-128, H.264, H264, HEVC, H.265, AAC, audio streaming, live audio streaming, podcast, ProRes, Dolby, Dolby Atmos, Dolby Digital, DD+, AC-3, CMAF, MPEG-DASH, HLS, Apple HTTP Live Streaming, LL-HLS, LL-DASH, low latency dash, low latency hls,compliance, regulatory, FedRamp, DOD CC SRG IL2, DOD CC SG IL 4, GDPR,Node, Node.js, TypeScript, JavaScript, SDK, client, library,Content aware encoding, encode, transcode, ABR, adaptive bitrate, resolution, HLS, DASH, Smooth, per title encoding, per title, per scene encoding, scene based, QVBR, Quality Defined Variable Bitrate, Quality-Defined,basic pass-through, standard pass-through, pass through, pass, pass-through, cloud encoding, cloud transcoding, cloud encoding, encoding channel, 4K, 1080P, 720P, streaming, live, live event, low latency, RTMP, Smooth, RTMPS, HLS, LL-HLS, low latency HLS, low latency DASH, interactivity, timed metadata, translation, live speech, DVR, DASH, LL-DASH, live streaming, broadcast, channel, SRT, WebRTC, RTSP,origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming, audio, video, LL-HLS, LL-DASH, ultra low latency, packaging, dynamic packaging, dynamic packager, encryption, dynamic encryption"
     },
     "landing": {
         "title": "Azure Media Services",
-
         "tagline1": "Build fast, reliable video ",
         "tagline2": "experiences with Azure Media Services",
         "valueProp": "See it in action with up to 5 hours of free live streaming.",
@@ -59,7 +58,7 @@
                 "normal": "Low-latency live video with ",
                 "highlight": "less than 5 seconds of delay"
             },
-            "description": "Whether it’s a dozen to milions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
+            "description": "Whether it's a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
             "callToAction": "",
             "imageAlt": "Low latency"
         },
@@ -203,7 +202,6 @@
             "body": "Capture drone or robot footage at every step in your operation to identify gaps, reduce costs, and improve your products.",
             "callToAction": "",
             "imgSrc": "/img/Landing/Manufacturing.png"
-            
         }
     ],
     "features": {
@@ -211,7 +209,6 @@
         "live": {
             "title": "Live streaming",
             "items": [
-                
                 {
                     "title": "Stream from any encoder",
                     "description": "Supports RTMP/RTMPS ingest for live streaming from many encoders."
@@ -227,7 +224,7 @@
                 {
                     "title": "Clipping and highlights",
                     "description": "Instantly generate highlights using dynamic manifest filters without modifying the original archive, or export MP4 clips."
-                },                
+                },
                 {
                     "title": "Monitor, notify and react",
                     "description": "Media Services live events integrate with Azure Monitor and Event Grid to detect issues early."
@@ -238,13 +235,14 @@
                 },
                 {
                     "title": "Dynamic content encryption",
-                    "description": "Secure your live content with AES-128, or Microwsoft PlayReady, Apple FairPlay and Google Widevine DRM protections."
+                    "description": "Secure your live content with AES-128, or Microsoft PlayReady, Apple FairPlay and Google Widevine DRM protections."
+                }
             ]
         },
         "processing": {
             "title": "Encoding",
             "items": [
-               {
+                {
                     "title": "Choose your input",
                     "description": "We support most input video formats, including professional-grade: H.264, H.265, and Apple ProRes."
                 },
