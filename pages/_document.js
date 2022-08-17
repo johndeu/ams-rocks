@@ -37,7 +37,7 @@ class MyDocument extends Document {
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
-          <link rel="canonical" href="https://media.microsoft.com/en-us/"></link>
+          <link rel="canonical" href="https://media.microsoft.com/"></link>
           <link rel="preconnect" href="//wcpstatic.microsoft.com" crossorigin></link>
           <link rel="shortcut icon" href="/img/ams.svg" />
           <link
