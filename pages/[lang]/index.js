@@ -90,21 +90,21 @@ export default function LandingPage(props) {
           <meta itemprop="title" content={i18next.t("meta.pageTitle")} />
           <meta itemprop="name" content={i18next.t("meta.pageTitle")} />
           <meta itemprop="description" content={i18next.t("meta.description")} />
-          <meta itemprop="image" content="https://media.microsoft.com/img/AzureMediaService.png" />
+          <meta itemprop="image" content="https://media.microsoft.com/img/AMS-Social.jpg" />
           {/*  <!-- Twitter Card data --> */}
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content={i18next.t("meta.site")} />
           <meta name="twitter:title" content={i18next.t("meta.pageTitle")} />
           <meta name="twitter:description" content={i18next.t("meta.description")} />
           <meta name="twitter:creator" content="@microsoft" />
-          <meta name="twitter:image:src" content="https://media.microsoft.com/img/AzureMediaService.png" />
+          <meta name="twitter:image:src" content="https://media.microsoft.com/img/AMS-Social.jpg" />
           {/*  <!-- Open Graph data --> */}
           <meta name="og:type" property="og:type" content="website"></meta>
           <meta property="og:title" content={i18next.t("meta.pageTitle")} />
-          <meta property="og:url" content={i18next.t("meta.site")} />
-          <meta property="og:image" content="http://media.microsoft.com/img/AzureMediaService.png" />
-          <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AzureMediaService.png" />
           <meta property="og:description" content={i18next.t("meta.description")} />
+          <meta property="og:url" content={i18next.t("meta.site")} />
+          <meta property="og:image" content="http://media.microsoft.com/img/AMS-Social.jpg" />
+          <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AMS-Social.jpg" />
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
