@@ -44,52 +44,53 @@
         "readDocs": "See documentation",
         "loginButton": "Start free",
         "getStartedFree": "Create a free Azure account",
-        "section.1": {
-            "title": {
-                "normal": "Your end-to-end ",
-                "highlight": "streaming solution"
+        "sections" : [
+            {
+                "title": {
+                    "normal": "Your end-to-end ",
+                    "highlight": "streaming solution"
+                },
+                "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams live events and LinkedIn Live. ",
+                "callToAction": "",
+                "imageAlt": "Solution"
             },
-            "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams live events and LinkedIn Live. ",
-            "callToAction": "",
-            "imageAlt": "Solution"
-        },
-        "section.2": {
-            "title": {
-                "normal": "Low-latency live video with ",
-                "highlight": "less than 5 seconds of delay"
+            {
+                "title": {
+                    "normal": "Low-latency live video with ",
+                    "highlight": "less than 5 seconds of delay"
+                },
+                "description": "Whether it's a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
+                "callToAction": "",
+                "imageAlt": "Low latency"
             },
-            "description": "Whether it's a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
-            "callToAction": "",
-            "imageAlt": "Low latency"
-        },
-        "section.3": {
-            "title": {
-                "normal": "Protect your content ",
-                "highlight": "from upload to playback"
+            {
+                "title": {
+                    "normal": "Protect your content ",
+                    "highlight": "from upload to playback"
+                },
+                "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
+                "callToAction": "",
+                "imageAlt": "Security"
             },
-            "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
-            "callToAction": "",
-            "imageAlt": "Security"
-        },
-        "section.4": {
-            "title": {
-                "normal": "Built-in accessibility ",
-                "highlight": "for an inclusive video experience"
+            {
+                "title": {
+                    "normal": "Built-in accessibility ",
+                    "highlight": "for an inclusive video experience"
+                },
+                "description": "Get automatic real-time transcription in 50+ languages without sacrificing quality or speed.",
+                "callToAction": "",
+                "imageAlt": "Low latency"
             },
-            "description": "Get automatic real-time transcription in 50+ languages without sacrificing quality or speed.",
-            "callToAction": "",
-            "imageAlt": "Low latency"
-        },
-        "section.5": {
-            "title": {
-                "normal": "Unlock video insights ",
-                "highlight": "with Azure Video Indexer"
-            },
-            "description": "Seamless integration with Azure Video Indexer to extract deep insights from your videos. Power new forms of content discovery such as searching for spoken words, faces, characters, and more. Enrich your apps with embedded video insights to drive user engagement.",
-            "callToAction": "Learn more about Azure Video Indexer",
-            "imageAlt": "Video Indexer"
-        }
-       
+            {
+                "title": {
+                    "normal": "Unlock video insights ",
+                    "highlight": "with Azure Video Indexer"
+                },
+                "description": "Seamless integration with Azure Video Indexer to extract deep insights from your videos. Power new forms of content discovery such as searching for spoken words, faces, characters, and more. Enrich your apps with embedded video insights to drive user engagement.",
+                "callToAction": "Learn more about Azure Video Indexer",
+                "imageAlt": "Video Indexer"
+            }
+        ]
     },
     "liveDemo": {
         "title": "Try low latency live streaming",

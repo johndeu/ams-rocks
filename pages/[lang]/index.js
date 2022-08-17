@@ -180,21 +180,21 @@ export default function LandingPage(props) {
 
           <SectionArea
             align="right"
-            titleNormal={i18next.t('landing.section.1.title.normal')}
-            titleHighlight={i18next.t('landing.section.1.title.highlight')}
-            description={i18next.t('landing.section.1.description')}
+            titleNormal={i18next.t('landing.sections.0.title.normal')}
+            titleHighlight={i18next.t('landing.sections.0.title.highlight')}
+            description={i18next.t('landing.sections.0.description')}
             imgSrc="/img/Landing/Solution.png"
-            imgAlt={i18next.t('landing.section.1.imageAlt')}
-            aria-label={i18next.t('landing.section.1.title')}
+            imgAlt={i18next.t('landing.sections.0.imageAlt')}
+            aria-label={i18next.t('landing.sections.0.title')}
           />
           <SectionArea
             align="right"
-            titleNormal={i18next.t('landing.section.2.title.normal')}
-            titleHighlight={i18next.t('landing.section.2.title.highlight')}
-            description={i18next.t('landing.section.2.description')}
+            titleNormal={i18next.t('landing.sections.1.title.normal')}
+            titleHighlight={i18next.t('landing.sections.1.title.highlight')}
+            description={i18next.t('landing.sections.1.description')}
             imgSrc="/img/Landing/lowlatencyfootball.jpg"
-            imgAlt={i18next.t('landing.section.2.imageAlt')}
-            aria-label={i18next.t('landing.section.2.title')}
+            imgAlt={i18next.t('landing.sections.1.imageAlt')}
+            aria-label={i18next.t('landing.sections.1.title')}
           />
           <div className={classes.sectionBreak}></div>
           <FreeLive />
@@ -202,32 +202,32 @@ export default function LandingPage(props) {
 
           <SectionArea
             align="right"
-            titleNormal={i18next.t('landing.section.3.title.normal')}
-            titleHighlight={i18next.t('landing.section.3.title.highlight')}
-            aria-label={i18next.t('landing.section.3.title')}
-            description={i18next.t('landing.section.3.description')}
+            titleNormal={i18next.t('landing.sections.2.title.normal')}
+            titleHighlight={i18next.t('landing.sections.2.title.highlight')}
+            aria-label={i18next.t('landing.sections.2.title')}
+            description={i18next.t('landing.sections.2.description')}
             imgSrc="/img/Landing/Security.png"
-            imgAlt={i18next.t('landing.section.3.imageAlt')}
+            imgAlt={i18next.t('landing.sections.2.imageAlt')}
           />
           <SectionArea
             align="right"
-            titleNormal={i18next.t('landing.section.4.title.normal')}
-            titleHighlight={i18next.t('landing.section.4.title.highlight')}
-            aria-label={i18next.t('landing.section.4.title')}
-            description={i18next.t('landing.section.4.description')}
+            titleNormal={i18next.t('landing.sections.3.title.normal')}
+            titleHighlight={i18next.t('landing.sections.3.title.highlight')}
+            aria-label={i18next.t('landing.sections.3.title')}
+            description={i18next.t('landing.sections.3.description')}
             imgSrc="/img/Landing/Accessibility.png"
-            imgAlt={i18next.t('landing.section.4.imageAlt')}
+            imgAlt={i18next.t('landing.sections.3.imageAlt')}
           />
            <SectionArea
             align="right"
-            titleNormal={i18next.t('landing.section.5.title.normal')}
-            titleHighlight={i18next.t('landing.section.5.title.highlight')}
-            aria-label={i18next.t('landing.section.5.title')}
-            description={i18next.t('landing.section.5.description')}
+            titleNormal={i18next.t('landing.sections.4.title.normal')}
+            titleHighlight={i18next.t('landing.sections.4.title.highlight')}
+            aria-label={i18next.t('landing.sections.4.title')}
+            description={i18next.t('landing.sections.4.description')}
             imgSrc="/img/video-indexer.png"
-            imgAlt={i18next.t('landing.section.5.imageAlt')}
+            imgAlt={i18next.t('landing.sections.4.imageAlt')}
             actionLink="https://vi.microsoft.com/"
-            actionText={i18next.t('landing.section.5.callToAction')}
+            actionText={i18next.t('landing.sections.4.callToAction')}
           />
 
         </div>

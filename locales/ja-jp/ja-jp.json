@@ -36,26 +36,53 @@
         "readDocs": "ドキュメントを参照",
         "loginButton": "無料で始める",
         "getStartedFree": "無料の Azure アカウントを作成する",
-        "section.1": {
-            "title": "エンドツーエンドのストリーミング ソリューション",
-            "description": "Azure Media Services は、Teams や LinkedIn と同じテクノロジを使用して、取り込みとトランスコーディングからパッケージ化と配信まで、ビデオ エクスペリエンスのすべてのステップを管理します。",
-            "imageAlt": "解決策"
-        },
-        "section.2": {
-            "title": "遅延が 5 秒未満の低遅延ライブ動画",
-            "description": "視聴者が数十人であろうと数百万人であろうと、視聴者は世界中のすべてのプラットフォームとデバイスでほぼリアルタイムで視聴します。",
-            "imageAlt": "低遅延"
-        },
-        "section.3": {
-            "title": "コンテンツをアップロードから再生まで保護する",
-            "description": "世界中の政府や企業から信頼されており、デジタル著作権管理、ジオブロッキング、URL 署名などを備えた安全なビデオ ストリーミングを提供しています。",
-            "imageAlt": "セキュリティ"
-        },
-        "section.4": {
-            "title": "包括的な動画体験のための組み込みのアクセシビリティ",
-            "description": "品質や速度を犠牲にすることなく、100 以上の言語で自動リアルタイム文字起こしを取得します。",
-            "imageAlt": "低遅延"
-        }
+        "sections" : [
+            {
+                "title": {
+                    "normal": "Your end-to-end ",
+                    "highlight": "streaming solution"
+                },
+                "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams live events and LinkedIn Live. ",
+                "callToAction": "",
+                "imageAlt": "Solution"
+            },
+            {
+                "title": {
+                    "normal": "Low-latency live video with ",
+                    "highlight": "less than 5 seconds of delay"
+                },
+                "description": "Whether it's a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
+                "callToAction": "",
+                "imageAlt": "Low latency"
+            },
+            {
+                "title": {
+                    "normal": "Protect your content ",
+                    "highlight": "from upload to playback"
+                },
+                "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
+                "callToAction": "",
+                "imageAlt": "Security"
+            },
+            {
+                "title": {
+                    "normal": "Built-in accessibility ",
+                    "highlight": "for an inclusive video experience"
+                },
+                "description": "Get automatic real-time transcription in 50+ languages without sacrificing quality or speed.",
+                "callToAction": "",
+                "imageAlt": "Low latency"
+            },
+            {
+                "title": {
+                    "normal": "Unlock video insights ",
+                    "highlight": "with Azure Video Indexer"
+                },
+                "description": "Seamless integration with Azure Video Indexer to extract deep insights from your videos. Power new forms of content discovery such as searching for spoken words, faces, characters, and more. Enrich your apps with embedded video insights to drive user engagement.",
+                "callToAction": "Learn more about Azure Video Indexer",
+                "imageAlt": "Video Indexer"
+            }
+        ]
     },
     "liveDemo": {
         "title": "低遅延のライブ ストリーミングを試す",

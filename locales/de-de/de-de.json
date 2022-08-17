@@ -37,26 +37,53 @@
         "readDocs": "Siehe Dokumentation",
         "loginButton": "Kostenlos starten",
         "getStartedFree": "Kostenloses Azure-Konto erstellen",
-        "section.1": {
-            "title": "Ihre End-to-End-Streaming-Lösung",
-            "description": "Azure Media Services verwaltet jeden Schritt Ihres Videoerlebnisses, von der Aufnahme und Transcodierung bis hin zur Verpackung und Bereitstellung, und verwendet dieselbe Technologie, die Teams und LinkedIn unterstützt.",
-            "imageAlt": "Lösung"
-        },
-        "section.2": {
-            "title": "Live-Video mit geringer Latenz und weniger als 5 Sekunden Verzögerung",
-            "description": "Egal, ob Sie zu Dutzenden oder Millionen Zuschauern streamen, Ihre Zuschauer sehen nahezu in Echtzeit auf allen Plattformen und Geräten auf der ganzen Welt zu.",
-            "imageAlt": "Niedrige Latenz"
-        },
-        "section.3": {
-            "title": "Schützen Sie Ihre Inhalte vom Hochladen bis zur Wiedergabe",
-            "description": "Wir vertrauen Regierungen und Unternehmen auf der ganzen Welt und bieten sicheres Video-Streaming mit digitaler Rechteverwaltung, Geoblocking, URL-Signierung und mehr.",
-            "imageAlt": "Sicherheit"
-        },
-        "section.4": {
-            "title": "Eingebaute Zugänglichkeit für ein inklusives Videoerlebnis",
-            "description": "Automatische Transkription in Echtzeit in über 100 Sprachen ohne Einbußen bei Qualität oder Geschwindigkeit.",
-            "imageAlt": "Niedrige Latenz"
-        }
+        "sections" : [
+            {
+                "title": {
+                    "normal": "Your end-to-end ",
+                    "highlight": "streaming solution"
+                },
+                "description": "Azure Media Services manages every step of your video experience, from ingestion and transcoding to packaging and delivery, using the same technology that powers Teams live events and LinkedIn Live. ",
+                "callToAction": "",
+                "imageAlt": "Solution"
+            },
+            {
+                "title": {
+                    "normal": "Low-latency live video with ",
+                    "highlight": "less than 5 seconds of delay"
+                },
+                "description": "Whether it's a dozen to millions of streams, you can rest assured your viewers will always watch with less buffering and watch your live streams near-realtime. ",
+                "callToAction": "",
+                "imageAlt": "Low latency"
+            },
+            {
+                "title": {
+                    "normal": "Protect your content ",
+                    "highlight": "from upload to playback"
+                },
+                "description": "Trusted by governments and companies around the world, we offer secure video streaming with digital rights management, geo-blocking, URL signing, and more.",
+                "callToAction": "",
+                "imageAlt": "Security"
+            },
+            {
+                "title": {
+                    "normal": "Built-in accessibility ",
+                    "highlight": "for an inclusive video experience"
+                },
+                "description": "Get automatic real-time transcription in 50+ languages without sacrificing quality or speed.",
+                "callToAction": "",
+                "imageAlt": "Low latency"
+            },
+            {
+                "title": {
+                    "normal": "Unlock video insights ",
+                    "highlight": "with Azure Video Indexer"
+                },
+                "description": "Seamless integration with Azure Video Indexer to extract deep insights from your videos. Power new forms of content discovery such as searching for spoken words, faces, characters, and more. Enrich your apps with embedded video insights to drive user engagement.",
+                "callToAction": "Learn more about Azure Video Indexer",
+                "imageAlt": "Video Indexer"
+            }
+        ]
     },
     "liveDemo": {
         "title": "Versuchen Sie Live-Streaming mit niedriger Latenzzeit",
