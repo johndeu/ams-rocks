@@ -222,7 +222,7 @@
                 },
                 {
                     "title": "Seamless live to VOD",
-                    "description": "Instant live to VOD without changing your playback URL. Reuse content in the CDN cache as your live event."
+                    "description": "Instant live to VOD without changing your playback URL. Reuse content in the same CDN cache as your live event."
                 },
                 {
                     "title": "Clipping and highlights",
