@@ -48,7 +48,7 @@ export default function Header(props) {
       }
     }, onConsentChanged);
 
- 
+
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
     }
@@ -59,18 +59,18 @@ export default function Header(props) {
     };
   });
 
-     //call back method when consent is changed by user
-  const onConsentChanged=(newConsent) => {
-      console.log("onConsentChanged", newConsent);
-      console.log("getConsent()", siteConsent.current.getConsent());
-      console.log("getConsentFor(wcpConsentCategory.Required)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Required));
-      console.log("getConsentFor(wcpConsentCategory.ThirdPartyAnalytics)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Analytics));
-      console.log("getConsentFor(wcpConsentCategory.SocialMedia)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.SocialMedia));
-      console.log("getConsentFor(wcpConsentCategory.Advertising)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Advertising));
-    }
+  //call back method when consent is changed by user
+  const onConsentChanged = (newConsent) => {
+    console.log("onConsentChanged", newConsent);
+    console.log("getConsent()", siteConsent.current.getConsent());
+    console.log("getConsentFor(wcpConsentCategory.Required)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Required));
+    console.log("getConsentFor(wcpConsentCategory.ThirdPartyAnalytics)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Analytics));
+    console.log("getConsentFor(wcpConsentCategory.SocialMedia)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.SocialMedia));
+    console.log("getConsentFor(wcpConsentCategory.Advertising)", siteConsent.current.getConsentFor(WcpConsent.consentCategories.Advertising));
+  }
 
-  const manageConsent= () =>{
-      siteConsent.current.manageConsent();
+  const manageConsent = () => {
+    siteConsent.current.manageConsent();
   }
 
   const handleDrawerToggle = () => {
@@ -141,6 +141,22 @@ export default function Header(props) {
       <div id="cookie-banner"></div>
       <AppBar className={appBarClasses} >
         <Toolbar className={classes.container}>
+          <Hidden mdUp implementation="js">
+            <Drawer
+              variant="temporary"
+              anchor={"left"}
+              open={mobileOpen}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              onClose={handleDrawerToggle}
+            >
+              <div className={classes.appResponsive}>
+                {leftLinks}
+                {rightLinks}
+              </div>
+            </Drawer>
+          </Hidden>
           <Hidden mdUp>
             <CustomButton
               color="azure2"
@@ -183,22 +199,7 @@ export default function Header(props) {
           </Hidden>
 
         </Toolbar>
-        <Hidden mdUp implementation="js">
-          <Drawer
-            variant="temporary"
-            anchor={"left"}
-            open={mobileOpen}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            onClose={handleDrawerToggle}
-          >
-            <div className={classes.appResponsive}>
-              {leftLinks}
-              {rightLinks}
-            </div>
-          </Drawer>
-        </Hidden>
+
       </AppBar>
     </>
   );
