@@ -187,6 +187,13 @@
             "imgSrc": "/img/Landing/Government.jpg"
         },
         {
+            "title": "Legal and Judicial",
+            "headline": "Secure courtroom communications",
+            "body": "Provide secure, encrypted streaming video for judicial hearings, depositions and presentation of evidence.",
+            "callToAction": "",
+            "imgSrc": "/img/Landing/Courts.jpg"
+        },
+        {
             "title": "Education",
             "headline": "Elevate online education",
             "body": "Create high-quality, interactive learning experiences that bring the virtual classroom to life.",
