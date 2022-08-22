@@ -373,6 +373,10 @@
         "callToAction": "Meet our customers",
         "list": [
             {
+                "name": "Deltatre",
+                "imgSrc": "deltatre.svg"
+            },
+            {
                 "name": "Lifetime Fitness",
                 "imgSrc": "Lifetime.svg"
             },
