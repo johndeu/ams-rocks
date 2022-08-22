@@ -42,8 +42,10 @@ export default function SectionCarousel() {
                   <img 
                     src={"/img/customers/" + item.imgSrc}
                     alt={item.name}
-                    height={60}
                     style = {{ 
+                      width:'auto',
+                      objectFit:'contain',
+                      height:'80px',
                       paddingRight: '30px',
                       webkitFilter: "grayscale(100%)", /* Safari 6.0 - 9.0 */
                       filter: "grayscale(100%)",

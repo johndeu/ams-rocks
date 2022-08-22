@@ -163,56 +163,56 @@
             "headline": "Stay fit together",
             "body": "Connect your athletes to one another. Deliver classes from a few hundred viewers to thousands in an instant. Build a library of on-demand classes for your subscribers and protect the content with digital rights management.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Fitness.png"
+            "imgSrc": "/img/Landing/Fitness.jpg"
         },
         {
             "title": "Enterprise",
             "headline": "Build a global workforce",
             "body": "Let your teams work together wherever they are with high-scale live events and town halls.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Enterprise.png"
+            "imgSrc": "/img/Landing/Enterprise.jpg"
         },
         {
             "title": "Live shopping",
             "headline": "Bring the in-store experience home",
             "body": "Reach your retail audience with live streams to build brand loyalty and drive sales.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Shopping.png"
+            "imgSrc": "/img/Landing/Shopping.jpg"
         },
         {
             "title": "Government",
             "headline": "Connect with your community",
             "body": "Foster communication between government officials and the public with live legislative sessions, virtual town halls, and more.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Government.png"
+            "imgSrc": "/img/Landing/Government.jpg"
         },
         {
             "title": "Education",
             "headline": "Elevate online education",
             "body": "Create high-quality, interactive learning experiences that bring the virtual classroom to life.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Education.png"
+            "imgSrc": "/img/Landing/Education.jpg"
         },
         {
             "title": "Energy",
             "headline": "Deliver a clean energy future",
             "body": "Cut your carbon footprint and minimize travel with virtual or hybrid events.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Energy.png"
+            "imgSrc": "/img/Landing/Energy.jpg"
         },
         {
             "title": "Healthcare",
             "headline": "Reach patients where they are",
             "body": "Educate patients on common illnesses and prevention methods with health webinars or on demand videos",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Energy.png"
+            "imgSrc": "/img/Landing/Energy.jpg"
         },
         {
             "title": "Manufacturing",
             "headline": "Boost production quality",
             "body": "Capture drone or robot footage at every step in your operation to identify gaps, reduce costs, and improve your products.",
             "callToAction": "",
-            "imgSrc": "/img/Landing/Manufacturing.png"
+            "imgSrc": "/img/Landing/Manufacturing.jpg"
         }
     ],
     "features": {
@@ -383,6 +383,10 @@
             {
                 "name": "Johnson & Johnson",
                 "imgSrc": "johnson-johnson.png"
+            },
+            {
+                "name": "Trupic",
+                "imgSrc": "Truepic Square - White.png"
             },
             {
                 "name": "AT&T",
