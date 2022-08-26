@@ -93,6 +93,12 @@ To configure the i18next library, see the i18n/config.js and i18n/init.js files 
 
 Complete documentation for i18next can be found at [https://www.i18next.com/](https://www.i18next.com/)
 
+## IndexNow 
+
+This site has an API key .txt file for IndexNow configured
+See [https://www.bing.com/indexnow#implementation](https://www.bing.com/indexnow#implementation)
+
+
 ## Usage of the  [NextJS Material Kit](https://demos.creative-tim.com/nextjs-material-kit?ref=njsmk-readme) in this site
 
 This web site is using a fork of ![version](https://img.shields.io/badge/version-1.2.0-blue.svg)  of the NextJS Material UI Kit.
