@@ -38,6 +38,8 @@ class MyDocument extends Document {
           <meta property="og:image:height" content="300" />
          {/*  <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AMS-Social.jpg" /> */}
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
+         {/* Bing site validation */}
+          <meta name="msvalidate.01" content="DD1672A3419E713D6AFEE437B7EEC16A" />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
           <link rel="canonical" href="https://media.microsoft.com/"></link>
