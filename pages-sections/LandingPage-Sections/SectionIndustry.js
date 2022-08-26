@@ -42,7 +42,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.0.imgSrc')}
+                          src={i18next.t('industry.0.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -64,7 +64,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.1.imgSrc')}
+                          src={i18next.t('industry.1.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -75,7 +75,7 @@ export default function SectionIndustry() {
                           <p className={classes.textLeft}>
                             {i18next.t('industry.1.body')}
                           </p>
-    
+
                         </div>
                       </GridItem>
                     </GridContainer>
@@ -87,7 +87,7 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.2.imgSrc')}
+                          src={i18next.t('industry.2.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
@@ -109,36 +109,36 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.3.imgSrc')}
+                          src={i18next.t('industry.3.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
                       <GridItem xs={12} sm={6} md={6}>
-                      <div className={classes.textSection}>
+                        <div className={classes.textSection}>
                           <h3>{i18next.t('industry.3.headline')}</h3>
                           <p className={classes.textLeft}>
                             {i18next.t('industry.3.body')}
                           </p>
-                    
+
                         </div>
                       </GridItem>
                     </GridContainer>
                   ),
-                } ,
+                },
                 {
                   tabName: i18next.t('industry.4.title'),
                   tabContent: (
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.4.imgSrc')}
+                          src={i18next.t('industry.4.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
                       <GridItem xs={12} sm={6} md={6} >
-                      <div className={classes.textSection}>
+                        <div className={classes.textSection}>
                           <h3>{i18next.t('industry.4.headline')}</h3>
                           <p className={classes.textLeft}>
                             {i18next.t('industry.4.body')}
@@ -154,13 +154,13 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.6.imgSrc')}
+                          src={i18next.t('industry.6.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
                       <GridItem xs={12} sm={6} md={6} >
-                      <div className={classes.textSection}>
+                        <div className={classes.textSection}>
                           <h3>{i18next.t('industry.6.headline')}</h3>
                           <p className={classes.textLeft}>
                             {i18next.t('industry.6.body')}
@@ -176,13 +176,13 @@ export default function SectionIndustry() {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6}>
                         <img
-                          src= {i18next.t('industry.7.imgSrc')}
+                          src={i18next.t('industry.7.imgSrc')}
                           alt="..."
                           className={imageClasses}
                         />
                       </GridItem>
                       <GridItem xs={12} sm={6} md={6} >
-                      <div className={classes.textSection}>
+                        <div className={classes.textSection}>
                           <h3>{i18next.t('industry.7.headline')}</h3>
                           <p className={classes.textLeft}>
                             {i18next.t('industry.7.body')}
@@ -191,7 +191,29 @@ export default function SectionIndustry() {
                       </GridItem>
                     </GridContainer>
                   ),
-                }  
+                },
+                {
+                  tabName: i18next.t('industry.8.title'),
+                  tabContent: (
+                    <GridContainer>
+                      <GridItem xs={12} sm={6} md={6}>
+                        <img
+                          src={i18next.t('industry.8.imgSrc')}
+                          alt="..."
+                          className={imageClasses}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={6} md={6} >
+                        <div className={classes.textSection}>
+                          <h3>{i18next.t('industry.8.headline')}</h3>
+                          <p className={classes.textLeft}>
+                            {i18next.t('industry.8.body')}
+                          </p>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                  ),
+                }
               ]}
             />
           </GridItem>
