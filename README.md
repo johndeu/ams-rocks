@@ -87,7 +87,7 @@ In order to get data from an Azure Functions API in a React Component in this pr
 ## Locales and Localization with i18next library
 
 This project uses the i18next library to provide translations and localization support in the Next.js application. 
-The folder /locales contains the translations used throughout the application.  All new pagest should use the i18next library to localize content. 
+The folder /locales contains the translations used throughout the application.  All new pages should use the i18next library to localize content. 
 
 To configure the i18next library, see the i18n/config.js and i18n/init.js files for details. 
 
