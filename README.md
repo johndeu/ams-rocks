@@ -64,6 +64,12 @@ Run the frontend app and API together by starting the app with the Static Web Ap
 
 For detailed instructions and a complete How-to on building an Azure Static Web App with an API, see the article [Build a new Static Web App on Azure with Node.js](https://docs.microsoft.com/en-us/azure/developer/javascript/how-to/create-static-web-app)
 
+### Routing and fallback paths in Static Web Apps
+
+This site uses the staticwebapp.config.json file to configure the routes and fallback paths for 400 and 404 responses. 
+The file staticwebapp.config.json at the root of the site contains fallback routes. 
+Without this file, the default routes in the Next.js application will not work, and you will end up with a generic Microsoft 404 response page when users request pages that do not exist, or try to reach the site on locales that are not supported yet. 
+
 ## Using Azure Functions as the API
 
 This web site uses Azure Functions hosted in the Azure Static web apps environment to provide an API. 
@@ -77,6 +83,15 @@ In order to get data from an Azure Functions API in a React Component in this pr
 
 [Connecting the client to API](https://docs.microsoft.com/en-us/azure/developer/javascript/how-to/with-web-app/static-web-app-with-swa-cli/connect-client-to-api)
 
+
+## Locales and Localization with i18next library
+
+This project uses the i18next library to provide translations and localization support in the Next.js application. 
+The folder /locales contains the translations used throughout the application.  All new pagest should use the i18next library to localize content. 
+
+To configure the i18next library, see the i18n/config.js and i18n/init.js files for details. 
+
+Complete documentation for i18next can be found at [https://www.i18next.com/](https://www.i18next.com/)
 
 ## Usage of the  [NextJS Material Kit](https://demos.creative-tim.com/nextjs-material-kit?ref=njsmk-readme) in this site
 
