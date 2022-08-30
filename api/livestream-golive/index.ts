@@ -54,6 +54,9 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         let started: Date = null;
         let ingestUrl:string = null;
 
+        // Check if the streaming endpoint is started or not
+        startStreamingEndpoint();
+
         // Attempt to start the long running operation and wait
         await mediaServicesClient.liveEvents.beginStartAndWait(
             resourceGroup,
@@ -168,6 +171,24 @@ const getAccount = async function (location: string): Promise<account> {
         throw Error("Could not find account in pool that matches location")
 
     return accountMatch;
+}
+
+const startStreamingEndpoint = async  function startStreamingEndpoint(){
+    console.log("Starting streaming endpoint...");
+    
+     // Get the default streaming endpoint on the account
+     let streamingEndpoint = await mediaServicesClient.streamingEndpoints.get(resourceGroup, account, streamingEndpointName);
+
+     if (streamingEndpoint?.resourceState !== "Running") {
+         console.log(`Streaming endpoint is stopped. Starting the endpoint named ${streamingEndpointName}`);
+         await mediaServicesClient.streamingEndpoints.beginStartAndWait(resourceGroup, account, streamingEndpointName, {
+ 
+         })
+             .then(() => {
+                 console.log("Streaming Endpoint Started.");
+             })
+ 
+     }
 }
 
 const buildManifestPaths = async function buildManifestPaths(
