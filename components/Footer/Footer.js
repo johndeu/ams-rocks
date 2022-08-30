@@ -58,7 +58,7 @@ export default function Footer(props) {
               &nbsp;|&nbsp;
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <h6>©&nbsp;Microsoft 2022</h6>
+              <h6>©&nbsp;Microsoft {new Date().getFullYear()}</h6>
             </ListItem>
           </List>
         </div>

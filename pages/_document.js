@@ -19,20 +19,20 @@ class MyDocument extends Document {
           <meta itemprop="title" content={i18next.t("meta.pageTitle")} />
           <meta itemprop="name" content={i18next.t("meta.pageTitle")} />
           <meta itemprop="description" content={i18next.t("meta.description")} />
-          <meta itemprop="image" content={"http://media.microsoft.com/img/social/social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"}  />
+          <meta itemprop="image" content={"http://media.microsoft.com/img/social/Social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"}  />
           {/*  <!-- Twitter Card data --> */}
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content={i18next.t("meta.site")} />
           <meta name="twitter:title" content={i18next.t("meta.pageTitle")} />
           <meta name="twitter:description" content={i18next.t("meta.description")} />
           <meta name="twitter:creator" content="@microsoft" />
-          <meta name="twitter:image:src" content={"http://media.microsoft.com/img/social/social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"} />
+          <meta name="twitter:image:src" content={"http://media.microsoft.com/img/social/Social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"} />
           {/*  <!-- Open Graph data --> */}
           <meta name="og:type" property="og:type" content="website"></meta>
           <meta property="og:title" content={i18next.t("meta.pageTitle")} />
           <meta property="og:description" content={i18next.t("meta.description")} />
           <meta property="og:url" content={i18next.t("meta.site")} />
-          <meta property="og:image" content={"http://media.microsoft.com/img/social/social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"} />
+          <meta property="og:image" content={"http://media.microsoft.com/img/social/Social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"} />
           <meta property="og:image:type" content="image/jpeg" /> 
           <meta property="og:image:width" content="400" /> 
           <meta property="og:image:height" content="300" />
