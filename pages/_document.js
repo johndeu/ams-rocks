@@ -34,8 +34,8 @@ class MyDocument extends Document {
           <meta property="og:url" content={i18next.t("meta.site")} />
           <meta property="og:image" content={"http://media.microsoft.com/img/social/Social"+ (Math.floor(Math.random() * 4) + 1).toString() + ".jpg"} />
           <meta property="og:image:type" content="image/jpeg" /> 
-          <meta property="og:image:width" content="400" /> 
-          <meta property="og:image:height" content="300" />
+          <meta property="og:image:width" content="1200" /> 
+          <meta property="og:image:height" content="623" />
          {/*  <meta property="og:image:secure_url" content="https://media.microsoft.com/img/AMS-Social.jpg" /> */}
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
          {/* Bing site validation */}
