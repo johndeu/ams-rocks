@@ -40,6 +40,7 @@ class MyDocument extends Document {
           <meta property="og:site_name" content={i18next.t("meta.pageTitle")} />
          {/* Bing site validation */}
           <meta name="msvalidate.01" content="DD1672A3419E713D6AFEE437B7EEC16A" />
+          <meta name="google-site-verification" content="-ttVEp2WAIoxtx0RkNys9Vh1YkGy4TuJ8dLKaV51IUU" />
           {/*  <!-- DNS prefetch --> */}
           <link rel="dns-prefetch" href="//microsoft.com" />
           <link rel="canonical" href="https://media.microsoft.com/"></link>
