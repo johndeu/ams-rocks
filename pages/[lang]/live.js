@@ -138,7 +138,7 @@ export const chartData = {
   labels,
   datasets: [{
     label: 'Latency (seconds)',
-    data: [6],
+    data: [5],
     borderColor: '#004E8C',
     backgroundColor: '#004E8C',
   }
