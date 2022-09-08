@@ -64,7 +64,7 @@ const STREAMS = [
   {
     name: 'AMS LL-HLS Demo Stream',
     src: 'https://aka.ms/LowLatencyDemo.m3u8',
-    location: "US West"
+    location: "US East"
   }
 ];
 
@@ -210,25 +210,27 @@ export default function LandingPage(props) {
     }
   }
 
+  function onLatencyUpdate(latency){
+    setLatency(latency);
+
+    chartData.datasets[0].data.push(latency.valueOf());
+    chartData.labels.push(moment().utc().format("HH:mm:ss"));
+    if (chartData.labels.length > 30) {  // keep a sliding window
+      chartData.datasets[0].data.shift(); //shift off the oldest data
+      chartData.labels.shift(); //shift off the oldest label to keep the window sliding.
+    }
+    if (chartRef.current) {
+      chartRef.current.update('active');
+    }
+
+  }
+
   function onPlayHeadTimeUpdate(time) {
     var currentTime = getCurrentTimeUTC();
     setCurrentTime(currentTime);
 
     if (time) {
-      var now = moment().utc();
-      var latency = now.subtract(time);
       setPlayHeadTime(time);
-      setLatency(latency)
-
-      chartData.datasets[0].data.push(latency.valueOf() / 1000);
-      chartData.labels.push(moment().utc().format("HH:mm:ss"));
-      if (chartData.labels.length > 30) {  // keep a sliding window
-        chartData.datasets[0].data.shift(); //shift off the oldest data
-        chartData.labels.shift(); //shift off the oldest label to keep the window sliding.
-      }
-      if (chartRef.current) {
-        chartRef.current.update('active');
-      }
     }
 
   }
@@ -260,17 +262,7 @@ export default function LandingPage(props) {
           <Card className={classes.card} md={2}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.latency")}</span></Badge>
             <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{latency && (latency / 1000).toPrecision(4) + "s"}</span>
-            </CardBody>
-          </Card>
-        </GridItem>
-      }
-      {!isIos && !isNaN(stats.liveLatency) &&
-        <GridItem md={6}>
-          <Card className={classes.card} md={2}>
-            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bufferSize")}</span></Badge>
-            <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{bufferTime && bufferTime.toPrecision(4) + 's'}</span>
+              <span className={classes.metric}>{latency && (latency).toPrecision(4) + "s"}</span>
             </CardBody>
           </Card>
         </GridItem>
@@ -301,16 +293,6 @@ export default function LandingPage(props) {
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.streamedFrom")}</span></Badge>
             <CardBody className={classes.cardBody}>
               <span className={classes.metric}>{location}</span>
-            </CardBody>
-          </Card>
-        </GridItem>
-      }
-      {!isIos && !isNaN(stats.liveLatency) &&
-        <GridItem md={6}>
-          <Card className={classes.card}>
-            <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.playheadTime")}</span></Badge>
-            <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{playHeadTime.toISOString().slice(11, 19)}</span>
             </CardBody>
           </Card>
         </GridItem>
@@ -355,6 +337,7 @@ export default function LandingPage(props) {
                     onStatsUpdate={onStatsUpdate}
                     onBufferedInfoUpdate={onBufferedInfoUpdate}
                     onPlayHeadTimeUpdate={onPlayHeadTimeUpdate}
+                    onLatencyUpdate={onLatencyUpdate}
                   />
 
                   {isNaN(stats.liveLatency) &&

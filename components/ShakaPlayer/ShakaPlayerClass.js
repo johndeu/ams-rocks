@@ -112,7 +112,13 @@ class ShakaPlayer extends React.PureComponent {
             var bufferedInfo = player.getBufferedInfo();
             var playHeadTime = player.getPlayheadTimeAsDate();
 
+            var presentationStartTimeDate = player.getPresentationStartTimeAsDate();
+
+            if (presentationStartTimeDate) {
             this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
+
+            var latency = (Date.now() - ( player.getPresentationStartTimeAsDate().valueOf() + video.currentTime * 1000))/1000 
+            }
 
             // In theory this code SHOULD work, but it breaks Next.js on iOS for some reason. No clue why. 
 
@@ -134,6 +140,9 @@ class ShakaPlayer extends React.PureComponent {
             }
             if (playHeadTime) {
                 this.props.onPlayHeadTimeUpdate(playHeadTime);
+            }
+            if (latency){
+                this.props.onLatencyUpdate(latency);
             }
 
         }
@@ -188,6 +197,7 @@ ShakaPlayer.propTypes = {
     onStatsUpdate: PropTypes.func,
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,
+    onLatencyUpdate:PropTypes.func,
     stats: PropTypes.object,
     className: PropTypes.string,
 }
