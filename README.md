@@ -9,6 +9,16 @@ This project is using the following technologies:
 * Azure Media Services
 * Shaka player
 
+## Install Requirements
+
+1.	Azure CLI – [Install the Azure CLI for Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
+1.	Typescript - [TypeScript: How to set up TypeScript (typescriptlang.org](https://www.typescriptlang.org/id/download)
+1.	Azure Static Web sites emulator - [Set up local development for Azure Static Web Apps | Microsoft Learn](https://learn.microsoft.com/en-us/azure/static-web-apps/local-development)
+1.	Azure Functions extensions for VS code - [Azure Functions - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+1.	[Azure Tools for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)
+1.	[Next.js for VS Code](https://marketplace.visualstudio.com/items?itemName=foxundermoon.next-js) 
+
+
 ## Starting the local application and API
 
 1. In order to debug both client and API at the same time, open two separate instances of VS Code. This is because we need to run the web site on port 3000, and the functions app on port 7071.  We will have a proxy to the API going through port 4280.
