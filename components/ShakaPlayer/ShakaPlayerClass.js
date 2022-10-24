@@ -72,7 +72,6 @@ class ShakaPlayer extends React.PureComponent {
                 lowLatencyMode: true,
                 inaccurateManifestTolerance: 0,
                 useNativeHlsOnSafari: true,
-                gapDetectionThreshold: 0.5,
             },
             drm: {
                 servers: { 'com.widevine.alpha': licenseServer }
