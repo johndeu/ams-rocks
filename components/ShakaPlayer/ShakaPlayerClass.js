@@ -32,13 +32,12 @@ class ShakaPlayer extends React.PureComponent {
     componentDidMount() {
 
         var src = this.props.src;
-
         var licenseServer = this.props.licenseServer;
         var raised = this.props.raised;
 
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
-    
+
 
         let player = new shaka.Player(video);
 
@@ -95,6 +94,13 @@ class ShakaPlayer extends React.PureComponent {
         // Event listeners
         player.addEventListener('loaded', this.onLoaded(this.video.current));
 
+        // Video tag listeners
+        let videoElement = this.video.current
+        // Listen for  HTML5 Video Element events
+        // Reference : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+        videoElement.addEventListener('pause', this.onPause);
+        videoElement.addEventListener('play', this.onPlay);
+
         if (this.props.onInitPlayer) {
             // Pass the player up to parent if needed
             this.props.onInitPlayer(player);
@@ -107,7 +113,13 @@ class ShakaPlayer extends React.PureComponent {
     }
 
     statsTick(player, video) {
-        if (player !== undefined) {
+        if (video && video.isPaused) {
+            console.log('Paused');
+            return;
+        }
+
+        if (player !== undefined && video !==undefined) {
+
             var stats = player.getStats();
             var bufferedInfo = player.getBufferedInfo();
             var playHeadTime = player.getPlayheadTimeAsDate();
@@ -115,9 +127,9 @@ class ShakaPlayer extends React.PureComponent {
             var presentationStartTimeDate = player.getPresentationStartTimeAsDate();
 
             if (presentationStartTimeDate) {
-            this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
+                this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
-            var latency = (Date.now() - ( player.getPresentationStartTimeAsDate().valueOf() + video.currentTime * 1000))/1000 
+                var latency = (Date.now() - (player.getPresentationStartTimeAsDate().valueOf() + video.currentTime * 1000)) / 1000
             }
 
             // In theory this code SHOULD work, but it breaks Next.js on iOS for some reason. No clue why. 
@@ -141,7 +153,7 @@ class ShakaPlayer extends React.PureComponent {
             if (playHeadTime) {
                 this.props.onPlayHeadTimeUpdate(playHeadTime);
             }
-            if (latency){
+            if (latency) {
                 this.props.onLatencyUpdate(latency);
             }
 
@@ -159,9 +171,17 @@ class ShakaPlayer extends React.PureComponent {
     // Event Handlers
     onLoaded(currentPlayer) {
         currentPlayer.play();
-
         //console.log('Shaka: Playing');
+    }
 
+    onPause() {
+        console.log('Shaka: Paused');
+        this.isPaused = true;
+    }
+
+    onPlay() {
+        console.log('Shaka: Playing');
+        this.isPaused = false
     }
 
 
@@ -197,7 +217,7 @@ ShakaPlayer.propTypes = {
     onStatsUpdate: PropTypes.func,
     onBufferedInfoUpdate: PropTypes.func,
     onPlayHeadTimeUpdate: PropTypes.func,
-    onLatencyUpdate:PropTypes.func,
+    onLatencyUpdate: PropTypes.func,
     stats: PropTypes.object,
     className: PropTypes.string,
 }
