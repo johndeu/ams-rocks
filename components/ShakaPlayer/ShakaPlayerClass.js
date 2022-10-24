@@ -69,7 +69,7 @@ class ShakaPlayer extends React.PureComponent {
                 }
             },
             streaming: {
-                lowLatencyMode: true,
+                autoLowLatencyMode:true,
                 inaccurateManifestTolerance: 0,
                 useNativeHlsOnSafari: true,
             },
