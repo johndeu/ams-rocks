@@ -98,10 +98,14 @@ class ShakaPlayer extends React.PureComponent {
         // Enable captions
         player.setTextTrackVisibility(true);
 
-        player.load(src, null, "application/vnd.apple.mpegURL").then(function () {
-            // This runs if the asynchronous load is successful.
-            console.log('The video has now been loaded!');
-        }).catch(onError);  // onError is executed if the asynchronous load fails.
+        player
+            .load(src)
+            .then(function () {
+                // This runs if the asynchronous load is successful.
+                console.log('The video has now been loaded!');
+                player.setTextTrackVisibility(true);
+            })
+            .catch(onError);  // onError is executed if the asynchronous load fails.
 
         if (this.props.onInitPlayer) {
             // Pass the player up to parent if needed
@@ -115,6 +119,9 @@ class ShakaPlayer extends React.PureComponent {
     }
 
     statsTick(player, video) {
+        if (player.state=='load')
+            video.play();
+
         if (video && video.isPaused) {
             console.log('Paused');
             return;
@@ -172,8 +179,8 @@ class ShakaPlayer extends React.PureComponent {
 
     // Event Handlers
     onLoaded(videoElement) {
-        //videoElement.play();
         console.log('Shaka: Loaded');
+
     }
 
     onPause() {
@@ -189,9 +196,8 @@ class ShakaPlayer extends React.PureComponent {
     onStateChange(event) {
         console.log('Player State:', event.state);
 
-        if (event.state=='load'){
+        if (event.state === 'load'){
             console.log('Player trying to start playback!');
-            this.video.current.play();
             this.video.current.play();
         }
     }
