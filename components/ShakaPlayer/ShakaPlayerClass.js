@@ -69,7 +69,7 @@ class ShakaPlayer extends React.PureComponent {
                 }
             },
             streaming: {
-                lowLatencyMode:true,
+                lowLatencyMode: true,
                 inaccurateManifestTolerance: 0,
                 useNativeHlsOnSafari: true,
             },
@@ -83,22 +83,24 @@ class ShakaPlayer extends React.PureComponent {
             console.error('Error code', error.code, 'object', error);
         }
 
+        let videoElement = this.video.current
+        // Event listeners
+        player.addEventListener('loaded', this.onLoaded(videoElement));
+        player.addEventListener('onstatechange', this.onStateChange);
+        player.addEventListener('emsg', this.onEventMessage); // fires when a timed metadata event is sent
+
+        // Video tag listeners
+        // Listen for  HTML5 Video Element events
+        // Reference : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+        videoElement.addEventListener('pause', this.onPause);
+        videoElement.addEventListener('play', this.onPlay);
+
         player.load(src, null, "application/vnd.apple.mpegURL").then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
             // Enable captions
             player.setTextTrackVisibility(true);
         }).catch(onError);  // onError is executed if the asynchronous load fails.
-
-        // Event listeners
-        player.addEventListener('loaded', this.onLoaded(this.video.current));
-
-        // Video tag listeners
-        let videoElement = this.video.current
-        // Listen for  HTML5 Video Element events
-        // Reference : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-        videoElement.addEventListener('pause', this.onPause);
-        videoElement.addEventListener('play', this.onPlay);
 
         if (this.props.onInitPlayer) {
             // Pass the player up to parent if needed
@@ -117,7 +119,7 @@ class ShakaPlayer extends React.PureComponent {
             return;
         }
 
-        if (player !== undefined && video !==undefined) {
+        if (player !== undefined && video !== undefined) {
 
             var stats = player.getStats();
             var bufferedInfo = player.getBufferedInfo();
@@ -168,9 +170,9 @@ class ShakaPlayer extends React.PureComponent {
     }
 
     // Event Handlers
-    onLoaded(currentPlayer) {
-        currentPlayer.play();
-        //console.log('Shaka: Playing');
+    onLoaded(videoElement) {
+        //videoElement.play();
+        console.log('Shaka: Loaded');
     }
 
     onPause() {
@@ -183,6 +185,24 @@ class ShakaPlayer extends React.PureComponent {
         this.isPaused = false
     }
 
+    onStateChange(event) {
+        console.log('Player State:', event.state);
+    }
+
+    onEventMessage(event) {
+        console.log('Timed Metadata Event Message');
+        console.log('emsg:', event);
+
+        // emsg box information are in emsg.details
+        const dataMsg = new TextDecoder().decode(emsg.detail.messageData);
+        console.log('EMSG: Scheme = ' + emsg.detail.schemeIdUri);
+        console.log('EMSG: StartTime = ' + emsg.detail.startTime);
+        console.log('EMSG: endTime = ' + emsg.detail.endTime);
+        console.log('EMSG: timescale = ' + emsg.detail.timescale);
+        console.log('EMSG: duration = ' + emsg.detail.eventDuration);
+        console.log('EMSG: message length = ' + emsg.detail.messageData.length);
+        console.log('EMSG: message = ' + dataMsg);
+    }
 
     render() {
         return (
@@ -191,10 +211,10 @@ class ShakaPlayer extends React.PureComponent {
                     id="video"
                     data-shaka-player
                     ref={this.video}
-                    autoPlay
+                    autoplay
                     muted
                     loop
-                    playsInline
+                    playsinline
                     style={{
                         maxWidth: '100%',
                         width: '100%',
