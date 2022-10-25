@@ -37,13 +37,12 @@ class ShakaPlayer extends React.PureComponent {
 
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
-
-
         let player = new shaka.Player(video);
+        document.addEventListener('shaka-ui-loaded', this.init(player, video, src));
+        console.log("Shaka component mounted. Waiting for Shaka UI to load...")
 
         const ui = new shaka.ui.Overlay(player, videoContainer, video);
         const controls = ui.getControls();
-
         const uiConfig = {
             'controlPanelElements': ['play_pause', 'spacer', 'volume', 'mute', 'fullscreen'],
             'addSeekBar': true,
@@ -77,23 +76,22 @@ class ShakaPlayer extends React.PureComponent {
                 servers: { 'com.widevine.alpha': licenseServer }
             }
         });
+    }
 
-        const onError = (error) => {
-            // Log the error.
-            console.error('Error code', error.code, 'object', error);
-        }
+    init(player, video, src) {
+        console.log("Shaka component Init()")
 
-        let videoElement = this.video.current
         // Event listeners
-        player.addEventListener('loaded', this.onLoaded(videoElement));
+        player.addEventListener('loaded', this.onLoaded(video));
         player.addEventListener('onstatechange', this.onStateChange);
         player.addEventListener('emsg', this.onEventMessage); // fires when a timed metadata event is sent
 
         // Video tag listeners
         // Listen for  HTML5 Video Element events
         // Reference : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-        videoElement.addEventListener('pause', this.onPause);
-        videoElement.addEventListener('play', this.onPlay);
+        video.addEventListener('pause', this.onPause);
+        video.addEventListener('play', this.onPlay);
+        video.addEventListener('canplay', this.onCanPlay(video));
 
         // Enable captions
         player.setTextTrackVisibility(true);
@@ -105,7 +103,10 @@ class ShakaPlayer extends React.PureComponent {
                 console.log('The video has now been loaded!');
                 player.setTextTrackVisibility(true);
             })
-            .catch(onError);  // onError is executed if the asynchronous load fails.
+            .catch((error) => {
+                // Log the error.
+                console.error('Error code', error.code, 'object', error);
+            });  // onError is executed if the asynchronous load fails.
 
         if (this.props.onInitPlayer) {
             // Pass the player up to parent if needed
@@ -113,14 +114,14 @@ class ShakaPlayer extends React.PureComponent {
         }
 
         this.timerID = setInterval(
-            () => this.statsTick(player, this.video.current),
+            () => this.statsTick(player, video),
             1000
         );
+
+
     }
 
     statsTick(player, video) {
-
-
         if (video && video.isPaused) {
             console.log('Paused');
             return;
@@ -190,6 +191,12 @@ class ShakaPlayer extends React.PureComponent {
     onPlay() {
         console.log('Shaka: Playing');
         this.isPaused = false
+    }
+
+    onCanPlay(video) {
+        console.log('Video: CanPlay');
+        console.log('Ready State: ' + video.readyState);
+        video.play();
     }
 
     onStateChange(event) {
