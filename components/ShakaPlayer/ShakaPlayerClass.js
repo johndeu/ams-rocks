@@ -92,6 +92,7 @@ class ShakaPlayer extends React.PureComponent {
         video.addEventListener('pause', this.onPause);
         video.addEventListener('play', this.onPlay);
         video.addEventListener('canplay', this.onCanPlay(video));
+        video.addEventListener('seeking', this.onSeeking(video));
 
         // Enable captions
         player.setTextTrackVisibility(true);
@@ -191,6 +192,11 @@ class ShakaPlayer extends React.PureComponent {
     onPlay() {
         console.log('Shaka: Playing');
         this.isPaused = false
+    }
+
+    onSeeking(video) {
+        console.log('Video seeking...');
+        video.play(); //used to force playback of LL-HLS demo from AMS
     }
 
     onCanPlay(video) {
