@@ -226,10 +226,9 @@ class ShakaPlayer extends React.PureComponent {
 
     render() {
         return (
-            <div ref={this.videoContainer} data-shaka-player-container data-shaka-player-cast-receiver-id="BBED8D28">
+            <div ref={this.videoContainer} data-shaka-player-cast-receiver-id="BBED8D28">
                 <video
                     id="video"
-                    data-shaka-player
                     ref={this.video}
                     autoPlay
                     playsInline
