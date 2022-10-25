@@ -194,11 +194,6 @@ class ShakaPlayer extends React.PureComponent {
 
     onStateChange(event) {
         console.log('Player State:', event.state);
-
-        if (event.state === 'load'){
-            console.log('Player trying to start playback!');
-            this.video.current.play();
-        }
     }
 
     onEventMessage(event) {
