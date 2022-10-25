@@ -272,7 +272,7 @@ export default function LandingPage(props) {
           <Card className={classes.card} md={2}>
             <Badge color="white"><span className={classes.label}>{i18next.t("liveDemo.metrics.bandwidth")}</span></Badge>
             <CardBody className={classes.cardBody}>
-              <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toPrecision(4) + '' : i18next.t("liveDemo.metrics.estimating")}</span>
+              <span className={classes.metric}>{stats.estimatedBandwidth ? (stats.estimatedBandwidth / 1024).toFixed() + '' : i18next.t("liveDemo.metrics.estimating")}</span>
             </CardBody>
           </Card>
         </GridItem>
