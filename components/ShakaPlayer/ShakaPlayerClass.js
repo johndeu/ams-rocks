@@ -119,8 +119,7 @@ class ShakaPlayer extends React.PureComponent {
     }
 
     statsTick(player, video) {
-        if (player.state=='load')
-            video.play();
+
 
         if (video && video.isPaused) {
             console.log('Paused');
@@ -224,10 +223,9 @@ class ShakaPlayer extends React.PureComponent {
                     id="video"
                     data-shaka-player
                     ref={this.video}
-                    autoplay
+                    autoPlay
+                    playsInline
                     muted
-                    loop
-                    playsinline
                     style={{
                         maxWidth: '100%',
                         width: '100%',
