@@ -95,11 +95,12 @@ class ShakaPlayer extends React.PureComponent {
         videoElement.addEventListener('pause', this.onPause);
         videoElement.addEventListener('play', this.onPlay);
 
+        // Enable captions
+        player.setTextTrackVisibility(true);
+
         player.load(src, null, "application/vnd.apple.mpegURL").then(function () {
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
-            // Enable captions
-            player.setTextTrackVisibility(true);
         }).catch(onError);  // onError is executed if the asynchronous load fails.
 
         if (this.props.onInitPlayer) {
@@ -187,6 +188,12 @@ class ShakaPlayer extends React.PureComponent {
 
     onStateChange(event) {
         console.log('Player State:', event.state);
+
+        if (event.state=='load'){
+            console.log('Player trying to start playback!');
+            this.video.current.play();
+            this.video.current.play();
+        }
     }
 
     onEventMessage(event) {
