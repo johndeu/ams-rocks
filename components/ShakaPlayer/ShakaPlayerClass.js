@@ -44,7 +44,13 @@ class ShakaPlayer extends React.PureComponent {
         const ui = new shaka.ui.Overlay(player, videoContainer, video);
         const controls = ui.getControls();
         const uiConfig = {
-            'controlPanelElements': ['play_pause', 'spacer', 'volume', 'mute', 'fullscreen'],
+            'controlPanelElements': [
+                'time_and_duration', 
+                'spacer', 
+                'quality',
+                'volume', 
+                'mute', 
+                'fullscreen'],
             'addSeekBar': true,
             'enableTooltips': true,
             'contextMenuElements': ['statistics'],
