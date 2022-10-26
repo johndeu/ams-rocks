@@ -29,8 +29,13 @@ class ShakaPlayer extends React.PureComponent {
 
     }
 
-    componentDidMount() {
+    componentDidUpdate(prevProps) {
+        return;
+    }
 
+
+    componentDidMount() {
+        console.log('componentDidMount');
         var src = this.props.src;
         var licenseServer = this.props.licenseServer;
         var raised = this.props.raised;
@@ -38,6 +43,7 @@ class ShakaPlayer extends React.PureComponent {
         let video = this.video.current;
         let videoContainer = this.videoContainer.current;
         let player = new shaka.Player(video);
+       
         document.addEventListener('shaka-ui-loaded', this.init(player, video, src));
         console.log("Shaka component mounted. Waiting for Shaka UI to load...")
 
@@ -131,8 +137,12 @@ class ShakaPlayer extends React.PureComponent {
 
     statsTick(player, video) {
         if (video && video.isPaused) {
-            console.log('Paused');
+            //console.log('Paused');
             return;
+        }
+
+        if (video.currentTime == 0) {
+            return
         }
 
         if (player !== undefined && video !== undefined) {
@@ -147,6 +157,10 @@ class ShakaPlayer extends React.PureComponent {
                 this.state.presentationStartTime = player.getPresentationStartTimeAsDate();
 
                 var latency = (Date.now() - (player.getPresentationStartTimeAsDate().valueOf() + video.currentTime * 1000)) / 1000
+            }
+
+            if (latency > 5) {
+                video.play(); // make sure that the player is started actually! This is a hack because sometimes our player does not start playing.
             }
 
             // In theory this code SHOULD work, but it breaks Next.js on iOS for some reason. No clue why. 
@@ -177,9 +191,6 @@ class ShakaPlayer extends React.PureComponent {
         }
     }
 
-    componentDidUpdate(prevProps) {
-
-    }
 
     componentWillUnmount() {
         clearInterval(this.timerId);
@@ -188,7 +199,6 @@ class ShakaPlayer extends React.PureComponent {
     // Event Handlers
     onLoaded(videoElement) {
         console.log('Shaka: Loaded');
-
     }
 
     onPause() {
@@ -213,6 +223,11 @@ class ShakaPlayer extends React.PureComponent {
 
     onStateChange(event) {
         console.log('Player State:', event.state);
+        if (event.state === 'load') {
+            console.log('Player best be playing by this point!');
+            this.video.current.play();
+        }
+
     }
 
     onEventMessage(event) {
@@ -231,6 +246,7 @@ class ShakaPlayer extends React.PureComponent {
     }
 
     render() {
+
         return (
             <div ref={this.videoContainer} data-shaka-player-cast-receiver-id="BBED8D28">
                 <video
