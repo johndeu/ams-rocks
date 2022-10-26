@@ -51,6 +51,7 @@ class ShakaPlayer extends React.PureComponent {
                 'volume', 
                 'mute', 
                 'fullscreen'],
+            'addBigPlayButton': true,
             'addSeekBar': true,
             'enableTooltips': true,
             'contextMenuElements': ['statistics'],
