@@ -201,8 +201,7 @@ class ShakaPlayer extends React.PureComponent {
 
     onCanPlay(video) {
         console.log('Video: CanPlay');
-        console.log('Ready State: ' + video.readyState);
-        video.play();
+        
     }
 
     onStateChange(event) {
