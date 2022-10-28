@@ -49,7 +49,7 @@ class ShakaPlayer extends React.PureComponent {
 
         const ui = new shaka.ui.Overlay(player, videoContainer, video);
         const controls = ui.getControls();
-        const uiConfig = {
+        /*const uiConfig = {
             'controlPanelElements': [
                 'time_and_duration', 
                 'spacer', 
@@ -70,21 +70,22 @@ class ShakaPlayer extends React.PureComponent {
             }
         }
         ui.configure(uiConfig);
+        */
 
         player.configure({
             manifest: {
-                dash: {
-                    autoCorrectDrift: true
-                },
-                hls: {
-                    ignoreManifestProgramDateTime: false,
-                }
-            },
-            streaming: {
-                lowLatencyMode: true,
-                inaccurateManifestTolerance: 0,
+                defaultPresentationDelay: 0.1,
+                availabilityWindowOverride: 30,
+                dash: {},
+                hls: {},
+              },
+              streaming: {
+                lowLatencyMode:true,
+                // autoLowLatencyMode: true,
                 useNativeHlsOnSafari: true,
-            },
+                alwaysStreamText: true,
+                dispatchAllEmsgBoxes: true,
+              },
             drm: {
                 servers: { 'com.widevine.alpha': licenseServer }
             }
