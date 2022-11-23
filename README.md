@@ -1,5 +1,7 @@
 # Azure Media Services demo and samples site
 
+Last Updated: 11/22/2022
+
 This project is using the following technologies:
 * Next.js
 * React
