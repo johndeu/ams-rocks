@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import i18next from 'i18next';
 
-import { getSortedLangsData } from '../lib/lang';
+import { getSortedLangsData } from '../../lib/lang';
 
 export default function Sitemap({ allLangsData }) {
 	const router = useRouter();
