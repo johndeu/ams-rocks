@@ -19,14 +19,14 @@ jobs:
             # Insert any jobs here required to build your website files
 
             - name: Scan for accessibility issues
-              uses: microsoft/accessibility-insights-action@v3
+              uses: microsoft/accessibility-insights-action@latest
               with:
                   # Provide either static-site-dir or url
                   # static-site-dir: ${{ github.workspace }}/path-to-built-website
                   url: https://media.microsoft.com
 
                   # Provide any additional inputs here
-                  fail-on-accessibility-error: true
+                  fail-on-accessibility-error: false
 
             - name: Upload report artifact
               if: success() || failure()
