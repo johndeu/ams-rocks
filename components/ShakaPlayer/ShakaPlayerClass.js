@@ -74,14 +74,12 @@ class ShakaPlayer extends React.PureComponent {
 
         player.configure({
             manifest: {
-                defaultPresentationDelay: 0.1,
                 availabilityWindowOverride: 30,
                 dash: {},
                 hls: {},
               },
               streaming: {
-                lowLatencyMode:true,
-                // autoLowLatencyMode: true,
+                autoLowLatencyMode: true,
                 useNativeHlsOnSafari: true,
                 alwaysStreamText: true,
                 dispatchAllEmsgBoxes: true,
