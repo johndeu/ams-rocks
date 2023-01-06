@@ -42,6 +42,7 @@ const detection = {
 
 i18next.use(LanguageDetector).init({
 	detection: detection,
+	lng: defaultLanguage,
 	fallbackLng: defaultLanguage,
 	resources: locales,
 	ns: ['translations'],
