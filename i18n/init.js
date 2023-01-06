@@ -18,9 +18,9 @@ const detection = {
 	// order and from where user language should be detected
 	order: [
 		'querystring',
+		'navigator',
 		'localStorage',
 		'sessionStorage',
-		'navigator',
 		'htmlTag',
 		'path',
 		'subdomain',
