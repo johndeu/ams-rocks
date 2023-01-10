@@ -401,7 +401,7 @@ export default function LandingPage(props) {
 
         </div>
         <FreeSection />
-        <AzureFooter></AzureFooter>
+      {/*   <AzureFooter></AzureFooter> */}
      {/*    <Footer whiteFont logoColor="gray" /> */}
       </div>
 
